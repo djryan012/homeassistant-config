@@ -1,0 +1,35 @@
+########################################################################
+########  Major System
+########################################################################
+
+# ecobee:
+#   name: Climate Control
+#   entities:
+#     - climate.echo
+#     - sensor.echo_temperature
+#     - sensor.living_room_temperature
+#     - sensor.office_temperature
+#     - sensor.bedroom_temperature
+#     - sensor.ecobee_sensor_compare_temp
+#     - sensor.echo_humidity
+
+system_info:
+  name: Info about Pi3
+  entities:
+    - sensor.date_time
+    - sensor.last_boot
+    - sensor.time_online
+    - sensor.processor_use
+    - sensor.memory_use_percent
+    - sensor.disk_use_percent
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - input_boolean.ha_uptime
+
+# falcon_player:
+  name: Falcon Player
+  entities:
+    - sensor.fpp_repeat_status
+    - sensor.fpp_status
+    - sensor.fpp_version

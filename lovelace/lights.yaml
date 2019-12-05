@@ -1,0 +1,92 @@
+####################################################
+#                    LIGHTS                        #
+####################################################
+
+title: Lights
+icon: mdi:lightbulb-on-outline
+cards:
+  - type: entities
+    title: Kitchen
+    show_header_toggle: false
+    entities:
+      - entity: light.kitchenww_1
+        name: Kitchen Pendent 1
+      - entity: light.kitchenww_2
+        name: Kitchen Pendent 2
+
+  - type: entities
+    title: Living Room
+    show_header_toggle: false
+    entities:
+      - entity: light.livingroomww_1
+        name: Livingroom Light 1
+      - entity: light.livingroomww_2
+        name: Livingroom Light 2
+      - entity: input_select.living_room_fan #Living Room_fan
+        name: Living Room Fan
+        icon: mdi:fan
+
+  - type: entities
+    title: Master Bedroom
+    show_header_toggle: false
+    entities:
+      - entity: light.bedroomww_d
+        name: David Nightstand
+      - entity: light.bedroomww_g
+        name: Georgina Nightstand
+      - entity: light.master_ceiling_light #bedroom_light
+        name: Master Fan's Light
+      - entity: input_select.master_bedroom_fan #bedroom_fan
+        name: Master Fan
+        icon: mdi:fan
+
+  - type: entities
+    title: Dinning Room
+    show_header_toggle: false
+    entities:
+      - entity: light.dinningroomww
+        name: Dinningroom Light
+      - entity: light.dinning_table_light #Dinning Room_light
+        name: Dinning Table Light
+
+  - type: entities
+    title: Office
+    show_header_toggle: false
+    entities:
+      - entity: light.officews
+        name: Office DeskLight
+      - entity: light.office_ceiling_light #office_light
+        name: Office Fan's Light
+      - entity: input_select.office_fan #office_fan
+        name: Office Fan
+        icon: mdi:fan
+
+  - type: entities
+    title: Garage
+    show_header_toggle: true
+    entities:
+      - entity: switch.garage_inside #garage_inside
+        name: Garage Inside Switch
+        icon: mdi:toggle-switch
+      - entity: switch.garage_side  #garage_side
+        name: Garage Sidedoor Switch
+        icon: mdi:toggle-switch
+
+  - type: entities
+    title: Miscellaneous
+    show_header_toggle: false
+    entities:
+      - entity: light.porchww
+        name: Front Porch Sconce
+      - entity: light.sideyardww
+        name: Side Door Sconce
+      - type: divider
+        style:
+          height: 1px
+          background: '#62717b'
+      - entity: switch.sonoff2
+        name: Feed Dog Reminder
+        icon: mdi:toggle-switch
+      - entity: switch.sonoff1
+        name: Christmas Tree
+        icon: mdi:toggle-switch

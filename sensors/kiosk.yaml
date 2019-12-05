@@ -1,0 +1,29 @@
+# - platform: rest
+#   name: Kiosk Touchpad
+#   json_attributes:
+#     - batteryLevel
+#     - kioskMode
+#     - screenBrightness
+#     - motionDetectorState
+#     - maintenanceMode
+#     - appFreeMemory
+#     - appUsedMemory
+#     - totalFreeMemory
+#     - totalUsedMemory
+#     - ip4
+#     - startUrl
+#     - currentPage
+#     - isScreenOn
+#   resource: !secret kiosk_touchpad_url
+#   value_template: '{{ value_json.isScreenOn }}'
+
+# - platform: template
+#   sensors:
+#     kiosk_touchpad_battery:
+#       friendly_name: "Kiosk Touchpad Battery"
+#       unit_of_measurement: '%'
+#       value_template: "{{ states.sensor.kiosk_touchpad.attributes.batteryLevel }}"
+#     kiosk_touchpad_screen_brightness:
+#       friendly_name: "Kiosk Touchpad Screen Brightness"
+#       unit_of_measurement: '%'
+#       value_template: "{{ states.sensor.kiosk_touchpad.attributes.screenBrightness }}"

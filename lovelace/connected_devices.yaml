@@ -1,0 +1,129 @@
+####################################################
+#               CONNECTED DEVICES                  #
+####################################################
+
+title: Connected Devices
+icon: mdi:lan-connect
+cards:
+  - type: entities
+    title: Network
+    show_header_toggle: false
+    entities:
+      - entity: binary_sensor.wan_connection
+        icon: mdi:wan
+      - type: divider
+        style:
+          height: 2px
+          background: '#62717b'
+      - entity: device_tracker.unifi_security_gateway
+        icon: mdi:lan
+      - entity: device_tracker.unifi_switch
+        icon: mdi:lan
+      - entity: device_tracker.google_wifi_2ghz
+        icon: mdi:router-wireless
+
+  - type: entities
+    title: Home Automation
+    show_header_toggle: false
+    entities:
+      - entity: device_tracker.kiosk_touchpad
+        icon: mdi:amazon-alexa
+      - entity: device_tracker.echo_dot_main
+        icon: mdi:amazon-alexa
+      - entity: device_tracker.echo_dot_bedroom
+        icon: mdi:amazon-alexa
+      - entity: device_tracker.ecobee3
+        icon: mdi:thermostat-box
+      - entity: device_tracker.smarthome_laptop
+        icon: mdi:server-network
+      - entity: device_tracker.hassio
+        icon: mdi:home-assistant
+      - entity: device_tracker.tradfri
+        icon: mdi:server-network
+
+  - type: entities
+    title: Media Players
+    show_header_toggle: false
+    entities:
+      - entity: device_tracker.samsung_tv
+        icon: mdi:television
+      - entity: device_tracker.chromecast
+        icon: mdi:cast
+      - entity: device_tracker.roku_express
+        icon: mdi:cast
+      - entity: device_tracker.roku_garage
+        icon: mdi:cast
+      - entity: device_tracker.xbox_one
+        icon: mdi:xbox
+
+
+  - type: entities
+    title: Sonoffs
+    show_header_toggle: false
+    entities:
+      - entity: device_tracker.sonoff_1
+        icon: mdi:electric-switch
+      - entity: device_tracker.sonoff_2
+        icon: mdi:electric-switch
+      - entity: device_tracker.sonoff_pow_1
+        icon: mdi:electric-switch
+      - entity: device_tracker.sonoff_pow_2
+        icon: mdi:electric-switch
+
+  - type: entities
+    title: Home Computing
+    show_header_toggle: false
+    entities:
+      - entity: device_tracker.hp_newbie
+        icon: mdi:desktop-classic
+      - entity: device_tracker.canon_printer
+        name: Canon Printer
+        icon: mdi:printer
+      - entity: device_tracker.littlegrey
+        name: David's Laptop
+        icon: mdi:laptop
+
+  - type: entities
+    title: Mobile Devices
+    show_header_toggle: false
+    entities:
+      - entity: device_tracker.david_zanzito
+        name: David Zanzito 
+        icon: mdi:cellphone-android
+      - entity: device_tracker.david_s_pixel
+        name: David Wifi
+        icon: mdi:cellphone-android
+      - entity: device_tracker.georgina_zanzito
+        name: Georgina Zanzito
+        icon: mdi:cellphone-android
+      - entity: device_tracker.georgina_pixel_3xl
+        name: Georgina Wifi
+        icon: mdi:cellphone-android
+      # - entity: device_tracker.georgina_s_pixel
+      #   name: Georgina Pixel 1
+      #   icon: mdi:cellphone-android
+      # - entity: device_tracker.georgina_s_kindle
+      #   icon: mdi:tablet-android
+      - entity: device_tracker.michael_s_iphone
+        name: Michael's iphone
+        icon: mdi:cellphone-iphone
+      # - entity: device_tracker.mitzis_iphone
+      #   icon: mdi:cellphone-iphone
+
+  - type: entities
+    title: Cameras
+    show_header_toggle: false
+    entities:
+      - entity: device_tracker.blue_iris
+        icon: mdi:server-network
+        name: Blue Iris
+      - entity: device_tracker.camera_backyard
+        icon: mdi:cctv
+      - entity: device_tracker.camera_frontdoor
+        icon: mdi:cctv
+      - entity: device_tracker.camera_frontyard
+        icon: mdi:cctv
+      - entity: device_tracker.camera_sideyard
+        icon: mdi:cctv
+      - entity: device_tracker.pi_motion_eye
+        icon: mdi:cctv

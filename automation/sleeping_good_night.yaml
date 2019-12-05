@@ -1,0 +1,77 @@
+######################################################################
+##  Good night Routine
+######################################################################
+- alias: 'Good Night Trigger'
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.david_status
+        - input_boolean.georgina_status
+      to: 'on'
+  condition:
+    # - condition: state
+    #   entity_id: sun.sun
+    #   state: 'below_horizon'
+    # - condition: state
+    #   entity_id: input_boolean.guest_mode
+    #   state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.david_status
+          state: 'on'
+        - condition: template 
+          value_template: >
+            {% if is_state('person.david', 'home') %} false
+            {% else %} true {% endif %}
+        # - condition: state
+        #   entity_id: person.david
+        #   state: 'not_home'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.georgina_status
+          state: 'on'
+        - condition: template 
+          value_template: >
+            {% if is_state('person.georgina', 'home') %} false
+            {% else %} true {% endif %}
+        # - condition: state
+        #   entity_id: person.georgina
+        #   state: 'not_home'
+  action:
+    - service: script.interior_off
+
+# Turn off bedroom lights when Georgina goes to sleep
+- alias: 'Bedroom Lights Out Georgina asleep'
+  initial_state: True
+  hide_entity: True
+  trigger:
+    - platform: state
+      entity_id: input_boolean.georgina_status
+      to: 'on'
+  condition:
+    - condition: template 
+      value_template: >
+        {% if is_state('input_boolean.david_status', 'off') %} true
+        {% elif is_state('person.david', 'home') %} true
+        {% else %} false {% endif %}
+  action:
+    - service: script.georgina_going_to_sleep
+
+# Turn off bedroom lights when David goes to sleep
+- alias: 'Bedroom Lights Out David asleep'
+  initial_state: True
+  hide_entity: True
+  trigger:
+    - platform: state
+      entity_id: input_boolean.david_status
+      to: 'on'
+  condition:
+    - condition: template 
+      value_template: >
+        {% if is_state('input_boolean.georgina_status', 'off') %} true
+        {% elif is_state('person.georgina', 'home') %} true
+        {% else %} false {% endif %}
+  action:
+    - service: script.david_going_to_sleep

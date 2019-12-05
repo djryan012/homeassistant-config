@@ -1,0 +1,45 @@
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#                                                  #
+#                   COMMAND LINE                   #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.command_line/
+
+- platform: command_line
+  command: "curl https://api.github.com/repos/djryan012/homeassistant-config"
+  name: github
+  scan_interval: 3600
+  value_template: "{{ value_json.name }}"
+  json_attributes:
+    - open_issues
+    - subscribers_count
+    - forks
+    - stargazers_count
+
+####################################################
+#                                                  #
+#                      TEMPLATE                    #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/sensor.template/
+- platform: template
+  sensors:
+    issues:
+      value_template: "{{ state_attr('sensor.github', 'open_issues') }}"
+      entity_id: sensor.github
+
+    subscribers:
+      value_template: "{{ state_attr('sensor.github', 'subscribers_count') }}"
+      entity_id: sensor.github
+
+    forks:
+      value_template: "{{ state_attr('sensor.github', 'forks') }}"
+      entity_id: sensor.github
+
+    stars:
+      value_template: "{{ state_attr('sensor.github', 'stargazers_count') }}"
+      entity_id: sensor.github

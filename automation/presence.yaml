@@ -1,0 +1,104 @@
+# Turns on lights 30 minutes before sunset if people are home
+- alias: 'Kitchen on in the evening'
+  initial_state: True
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: '-00:30:00'
+  condition:
+    - condition: state
+      entity_id: group.persons
+      state: 'home'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.kitchen
+      data:
+        brightness: 203
+        transition: 4
+
+# Turn Light on for Dog when Away
+- alias: 'Nightlight for Dog'
+  initial_state: True
+  trigger:
+    - platform: sun
+      event: sunset
+  condition:
+    - condition: state
+      entity_id: group.persons
+      state: 'not_home'
+  action:
+    - service: light.turn_on
+      entity_id: light.livingroomww_2
+      data:
+        brightness: 15
+        transition: 4
+
+# Turn off lights when everybody leaves the house
+- alias: 'Lights Out when leaving'
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: group.persons
+      to: 'not_home'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.time_online
+      above: .10 #Six Minutes
+  action:
+    service: homeassistant.turn_off
+    entity_id:
+      - group.kitchen
+      - group.dining_room
+      - group.office
+      - group.bedroom
+      - group.garage
+      - light.livingroomww_1
+
+# Light on when getting home
+- alias: "Light on when getting home"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: 
+        - person.david
+        - person.georgina
+        # - device_tracker.michael_iphone
+      from: 'not_home'
+      to: 'home'
+  condition:
+      condition: or  # 'when dark' condition: either after sunset or before sunrise
+      conditions:
+        - condition: sun
+          after: sunset
+        - condition: sun
+          before: sunrise
+  action:
+    - service: homeassistant.turn_on
+      entity_id:
+        - light.dinningroomww
+        - group.kitchen
+      data:
+        brightness: 203
+        transition: 4
+
+# Lights out no motion detected
+- alias: "Dinning Light out"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.echo_occupancy
+      to: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+        -  group.dining_room
+- alias: "Office Light out"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.office_occupancy
+      to: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+        -  group.office

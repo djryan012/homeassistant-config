@@ -1,0 +1,31 @@
+#########################################################
+#      NOTIFY IF LETS ENCRYPT CERT DID NOT UPDATE       #
+#########################################################
+
+- alias: "Lets Encrypt Cert Did Not Update"
+  initial_state: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.lets_encrypt_expiration
+      below: 10
+  action:
+    service: notify.home_assistant
+    data:
+      title: "Lets Encrypt Cert Did Not Update"
+      message: "Review Lets Encrypt SSL cert to determine why it did not update"
+
+- alias: "Let's Encrypt Renewal"
+  trigger:
+  - platform: time
+    at: '00:00:00'
+  action:
+  - service: hassio.addon_stop
+    data:
+      addon: core_nginx_proxy
+  - service: hassio.addon_restart
+    data:
+      addon: core_letsencrypt
+  - delay: '00:01:30'
+  - service: hassio.addon_start
+    data:
+      addon: core_nginx_proxy

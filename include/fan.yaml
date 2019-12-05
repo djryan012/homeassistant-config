@@ -1,0 +1,71 @@
+##   Insteon Bedroom Fan   3f.d9.93
+- platform: mqtt
+  name: "Master Ceiling Fan"
+  state_topic: "insteon/3f.d9.93/fan/state"
+  command_topic: "insteon/3f.d9.93/fan/set"
+  speed_state_topic: "insteon/3f.d9.93/fan/speed/state"
+  speed_command_topic: "insteon/3f.d9.93/fan/speed/set"
+  qos: 1
+  # payload_on: "ON"
+  # payload_off: "OFF"
+  # payload_low_speed: "low"
+  # payload_medium_speed: "medium"
+  # payload_high_speed: "high"
+  # speeds:
+  #   - low
+  #   - medium
+  #   - high
+
+##   Insteon Office Ceiling Fan   47.99.0f
+- platform: mqtt
+  name: "Office Ceiling Fan"
+  state_topic: "insteon/47.99.0f/fan/state"
+  command_topic: "insteon/47.99.0f/fan/set"
+  speed_state_topic: "insteon/47.99.0f/fan/speed/state"
+  speed_command_topic: "insteon/47.99.0f/fan/speed/set"
+  qos: 1
+  # payload_on: "ON"
+  # payload_off: "OFF"
+  # payload_low_speed: "low"
+  # payload_medium_speed: "medium"
+  # payload_high_speed: "high"
+  # speeds:
+  #   - low
+  #   - medium
+  #   - high
+
+# ##   Insteon Guest Ceiling Fan   xx.xx.xx
+# - platform: mqtt
+#   name: "Guest Ceiling Fan"
+#   state_topic: "insteon/xx.xx.xx/fan/state"
+#   command_topic: "insteon/xx.xx.xx/fan/set"
+#   speed_state_topic: "insteon/xx.xx.xx/fan/speed/state"
+#   speed_command_topic: "insteon/xx.xx.xx/fan/speed/set"
+#   qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_low_speed: "low"
+#   payload_medium_speed: "medium"
+#   payload_high_speed: "high"
+#   speeds:
+#     - low
+#     - medium
+#     - high
+
+##   Insteon Livingroom Ceiling Fan   47.98.21
+- platform: mqtt
+  name: "Livingroom Ceiling Fan"
+  state_topic: "insteon/47.98.21/fan/state"
+  command_topic: "insteon/47.98.21/fan/set"
+  speed_state_topic: "insteon/47.98.21/fan/speed/state"
+  speed_command_topic: "insteon/47.98.21/fan/speed/set"
+  qos: 1
+  # payload_on: "ON"
+  # payload_off: "OFF"
+  # payload_low_speed: "low"
+  # payload_medium_speed: "medium"
+  # payload_high_speed: "high"
+  # speeds:
+  #   - low
+  #   - medium
+  #   - high

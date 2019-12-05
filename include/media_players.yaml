@@ -1,0 +1,16 @@
+- platform: samsungtv_custom
+  host: !secret smartTV_host
+  mac: !secret smartTV_mac
+  port: 8002
+  sourcelist: '{"Xbox": "KEY_HDMI1", "Chromecast": "KEY_HDMI2"}'
+  applist: "Netflix, Prime Video, HBO Go, ESPN, YouTube"
+  protocol: ctl_qled
+
+# - platform: alexa
+#   email: !secret amazon_user
+#   password: !secret amazon_password
+#   url: amazon.com
+
+# For each Fully Kiosk device, create a media player entity:
+# - platform: floorplan_speaker
+#   name: Entry Kiosk

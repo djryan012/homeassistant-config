@@ -1,0 +1,33 @@
+- alias: "Laundry Washer is Done"
+  initial_state: True
+  hide_entity: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.pow1_power
+      below: 5
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.time_online
+      above: .25
+  action:
+    - service: script.audio_notify
+      data_template:
+        tts_msg: "The Washing Machine is now Done"
+        mplayer: "echo_dot_bedroom"
+
+- alias: "Laundry Dryer is Done"
+  initial_state: True
+  hide_entity: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.pow2_power
+      below: 20
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.time_online
+      above: .5
+  action:
+    - service: script.audio_notify
+      data_template:
+        tts_msg: "The Clothes Dryer is now Done"
+        mplayer: "echo_dot_bedroom"

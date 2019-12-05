@@ -1,0 +1,60 @@
+########################################################################
+########  LIGHTING GROUPS
+########################################################################
+living_room:
+    - light.livingroomww_1
+    - light.livingroomww_2
+
+kitchen:
+    - light.kitchenww_1
+    - light.kitchenww_2
+
+kitchen_pendents:
+    - light.kitchenww_1
+    - light.kitchenww_2
+
+dining_room:
+    - light.dinningroomww
+    - group.dining_table
+
+dining_table:
+    - light.dinning_table_light
+    - light.dinning_room_switch
+
+bedroom:
+    - light.bedroomww_d
+    - light.bedroomww_g
+    - light.master_ceiling_light #Master Fanlinc Light
+    - switch.master_keypad_main
+
+nightstands:
+    - light.bedroomww_d
+    - light.bedroomww_g
+
+office:
+    - light.officews
+    - light.office_ceiling_light
+    - switch.keypad_link_main
+
+garage:
+  name: Garage
+  entities:
+    - switch.garage_inside #Inner Dooor Switch
+    - switch.garage_side #Side Door Switch
+
+exterior:
+    - light.porchww
+    - light.sideyardww
+
+interior_lights:
+  name: Interior Lights
+  entities:
+    - light.livingroomww_1
+    - light.livingroomww_2
+    - light.kitchenww_1
+    - light.kitchenww_2
+    - light.dinningroomww
+    - light.officews
+    - switch.sonoff1 #Floor Lamp / Christmas Tree
+    - switch.garage_inside #Inner Dooor Switch
+    - switch.garage_side #Side Door Switch

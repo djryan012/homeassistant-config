@@ -1,0 +1,47 @@
+####################################################
+#                      MQTT                        #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.mqtt/
+- platform: mqtt
+  name: "POW1 Power"
+  state_topic: "tele/sonoff_pow1/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "POW1 Voltage"
+  state_topic: "tele/sonoff_pow1/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+
+- platform: mqtt
+  name: "POW2 Power"
+  state_topic: "tele/sonoff_pow2/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "POW2 Voltage"
+  state_topic: "tele/sonoff_pow2/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+
+# Falcon Player MQTT Status Updates
+- platform: mqtt
+  name: "FPP Repeat Status"
+  state_topic: "hassio/falcon/player/FPP/playlist/repeat/status"
+- platform: mqtt
+  name: "FPP Status"
+  state_topic: "hassio/falcon/player/FPP/status"
+- platform: mqtt
+  name: "FPP Version"
+  state_topic: "hassio/falcon/player/FPP/version"
+
+# Device Battery Status
+- platform: mqtt
+  name: "Georgina Battery Level"
+  state_topic: "zanzito/georgina/battery_level"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: "David Battery Level"
+  state_topic: "zanzito/david/battery_level"
+  unit_of_measurement: "%"

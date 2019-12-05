@@ -1,0 +1,64 @@
+############################################################
+# FANS
+############################################################
+guest_bedroom_fan:
+  name: Guest Room Fan
+  options:
+    - "Off"
+    - Low
+    - Medium
+    - High
+
+living_room_fan:
+  name: Livingroom Fan
+  options:
+    - "Off"
+    - Low
+    - Medium
+    - High
+
+master_bedroom_fan:
+  name: Master Bedroom Fan
+  options:
+    - "Off"
+    - Low
+    - Medium
+    - High
+
+office_fan:
+  name: Office Fan
+  options:
+    - "Off"
+    - Low
+    - Medium
+    - High
+
+############################################################
+# SCENES
+############################################################
+# living_room_preset:
+#   name: Livingroom Presets
+#   options:
+#     - Select One
+#     - Livingroom Dim
+#     - Livingroom Normal
+#     - Livingroom Bright
+#   initial: Select One
+
+# bedroom_preset:
+#   name: Bedroom Presets
+#   options:
+#     - Select One
+#     - Bedroom Dim
+#     - Bedroom Normal
+#     - Bedroom Bright
+#   initial: Select One
+
+# kitchen_preset:
+#   name: Kitchen Presets
+#   options:
+#     - Select One
+#     - Kitchen Dim
+#     - Kitchen Normal
+#     - Kitchen Bright
+#   initial: Select One

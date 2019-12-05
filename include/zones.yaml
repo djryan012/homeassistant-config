@@ -1,0 +1,23 @@
+- name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  radius: 50
+  icon: mdi:home
+
+- name: JWC Factory
+  latitude: !secret jwc_factory_latitude
+  longitude: !secret jwc_factory_longitude
+  radius: 100
+  icon: mdi:worker
+
+- name: JWC Offices
+  latitude: !secret jwc_office_latitude
+  longitude: !secret jwc_office_longitude
+  radius: 150
+  icon: mdi:worker
+
+- name: Disney
+  latitude: !secret david_work_latitude
+  longitude: !secret david_work_longitude
+  radius: 816
+  icon: mdi:worker

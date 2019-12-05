@@ -1,0 +1,35 @@
+#########################################################
+#                                                       #
+#               NOTIFY IF DEVICE OFFLINE                #
+#                                                       #
+#########################################################
+
+- alias: "Notify if Camera is Offline"
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.frontdoor_camera
+        - binary_sensor.frontyard_camera
+        - binary_sensor.backyard_camera
+        - binary_sensor.sideyard_camera
+      from: 'on'
+      to: 'off'
+      for:
+        seconds: 60
+  action:
+    - service: notify.telbot_david
+      data:
+        message: '{{ trigger.to_state.attributes.friendly_name }} has gone offline as of {{now().strftime("%H:%M")}}'
+
+- alias: "Tradfri Lights Unavailable"
+  initial_state: True
+  hide_entity: True
+  trigger:
+    - platform: state
+      entity_id: light.bedroomww_d,light.bedroomww_g,light.dinningroomww,light.kitchenww_1,light.kitchenww_2,light.livingroomww_1,light.livingroomww_2,light.officews,light.porchww,light.sideyardww
+      to: unavailable
+  action:
+    - service: notify.telbot_david
+      data_template:
+        message: 'Tradfri Light {{trigger.from_state.attributes.friendly_name}} is Unavailable'

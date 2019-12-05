@@ -1,0 +1,48 @@
+#########################################################
+#                  FEED THE DOG - MORNING               #
+#########################################################
+
+- alias: "Feed The Dog Morning Weekdays"
+  initial_state: True
+  trigger:
+    platform: time
+    at: '05:30'
+  condition:
+    condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.sonoff2
+
+- alias: "Feed The Dog Morning Weekends"
+  initial_state: True
+  trigger:
+    platform: time
+    at: '07:00'
+  condition:
+    condition: time
+    weekday:
+      - sat
+      - sun
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.sonoff2
+
+
+#########################################################
+#                  FEED THE DOG - EVENING               #
+#########################################################
+
+- alias: "Feed The Dog Evening"
+  initial_state: True
+  trigger:
+    platform: time
+    at: '17:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.sonoff2

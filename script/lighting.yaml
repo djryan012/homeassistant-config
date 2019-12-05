@@ -1,0 +1,69 @@
+# Scripts for Turning lights on and off
+
+lights_on_when_waking_up:
+  sequence:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: time
+      after: '00:00:00'
+    - service: light.turn_on
+      data:
+        entity_id: group.kitchen_pendants
+        brightness: 25
+        transition: 3
+
+georgina_going_to_sleep:
+  sequence:
+  - alias: ''
+    data:
+      entity_id: light.bedroomww_g, light.bedroom_light
+    service: light.turn_off
+  - condition: state
+    entity_id: light.bedroomww_d
+    state: 'on'
+  - data:
+      brightness: '25'
+      entity_id: light.bedroomww_d
+      transition: '6'
+    service: light.turn_on
+
+david_going_to_sleep:
+  sequence:
+  - alias: ''
+    data:
+      entity_id: light.bedroomww_d, light.bedroom_light
+    service: light.turn_off
+  - condition: state
+    entity_id: light.bedroomww_g
+    state: 'on'
+  - data:
+      brightness: '25'
+      entity_id: light.bedroomww_g
+      transition: '6'
+    service: light.turn_on
+
+interior_off:
+  sequence:
+    - service: homeassistant.turn_off
+      entity_id: 
+        - group.interior_lights
+        - group.garage
+        - light.bedroomww_d
+        - light.bedroomww_g
+        - light.master_ceiling_light #MasterCeiling Light
+        - light.office_ceiling_light
+    - service: script.switch_turn_off_all
+
+switch_turn_off_all:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.master_keypad_main
+    - service: switch.turn_off
+      entity_id: switch.master_keypad_d
+    - service: switch.turn_off
+      entity_id: group.interior_switches
+    - service: switch.turn_off
+      entity_id: switch.office_keypad_main
+    - service: switch.turn_off
+      entity_id: switch.office_keypad_d

@@ -1,0 +1,192 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  latitude: !secret latitude_loc_home
+  longitude: !secret longitude_loc_home
+  elevation: 475
+  unit_system: imperial
+  time_zone: America/Los_Angeles
+  customize: !include include/customize.yaml
+  whitelist_external_dirs:
+    - !secret whitelist_dir
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.0/24
+        - 172.30.32.2
+        - 172.30.33.4
+    - type: homeassistant
+
+http:
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: !secret base_url
+  # ssl_certificate: !secret ssl_certificate
+  # ssl_key: !secret ssl_key
+  # trusted_networks:
+  #   - 192.168.1.0/24
+  #   - 172.30.32.2
+  #   - 172.30.33.4
+  ip_ban_enabled: true
+  login_attempts_threshold: 3
+
+config:
+discovery:
+frontend:
+  javascript_version: latest
+  themes: !include www/themes.yaml
+
+history:
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - light
+      - binary_sensor
+      # - cover
+  exclude:
+    entities:
+      - sensor.last_boot
+      - sensor.date
+      - sensor.pi_hole_ads_blocked_today
+      - sensor.pi_hole_ads_percentage_blocked_today
+      - sensor.pi_hole_dns_queries_today
+      - sensor.last_boot
+      - sensor.last_boot_templated
+      - sensor.floorplan_date
+      - sensor.floorplan_time
+      - sensor.ha_uptime
+      - sensor.time
+
+lovelace:
+  mode: yaml
+map:
+sun:
+system_health:
+updater:
+  include_used_components: true
+
+####################################################
+#                     Includes                     #
+####################################################
+automation: !include_dir_merge_list automation/
+binary_sensor: !include include/binary_sensors.yaml
+# emulated_hue: !include include/emulated_hue.yaml #Node Red taking care of this
+fan: !include include/fan.yaml
+group: !include_dir_merge_named group
+input_boolean: !include include/input_boolean.yaml
+input_select: !include include/input_select.yaml
+light: !include include/lights.yaml
+logger: !include include/logger.yaml
+media_player: !include include/media_players.yaml
+person: !include include/person.yaml
+recorder: !include include/recorder.yaml
+scene: !include_dir_merge_list scene
+script: !include_dir_merge_named script
+sensor: !include_dir_merge_list sensors/
+# speedtestdotnet: !include include/speedtest.yaml #Pi3 cant detect past 100mb using Unifi USG via Nodered
+switch: !include include/switches.yaml
+zone: !include include/zones.yaml
+
+####################################################
+#                   Integrations                   #
+####################################################
+alexa_media:
+  accounts:
+    - email: !secret amazon_user
+      password: !secret amazon_password
+      url: amazon.com
+      include_devices:
+        - "Echo Dot Main"
+        - "Echo Dot Bedroom"
+
+blueiris:
+  host: !secret blueiris_host
+  port: !secret blueiris_port
+  # [optional] Blue Iris admin username and password
+  username: !secret blueiris_admin_username
+  password: !secret blueiris_admin_password
+  # # List of camera objects
+  camera:
+    - id: frontyard
+      name: "Front Yard"
+      room: "Exterior"
+    - id: frontdoor
+      name: "Front Door"
+      room: "Exterior"
+    - id: sideyard
+      name: "Side Yard"
+      room: "Exterior"
+    - id: backyard
+      name: "Back Yard"
+      room: "Exterior"
+    - id: motioneye
+      name: "MotionEye"
+      room: "Exterior"
+
+camera:
+  - platform: blueiris
+
+device_tracker:
+  - platform: mqtt_json
+    devices:
+      david_zanzito: zanzito/david/location
+      georgina_zanzito: zanzito/georgina/location
+      # georgina_pixel: zanzito/georgina/location
+
+ecobee:
+  api_key: !secret ecobee_api_key
+
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
+  track_new_calendar: false
+
+hacs: #https://custom-components.github.io/hacs/installation/configuration/
+  token: !secret hacs
+
+mqtt:
+  broker: !secret Mosq_broker
+  port: !secret Mosq_port
+  username: !secret Mosq_username
+  password: !secret Mosq_password
+  client_id: home-assistant
+  keepalive: 60
+
+# namecheapdns:
+#   host: !secret namecheap_host
+#   domain: !secret namecheap_domain
+#   password: !secret namecheap_dns
+
+notify:
+  - platform: alexa_media
+    name: alexa_media
+  - name: telbot_david
+    platform: telegram
+    chat_id: !secret telegram_chatID_David
+  # - name: telbot_georgina
+  #   platform: telegram
+  #   chat_id: !secret telegram_chatID_Georgina
+  # - name: telbot_mark
+  #   platform: telegram
+  #   chat_id: !secret telegram_chatID_Mark
+
+panel_custom:
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:home
+    url_path: floorplan
+    config:
+      hide_app_toolbar:
+      config: /local/custom_ui/floorplan/floorplan.yaml
+
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram_api_token
+    allowed_chat_ids:
+      - !secret telegram_chatID_David
+      # - !secret telegram_chatID_Georgina
+      # - !secret telegram_chatID_Mark
+
+tradfri:
+  host: !secret tradfri_host

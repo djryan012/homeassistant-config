@@ -1,0 +1,190 @@
+####################################################
+#                  DEVICE STATUS                   #
+####################################################
+title: Device Status
+icon: mdi:information-outline
+cards:
+#   - type: glance
+#     title: David's Phone Status
+#     entities:
+#       - entity: device_tracker.david_zanzito
+#         name: GPS
+#       - entity: input_boolean.david_status
+#         name: Sleeping?
+#       - entity: sensor.david_battery_level
+#         name: Battery
+#         icon: mdi:battery-50
+#       - entity:  input_boolean.david_phone_charging
+#         name: Charging?
+#         icon: mdi:battery-charging
+#     columns: 4
+#   - type: glance
+#     title: Georgina's Phone Status
+#     entities:
+#       - entity: device_tracker.georgina_pixel
+#         name: GPS
+#       - entity: input_boolean.georgina_status
+#         name: Sleeping?
+#       - entity: sensor.georgina_battery_level
+#         name: Battery
+#         icon: mdi:battery-50
+#       - entity: input_boolean.georgina_phone_charging
+#         name: Charging?
+#         icon: mdi:battery-charging
+#     columns: 4
+  - type: custom:vertical-stack-in-card
+    title: Unifi Status
+    cards:
+      - type: horizontal-stack
+        title: Unifi Network Status
+        cards:
+          - type: sensor
+            theme: midnightclear
+            # entity: sensor.speedtest_download
+            entity: sensor.usg_download
+            name: Download
+            hours_to_show: 24
+            graph: line
+            detail: 2
+          - type: sensor
+            theme: midnightclear
+            # entity: sensor.speedtest_upload
+            entity: sensor.usg_upload
+            name: Upload
+            hours_to_show: 24
+            graph: line
+            detail: 2
+      - type: glance
+        # title: Occupancy Sensors
+        entities:
+          - entity: sensor.unifi_gateway_www
+            name: WWW
+          - entity: sensor.unifi_gateway_wan
+            name: Wan
+          - entity: sensor.unifi_gateway_lan
+            name: Lan
+        columns: 3
+
+  - type: glance
+    title: Occupancy Sensors
+    entities:
+      - entity: binary_sensor.echo_occupancy
+        name: Dining Room
+      - entity: binary_sensor.living_room_occupancy
+        name: Living Room
+      - entity: binary_sensor.office_occupancy
+        name: Office
+      - entity: binary_sensor.bedroom_occupancy
+        name: Bedroom
+      - entity: binary_sensor.garage_motion_status
+        name: Garage
+      - entity: binary_sensor.front_door_motion_sensor
+        name: Front Door
+      - entity: binary_sensor.sideyard_motion_sensor
+        name: Side Door
+
+    columns: 4
+  - type: entities
+    title: Window's and Door's
+    show_header_toggle: false
+    entities:
+      - entity: binary_sensor.master_window_status # Sensor1 (Master Window)
+        name: Master
+      - entity: binary_sensor.guest_window_status # Sensor2 (Guest Window)
+        name: Guest
+      - entity: binary_sensor.office_window_status # Sensor3 (Office Window)
+        name: Office
+      - entity: binary_sensor.front_window_status # Sensor6 (Front Window)
+        name: Dinning
+      - entity: binary_sensor.livingroom_window_status # Sensor7 (Livingroom Window)
+        name: Living
+      - type: divider
+        style:
+          height: 2px
+          background: '#62717b'
+      - entity: binary_sensor.front_door_status       # Door1 (Front Door)
+        name: Frontdoor
+      - entity: binary_sensor.slider_door_status # Sensor4 (Slider Door)
+        name: Sliding
+      - entity: binary_sensor.side_door_status # Sensor5 (Side Door)
+        name: Sidedoor
+  - type: entities
+    title: Kiosk Touchscreen
+    show_header_toggle: false
+    entities:
+      - entity: sensor.kiosk_touchpad
+      - entity: sensor.kiosk_touchpad_battery
+      - entity: sensor.kiosk_touchpad_screen_brightness
+      - entity: switch.foo_screen
+  - type: glance
+    title: Central Heating Sensors Status
+    entities:
+      - entity: sensor.ecobee_fanmode
+        name: Fan Mode
+        icon: mdi:fan
+      - entity: sensor.ecobee_fanstate
+        name: Fan State
+        icon: mdi:fan
+      - entity: sensor.ecobee_operationmode
+        name: HVAC Mode
+        icon: mdi:settings
+      - entity: sensor.ecobee_operatingstate
+        name: HVAC State
+        icon: mdi:settings
+      - entity: sensor.ecobee_setpoint
+        name: Setpoint
+        icon: mdi:temperature-fahrenheit
+  - type: horizontal-stack
+    cards:
+      - type: sensor
+        entity: sensor.pow1_power
+        name: Washer
+        graph: line
+        detail: 2
+        hours_to_show: 2
+      - type: sensor
+        entity: sensor.pow2_power
+        name: Dryer
+        graph: line
+        detail: 2
+        hours_to_show: 2
+  - type: entities
+    title: Sonoff Switches
+    show_header_toggle: false
+    entities:
+      - entity: sensor.pow1_power
+        name: POW1 Watts
+        icon: mdi:power-plug
+      - entity: sensor.pow1_voltage
+        name: POW1 Volts
+        icon: mdi:power-socket-us
+      - type: divider
+        style:
+          height: 2px
+          background: '#62717b'
+      - entity: sensor.pow2_power
+        name: POW2 Watts
+        icon: mdi:power-plug
+      - entity: sensor.pow2_voltage
+        name: POW2 Volts
+        icon: mdi:power-socket-us
+  - type: entities
+    title: Automation Overides
+    show_header_toggle: false
+    entities:
+      - entity: input_boolean.vacation
+        name: Vacation Mode
+        icon: mdi:toggle-switch
+      - entity: input_boolean.dog
+        name: Pet Away Mode
+        icon: mdi:toggle-switch
+      # - entity: input_boolean.nodered  #Using Node Red for Alexa and special triggers
+      #   name: NodeRED Enabled
+      #   icon: mdi:toggle-switch
+  - type: entities
+    title: Falcon Player
+    show_header_toggle: false
+    entities:
+      - entity: sensor.fpp_repeat_status
+      - entity: sensor.fpp_status
+      - entity: sensor.fpp_version

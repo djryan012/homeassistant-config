@@ -1,0 +1,131 @@
+####################################################
+#                  AUTOMATIONS                     #
+####################################################
+title: Automations
+icon: mdi:home-automation
+cards:
+  # - type: entities
+  #   title: Vacation Mode
+  #   show_header_toggle: false
+  #   entities:
+  #     - entity: input_boolean.vacation
+  #       icon: mdi:beach
+  - type: entities
+    title: Cameras
+    show_header_toggle: false
+    entities:
+      - entity: automation.notify_if_camera_is_offline
+      # - entity: automation.backyardcamera_offline
+      # - entity: automation.frontdoorcamera_offline
+      # - entity: automation.frontyardcamera_offline
+      - entity: automation.side_light_off_by_camera_sensor
+      - entity: automation.side_light_on_by_camera_sensor
+      # - entity: automation.sideyardcamera_offline
+      # - entity: automation.make_s4_cam_hidden
+      # - entity: automation.make_s4_cam_visible
+
+  - type: entities
+    title: Feed the dog
+    show_header_toggle: false
+    entities:
+      - entity: automation.feed_the_dog_evening
+      - entity: automation.feed_the_dog_morning_weekends
+      - entity: automation.feed_the_dog_morning_weekdays
+
+  # - type: entities
+  #   title: Network Security
+  #   show_header_toggle: false
+  #   entities:
+  #     - entity: automation.notify_if_new_devices
+
+  - type: entities
+    title: Climate
+    show_header_toggle: false
+    entities:
+      - entity: automation.ecobee_fan_off
+      - entity: automation.ecobee_fan_on
+      - entity: automation.ceiling_fan_on_while_sleeping
+      - entity: automation.ecobee_set_to_auto
+      - entity: automation.ecobee_set_to_off
+      - entity: automation.ecobee_preset_mode_sleep
+      - entity: automation.ecobee_preset_mode_resume
+
+  - type: entities
+    title: Lights
+    show_header_toggle: false
+    entities:
+      - entity: automation.bedroom_lights_out_david_asleep
+      - entity: automation.bedroom_lights_out_georgina_asleep
+      - entity: automation.light_on_when_getting_home
+      - entity: automation.lights_out_when_leaving
+      - entity: automation.kitchen_on_in_the_evening
+      - entity: automation.porch_light_on
+      - entity: automation.dim_down_porch_light
+      - entity: automation.porch_light_off_at_sunrise
+      - entity: automation.nightlight_for_dog
+      - entity: automation.good_night_trigger
+      # - entity: automation.garage_lights_on_by_motion
+      # - entity: automation.garage_lights_off_by_motion
+      - entity: automation.turn_on_off_garage_lights_when_there_is_movement
+
+  - type: entities
+    title: Notification
+    show_header_toggle: false
+    entities:
+      - entity: automation.laundry_dryer_is_done
+      - entity: automation.laundry_washer_is_done
+      - entity: automation.georgina_is_home
+      - entity: automation.david_is_home
+      - entity: automation.georgina_leaving_work
+      - entity: automation.tell_david_to_leave_for_work
+      - entity: automation.wake_up_david_for_work
+      # - entity: automation.michael_is_home
+      - entity: automation.pond_filter_issue
+      # - entity: automation.pond_filter_issue_for_mark
+
+  - type: entities
+    title: Home Assistant
+    show_header_toggle: false
+    entities:
+      - entity: automation.hass_startup_notification
+      - entity: automation.hassio_snapshot
+      - entity: automation.lets_encrypt_cert_did_not_update
+      - entity: automation.let_s_encrypt_renewal
+      - entity: automation.set_theme_to_midnight
+
+
+  - type: entities
+    title: Other
+    show_header_toggle: false
+    entities:
+      - entity: automation.battery_is_low_in_sensor
+      # - entity: automation.butter_away
+      # - entity: automation.butter_home
+      - entity: automation.reset_david_sleeping
+      - entity: automation.reset_georgina_sleeping
+
+  # - type: entities
+  #   title: Preset
+  #   show_header_toggle: false
+  #   entities:
+  #     - entity: automation.bedroom_preset
+  #     - entity: automation.kitchen_preset
+  #     - entity: automation.living_room_preset
+
+  - type: entities
+    title: Holiday
+    show_header_toggle: false
+    entities:
+      - entity: automation.christmas_tree_on_when_home
+        name: Christmas Tree On When Home
+        icon: mdi:pine-tree
+      - entity: automation.christmas_tree_off_when_away
+        name: Tree Off When Away
+        icon: mdi:pine-tree
+      - entity: automation.monthly_holiday_color_scene_on
+        name: C9's On at Sunset
+        icon: mdi:led-on
+      - entity: automation.monthly_holiday_color_scene_off
+        name: C9's Off at Sunrise
+        icon: mdi:led-off
+

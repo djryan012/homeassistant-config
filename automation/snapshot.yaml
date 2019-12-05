@@ -1,0 +1,22 @@
+#########################################################
+#             Nightly Hass.io Snapshot                  #
+#########################################################
+
+- alias: Hassio Snapshot
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '03:00:00'
+  condition:
+  - condition: time
+    weekday:
+      - sun
+  action:
+    - service: hassio.snapshot_full
+      data_template:
+        name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+    - delay: '00:30:00'
+    # - service: rest_command.google_backup
+    - service: notify.telbot_david
+      data:
+        message: "Hassio Backed Up {{ now().strftime('%Y-%m-%d') }}"

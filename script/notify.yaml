@@ -1,0 +1,19 @@
+#TTS Script		
+audio_notify: 
+  sequence: 
+    - service: notify.alexa_media
+      data_template: 
+        data: 
+          type: announce
+        message: "{{ tts_msg }}"
+        target: "media_player.{{ mplayer }}"
+
+    # - service: notify.alexa_media
+    #   data_template:
+    #     data:
+    #       type: announce
+    #     target: media_player.downstairs
+    #     message: 'Hello Remco. Welcome home. Cherry is {% if is_state("device_tracker.cherry",
+    #       "home") -%} also at home. {%- else -%} not at home. {%- endif %} The temperature
+    #       inside is {{ states("sensor.broadlink_sensor_temperature") }} degrees. And
+    #       outside it is {{ states("sensor.weather_temperature") }} degrees.'

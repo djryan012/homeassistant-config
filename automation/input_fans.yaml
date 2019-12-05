@@ -1,0 +1,32 @@
+- alias: 'living_room_fan'
+  initial_state: True
+  # hide_entity: True
+  trigger:
+    - platform: state
+      entity_id: input_select.living_room_fan
+  action:
+    - service: script.turn_on
+      data_template:
+        entity_id: script.living_room_fan_{{ states('input_select.living_room_fan')| lower | string}}
+
+- alias: 'master_bedroom_fan'
+  initial_state: True
+  # hide_entity: True
+  trigger:
+    - platform: state
+      entity_id: input_select.master_bedroom_fan
+  action:
+    - service: script.turn_on
+      data_template:
+        entity_id: script.master_bedroom_fan_{{ states('input_select.master_bedroom_fan')| lower | string}}
+
+- alias: 'office_fan'
+  initial_state: True
+  # hide_entity: True
+  trigger:
+    - platform: state
+      entity_id: input_select.office_fan
+  action:
+    - service: script.turn_on
+      data_template:
+        entity_id: script.office_fan_{{ states('input_select.office_fan')| lower | string}}

@@ -1,0 +1,31 @@
+#########################################################
+#                NODE RED ENALBLED MODE                 #
+#########################################################
+
+# - alias: Node Red Controlled
+#   initial_state: True
+#   hide_entity: False
+#   trigger:
+#     platform: state
+#     entity_id: input_boolean.nodered
+#     from: 'off'
+#     to: 'on'
+#   action:
+#     - service: automation.turn_off
+#       entity_id: automation.porch_light_on
+#     - service: automation.turn_off
+#       entity_id: automation.porch_light_off_at_sunrise
+#     - service: automation.turn_off
+#       entity_id: automation.dim_down_porch_light
+#     - service: automation.turn_off
+#       entity_id: automation.garage_lights_on_by_motion
+#     - service: automation.turn_off
+#       entity_id: automation.garage_lights_off_by_motion
+#     - service: automation.turn_off
+#       entity_id: automation.side_light_on_by_camera_sensor
+#     - service: automation.turn_off
+#       entity_id: automation.side_light_off_by_camera_sensor
+#     - service: automation.turn_off
+#       entity_id: automation.feed_the_dog_morning
+#     - service: automation.turn_off
+#       entity_id: automation.feed_the_dog_evening

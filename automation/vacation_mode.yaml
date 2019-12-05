@@ -1,0 +1,67 @@
+#########################################################
+#               TURN ON VACATION MODE                   #
+#########################################################
+
+- alias: Turn on Vacation Mode
+  trigger:
+    platform: state
+    entity_id: input_boolean.vacation
+    from: 'off'
+    to: 'on'
+  action:
+    - service: automation.turn_off
+      entity_id: automation.ecobee_fan_on
+    - service: automation.turn_off
+      entity_id: automation.kitchen_on_in_the_evening
+
+#########################################################
+#                TURN OFF VACATION MODE                 #
+#########################################################
+
+- alias: Turn off Vacation Mode
+  trigger:
+    platform: state
+    entity_id: input_boolean.vacation
+    from: 'on'
+    to: 'off'
+  action:
+    - service: automation.turn_on
+      entity_id: automation.ecobee_fan_on
+    - service: automation.turn_on
+      entity_id: automation.kitchen_on_in_the_evening
+
+#########################################################
+#               TURN ON Pet Away MODE                   #
+#########################################################
+
+- alias: Turn on Pet Away Mode
+  trigger:
+    platform: state
+    entity_id: input_boolean.dog
+    from: 'off'
+    to: 'on'
+  action:
+    - service: automation.turn_off
+      entity_id: automation.feed_the_dog_evening
+    - service: automation.turn_off
+      entity_id: automation.feed_the_dog_morning
+    - service: automation.turn_off
+      entity_id: automation.nightlight_for_dog
+
+#########################################################
+#                TURN OFF Pet Away MODE                 #
+#########################################################
+
+- alias: Turn off Pet Away Mode
+  trigger:
+    platform: state
+    entity_id: input_boolean.dog
+    from: 'on'
+    to: 'off'
+  action:
+    - service: automation.turn_on
+      entity_id: automation.feed_the_dog_evening
+    - service: automation.turn_on
+      entity_id: automation.feed_the_dog_morning
+    - service: automation.turn_on
+      entity_id: automation.nightlight_for_dog

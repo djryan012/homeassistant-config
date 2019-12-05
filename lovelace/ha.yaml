@@ -1,0 +1,158 @@
+####################################################
+#                HOME ASSISTANT                    #
+####################################################
+
+title: HA
+icon: mdi:home-assistant
+cards:
+  - type: glance
+    title: Server Load
+    entities:
+      - entity: sensor.load_1m
+        icon: mdi:speedometer
+      - entity: sensor.load_5m
+        icon: mdi:speedometer
+      - entity: sensor.load_15m
+        icon: mdi:speedometer
+  - type: horizontal-stack
+    cards:
+      - type: sensor
+        entity: sensor.processor_use
+        name: Processor
+        graph: line
+        detail: 2
+        hours_to_show: 24
+      - type: sensor
+        entity: sensor.memory_use_percent
+        name: Memory
+        graph: line
+        detail: 2
+        hours_to_show: 24
+  - type: glance
+    title: Server Information
+    entities:
+      - entity: sensor.last_boot
+        format: total
+      - entity: sensor.time_online
+      #   #  name: Last Power Cycle
+      #   #  icon: mdi:clock
+
+  - type: glance
+    title: HA File Size
+    show_header_toggle: false
+    entities:
+      - entity: sensor.home_assistant_log
+        name: Log File
+      - entity: sensor.home_assistant_v2_db
+        name: Database
+      - entity: sensor.disk_use_percent_home
+        name: Disk Use
+        icon: mdi:harddisk
+    columns: 3
+
+  - type: glance
+    title: Home Assistant Info
+    entities:
+      - entity: sensor.installed_version
+        name: Installed Ver.
+        icon: mdi:folder-download
+      - entity: sensor.hassio_version
+        name: Latest Release
+        icon: mdi:github-circle
+      - entity: sensor.lets_encrypt_expiration
+        name: Lets Encrypt Expiration
+        icon: mdi:timelapse
+      - entity: sensor.hacs
+        name: HACs Udpates
+        icon: mdi:folder-download
+    columns: 2
+
+  # - type: entities
+  #   title: Hassio Update
+  #   show_header_toggle: false
+  #   entities:
+  #     - entity: updater.updater
+
+  - type: entities
+    title: Batteries
+    show_header_toggle: false
+    entities:
+    # Motion
+      # - entity: sensor.tradfri_remote_control
+      #   icon: mdi:battery-50
+      #   name: Tradfri Remote Battery
+      # - entity: sensor.exterior_motion_sensor
+      #   icon: mdi:battery-50
+      #   name: Tradfri Exterior Motoin
+      - entity: sensor.office_motion_sensor
+        icon: mdi:battery-50
+        name: Tradfri Office Motion
+      - entity: binary_sensor.garage_motion_battery
+        icon: mdi:battery-50
+        name: Garage Motion Sensor
+    # Windows Sensors
+      - entity: binary_sensor.master_window_battery # Sensor1 (Master Window)
+        name: Master Window Sensor
+        icon: mdi:battery-50
+      - entity: binary_sensor.guest_window_battery # Sensor2 (Guest Window)
+        name: Guest Window Sensor
+        icon: mdi:battery-50
+      - entity: binary_sensor.office_window_battery # Sensor3 (Office Window)
+        name: Office Window Sensor
+        icon: mdi:battery-50
+      - entity: binary_sensor.front_window_battery # Sensor6 (Front Window)
+        name: Dinning Window Sensor
+        icon: mdi:battery-50
+      - entity: binary_sensor.livingroom_window_battery # Sensor7 (Livingroom Window)
+        name: Living Window Sensor
+        icon: mdi:battery-50
+    # Door Sensors
+      - entity: binary_sensor.front_door_battery       # Door1 (Front Door)
+        name: Front Door Sensor
+        icon: mdi:battery-50
+      - entity: binary_sensor.slider_door_battery # Sensor4 (Slider Door)
+        name: Sliding Door Sensor
+        icon: mdi:battery-50
+      - entity: binary_sensor.side_door_battery # Sensor5 (Side Door)
+        name: Side Door Sensor
+        icon: mdi:battery-50
+    # Misc
+      - entity: binary_sensor.pond_filter_battery # Pond Filter
+        name: Pond Filter Sensor
+        icon: mdi:battery-50
+
+  - type: entities
+    title: Home Assistant Stats
+    show_header_toggle: false
+    entities:
+      - entity: sensor.tracker_count
+        icon: mdi:cellphone-link
+      - entity: sensor.lights_count
+        icon: mdi:lightbulb
+      - entity: sensor.binary_sensor_count
+        icon: mdi:nintendo-switch
+      - entity: sensor.switch_count
+        icon: mdi:toggle-switch
+      - entity: sensor.automation_count
+        icon: mdi:home-automation
+      - entity: sensor.script_count
+        icon: mdi:script-text-outline
+      - entity: sensor.sensor_count
+        icon: mdi:gauge
+
+  - type: glance
+    title: Home Assistant GitHub
+    entities:
+      - entity: sensor.stars
+        name: Stars
+        icon: mdi:star-circle
+      - entity: sensor.subscribers
+        name: Subscribers
+        icon: mdi:github-circle
+      - entity: sensor.issues
+        name: Issues
+        icon: mdi:alert-circle
+      - entity: sensor.forks
+        name: Forks
+        icon: mdi:directions-fork
+    columns: 4

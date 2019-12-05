@@ -1,0 +1,32 @@
+david_status:
+  name: David asleep
+  initial: off
+
+david_phone_charging:
+  name: David Phone Charging
+  initial: off
+
+georgina_status:
+  name: Georgina asleep
+  initial: off
+
+georgina_phone_charging:
+  name: Georinga Phone Charging
+  initial: off
+
+# butterhome:
+#   name: Butter Home
+#   initial: off
+#   icon: mdi:cellphone-iphone
+
+vacation:
+  name: Vacation Mode
+  initial: off
+
+dog:
+  name: Pet Away Mode
+  initial: off
+
+# nodered:
+#   name: Node Red Enabled
+#   initial: off

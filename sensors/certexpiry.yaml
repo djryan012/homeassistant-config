@@ -1,0 +1,11 @@
+
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#               CERTIFICATE EXPIRY                 #
+####################################################
+
+#https://home-assistant.io/components/sensor.cert_expiry/
+- platform: cert_expiry
+  host: !secret base_url
+  name: Lets Encrypt Expiration

@@ -1,0 +1,15 @@
+####################################################
+#                     WEATHER                      #
+####################################################
+
+title: Weather
+icon: mdi:weather-cloudy
+cards:
+  - type: weather-forecast
+    title: Weather
+    entity: weather.echo
+  - type: iframe
+    url: https://embed.windy.com/embed2.html?lat=33.895&lon=-117.963&zoom=7&level=surface&overlay=radar&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=33.895&detailLon=-117.963&metricWind=default&metricTemp=%C2%B0F&radarRange=-1
+    aspect_ratio: 70%
+  # - type: sensor
+  #   entities: sensor.yr_symbol

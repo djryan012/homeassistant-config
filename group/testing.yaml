@@ -1,0 +1,18 @@
+########################################################################
+########  TESTING
+########################################################################
+
+# xbox:
+#   name: Friends Xbox Status
+#   entities:
+#     - sensor.UnavoidablBoink
+#     - sensor.curiousnoble
+#     - sensor.MalarkeyTB
+#     - sensor.DaNameIsMike27
+
+holiday_lighting:
+  name: Exterior Holiday Lighting
+  entities:
+    - calendar.holidays_in_united_states
+    - sensor.flag
+    - script.monthly_color_scene

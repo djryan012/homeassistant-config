@@ -1,0 +1,161 @@
+# - platform: ping
+#   host: 1.1.1.1
+#   name: Wan Connection
+
+# Cameras
+- platform: mqtt
+  name: Frontyard Camera
+  state_topic: "HassSubnet/binary_sensor/frontyard_camera/state"
+  device_class: connectivity
+  payload_on: "on"
+  payload_off: "off"
+- platform: mqtt
+  name: FrontDoor Camera
+  state_topic: "HassSubnet/binary_sensor/frontdoor_camera/state"
+  device_class: connectivity
+  payload_on: "on"
+  payload_off: "off"
+- platform: mqtt
+  name: Backyard Camera
+  state_topic: "HassSubnet/binary_sensor/backyard_camera/state"
+  device_class: connectivity
+  payload_on: "on"
+  payload_off: "off"
+- platform: mqtt
+  name: Sideyard Camera
+  state_topic: "HassSubnet/binary_sensor/sideyard_camera/state"
+  device_class: connectivity
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: Front Door Motion Sensor
+  state_topic: "HassSubnet/binary_sensor/front_door_motion_sensor/state"
+  device_class: motion
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: Sideyard Motion Sensor
+  state_topic: "HassSubnet/binary_sensor/sideyard_motion_sensor/state"
+  device_class: motion
+  payload_on: "on"
+  payload_off: "off"
+
+# Creates binary sensors according to cameras defined in the platform
+- platform: blueiris
+
+# For each Fully Kiosk device, create a binary sensor entity:
+- platform: mqtt
+  state_topic: dummy/binary_sensor
+  name: Floorplan
+- platform: mqtt
+  state_topic: floorplan/kiosk/entry/motion
+  name: Entry Kiosk Motion
+- platform: mqtt
+  state_topic: floorplan/kiosk/entry/plugged
+  name: Entry Kiosk Plugged
+
+# Insteon Open / Close Sensors
+# Sensor1 (Master Window)
+- platform: mqtt
+  name: Master Window Status
+  state_topic: 'insteon/47.fa.ec/state'
+  device_class: 'window'
+- platform: mqtt
+  name: Master Window Battery
+  state_topic: 'insteon/47.fa.ec/low_battery'
+  device_class: 'battery'
+
+# Sensor2 (Guest Window)
+- platform: mqtt
+  name: Guest Window Status
+  state_topic: 'insteon/47.f5.78/state'
+  device_class: 'window'
+- platform: mqtt
+  name: Guest Window Battery
+  state_topic: 'insteon/47.f5.78/low_battery'
+  device_class: 'battery'
+
+# Sensor3 (Office Window)
+- platform: mqtt
+  name: Office Window Status
+  state_topic: 'insteon/47.f9.3b/state'
+  device_class: 'window'
+- platform: mqtt
+  name: Office Window Battery
+  state_topic: 'insteon/47.f9.3b/low_battery'
+  device_class: 'battery'
+
+# Sensor4 (Slider Door)
+- platform: mqtt
+  name: Slider Door Status
+  state_topic: 'insteon/47.f2.e9/state'
+  device_class: 'door'
+- platform: mqtt
+  name: Slider Door Battery
+  state_topic: 'insteon/47.f2.e9/low_battery'
+  device_class: 'battery'
+
+# Sensor5 (Side Door)
+- platform: mqtt
+  name: Side Door Status
+  state_topic: 'insteon/47.f2.f0/state'
+  device_class: 'door'
+- platform: mqtt
+  name: Side Door Battery
+  state_topic: 'insteon/47.f2.f0/low_battery'
+  device_class: 'battery'
+
+# Sensor6 (Front Window)
+- platform: mqtt
+  name: Front Window Status
+  state_topic: 'insteon/47.fa.75/state'
+  device_class: 'window'
+- platform: mqtt
+  name: Front Window Battery
+  state_topic: 'insteon/47.fa.75/low_battery'
+  device_class: 'battery'
+
+# Sensor7 (Livingroom Window)
+- platform: mqtt
+  name: Livingroom Window Status
+  state_topic: 'insteon/47.fc.14/state'
+  device_class: 'window'
+- platform: mqtt
+  name: Livingroom Window Battery
+  state_topic: 'insteon/47.fc.14/low_battery'
+  device_class: 'battery'
+
+# Sensor8 (Pond Filter)
+- platform: mqtt
+  name: Pond Filter Status
+  state_topic: 'insteon/47.fa.00/state'
+  payload_on: "OFF"  # Sensor is reverse orientation
+  payload_off: "ON"
+  device_class: 'moisture' #'problem'
+- platform: mqtt
+  name: Pond Filter Battery
+  state_topic: 'insteon/47.fa.00/low_battery'
+  device_class: 'battery'
+
+# Door1 (Front Door)
+- platform: mqtt
+  name: Front Door Status
+  state_topic: 'insteon/54.3b.88/state'
+  device_class: 'door'
+- platform: mqtt
+  name: Front Door Battery
+  state_topic: 'insteon/54.3b.88/low_battery'
+  device_class: 'battery'
+
+ # Motion sensors (Garage)
+- platform: mqtt
+  name: Garage Motion Status
+  state_topic: 'insteon/4f.99.d9/state'
+  device_class: 'motion'
+- platform: mqtt
+  name: Garage Motion Battery
+  state_topic: 'insteon/4f.99.d9/low_battery'
+  device_class: 'battery'
+

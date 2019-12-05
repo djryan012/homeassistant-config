@@ -1,0 +1,121 @@
+####################################################
+#                       HOME                       #
+####################################################
+title: Rooms
+icon: mdi:home
+cards:
+  - type: glance
+    title: David's Phone Status
+    entities:
+      - entity: person.david
+        name: GPS
+      - entity: input_boolean.david_status
+        name: Sleeping?
+      - entity: sensor.david_battery_level
+        name: Battery
+        icon: mdi:battery-50
+      - entity:  input_boolean.david_phone_charging
+        name: Charging?
+        icon: mdi:battery-charging
+    columns: 4
+  - type: glance
+    title: Georgina's Phone Status
+    entities:
+      - entity: person.georgina
+        name: GPS
+      - entity: input_boolean.georgina_status
+        name: Sleeping?
+      - entity: sensor.georgina_battery_level
+        name: Battery
+        icon: mdi:battery-50
+      - entity: input_boolean.georgina_phone_charging
+        name: Charging?
+        icon: mdi:battery-charging
+    columns: 4
+  - type: glance
+    title: Window's and Door's
+    entities:
+      - entity: binary_sensor.master_window_status # Sensor1 (Master Window)
+        name: Master
+      - entity: binary_sensor.guest_window_status # Sensor2 (Guest Window)
+        name: Guest
+      - entity: binary_sensor.office_window_status # Sensor3 (Office Window)
+        name: Office
+      - entity: binary_sensor.front_window_status # Sensor6 (Front Window)
+        name: Dinning
+      - entity: binary_sensor.livingroom_window_status # Sensor7 (Livingroom Window)
+        name: Living
+      - entity: binary_sensor.front_door_status # Door1 (Front Door)
+        name: Frontdoor
+      - entity: binary_sensor.slider_door_status # Sensor4 (Slider Door)
+        name: Sliding
+      - entity: binary_sensor.side_door_status # Sensor5 (Side Door)
+        name: Sidedoor
+    columns: 4
+  - type: vertical-stack
+    cards:
+      - type: picture-glance
+        title: Front Door
+        entities:
+          - camera.front_door
+          - camera.all
+        camera_image: camera.front_door
+
+      - type: glance
+        title: General Lighting
+        entities:
+          - entity: group.living_room
+            name: Living
+            icon: mdi:lightbulb
+            tap_action:
+              action: toggle
+          - entity: group.kitchen
+            name: Kitchen
+            icon: mdi:lightbulb
+            tap_action:
+              action: toggle
+          - entity: light.dinningroomww
+            name: Dinning
+            tap_action:
+              action: toggle
+        columns: 3
+      - type: glance
+        title: Outside Lights
+        entities:
+          - entity: light.porchww
+            tap_action:
+              action: toggle
+            name: Front Porch
+          - entity: light.sideyardww
+            name: Side Yard Door
+            tap_action:
+              action: toggle
+        columns: 2
+  - type: vertical-stack
+    cards:
+      - type: weather-forecast
+        title: Weather
+        entity: weather.echo
+      - type: thermostat
+        entity: climate.echo
+        name: Thermostat Graph
+      - type: glance
+        entities:
+          - entity: sensor.living_room_temperature
+            name: Living Room
+          - entity: sensor.bedroom_temperature
+            name: Bedroom
+          - entity: sensor.office_temperature
+            name: Office
+          - entity:  sensor.ecobee_sensor_compare_temp
+            name: Difference
+          
+          
+          
+           
+           
+
+
+
+
+

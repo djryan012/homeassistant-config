@@ -1,0 +1,28 @@
+####################################################
+#                      REST                        #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.rest/
+- platform: rest
+  resource: https://s3.amazonaws.com/hassio-version/stable.json
+  name: Hassio Version
+  value_template: "{{ value_json.homeassistant.default }}"
+  scan_interval: 3600
+
+####################################################
+#                   Hassio                         #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.version/
+- platform: version
+  name: Installed Version
+
+- platform: time_date
+  display_options:
+    - 'date'
+    - 'time'
+    - 'date_time'
+
+- platform: uptime #Needed for Automations triggers so they dont trigger when system restarts.
+  name: Time Online
+  unit_of_measurement: hours

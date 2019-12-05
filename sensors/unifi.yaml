@@ -1,0 +1,16 @@
+####################################################
+#                 UNIFI Gateway                    #
+####################################################
+# https://github.com/custom-components/sensor.unifigateway
+
+- platform: unifigateway
+  host: !secret unifi_host
+  username: !secret unifi_username
+  password: !secret unifi_password
+  monitored_conditions:
+    - www #The status of the WWW sub-system Attribute data includes speedtest results
+    - lan #The status of the LAN sub-system Attribute data includes the IP of the USG
+    - wan #The status of the WAN sub-system Attribute data includes the WAN IP (e.g. dynamic IP as allocated by your ISP)
+    # - wlan #The status of the Wifi Access Points Attribute data includes number of guests
+    - alerts #The number of unarchived alerts on the controller Attribute data lists the detail of each alert
+    - firmware #The number of devices that are available for a firmware update. Attribute data lists the friendly name of the relvant devices.
