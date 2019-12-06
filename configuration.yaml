@@ -8,7 +8,7 @@ homeassistant:
   time_zone: America/Los_Angeles
   customize: !include include/customize.yaml
   whitelist_external_dirs:
-    - !secret whitelist_dir
+    - /config
   auth_providers:
     - type: trusted_networks
       trusted_networks:
@@ -18,14 +18,6 @@ homeassistant:
     - type: homeassistant
 
 http:
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: !secret base_url
-  # ssl_certificate: !secret ssl_certificate
-  # ssl_key: !secret ssl_key
-  # trusted_networks:
-  #   - 192.168.1.0/24
-  #   - 172.30.32.2
-  #   - 172.30.33.4
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
