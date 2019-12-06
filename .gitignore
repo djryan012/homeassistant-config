@@ -6,6 +6,9 @@
 !*.yaml
 !.gitignore
 !*.md
+!*.jpg
+!*.png
+!*.js
 # !travis*
 
 # # Included folders.
@@ -16,7 +19,7 @@
 !scene
 !script
 !sensors
-# !www
+!www/
 
 # # Ignore folders.
 .storage
