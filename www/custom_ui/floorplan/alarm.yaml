@@ -18,7 +18,7 @@ rules:
 
   - name: thermostats_temp
     entities:
-      - climate.downstairs
+      - climate.echo
       - climate.upstairs
     text_template: '${entity.attributes.current_temperature ? Math.ceil(entity.attributes.current_temperature) + "°": "undefined"}'
     class_template: 'return "static-temp";'
@@ -68,8 +68,8 @@ rules:
 
   - name: Family
     entities:
-      - device_tracker.carlo
-      - device_tracker.stacey
+      - person.david
+      - person.georgina
       - device_tracker.juicebox
     text_template: '${entity.state ? entity.state.replace("not_home", "away") : "undefined"}'
 
@@ -280,8 +280,8 @@ rules:
   - name: Camera Images
     entities:
       - camera.front_door
-      - camera.camera1
-      - camera.camera2
+      - camera.front_yard
+      - camera.back_yard
       - camera.camera3
     image_template: '${entity.attributes.entity_picture}'
     # image_refresh_interval: 20 # in seconds - Future options if needed.
