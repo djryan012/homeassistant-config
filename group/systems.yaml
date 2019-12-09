@@ -27,7 +27,7 @@ system_info:
     - sensor.speedtest_upload
     - input_boolean.ha_uptime
 
-# falcon_player:
+falcon_player:
   name: Falcon Player
   entities:
     - sensor.fpp_repeat_status

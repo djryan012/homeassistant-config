@@ -1,6 +1,6 @@
-# - platform: ping
-#   host: 1.1.1.1
-#   name: Wan Connection
+- platform: ping
+  host: 1.1.1.1
+  name: Wan Connection
 
 # Cameras
 - platform: mqtt

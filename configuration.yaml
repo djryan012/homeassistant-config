@@ -165,8 +165,8 @@ notify:
 
 panel_custom:
   - name: floorplan
-    sidebar_title: Floorplan
-    sidebar_icon: mdi:home
+    sidebar_title: Alarm Panel
+    sidebar_icon: mdi:shield-home
     url_path: floorplan
     config:
       hide_app_toolbar:
