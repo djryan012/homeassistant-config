@@ -3,7 +3,7 @@
 ####################################################
 
 title: Switches
-icon: mdi:light-switch
+icon: mdi:test-tube
 cards:
   - type: entities
     title: Insteon

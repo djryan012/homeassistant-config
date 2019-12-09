@@ -29,4 +29,4 @@ views:
   - !include lovelace/weather.yaml
   - !include lovelace/automations.yaml
   - !include lovelace/blueiris.yaml
-  - !include lovelace/insteon.yaml
+  - !include lovelace/test.yaml
