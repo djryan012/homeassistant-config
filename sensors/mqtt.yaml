@@ -45,3 +45,16 @@
   name: "David Battery Level"
   state_topic: "zanzito/david/battery_level"
   unit_of_measurement: "%"
+
+# WallPanel Sensor Data
+- platform: mqtt
+  state_topic: "wallpanel/mywallpanel/sensor/battery"
+  name: "WallPanel Battery Level"
+  unit_of_measurement: "%"
+  value_template: ''
+
+- platform: mqtt
+  state_topic: "wallpanel/mywallpanel/sensor/light"
+  name: "WallPanel Light Level"
+  unit_of_measurement: "lx"
+  value_template: ''

@@ -159,3 +159,17 @@
   state_topic: 'insteon/4f.99.d9/low_battery'
   device_class: 'battery'
 
+#WallPanel Motion and Face Detection
+- platform: mqtt
+  state_topic: "wallpanel/mywallpanel/sensor/motion"
+  name: "Motion"
+  payload_on: '{"value":true}'
+  payload_off: '{"value":false}'
+  device_class: motion 
+
+- platform: mqtt
+  state_topic: "wallpanel/mywallpanel/sensor/face"
+  name: "Face Detected"
+  payload_on: '{"value":true}'
+  payload_off: '{"value":false}'
+  device_class: motion 
