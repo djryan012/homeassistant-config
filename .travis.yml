@@ -1,9 +1,11 @@
 language: python
 python:
-  - "3.7"
+  - '3.7'
 before_install:
   - mv travis_secrets.yaml secrets.yaml
-  - sudo apt-get install -y libudev-dev
+  - touch ./home-assistant_v2.db
+  - touch ./home-assistant.log
+  - sed -e '/hacs/,+5d' < configuration.yaml > configuration.yaml
 install:
   - pip3 install homeassistant
 script:

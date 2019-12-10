@@ -12,6 +12,7 @@
 !*.html
 !*.svg
 !*.py
+!*.css
 # !travis*
 
 # # Included folders.
@@ -31,6 +32,7 @@
 .vscode
 node-red
 insteon-mqtt
+custom_components
 
 # # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
