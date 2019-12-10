@@ -19,7 +19,7 @@ rules:
   - name: thermostats_temp
     entities:
       - climate.echo
-      - climate.upstairs
+      # - climate.upstairs
     text_template: '${entity.attributes.current_temperature ? Math.ceil(entity.attributes.current_temperature) + "°": "undefined"}'
     class_template: 'return "static-temp";'
 
@@ -31,10 +31,10 @@ rules:
 
   - name: temp_round
     entities:
-      - sensor.downstairs_thermostat_humidity
+      - sensor.echo_humidity
       - sensor.upstairs_thermostat_humidity
       - sensor.dark_sky_humidity
-      - sensor.carlojuice_amps
+      # - sensor.carlojuice_amps
     text_template: '${entity.state ? Math.ceil(entity.state) : "undefined"}'
     class_template: 'return "static-temp";'
 
@@ -70,7 +70,7 @@ rules:
     entities:
       - person.david
       - person.georgina
-      - device_tracker.juicebox
+      # - device_tracker.juicebox
     text_template: '${entity.state ? entity.state.replace("not_home", "away") : "undefined"}'
 
     states:
@@ -282,6 +282,6 @@ rules:
       - camera.front_door
       - camera.front_yard
       - camera.back_yard
-      - camera.camera3
+      # - camera.camera3
     image_template: '${entity.attributes.entity_picture}'
     # image_refresh_interval: 20 # in seconds - Future options if needed.
