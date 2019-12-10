@@ -5,15 +5,14 @@ before_install:
   - mv travis_secrets.yaml secrets.yaml
   - touch ./home-assistant_v2.db
   - touch ./home-assistant.log
-  - sed -e '/hacs/,+2d' < configuration.yaml > configuration.yaml
+  - rm -f ./integrations/stream.yaml
+  # - sed -e '/hacs/,+5d' < configuration.yaml > configuration.yaml
+  - rm -f ./integrations/breaking_changes.yaml
 install:
-  - wget http://ffmpeg.org/releases/ffmpeg-3.2.tar.bz2
-  - tar -xjf ffmpeg-3.2.tar.bz2
-  - cd ffmpeg-3.2
-  - ./configure --disable-static --enable-shared --disable-doc --disable-yasm
-  - make
-  - sudo make install
-  - cd ..
+  # - wget http://ffmpeg.org/releases/ffmpeg-3.2.tar.bz2 &&
+  #   tar -xjf ffmpeg-3.2.tar.bz2 && cd ffmpeg-3.2 &&
+  #   ./configure --disable-static --enable-shared --disable-doc &&
+  #   make && sudo make install && cd ..
   - pip3 install -U setuptools
   - pip3 install homeassistant
   - pip3 install colorlog
