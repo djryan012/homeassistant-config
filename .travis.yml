@@ -3,8 +3,11 @@ python:
   - "3.7"
 before_install:
   - mv travis_secrets.yaml secrets.yaml
-  - sudo apt-get install -y libudev-dev
+  - touch ./home-assistant_v2.db
+  - touch ./home-assistant.log
+  - touch ./OZW_Log.txt
 install:
   - pip3 install homeassistant
+  - hass --version
 script:
   - hass -c . --script check_config
