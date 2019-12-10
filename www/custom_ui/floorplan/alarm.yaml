@@ -5,11 +5,12 @@ stylesheet: /local/custom_ui/floorplan/alarm.css
 rules:
   - name: input_booleans
     entities:
-      - input_boolean.guest_mode
-      - input_boolean.good_night
-      - group.kitchen_lights
-      - group.living_room_lights
-
+      - input_boolean.david_phone_charging
+      - input_boolean.david_status
+      - input_boolean.dog
+      - input_boolean.georgina_phone_charging
+      - input_boolean.georgina_status
+      - input_boolean.vacation
     states:
       - state: 'on'
         class: 'button-on'
@@ -19,7 +20,6 @@ rules:
   - name: thermostats_temp
     entities:
       - climate.echo
-      # - climate.upstairs
     text_template: '${entity.attributes.current_temperature ? Math.ceil(entity.attributes.current_temperature) + "°": "undefined"}'
     class_template: 'return "static-temp";'
 
@@ -32,9 +32,11 @@ rules:
   - name: temp_round
     entities:
       - sensor.echo_humidity
-      - sensor.upstairs_thermostat_humidity
       - sensor.dark_sky_humidity
-      # - sensor.carlojuice_amps
+      - sensor.bedroom_temperature
+      - sensor.echo_temperature
+      - sensor.living_room_temperature
+      - sensor.office_temperature
     text_template: '${entity.state ? Math.ceil(entity.state) : "undefined"}'
     class_template: 'return "static-temp";'
 
@@ -70,9 +72,7 @@ rules:
     entities:
       - person.david
       - person.georgina
-      # - device_tracker.juicebox
     text_template: '${entity.state ? entity.state.replace("not_home", "away") : "undefined"}'
-
     states:
       - state: 'home'
         class: 'text-home'
@@ -81,61 +81,57 @@ rules:
 
   - name: switches
     entities:
-      - switch.front_landscaping
-      - switch.back_landscaping
-      - group.kitchen_accents
-      - group.master_bathroom_accents
-      - switch.lr_amp
+      - switch.foo_screen
+      - switch.garage_inside
+      - switch.garage_side
+      - switch.living_room_keypad_a
+      - switch.living_room_keypad_b
+      - switch.living_room_keypad_c
+      - switch.living_room_keypad_d
+      - switch.living_room_keypad_main
+      - switch.master_keypad_a
+      - switch.master_keypad_b
+      - switch.master_keypad_c
+      - switch.master_keypad_d
+      - switch.master_keypad_main
+      - switch.office_keypad_a
+      - switch.office_keypad_b
+      - switch.office_keypad_c
+      - switch.office_keypad_d
+      - switch.office_keypad_main
+      - switch.patio_lights
+      - switch.blueiris_alerts
+      - switch.sonoff1
+      - switch.sonoff2
     states:
       - state: 'on'
         class: 'switch-on'
       - state: 'off'
         class: 'switch-off'
 
-  - name: custom_switches
-    entities:
-      - switch.pool_deck
-    states:
-      - state: 'on'
-        class: 'light-blue-on'
-      - state: 'off'
-        class: 'outdoor-light-off'
+  # - name: custom_switches
+  #   entities:
+  #     - switch.pool_deck
+  #   states:
+  #     - state: 'on'
+  #       class: 'light-blue-on'
+  #     - state: 'off'
+  #       class: 'outdoor-light-off'
 
   - name: Lights
     entities:
-      - light.kids_hallway
-      - light.bedroom_hallway
-      - light_upstairs_hallway
-      - light.m1_back_left
-      - light.m1_back_right
-      - light.m1_front_left
-      - light.m1_front_right
-      - light.m1_slider
-      - light.office_lamp
-      - light.den_lamp
-      - light.f2
-      - light.f1
-      - light.s1
-      - light.s2
-      - light.s3
-      - light.s4
-      - light.d1
-      - light.d2
-      - light.k1
-      - light.k2
-      - light.k3
-      - light.k4
-      - light.k5
-      - light.k6
-      - light.sink
-      - light.fridge
-      - light.couch_1
-      - light.tv_light
-      - light.bedroom
-      - light.justin_go
-      - light.paige_go
-      - light.garage_attic
-      - light.upstairs_lamp
+      - light.dinning_room_switch
+      - light.dinning_table_light
+      - light.master_ceiling_light
+      - light.office_ceiling_light
+      - light.bedroomww_d
+      - light.bedroomww_g
+      - light.dinningroomww
+      - light.kitchenww_1
+      - light.kitchenww_2
+      - light.livingroomww_1
+      - light.livingroomww_2
+      - light.officews
     states:
       - state: 'on'
         class: 'light-on'
@@ -144,19 +140,9 @@ rules:
 
   - name: Outdoor Lights
     entities:
-      - light.p1_front_left
-      - light.p1_front_right
-      - light.p1_back_left
-      - light.p1_back_right
-      - light.outdoor_bathroom
-      - light.outdoor_foyer
-      - light.outdoor_sconce_1
-      - light.outdoor_sconce_2
-      - light.outdoor_sconce_3
-      - light.led_garage_large
-      - light.led_garage_small
-      - light.led_outdoor_den
-      - light.front_door
+      - light.backyard_lights
+      - light.porchww
+      - light.sideyardww
     states:
       - state: 'on'
         class: 'light-on'
@@ -182,25 +168,15 @@ rules:
 
   - name: Entry Points
     entities:
-      - binary_sensor.mcu1_gpio4
-      - binary_sensor.mcu1_gpio5
-      - binary_sensor.mcu1_gpio10
-      - binary_sensor.mcu1_gpio12
-      - binary_sensor.mcu1_gpio13
-      - binary_sensor.mcu1_gpio14
-      - binary_sensor.mcu2_gpio4
-      - binary_sensor.mcu2_gpio5
-      - binary_sensor.mcu2_gpio9
-      - binary_sensor.mcu2_gpio10
-      - binary_sensor.mcu2_gpio12
-      - binary_sensor.mcu2_gpio13
-      - binary_sensor.mcu2_gpio14
-      - binary_sensor.mcu3_gpio4
-      - binary_sensor.mcu3_gpio5
-      - binary_sensor.mcu3_gpio10
-      - binary_sensor.mcu3_gpio14
-      - binary_sensor.kitchen_door
-      - binary_sensor.mcu3_light
+      - binary_sensor.slider_door_status
+      - binary_sensor.side_door_status
+      - binary_sensor.front_door_status
+      - binary_sensor.master_window_status
+      - binary_sensor.guest_window_status
+      - binary_sensor.office_window_status
+      - binary_sensor.slider_door_status
+      - binary_sensor.front_window_status
+      - binary_sensor.livingroom_window_status
     states:
       - state: 'off'
         class: 'window-closed'
@@ -209,8 +185,8 @@ rules:
 
   - name: Presence
     entities:
-      - binary_sensor.sleepnumber_carlo_carlo_is_in_bed
-      - binary_sensor.sleepnumber_carlo_stacey_is_in_bed
+      - input_boolean.david_status
+      - input_boolean.georgina_status
     states:
       - state: 'on'
         class: 'presence-on'
@@ -227,16 +203,16 @@ rules:
       - state: 'open'
         class: 'window-open'
 
-  - name: Juicebox
-    entities:
-      - sensor.carlojuice_charging_status
-    states:
-      - state: 'charging'
-        class: 'juicebox-charging'
-      - state: 'standby'
-        class: 'juicebox-standby'
-      - state: 'plugged'
-        class: 'juicebox-plugged'
+  # - name: Juicebox
+  #   entities:
+  #     - sensor.carlojuice_charging_status
+  #   states:
+  #     - state: 'charging'
+  #       class: 'juicebox-charging'
+  #     - state: 'standby'
+  #       class: 'juicebox-standby'
+  #     - state: 'plugged'
+  #       class: 'juicebox-plugged'
 
   - name: Dark Sky Sensors
     entities:
@@ -282,6 +258,8 @@ rules:
       - camera.front_door
       - camera.front_yard
       - camera.back_yard
-      # - camera.camera3
+      - camera.motioneye
+      - camera.side_yard
+
     image_template: '${entity.attributes.entity_picture}'
     # image_refresh_interval: 20 # in seconds - Future options if needed.
