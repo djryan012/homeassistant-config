@@ -5,42 +5,42 @@
 # Cameras
 - platform: mqtt
   name: Frontyard Camera
-  state_topic: "HassSubnet/binary_sensor/frontyard_camera/state"
+  state_topic: 'HassSubnet/binary_sensor/frontyard_camera/state'
   device_class: connectivity
-  payload_on: "on"
-  payload_off: "off"
+  payload_on: 'on'
+  payload_off: 'off'
 - platform: mqtt
   name: FrontDoor Camera
-  state_topic: "HassSubnet/binary_sensor/frontdoor_camera/state"
+  state_topic: 'HassSubnet/binary_sensor/frontdoor_camera/state'
   device_class: connectivity
-  payload_on: "on"
-  payload_off: "off"
+  payload_on: 'on'
+  payload_off: 'off'
 - platform: mqtt
   name: Backyard Camera
-  state_topic: "HassSubnet/binary_sensor/backyard_camera/state"
+  state_topic: 'HassSubnet/binary_sensor/backyard_camera/state'
   device_class: connectivity
-  payload_on: "on"
-  payload_off: "off"
+  payload_on: 'on'
+  payload_off: 'off'
 - platform: mqtt
   name: Sideyard Camera
-  state_topic: "HassSubnet/binary_sensor/sideyard_camera/state"
+  state_topic: 'HassSubnet/binary_sensor/sideyard_camera/state'
   device_class: connectivity
-  payload_on: "on"
-  payload_off: "off"
+  payload_on: 'on'
+  payload_off: 'off'
 
 - platform: mqtt
   name: Front Door Motion Sensor
-  state_topic: "HassSubnet/binary_sensor/front_door_motion_sensor/state"
+  state_topic: 'HassSubnet/binary_sensor/front_door_motion_sensor/state'
   device_class: motion
-  payload_on: "on"
-  payload_off: "off"
+  payload_on: 'on'
+  payload_off: 'off'
 
 - platform: mqtt
   name: Sideyard Motion Sensor
-  state_topic: "HassSubnet/binary_sensor/sideyard_motion_sensor/state"
+  state_topic: 'HassSubnet/binary_sensor/sideyard_motion_sensor/state'
   device_class: motion
-  payload_on: "on"
-  payload_off: "off"
+  payload_on: 'on'
+  payload_off: 'off'
 
 # Creates binary sensors according to cameras defined in the platform
 - platform: blueiris
@@ -131,8 +131,8 @@
 - platform: mqtt
   name: Pond Filter Status
   state_topic: 'insteon/47.fa.00/state'
-  payload_on: "OFF"  # Sensor is reverse orientation
-  payload_off: "ON"
+  payload_on: 'OFF' # Sensor is reverse orientation
+  payload_off: 'ON'
   device_class: 'moisture' #'problem'
 - platform: mqtt
   name: Pond Filter Battery
@@ -149,7 +149,7 @@
   state_topic: 'insteon/54.3b.88/low_battery'
   device_class: 'battery'
 
- # Motion sensors (Garage)
+  # Motion sensors (Garage)
 - platform: mqtt
   name: Garage Motion Status
   state_topic: 'insteon/4f.99.d9/state'
@@ -161,15 +161,14 @@
 
 #WallPanel Motion and Face Detection
 - platform: mqtt
-  state_topic: "wallpanel/mywallpanel/sensor/motion"
-  name: "Motion"
+  state_topic: 'wallpanel/mywallpanel/sensor/motion'
+  name: 'Motion'
   payload_on: '{"value":true}'
   payload_off: '{"value":false}'
-  device_class: motion 
-
+  device_class: motion
 - platform: mqtt
-  state_topic: "wallpanel/mywallpanel/sensor/face"
-  name: "Face Detected"
+  state_topic: 'wallpanel/mywallpanel/sensor/face'
+  name: 'Face Detected'
   payload_on: '{"value":true}'
   payload_off: '{"value":false}'
-  device_class: motion 
+  device_class: motion
