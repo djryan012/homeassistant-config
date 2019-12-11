@@ -43,7 +43,16 @@ rules:
   - name: text_states
     entities:
       - sensor.last_message
+      - sensor.usg_download
+      - sensor.usg_upload
     text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+    class_template: 'return "static-text";'
+
+  - name: text_percentage
+    entities:
+      - sensor.processor_use
+      - sensor.memory_use_percent
+    text_template: '${entity.state ? Math.ceil(entity.state) + "%": "undefined"}'
     class_template: 'return "static-text";'
 
   - name: text_font_date
@@ -55,6 +64,7 @@ rules:
   - name: text_font_time
     entities:
       - sensor.floorplan_time
+      - sensor.time
     text_template: '${entity.state ? entity.state : "undefined"}'
     class_template: 'return "static-text-time";'
 
@@ -109,14 +119,16 @@ rules:
       - state: 'off'
         class: 'switch-off'
 
-  # - name: custom_switches
-  #   entities:
-  #     - switch.pool_deck
-  #   states:
-  #     - state: 'on'
-  #       class: 'light-blue-on'
-  #     - state: 'off'
-  #       class: 'outdoor-light-off'
+  - name: fans
+    entities:
+      - fan.livingroom_ceiling_fan
+      - fan.master_ceiling_fan
+      - fan.office_ceiling_fan
+    states:
+      - state: 'on'
+        class: 'fan-on'
+      - state: 'off'
+        class: 'fan-off'
 
   - name: Lights
     entities:
@@ -149,21 +161,16 @@ rules:
       - state: 'off'
         class: 'outdoor-light-off'
 
-  - name: Nest Protects
+  - name: Echo Occupancy
     entities:
-      - binary_sensor.upstairs_living_room_nest_protect_online
-      - binary_sensor.hallway_nest_protect_kids_hallway_online
-      - binary_sensor.justins_room_nest_protect_online
-      - binary_sensor.kitchen_nest_protect_online
-      - binary_sensor.master_bedroom_nest_protect_online
-      - binary_sensor.master_hallway_nest_protect_online
-      - binary_sensor.paiges_room_nest_protect_paiges_room_online
-      - binary_sensor.upstairs_bedroom_nest_protect_online
-      - binary_sensor.office_nest_protect_online
+      - binary_sensor.echo_occupancy
+      - binary_sensor.living_room_occupancy
+      - binary_sensor.office_occupancy
+      - binary_sensor.bedroom_occupancy
     states:
-      - state: 'off'
-        class: 'protect-off'
       - state: 'on'
+        class: 'protect-off'
+      - state: 'off'
         class: 'protect-on'
 
   - name: Entry Points

@@ -48,13 +48,22 @@
 
 # WallPanel Sensor Data
 - platform: mqtt
-  state_topic: "wallpanel/mywallpanel/sensor/battery"
   name: "WallPanel Battery Level"
+  state_topic: "wallpanel/mywallpanel/sensor/battery"
   unit_of_measurement: "%"
-  value_template: ''
+  value_template: "{{ value_json.value }}"
+- platform: mqtt
+  name: "WallPanel Charging"
+  state_topic: "wallpanel/mywallpanel/sensor/battery"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.charging }}"
+- platform: mqtt
+  name: "WallPanel Light Level"
+  state_topic: "wallpanel/mywallpanel/sensor/light"
+  unit_of_measurement: "lx"
+  value_template: "{{ value_json.value }}"
 
 - platform: mqtt
-  state_topic: "wallpanel/mywallpanel/sensor/light"
-  name: "WallPanel Light Level"
-  unit_of_measurement: "lx"
-  value_template: ''
+  name: "WallPanel State"
+  state_topic: "wallpanel/mywallpanel/state"
+  # value_template: "{{ value_json.value }}"
