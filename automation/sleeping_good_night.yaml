@@ -9,12 +9,6 @@
         - input_boolean.georgina_status
       to: 'on'
   condition:
-    # - condition: state
-    #   entity_id: sun.sun
-    #   state: 'below_horizon'
-    # - condition: state
-    #   entity_id: input_boolean.guest_mode
-    #   state: 'off'
     - condition: or
       conditions:
         - condition: state
@@ -24,9 +18,6 @@
           value_template: >
             {% if is_state('person.david', 'home') %} false
             {% else %} true {% endif %}
-        # - condition: state
-        #   entity_id: person.david
-        #   state: 'not_home'
     - condition: or
       conditions:
         - condition: state
@@ -36,9 +27,6 @@
           value_template: >
             {% if is_state('person.georgina', 'home') %} false
             {% else %} true {% endif %}
-        # - condition: state
-        #   entity_id: person.georgina
-        #   state: 'not_home'
   action:
     - service: script.interior_off
 
