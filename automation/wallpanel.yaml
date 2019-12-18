@@ -2,7 +2,7 @@
   initial_state: True
   trigger:
     - platform: state
-      entity_id: binary_sensor.motion
+      entity_id: binary_sensor.wallpanel_motion_sensor
       from: 'off'
       to: 'on'
   action:
@@ -13,7 +13,7 @@
   initial_state: True
   trigger:
     - platform: state
-      entity_id: binary_sensor.motion
+      entity_id: binary_sensor.wallpanel_motion_sensor
       from: 'on'
       to: 'off'
       # for:
