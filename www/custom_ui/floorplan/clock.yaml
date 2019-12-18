@@ -1,0 +1,64 @@
+page_id: clock
+image: /local/custom_ui/floorplan/clock.svg
+stylesheet: /local/custom_ui/floorplan/floorplan.css
+
+variables:
+  - name: floorplan.hours
+  - name: floorplan.minutes
+
+defaults:
+  hover_over: false
+  more_info: false
+
+rules:
+
+  - name: text_font_date
+    entities:
+      - sensor.clock_date
+      - sensor.clock_day
+    hover_over: false
+    more_info: false
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    class_template: 'return "static-text-date";'
+
+  - name: text_font_time
+    entities:
+      - sensor.clock_time
+    hover_over: false
+    more_info: false
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    class_template: 'return "static-text-time";'
+
+  - name: text_font_am_pm
+    entities:
+      - sensor.clock_am_pm
+    hover_over: false
+    more_info: false
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    class_template: 'return "static-text-am_pm";'
+
+  - name: text_font_date
+    entities:
+      - sensor.floorplan_date
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    # class_template: 'return "static-text-date";'
+
+  - name: text_font_time
+    entities:
+      - sensor.floorplan_time
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    # class_template: 'return "static-text-time";'
+
+  - name: Black Out Test
+    entities:
+      - input_boolean.wallpanel_blackout
+    states:
+      - state: 'on'
+        class: 'blackout-on'
+      - state: 'off'
+        class: 'blackout-off'
+    # state_transitions:
+    #   - name: off to on
+    #     from_state: 'off'
+    #     to_state: 'on'
+    #     duration: 3

@@ -53,6 +53,24 @@
       - group.bedroom
       - group.garage
       - light.livingroomww_1
+#     service: script.wallpanel_clock
+#     service: homeassistant.turn_on
+#     entity_id:
+#       - input_boolean.wallpanel_blackout
+
+# # Wallpanel on when home
+# - alias: 'Wallpanel on when home'
+#   initial_state: True
+#   trigger:
+#     - platform: state
+#       entity_id: group.persons
+#       from: 'not_home'
+#       to: 'home'
+#   action:
+#     service: script.wallpanel_clock
+#     service: homeassistant.turn_off
+#     entity_id:
+#       - input_boolean.wallpanel_blackout
 
 # Light on when getting home
 - alias: "Light on when getting home"

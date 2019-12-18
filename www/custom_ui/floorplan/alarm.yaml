@@ -1,6 +1,6 @@
 name: Alarm Panel
 image: /local/custom_ui/floorplan/alarm.svg
-stylesheet: /local/custom_ui/floorplan/alarm.css
+stylesheet: /local/custom_ui/floorplan/floorplan.css
 
 rules:
   - name: input_booleans
@@ -42,10 +42,10 @@ rules:
 
   - name: text_states
     entities:
-      - sensor.last_message
+      # - sensor.last_message
       - sensor.usg_download
       - sensor.usg_upload
-    text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+    text_template: '${entity.state ? Math.ceil(entity.state) + "mb": "undefined"}'
     class_template: 'return "static-text";'
 
   - name: text_percentage
@@ -59,14 +59,14 @@ rules:
     entities:
       - sensor.floorplan_date
     text_template: '${entity.state ? entity.state : "undefined"}'
-    class_template: 'return "static-text-date";'
+    # class_template: 'return "static-text-date";'
 
   - name: text_font_time
     entities:
       - sensor.floorplan_time
-      - sensor.time
+      - sensor.clock_time
     text_template: '${entity.state ? entity.state : "undefined"}'
-    class_template: 'return "static-text-time";'
+    # class_template: 'return "static-text-time";'
 
   - name: Alarm
     entities:
@@ -91,7 +91,6 @@ rules:
 
   - name: switches
     entities:
-      - switch.foo_screen
       - switch.garage_inside
       - switch.garage_side
       - switch.living_room_keypad_a
@@ -210,23 +209,11 @@ rules:
       - state: 'open'
         class: 'window-open'
 
-  # - name: Juicebox
-  #   entities:
-  #     - sensor.carlojuice_charging_status
-  #   states:
-  #     - state: 'charging'
-  #       class: 'juicebox-charging'
-  #     - state: 'standby'
-  #       class: 'juicebox-standby'
-  #     - state: 'plugged'
-  #       class: 'juicebox-plugged'
-
   - name: Dark Sky Sensors
     entities:
       - sensor.dark_sky_minutely_summary
     image_template: '
       var imageName = "";
-
       switch (entity.attributes.entity_picture) {
         case "/static/images/darksky/weather-sunny.svg":
           imageName = "sunny-1";
@@ -256,7 +243,6 @@ rules:
           imageName = "snowy-day-1";
           break;
       }
-
       return "/local/custom_ui/floorplan/images/weather/" + imageName + ".svg";
       '
 
@@ -267,6 +253,22 @@ rules:
       - camera.back_yard
       - camera.motioneye
       - camera.side_yard
-
     image_template: '${entity.attributes.entity_picture}'
     # image_refresh_interval: 20 # in seconds - Future options if needed.
+
+  - name: Blackout
+    entities:
+      - input_boolean.wallpanel_blackout
+    states:
+      - state: 'on'
+        class: 'blackout-on'
+      - state: 'off'
+        class: 'blackout-off'
+  - name: Dimmer
+    entities:
+      - input_boolean.wallpanel_ideal
+    states:
+      - state: 'on'
+        class: 'dimmer-on'
+      - state: 'off'
+        class: 'dimmer-off'

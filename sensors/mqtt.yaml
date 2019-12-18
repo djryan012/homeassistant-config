@@ -64,6 +64,14 @@
   value_template: "{{ value_json.value }}"
 
 - platform: mqtt
-  name: "WallPanel State"
+  name: "WallPanel CurrentUrl"
   state_topic: "wallpanel/mywallpanel/state"
-  # value_template: "{{ value_json.value }}"
+  value_template: "{{ value_json.currentUrl }}"
+- platform: mqtt
+  name: "WallPanel ScreenOn"
+  state_topic: "wallpanel/mywallpanel/state"
+  value_template: "{{ value_json.screenOn }}"
+- platform: mqtt
+  name: "WallPanel ScreenBrightness"
+  state_topic: "wallpanel/mywallpanel/state"
+  value_template: "{{ value_json.brightness }}"

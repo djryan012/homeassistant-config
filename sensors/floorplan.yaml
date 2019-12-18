@@ -6,22 +6,7 @@
       entity_id: sun.sun
       value_template: >-
         {{now().strftime("%A, %B %d")}}
-    # clock_am_pm:
-    #   friendly_name: 'AM/PM'
-    #   entity_id: sun.sun
-    #   value_template: >-
-    #     {{now().strftime("%p")}}
-    # clock_day:
-    #   friendly_name: 'Day'
-    #   entity_id: sun.sun
-    #   value_template: >-
-    #     {{now().strftime("%A")}}
-    # clock_date:
-    #   friendly_name: 'Clock Date'
-    #   entity_id: sun.sun
-    #   value_template: >-
-    #     {{now().strftime("%B %d %Y")}}
-        
+       
 - platform: template
   sensors:
     floorplan_time:
@@ -29,8 +14,8 @@
       entity_id: sensor.time
       value_template: >-
         {{ as_timestamp(now()) | timestamp_custom("%-I:%M %p")}}
-    # clock_time:
-    #   friendly_name: 'Clock Time'
-    #   entity_id: sun.sun
-    #   value_template: >-
-    #     {{now().strftime("%-I:%M")}}
+    clock_time:
+      friendly_name: 'Clock Time'
+      entity_id: sensor.time
+      value_template: >-
+        {{ as_timestamp(now()) | timestamp_custom("%-I:%M %p")}}

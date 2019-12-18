@@ -30,3 +30,11 @@ dog:
 # nodered:
 #   name: Node Red Enabled
 #   initial: off
+
+wallpanel_blackout:
+  name: Walpanel Blackout
+  initial: off
+
+wallpanel_ideal:
+  name: Walpanel Idle
+  initial: off

@@ -122,5 +122,6 @@ cards:
       - entity: sensor.wallpanel_battery_level
       - entity: sensor.wallpanel_charging
       - entity: sensor.wallpanel_light_level
-      - entity: binary_sensor.face_detected
       - entity: binary_sensor.motion
+      - entity: input_boolean.wallpanel_blackout
+      - entity: input_boolean.wallpanel_ideal

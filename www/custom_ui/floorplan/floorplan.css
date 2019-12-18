@@ -1,4 +1,4 @@
- SVG shapes */
+SVG shapes */
 
 svg, svg * {
   vector-effect: non-scaling-stroke !important;
@@ -21,26 +21,21 @@ svg, svg * {
   transform: rotate(270deg);
   transform-origin: right;
 }
-
 #sensor\.dark_sky_minutely_summary  {
   fill: #231F26 !important;
   fill-opacity: 1.0;
 }
-
 .entity:hover:not(.static-text):not(.static-temp):not(.static-text-date):not:(.static-text-time) {
   stroke: #03A9F4 !important;
   stroke-width: 1px !important;
   stroke-opacity: 1 !important;
 }
-
-
 .warning-background, .warning-text-background  {
   fill: #fcf8e3 !important;
   fill-opacity: 1 !important;
   stroke: #faebcc !important;
   stroke-width: 1px !important;
 }
-
 .static-text
 {
   fill: #FFFFA6 !important;
@@ -48,7 +43,6 @@ svg, svg * {
   font-weight : bold !important;
   font-size : 15px !important;
 }
-
 .static-text-date
 {
   font-family : Helvetica !important;
@@ -56,7 +50,6 @@ svg, svg * {
   font-size : 16px !important;
   fill : #FFFFA6 !important;
 }
-
 .static-text-time
 {
   font-family : Helvetica !important;
@@ -64,7 +57,6 @@ svg, svg * {
   font-size : 35px !important;
   fill: #FFFFA6 !important;
 }
-
 .static-temp
 {
   font-family: Helvetica !important;
@@ -83,79 +75,63 @@ svg, svg * {
 .presence-on {
   fill: #BDF271 !important;
 }
-
 .presence-off {
   fill: #3D3B3F !important;
 }
 
 /* Text Home/Away */
-
 .text-home {
   fill: #BDF271 !important;
 }
-
 .text-away {
   fill: #E7376B !important;
 }
 
 /* switches */
-
 .switch-on {
   fill: orange !important;
 }
-
 .switch-on-blue {
   fill: blue !important;
 }
-
 .switch-off {
   fill: #cccccc !important;
 }
 
-/* Juicebox */
-.juicebox-plugged {
-  fill: orange !important;
-}
-.juicebox-standby {
-  fill: grey !important;
-}
-.juicebox-charging {
-  fill: green !important;
-}
-/* Buttons */
 
+/* Buttons */
 .button-on {
   fill: #FFFFA6 !important;
   fill-opacity: 0.25;
 }
-
 .button-off {
   fill: #3D3B3F !important;
   fill-opacity: 0.5;
 }
 
 /* Nest Protects */
-
 .protect-on {
   fill: green !important;
 }
-
 .protect-off {
   fill: red !important;
 }
 
 /* Windows / Doors / Entry Points */
-
 .window-open {
   fill: #c60919 !important;
-
 }
-
 .window-closed {
   fill: #00FFFF !important;
 }
 
 /* Light */
+/* 
+.light_off {
+  stroke: black; !important;
+  opacity: 0.5;
+}
+.light_on { */
 
 .light-off {
   fill: #231F26 !important;
@@ -202,4 +178,42 @@ svg, svg * {
 .light-on:hover {
   transform-origin: center;
   transform: scale(3);
+}
+@-webkit-keyframes rotation {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(359deg);
+  }
+}
+
+#fan\.living_room_fan_level, #fan\.master_bedroom_fan_level {
+transform-origin: center;
+}
+.fan-on {
+fill: #ff8a65 !important;
+-webkit-animation: rotation 2s infinite linear;
+}
+.fan-off {
+fill: #424242 !important;
+}
+
+.blackout-on{
+width: 100%;
+opacity: 1.0 !important;
+fill: black !important;
+}
+.blackout-off{
+width: 0%;
+opacity:0 !important;
+}
+.dimmer-on{
+width: 100%;
+fill: black !important;
+opacity: 0.7 !important;
+}
+.dimmer-off{
+width: 0%;
+opacity:0 !important;
 }
