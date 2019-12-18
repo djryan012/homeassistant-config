@@ -55,7 +55,7 @@
       entity_id: binary_sensor.garage_motion_status
       to: 'off'
       for:
-        minutes: 15
+        minutes: 20
   action:
     - service_template: '{% if trigger.to_state.state == "on" %}switch.turn_on{% elif trigger.to_state.state == "off" %}switch.turn_off{% endif %}'
       entity_id: group.garage
