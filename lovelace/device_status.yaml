@@ -108,14 +108,6 @@ cards:
         name: Sliding
       - entity: binary_sensor.side_door_status # Sensor5 (Side Door)
         name: Sidedoor
-  - type: entities
-    title: Kiosk Touchscreen
-    show_header_toggle: false
-    entities:
-      - entity: sensor.kiosk_touchpad
-      - entity: sensor.kiosk_touchpad_battery
-      - entity: sensor.kiosk_touchpad_screen_brightness
-      - entity: switch.foo_screen
   - type: glance
     title: Central Heating Sensors Status
     entities:
