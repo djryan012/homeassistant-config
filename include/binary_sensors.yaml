@@ -28,33 +28,51 @@
   payload_on: 'on'
   payload_off: 'off'
 
-- platform: mqtt
-  name: Front Door Motion Sensor
-  state_topic: 'HassSubnet/binary_sensor/front_door_motion_sensor/state'
-  device_class: motion
-  payload_on: 'on'
-  payload_off: 'off'
-
-- platform: mqtt
-  name: Sideyard Motion Sensor
-  state_topic: 'HassSubnet/binary_sensor/sideyard_motion_sensor/state'
-  device_class: motion
-  payload_on: 'on'
-  payload_off: 'off'
+# - platform: mqtt
+#   name: Front Door Motion Sensor
+#   state_topic: 'HassSubnet/binary_sensor/front_door_motion_sensor/state'
+#   device_class: motion
+#   payload_on: 'on'
+#   payload_off: 'off'
+# - platform: mqtt
+#   name: Sideyard Motion Sensor
+#   state_topic: 'HassSubnet/binary_sensor/sideyard_motion_sensor/state'
+#   device_class: motion
+#   payload_on: 'on'
+#   payload_off: 'off'
 
 # Creates binary sensors according to cameras defined in the platform
-- platform: blueiris
-
-# For each Fully Kiosk device, create a binary sensor entity:
+# - platform: blueiris 
 - platform: mqtt
-  state_topic: dummy/binary_sensor
-  name: Floorplan
+  name: Front Door Motion Sensor
+  state_topic: 'blueIris/frontdoor/motion'
+  device_class: motion
+  payload_on: 'on'
+  payload_off: 'off'
 - platform: mqtt
-  state_topic: floorplan/kiosk/entry/motion
-  name: Entry Kiosk Motion
+  name: Sideyard Motion Sensor
+  state_topic: 'blueIris/sideyard/motion'
+  device_class: motion
+  payload_on: 'on'
+  payload_off: 'off'
 - platform: mqtt
-  state_topic: floorplan/kiosk/entry/plugged
-  name: Entry Kiosk Plugged
+  name: Window Motion Sensor
+  state_topic: 'blueIris/motioneye/motion'
+  device_class: motion
+  payload_on: 'on'
+  payload_off: 'off'
+- platform: mqtt
+  name: Backyard Motion Sensor
+  state_topic: 'blueIris/backyard/motion'
+  device_class: motion
+  payload_on: 'on'
+  payload_off: 'off'
+- platform: mqtt
+  name: Frontyard Motion Sensor
+  state_topic: 'blueIris/frontyard/motion'
+  device_class: motion
+  payload_on: 'on'
+  payload_off: 'off'
 
 # Insteon Open / Close Sensors
 # Sensor1 (Master Window)
@@ -149,7 +167,7 @@
   state_topic: 'insteon/54.3b.88/low_battery'
   device_class: 'battery'
 
-  # Motion sensors (Garage)
+# Motion sensors (Garage)
 - platform: mqtt
   name: Garage Motion Status
   state_topic: 'insteon/4f.99.d9/state'
@@ -159,16 +177,10 @@
   state_topic: 'insteon/4f.99.d9/low_battery'
   device_class: 'battery'
 
-#WallPanel Motion and Face Detection
+#WallPanel Motion Detection
 - platform: mqtt
   state_topic: 'wallpanel/mywallpanel/sensor/motion'
-  name: 'Motion'
-  payload_on: '{"value":true}'
-  payload_off: '{"value":false}'
-  device_class: motion
-- platform: mqtt
-  state_topic: 'wallpanel/mywallpanel/sensor/face'
-  name: 'Face Detected'
+  name: 'Wallpanel Motion Sensor'
   payload_on: '{"value":true}'
   payload_off: '{"value":false}'
   device_class: motion

@@ -3,31 +3,6 @@ title: Blue Iris
 icon: mdi:eye
 
 cards:
-  # - type: custom:vertical-stack-in-card
-  #   cards:
-  #     # System cameras
-  #     - type: horizontal-stack
-  #       cards:
-  #         - type: custom:vertical-stack-in-card
-  #           cards:
-  #             - type: picture-entity
-  #               entity: camera.all
-  #               name: All
-  #               show_state: false
-  #         - type: custom:vertical-stack-in-card
-  #           cards:
-  #             - type: picture-entity
-  #               entity: camera.cycle
-  #               name: Cycle
-  #               show_state: false
-  #     # Blue Iris Armed / Disarm Profiles
-  #     - type: entities
-  #       title: Blue Iris
-  #       show_header_toggle: false
-  #       entities:
-  #         - entity: switch.blueiris_alerts
-  #           name: Arm / Disarm
-
   # Front Door camera
   - type: custom:vertical-stack-in-card
     cards:
@@ -39,18 +14,22 @@ cards:
         entities:
           - entity: binary_sensor.front_door_motion
             name: Motion
-          - entity: binary_sensor.front_door_watchdog
-            name: Watchdog
+          # - entity: binary_sensor.front_door_watchdog
+          #   name: Watchdog
 
-  - type: picture-glance
-    title: Front Door
-    entities:
-      - binary_sensor.front_door_motion_sensor
-      - light.porchww
-      # - camera.front_door
-      # - binary_sensor.front_door_motion
-      - binary_sensor.front_door_watchdog
-    camera_image: camera.front_door
+  # Motion Eye
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: picture-entity
+        entity: camera.motioneye
+        name: Window View
+        show_state: false
+      - type: glance
+        entities:
+          - entity: binary_sensor.motioneye_motion
+            name: Motion
+          # - entity: binary_sensor.motioneye_watchdog
+          #   name: Watchdog  
 
   # Front Yard camera
   - type: custom:vertical-stack-in-card
@@ -63,22 +42,22 @@ cards:
         entities:
           - entity: binary_sensor.front_yard_motion
             name: Motion
-          - entity: binary_sensor.front_yard_watchdog
-            name: Watchdog  
+          # - entity: binary_sensor.front_yard_watchdog
+          #   name: Watchdog  
 
   # Back Yard camera
   - type: custom:vertical-stack-in-card
     cards:
       - type: picture-entity
         entity: camera.back_yard
-        name: side_yard
+        name: Back Yard
         show_state: false
       - type: glance
         entities:
           - entity: binary_sensor.back_yard_motion
             name: Motion
-          - entity: binary_sensor.back_yard_watchdog
-            name: Watchdog
+          # - entity: binary_sensor.back_yard_watchdog
+          #   name: Watchdog
 
   # Side Yard camera
   - type: custom:vertical-stack-in-card
@@ -91,5 +70,5 @@ cards:
         entities:
           - entity: binary_sensor.side_yard_motion
             name: Motion
-          - entity: binary_sensor.side_yard_watchdog
-            name: Watchdog
+          # - entity: binary_sensor.side_yard_watchdog
+          #   name: Watchdog
