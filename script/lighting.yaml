@@ -53,6 +53,8 @@ interior_off:
         - light.bedroomww_g
         - light.master_ceiling_light #MasterCeiling Light
         - light.office_ceiling_light
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.wallpanel_blackout
     - service: script.switch_turn_off_all
 
 switch_turn_off_all:

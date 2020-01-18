@@ -11,6 +11,7 @@ rules:
       - input_boolean.georgina_phone_charging
       - input_boolean.georgina_status
       - input_boolean.vacation
+      - input_boolean.camera_notifications
     states:
       - state: 'on'
         class: 'button-on'
@@ -23,26 +24,17 @@ rules:
     text_template: '${entity.attributes.current_temperature ? Math.ceil(entity.attributes.current_temperature) + "°": "undefined"}'
     class_template: 'return "static-temp";'
 
-  - name: temp_darksky
-    entities:
-      - sensor.dark_sky_temperature
-    text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
-    class_template: 'return "static-temp";'
-
   - name: temp_round
     entities:
-      - sensor.echo_humidity
-      - sensor.dark_sky_humidity
       - sensor.bedroom_temperature
       - sensor.echo_temperature
       - sensor.living_room_temperature
       - sensor.office_temperature
-    text_template: '${entity.state ? Math.ceil(entity.state) : "undefined"}'
+    text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
     class_template: 'return "static-temp";'
 
-  - name: text_states
+  - name: text_speed
     entities:
-      # - sensor.last_message
       - sensor.usg_download
       - sensor.usg_upload
     text_template: '${entity.state ? Math.ceil(entity.state) + "mb": "undefined"}'
@@ -52,6 +44,8 @@ rules:
     entities:
       - sensor.processor_use
       - sensor.memory_use_percent
+      - sensor.wallpanel_battery_level
+      - sensor.echo_humidity
     text_template: '${entity.state ? Math.ceil(entity.state) + "%": "undefined"}'
     class_template: 'return "static-text";'
 
@@ -68,16 +62,6 @@ rules:
     text_template: '${entity.state ? entity.state : "undefined"}'
     # class_template: 'return "static-text-time";'
 
-  - name: Alarm
-    entities:
-      - input_boolean.alert_mode
-    text_template: '${entity.state ? entity.state : "undefined"}'
-    states:
-      - state: 'on'
-        class: 'text-home'
-      - state: 'off'
-        class: 'text-away'
-
   - name: Family
     entities:
       - person.david
@@ -91,25 +75,7 @@ rules:
 
   - name: switches
     entities:
-      - switch.garage_inside
-      - switch.garage_side
-      - switch.living_room_keypad_a
-      - switch.living_room_keypad_b
-      - switch.living_room_keypad_c
-      - switch.living_room_keypad_d
-      - switch.living_room_keypad_main
-      - switch.master_keypad_a
-      - switch.master_keypad_b
-      - switch.master_keypad_c
-      - switch.master_keypad_d
-      - switch.master_keypad_main
-      - switch.office_keypad_a
-      - switch.office_keypad_b
-      - switch.office_keypad_c
-      - switch.office_keypad_d
-      - switch.office_keypad_main
-      - switch.patio_lights
-      - switch.blueiris_alerts
+      - group.garage
       - switch.sonoff1
       - switch.sonoff2
     states:
@@ -118,7 +84,7 @@ rules:
       - state: 'off'
         class: 'switch-off'
 
-  - name: fans
+  - name: fan
     entities:
       - fan.livingroom_ceiling_fan
       - fan.master_ceiling_fan
@@ -131,7 +97,6 @@ rules:
 
   - name: Lights
     entities:
-      - light.dinning_room_switch
       - light.dinning_table_light
       - light.master_ceiling_light
       - light.office_ceiling_light
@@ -151,12 +116,12 @@ rules:
 
   - name: Outdoor Lights
     entities:
-      - light.backyard_lights
       - light.porchww
       - light.sideyardww
+      - light.patio_lights
     states:
       - state: 'on'
-        class: 'light-on'
+        class: 'outdoor-light-on'
       - state: 'off'
         class: 'outdoor-light-off'
 
@@ -168,26 +133,33 @@ rules:
       - binary_sensor.bedroom_occupancy
     states:
       - state: 'on'
-        class: 'protect-off'
+        class: 'detect-on'
       - state: 'off'
-        class: 'protect-on'
+        class: 'detect-off'
 
-  - name: Entry Points
+  - name: Windows
     entities:
-      - binary_sensor.slider_door_status
-      - binary_sensor.side_door_status
-      - binary_sensor.front_door_status
       - binary_sensor.master_window_status
       - binary_sensor.guest_window_status
       - binary_sensor.office_window_status
-      - binary_sensor.slider_door_status
       - binary_sensor.front_window_status
-      - binary_sensor.livingroom_window_status
+      - binary_sensor.kitchen_window_status
     states:
       - state: 'off'
         class: 'window-closed'
       - state: 'on'
         class: 'window-open'
+
+  - name: Doors
+    entities:
+      - binary_sensor.side_door_status
+      - binary_sensor.front_door_status
+      - binary_sensor.slider_door_status
+    states:
+      - state: 'off'
+        class: 'door-closed'
+      - state: 'on'
+        class: 'door-open'
 
   - name: Presence
     entities:
@@ -199,52 +171,52 @@ rules:
       - state: 'off'
         class: 'presence-off'
 
-  - name: Garage Doors
-    entities:
-      - cover.large_garage
-      - cover.small_garage
-    states:
-      - state: 'closed'
-        class: 'window-closed'
-      - state: 'open'
-        class: 'window-open'
+  # - name: Garage Doors
+  #   entities:
+  #     - cover.large_garage
+  #     - cover.small_garage
+  #   states:
+  #     - state: 'closed'
+  #       class: 'window-closed'
+  #     - state: 'open'
+  #       class: 'window-open'
 
-  - name: Dark Sky Sensors
-    entities:
-      - sensor.dark_sky_minutely_summary
-    image_template: '
-      var imageName = "";
-      switch (entity.attributes.entity_picture) {
-        case "/static/images/darksky/weather-sunny.svg":
-          imageName = "sunny-1";
-          break;
+  # - name: Dark Sky Sensors
+  #   entities:
+  #     - sensor.dark_sky_minutely_summary
+  #   image_template: '
+  #     var imageName = "";
+  #     switch (entity.attributes.entity_picture) {
+  #       case "/static/images/darksky/weather-sunny.svg":
+  #         imageName = "sunny-1";
+  #         break;
 
-        case "/static/images/darksky/weather-night.svg":
-          imageName = "night-1";
-          break;
+  #       case "/static/images/darksky/weather-night.svg":
+  #         imageName = "night-1";
+  #         break;
 
-        case "/static/images/darksky/weather-partlycloudy.svg":
-          imageName = "partlycloudy-day-1";
-          break;
+  #       case "/static/images/darksky/weather-partlycloudy.svg":
+  #         imageName = "partlycloudy-day-1";
+  #         break;
 
-        case "/static/images/darksky/weather-cloudy.svg":
-          imageName = "partlycloudy-night-1";
-          break;
+  #       case "/static/images/darksky/weather-cloudy.svg":
+  #         imageName = "partlycloudy-night-1";
+  #         break;
 
-        case "/static/images/darksky/weather-cloudy.svg":
-          imageName = "cloudy-day-1";
-          break;
+  #       case "/static/images/darksky/weather-cloudy.svg":
+  #         imageName = "cloudy-day-1";
+  #         break;
 
-        case "/static/images/darksky/weather-pouring.svg":
-          imageName = "thunder";
-          break;
+  #       case "/static/images/darksky/weather-pouring.svg":
+  #         imageName = "thunder";
+  #         break;
 
-        case "/static/images/darksky/weather-snowy.svg":
-          imageName = "snowy-day-1";
-          break;
-      }
-      return "/local/custom_ui/floorplan/images/weather/" + imageName + ".svg";
-      '
+  #       case "/static/images/darksky/weather-snowy.svg":
+  #         imageName = "snowy-day-1";
+  #         break;
+  #     }
+  #     return "/local/custom_ui/floorplan/images/weather/" + imageName + ".svg";
+  #     '
 
   - name: Camera Images
     entities:
@@ -253,9 +225,11 @@ rules:
       - camera.back_yard
       - camera.motioneye
       - camera.side_yard
+      - camera.motioneye
     image_template: '${entity.attributes.entity_picture}'
     # image_refresh_interval: 20 # in seconds - Future options if needed.
 
+### WALLPANEL Overide
   - name: Blackout
     entities:
       - input_boolean.wallpanel_blackout
