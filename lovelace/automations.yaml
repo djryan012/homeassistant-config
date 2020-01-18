@@ -25,12 +25,14 @@ cards:
       # - entity: automation.make_s4_cam_visible
 
   - type: entities
-    title: Feed the dog
+    title: Dog
     show_header_toggle: false
     entities:
       - entity: automation.feed_the_dog_evening
       - entity: automation.feed_the_dog_morning_weekends
       - entity: automation.feed_the_dog_morning_weekdays
+      - entity: automation.turn_off_pet_away_mode
+      - entity: automation.turn_on_pet_away_mode
 
   # - type: entities
   #   title: Network Security
@@ -67,11 +69,20 @@ cards:
       # - entity: automation.garage_lights_on_by_motion
       # - entity: automation.garage_lights_off_by_motion
       - entity: automation.turn_on_off_garage_lights_when_there_is_movement
+      - entity: automation.monthly_holiday_color_scene_on
+        # name: C9's On at Sunset
+        # icon: mdi:led-on
+      - entity: automation.monthly_holiday_color_scene_off
+        # name: C9's Off at Sunrise
+        # icon: mdi:led-off
+      - entity: automation.dinning_light_out
+      - entity: automation.office_light_out
 
   - type: entities
     title: Notification
     show_header_toggle: false
     entities:
+      - entity: automation.hass_startup_notification
       - entity: automation.laundry_dryer_is_done
       - entity: automation.laundry_washer_is_done
       - entity: automation.georgina_is_home
@@ -82,35 +93,19 @@ cards:
       # - entity: automation.michael_is_home
       - entity: automation.pond_filter_issue
       # - entity: automation.pond_filter_issue_for_mark
+      - entity: automation.battery_is_low_in_sensor
+      - entity: automation.tradfri_lights_unavailable
+      - entity: automation.update_available_notification
+      - entity: automation.internet_speed_connection_poor
 
   - type: entities
     title: Home Assistant
     show_header_toggle: false
     entities:
-      - entity: automation.hass_startup_notification
       - entity: automation.hassio_snapshot
       - entity: automation.lets_encrypt_cert_did_not_update
       - entity: automation.let_s_encrypt_renewal
       - entity: automation.set_theme_to_midnight
-
-
-  - type: entities
-    title: Other
-    show_header_toggle: false
-    entities:
-      - entity: automation.battery_is_low_in_sensor
-      # - entity: automation.butter_away
-      # - entity: automation.butter_home
-      - entity: automation.reset_david_sleeping
-      - entity: automation.reset_georgina_sleeping
-
-  # - type: entities
-  #   title: Preset
-  #   show_header_toggle: false
-  #   entities:
-  #     - entity: automation.bedroom_preset
-  #     - entity: automation.kitchen_preset
-  #     - entity: automation.living_room_preset
 
   - type: entities
     title: Holiday
@@ -122,10 +117,23 @@ cards:
       - entity: automation.christmas_tree_off_when_away
         name: Tree Off When Away
         icon: mdi:pine-tree
-      - entity: automation.monthly_holiday_color_scene_on
-        name: C9's On at Sunset
-        icon: mdi:led-on
-      - entity: automation.monthly_holiday_color_scene_off
-        name: C9's Off at Sunrise
-        icon: mdi:led-off
 
+  - type: entities
+    title: Other
+    show_header_toggle: false
+    entities:
+      # - entity: automation.butter_away
+      # - entity: automation.butter_home
+      - entity: automation.reset_david_sleeping
+      - entity: automation.reset_georgina_sleeping
+      - entity: automation.georgina_is_awake
+      - entity: automation.living_room_fan
+      - entity: automation.master_bedroom_fan
+      - entity: automation.office_fan
+      - entity: automation.turn_on_vacation_mode
+      - entity: automation.turn_off_vacation_mode
+      - entity: automation.wallpanel_motion_clear
+      - entity: automation.wallpanel_motion_detected
+      - entity: automation.wallpanel_off_when_leaving
+      - entity: automation.wallpanel_on_when_awake
+      - entity: automation.wallpanel_on_when_home

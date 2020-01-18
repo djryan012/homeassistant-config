@@ -4,34 +4,6 @@
 title: Device Status
 icon: mdi:information-outline
 cards:
-#   - type: glance
-#     title: David's Phone Status
-#     entities:
-#       - entity: device_tracker.david_zanzito
-#         name: GPS
-#       - entity: input_boolean.david_status
-#         name: Sleeping?
-#       - entity: sensor.david_battery_level
-#         name: Battery
-#         icon: mdi:battery-50
-#       - entity:  input_boolean.david_phone_charging
-#         name: Charging?
-#         icon: mdi:battery-charging
-#     columns: 4
-#   - type: glance
-#     title: Georgina's Phone Status
-#     entities:
-#       - entity: device_tracker.georgina_pixel
-#         name: GPS
-#       - entity: input_boolean.georgina_status
-#         name: Sleeping?
-#       - entity: sensor.georgina_battery_level
-#         name: Battery
-#         icon: mdi:battery-50
-#       - entity: input_boolean.georgina_phone_charging
-#         name: Charging?
-#         icon: mdi:battery-charging
-#     columns: 4
   - type: custom:vertical-stack-in-card
     title: Unifi Status
     cards:
@@ -96,7 +68,7 @@ cards:
         name: Office
       - entity: binary_sensor.front_window_status # Sensor6 (Front Window)
         name: Dinning
-      - entity: binary_sensor.livingroom_window_status # Sensor7 (Livingroom Window)
+      - entity: binary_sensor.kitchen_window_status # Sensor7 (Livingroom Window)
         name: Living
       - type: divider
         style:
@@ -141,7 +113,7 @@ cards:
         detail: 2
         hours_to_show: 2
   - type: entities
-    title: Sonoff Switches
+    title: Sonoff POW Switches
     show_header_toggle: false
     entities:
       - entity: sensor.pow1_power
@@ -160,6 +132,19 @@ cards:
       - entity: sensor.pow2_voltage
         name: POW2 Volts
         icon: mdi:power-socket-us
+      - type: divider
+        style:
+          height: 2px
+          background: '#62717b'
+      - entity: switch.sonoff_pow3
+        name: Backyard Motion Lights
+        icon: mdi:toggle-switch
+      - entity: sensor.pow3_power
+        name: POW3 Watts
+        icon: mdi:power-plug
+      - entity: sensor.pow3_voltage
+        name: POW3 Volts
+        icon: mdi:power-socket-us
   - type: entities
     title: Automation Overides
     show_header_toggle: false
@@ -170,9 +155,9 @@ cards:
       - entity: input_boolean.dog
         name: Pet Away Mode
         icon: mdi:toggle-switch
-      # - entity: input_boolean.nodered  #Using Node Red for Alexa and special triggers
-      #   name: NodeRED Enabled
-      #   icon: mdi:toggle-switch
+      - entity: input_boolean.camera_notifications
+        name: Camera Notify
+        icon: mdi:toggle-switch
   - type: entities
     title: Falcon Player
     show_header_toggle: false

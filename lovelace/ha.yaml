@@ -56,12 +56,12 @@ cards:
       - entity: sensor.installed_version
         name: Installed Ver.
         icon: mdi:folder-download
-      - entity: sensor.hassio_version
-        name: Latest Release
-        icon: mdi:github-circle
       - entity: sensor.lets_encrypt_expiration
         name: Lets Encrypt Expiration
         icon: mdi:timelapse
+      - entity: sensor.hassio_version
+        name: Latest Release
+        icon: mdi:github-circle
       - entity: sensor.hacs
         name: HACs Udpates
         icon: mdi:folder-download
@@ -103,7 +103,7 @@ cards:
       - entity: binary_sensor.front_window_battery # Sensor6 (Front Window)
         name: Dinning Window Sensor
         icon: mdi:battery-50
-      - entity: binary_sensor.livingroom_window_battery # Sensor7 (Livingroom Window)
+      - entity: binary_sensor.kitchen_window_battery # Sensor7 (Livingroom Window)
         name: Living Window Sensor
         icon: mdi:battery-50
     # Door Sensors
@@ -156,3 +156,31 @@ cards:
         name: Forks
         icon: mdi:directions-fork
     columns: 4
+#   - type: glance
+#     title: David's Phone Status
+#     entities:
+#       - entity: device_tracker.david_zanzito
+#         name: GPS
+#       - entity: input_boolean.david_status
+#         name: Sleeping?
+#       - entity: sensor.david_battery_level
+#         name: Battery
+#         icon: mdi:battery-50
+#       - entity:  input_boolean.david_phone_charging
+#         name: Charging?
+#         icon: mdi:battery-charging
+#     columns: 4
+#   - type: glance
+#     title: Georgina's Phone Status
+#     entities:
+#       - entity: device_tracker.georgina_pixel
+#         name: GPS
+#       - entity: input_boolean.georgina_status
+#         name: Sleeping?
+#       - entity: sensor.georgina_battery_level
+#         name: Battery
+#         icon: mdi:battery-50
+#       - entity: input_boolean.georgina_phone_charging
+#         name: Charging?
+#         icon: mdi:battery-charging
+#     columns: 4

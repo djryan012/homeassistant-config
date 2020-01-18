@@ -19,8 +19,8 @@ cards:
         icon: mdi:lan
       - entity: device_tracker.unifi_switch
         icon: mdi:lan
-      - entity: device_tracker.google_wifi_2ghz
-        icon: mdi:router-wireless
+      - entity: device_tracker.unifi_ap_lite
+        icon: mdi:access-point
 
   - type: entities
     title: Home Automation
@@ -69,6 +69,8 @@ cards:
         icon: mdi:electric-switch
       - entity: device_tracker.sonoff_pow_2
         icon: mdi:electric-switch
+      - entity: device_tracker.sonoff_pow_3
+        icon: mdi:electric-switch
 
   - type: entities
     title: Home Computing
@@ -93,22 +95,18 @@ cards:
       - entity: device_tracker.david_s_pixel
         name: David Wifi
         icon: mdi:cellphone-android
+      - entity: device_tracker.pixel_3a
+        name: David HA Client
+        icon: mdi:cellphone-android
       - entity: device_tracker.georgina_zanzito
         name: Georgina Zanzito
         icon: mdi:cellphone-android
       - entity: device_tracker.georgina_pixel_3xl
         name: Georgina Wifi
         icon: mdi:cellphone-android
-      # - entity: device_tracker.georgina_s_pixel
-      #   name: Georgina Pixel 1
-      #   icon: mdi:cellphone-android
-      # - entity: device_tracker.georgina_s_kindle
-      #   icon: mdi:tablet-android
-      - entity: device_tracker.michael_s_iphone
+      - entity: device_tracker.michaels_mbp
         name: Michael's iphone
         icon: mdi:cellphone-iphone
-      # - entity: device_tracker.mitzis_iphone
-      #   icon: mdi:cellphone-iphone
 
   - type: entities
     title: Cameras
