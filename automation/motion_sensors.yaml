@@ -19,7 +19,7 @@
       entity_id: light.sideyardww
       data:
         brightness: 150
-        transition: 2
+        transition: 0
 
 #####  Turn Side light off with motion  #####
 - alias: "Side Light off by camera sensor"
@@ -42,7 +42,7 @@
       entity_id: light.sideyardww
       data:
 #        brightness: 0
-        transition: 2
+        transition: 15
 
 ####### Test
 - alias: "Turn on off garage lights when there is movement"

@@ -19,6 +19,7 @@
   trigger:
     - platform: state
       entity_id: person.georgina
+      from: 'not_home'
       to: 'home'
   condition:
     - condition: numeric_state
@@ -29,6 +30,11 @@
         {% if is_state('input_boolean.david_status', 'off') %} true
         {% elif is_state('person.david', 'home') %} true
         {% else %} false {% endif %}
+    - condition: state
+      entity_id: person.georgina
+      state: 'not_home'
+      for:
+        minutes: 5
   action:
     - service: mqtt.publish
       data_template:
