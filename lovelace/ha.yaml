@@ -103,8 +103,8 @@ cards:
       - entity: binary_sensor.front_window_battery # Sensor6 (Front Window)
         name: Dinning Window Sensor
         icon: mdi:battery-50
-      - entity: binary_sensor.kitchen_window_battery # Sensor7 (Livingroom Window)
-        name: Living Window Sensor
+      - entity: binary_sensor.kitchen_window_battery # Sensor7 (Kitchen Window)
+        name: Kitchen Window Sensor
         icon: mdi:battery-50
     # Door Sensors
       - entity: binary_sensor.front_door_battery       # Door1 (Front Door)

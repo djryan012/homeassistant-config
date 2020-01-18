@@ -44,7 +44,7 @@ cards:
       - entity: binary_sensor.front_window_status # Sensor6 (Front Window)
         name: Dinning
       - entity: binary_sensor.kitchen_window_status # Sensor7 (Kitchen Window)
-        name: Living
+        name: Kitchen
       - entity: binary_sensor.front_door_status # Door1 (Front Door)
         name: Frontdoor
       - entity: binary_sensor.slider_door_status # Sensor4 (Slider Door)

@@ -68,8 +68,8 @@ cards:
         name: Office
       - entity: binary_sensor.front_window_status # Sensor6 (Front Window)
         name: Dinning
-      - entity: binary_sensor.kitchen_window_status # Sensor7 (Livingroom Window)
-        name: Living
+      - entity: binary_sensor.kitchen_window_status # Sensor7 (Kitchen Window)
+        name: Kitchen
       - type: divider
         style:
           height: 2px
