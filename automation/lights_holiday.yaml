@@ -1,5 +1,5 @@
 - alias: 'Christmas Tree on when home'
-  initial_state: True
+  initial_state: False
   trigger:
     - platform: state
       entity_id:
@@ -17,7 +17,7 @@
     entity_id: light.dinning_room_switch #Christmas Tree
 
 - alias: 'Christmas Tree off when away'
-  initial_state: True
+  initial_state: False
   trigger:
     - platform: state
       entity_id:
