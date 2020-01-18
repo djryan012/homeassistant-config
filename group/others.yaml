@@ -61,14 +61,14 @@ window_sensors:
     - binary_sensor.office_window_status # Sensor3 (Office Window)
     - binary_sensor.slider_door_status # Sensor4 (Slider Door)
     - binary_sensor.front_window_status # Sensor6 (Front Window)
-    - binary_sensor.livingroom_window_status # Sensor7 (Livingroom Window)
+    - binary_sensor.kitchen_window_status # Sensor7 (Kitchen Window)
 
 door_sensors:
   name: Door Sensors
   entities:
     - binary_sensor.slider_door_status # Sensor4 (Slider Door)
     - binary_sensor.side_door_status # Sensor5 (Side Door)
-    - binary_sensor.front_door_status       # Door1 (Front Door)
+    - binary_sensor.front_door_status # Door1 (Front Door)
 
 wallpanel:
   name: Wall Panel

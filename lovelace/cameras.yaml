@@ -26,8 +26,9 @@ cards:
   - type: picture-glance
     title: Back Yard
     entities:
-      - binary_sensor.pond_filter_status # Sensor8 Pond Filter
-      - switch.patio_lights
+      # - binary_sensor.pond_filter_status # Sensor8 Pond Filter
+      - light.patio_lights
+      - switch.sonoff_pow3
       - camera.back_yard
       - binary_sensor.backyard_motion_sensor
       # - binary_sensor.back_yard_watchdog

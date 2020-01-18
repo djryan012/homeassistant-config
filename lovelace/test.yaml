@@ -15,9 +15,10 @@ cards:
       - entity: switch.garage_side  #garage_side
         name: Garage Sidedoor Switch
         icon: mdi:toggle-switch
-      - entity: switch.patio_lights  #patio lights
+      - entity: light.backyard_lights  #patio lights
         name: Back Patio Lights
-        icon: mdi:toggle-switch
+        type: custom:slider-entity-row
+        break_slider: true
   - type: entities
     title: Master Bedroom Insteon
     show_header_toggle: false

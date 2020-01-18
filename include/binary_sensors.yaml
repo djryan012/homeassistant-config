@@ -135,13 +135,13 @@
   state_topic: 'insteon/47.fa.75/low_battery'
   device_class: 'battery'
 
-# Sensor7 (Livingroom Window)
+# Sensor7 (Kitchen Window)
 - platform: mqtt
-  name: Livingroom Window Status
+  name: Kitchen Window Status
   state_topic: 'insteon/47.fc.14/state'
   device_class: 'window'
 - platform: mqtt
-  name: Livingroom Window Battery
+  name: Kitchen Window Battery
   state_topic: 'insteon/47.fc.14/low_battery'
   device_class: 'battery'
 

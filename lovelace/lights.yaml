@@ -73,20 +73,27 @@ cards:
         icon: mdi:toggle-switch
 
   - type: entities
-    title: Miscellaneous
+    title: Outside Lights
     show_header_toggle: false
     entities:
       - entity: light.porchww
         name: Front Porch Sconce
       - entity: light.sideyardww
         name: Side Door Sconce
-      - type: divider
-        style:
-          height: 1px
-          background: '#62717b'
+      - entity: light.patio_lights
+        name: Patio Lights
+
+  - type: entities
+    title: Miscellaneous
+    show_header_toggle: false
+    entities:
       - entity: switch.sonoff2
         name: Feed Dog Reminder
+        icon: mdi:toggle-switch
+      - entity: switch.sonoff_pow3
+        name: Backyard Lights
         icon: mdi:toggle-switch
       - entity: switch.sonoff1
         name: Christmas Tree
         icon: mdi:toggle-switch
+        

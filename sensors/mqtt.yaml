@@ -1,8 +1,9 @@
 ####################################################
 #                      MQTT                        #
 ####################################################
-
 #https://www.home-assistant.io/components/sensor.mqtt/
+
+# SonOff Devices
 - platform: mqtt
   name: "POW1 Power"
   state_topic: "tele/sonoff_pow1/SENSOR"
@@ -13,7 +14,6 @@
   state_topic: "tele/sonoff_pow1/SENSOR"
   value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
   unit_of_measurement: "V"
-
 - platform: mqtt
   name: "POW2 Power"
   state_topic: "tele/sonoff_pow2/SENSOR"
@@ -22,6 +22,16 @@
 - platform: mqtt
   name: "POW2 Voltage"
   state_topic: "tele/sonoff_pow2/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "POW3 Power"
+  state_topic: "tele/sonoff_pow3/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "POW3 Voltage"
+  state_topic: "tele/sonoff_pow3/SENSOR"
   value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
   unit_of_measurement: "V"
 
@@ -53,27 +63,22 @@
   unit_of_measurement: "%"
   value_template: "{{ value_json.value }}"
 - platform: mqtt
-
   name: "WallPanel Charging"
   state_topic: "wallpanel/mywallpanel/sensor/battery"
   value_template: "{{ value_json.charging }}"
 - platform: mqtt
-
   name: "WallPanel Light Level"
   state_topic: "wallpanel/mywallpanel/sensor/light"
   unit_of_measurement: "lx"
   value_template: "{{ value_json.value }}"
-
 - platform: mqtt
   name: "WallPanel ScreenOn"
   state_topic: "wallpanel/mywallpanel/state"
   value_template: "{{ value_json.screenOn }}"
-
 - platform: mqtt
   name: "WallPanel ScreenBrightness"
   state_topic: "wallpanel/mywallpanel/state"
   value_template: "{{ value_json.brightness }}"
-
 - platform: mqtt
   name: "WallPanel CurrentUrl"
   state_topic: "wallpanel/mywallpanel/state"

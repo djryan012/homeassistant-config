@@ -43,7 +43,7 @@ cards:
         name: Office
       - entity: binary_sensor.front_window_status # Sensor6 (Front Window)
         name: Dinning
-      - entity: binary_sensor.livingroom_window_status # Sensor7 (Livingroom Window)
+      - entity: binary_sensor.kitchen_window_status # Sensor7 (Kitchen Window)
         name: Living
       - entity: binary_sensor.front_door_status # Door1 (Front Door)
         name: Frontdoor
@@ -85,12 +85,20 @@ cards:
           - entity: light.porchww
             tap_action:
               action: toggle
-            name: Front Porch
+            name: Porch
           - entity: light.sideyardww
-            name: Side Yard Door
+            name: Sideyard
             tap_action:
               action: toggle
-        columns: 2
+          - entity: light.patio_lights
+            name: Patio
+            tap_action:
+              action: toggle
+          # - entity: switch.sonoff_pow3
+          #   name: Backyard
+          #   tap_action:
+          #     action: toggle
+        columns: 3
   - type: vertical-stack
     cards:
       - type: weather-forecast

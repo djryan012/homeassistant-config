@@ -24,7 +24,7 @@
 
 - platform: mqtt
   schema: json
-  name: "Backyard Lights" #Dimmer1 (Micro)
+  name: "Patio Lights" #Dimmer1 (Micro)
   state_topic: "insteon/4f.b2.53/state"
   command_topic: "insteon/4f.b2.53/level"
   brightness: true

@@ -17,15 +17,6 @@
   payload_off: 'OFF'
   qos: 1
   retain: true
-- platform: mqtt
-  name: 'Patio Lights' #Switch3
-  state_topic: 'insteon/54.4b.92/state'
-  command_topic: 'insteon/54.4b.92/set'
-  optimistic: true
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-  retain: true
 
   #------------------------------------------------------------------------
   # Keypad Linc
@@ -160,6 +151,15 @@
   name: 'sonoff2'
   command_topic: 'cmnd/sonoff2/power'
   state_topic: 'stat/sonoff2/POWER'
+  optimistic: true
+  payload_on: 'ON'
+  payload_off: 'OFF'
+  qos: 1
+  retain: true
+- platform: mqtt
+  name: 'sonoff_pow3'
+  command_topic: 'cmnd/sonoff_pow3/power'
+  state_topic: 'stat/sonoff_pow3/POWER'
   optimistic: true
   payload_on: 'ON'
   payload_off: 'OFF'
