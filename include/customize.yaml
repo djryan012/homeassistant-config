@@ -56,31 +56,28 @@ group.all_sensors:
 group.all_switches:
   hidden: false
 
-
 input_boolean.david_status:
   icon: mdi:hotel
 input_boolean.georgina_status:
   icon: mdi:hotel
 
-
 light.livingroomww_1:
   friendly_name: Livingroom 1
-
 light.livingroomww_2:
   friendly_name: Livingroom 2
 
 light.kitchenww_1:
   friendly_name: Kitchen Pendent 1
-
 light.kitchenww_2:
   friendly_name: Kitchen Pendent 2
 
 light.dinningroomww:
   friendly_name: Dining Room
 
+light.master_ceiling_light:
+  friendly_name: Bedroom Light
 light.bedroomww_d:
   friendly_name: David Nightstand
-
 light.bedroomww_g:
   friendly_name: Georgina Nightstand
 
@@ -91,9 +88,6 @@ light.sideyardww:
 
 light.officews:
   friendly_name: Office Desk
-light.master_ceiling_light:
-  friendly_name: Bedroom Light
-
 light.office_ceiling_light:
   friendly_name: Office Light
 
@@ -105,40 +99,31 @@ media_player.fonda:
 media_player.samsung_tv:
   friendly_name: Samsung TV
 
-
 person.david:
   entity_picture: "/local/star_trek.jpg"
 person.georgina:
   entity_picture: "/local/r2d2.jpg"
 
-
 scene.bedroom_normal:
   friendly_name: Nightstand Preset Normal
-
 scene.bedroom_bright:
   friendly_name: Nightstand Preset Full
-
 scene.bedroom_dim:
   friendly_name: Nightstand Preset Dim
 
 scene.kitchen_normal:
   friendly_name: Kitchen Preset Normal
-
 scene.kitchen_bright:
   friendly_name: Kitchen Preset Full
-
 scene.kitchen_dim:
   friendly_name: Kitchen Preset Dim
 
 scene.livingroom_normal:
   friendly_name: Livingroom Preset Normal
-
 scene.livingroom_bright:
   friendly_name: Livingroom Preset Full
-
 scene.livingroom_dim:
   friendly_name: Livingroom Preset Dim
-
 
 sensor.office_motion_sensor:
   friendly_name: Ikea MotionSensor Office
@@ -150,8 +135,11 @@ sensor.tradfri_remote_control:
   friendly_name: Ikea Light Remote
   icon: mdi:battery-outline
 sensor.ecobee_sensor_compare_temp:
-  friendly_name: Compare Diff in Temp
+  friendly_name: Compare Temp
   icon: mdi:thermometer-lines
+  device_class: temperature
+
+
 sensor.pow1_power:
   icon: mdi:washing-machine
 sensor.pow2_power:
@@ -160,17 +148,15 @@ sensor.pow2_power:
 switch.sonoff1:
   friendly_name: Floor Lamp #Christmas Tree
   assumed_state: false
-
 switch.sonoff2:
-  friendly_name: Utility
+  friendly_name: Feed Dog
   assumed_state: false
-switch.sonoff3:
-  friendly_name: Washing Machine
-  icon: mdi:volume-medium
+switch.sonoff_pow3:
+  friendly_name: Backyard Lights
   assumed_state: false
+
 switch.switchlinc_relay_dual_band_48_79_ba:
   friendly_name: Garage Side Door
-
 switch.switchlinc_relay_dual_band_48_7a_4e:
   friendly_name: Garage Inner Door
 

@@ -14,22 +14,9 @@ georgina_phone_charging:
   name: Georinga Phone Charging
   initial: off
 
-# butterhome:
-#   name: Butter Home
-#   initial: off
-#   icon: mdi:cellphone-iphone
-
 vacation:
   name: Vacation Mode
   initial: off
-
-dog:
-  name: Pet Away Mode
-  initial: off
-
-# nodered:
-#   name: Node Red Enabled
-#   initial: off
 
 wallpanel_blackout:
   name: Walpanel Blackout
@@ -38,3 +25,11 @@ wallpanel_blackout:
 wallpanel_ideal:
   name: Walpanel Idle
   initial: off
+
+dog:
+  name: Pet Away Mode
+  initial: off
+
+camera_notifications:
+  name: Camera Notifications
+  initial: on
