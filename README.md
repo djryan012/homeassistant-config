@@ -9,13 +9,15 @@ Github copy of <a href="https://travis-ci.com/djryan012/homeassistant-config"><i
 
 # System integration includes
 * Tradfri Lighting
-* Insteon PLM (Switches, Keypad, FanLinc, Door/Window Sensors, and Motion)
-* Sonoff Relays (Basic & POW)
-* Ecobee 3 (with 4 remote sensors)
+* <a href="https://github.com/TD22057/insteon-mqtt">Insteon-MQTT</a> PLM (Switches, Keypad, FanLinc, Micro Dimmers/Switches, Door/Window Sensors, and Motion)  
+* Sonoff Relays (Basic & POW flashed wtih Tasmota)
+* Ecobee 3 (with 3 remote sensors)
 * Alexa (Two Echo Dots)
 * Tasker APP (RestAPI post for sleeping and charging)
 * Zanzito APP (tracking, notifications, alarm clock)
-* Samsung Smart TV
+* Custom Component Samsung Smart TV
 * BlueIris (moved away from zoneminder)
+* <a href="https://github.com/pkozul/ha-floorplan">Floorplan</a> on 10" AlexaFire Wall mounted using <a href="https://github.com/thanksmister/wallpanel-android">Wallpanel</a>
+
 
 I have been using [Home Assistant](https://home-assistant.io) since July 2017 with version __0.48.0__.
