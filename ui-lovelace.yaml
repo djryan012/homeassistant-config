@@ -30,3 +30,4 @@ views:
   - !include lovelace/automations.yaml
   # - !include lovelace/blueiris.yaml # Have all blueiris functions working in camera page
   - !include lovelace/test.yaml
+  - !include lovelace/solar.yaml

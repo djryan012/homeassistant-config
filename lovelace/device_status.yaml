@@ -54,7 +54,6 @@ cards:
         name: Front Door
       - entity: binary_sensor.sideyard_motion_sensor
         name: Side Door
-
     columns: 4
   - type: entities
     title: Window's and Door's
@@ -112,6 +111,18 @@ cards:
         graph: line
         detail: 2
         hours_to_show: 2
+
+  - type: horizontal-stack
+    # title: Unifi Network Status
+    cards:
+      - type: sensor
+        theme: midnightclear
+        entity: sensor.solaredge_current_power
+        name: Current Solar Edge 
+        hours_to_show: 18
+        graph: line
+        detail: 2
+
   - type: entities
     title: Sonoff POW Switches
     show_header_toggle: false

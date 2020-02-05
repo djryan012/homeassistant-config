@@ -1,0 +1,29 @@
+####################################################
+#                  SOLAR TEST                      #
+####################################################
+
+title: Solar
+icon: mdi:solar-power
+cards:
+  - type: entities
+    title: Solar Edge System
+    show_header_toggle: false
+    entities:
+      # - entity: sensor.solaredge_batteries
+      - entity: sensor.solaredge_current_power
+      - entity: sensor.solaredge_energy_today
+      - entity: sensor.solaredge_energy_this_month
+      - entity: sensor.solaredge_energy_this_year
+      - entity: sensor.solaredge_lifetime_energy
+      - entity: sensor.solaredge_site_details
+      - entity: sensor.solaredge_current_power_template
+      - entity: sensor.solaredge_energy_today_template
+
+      # - entity: sensor.solaredge_gateways
+      # - entity: sensor.solaredge_grid_power
+      # - entity: sensor.solaredge_inverters
+      # - entity: sensor.solaredge_meters
+      # - entity: sensor.solaredge_power_consumption
+      # - entity: sensor.solaredge_sensors
+      # - entity: sensor.solaredge_solar_power
+      # - entity: sensor.solaredge_storage_power

@@ -143,3 +143,9 @@
             {% endif %}
           {%- endfor -%}
         {%- endfor -%}
+
+#Solor Edge 
+    solaredge_current_power_template:
+      value_template: "{{ (states('sensor.solaredge_current_power') | float / 1000) | round(2) }}"
+    solaredge_energy_today_template:
+      value_template: "{{ (states('sensor.solaredge_energy_today') | float / 1000) | round(2) }}"
