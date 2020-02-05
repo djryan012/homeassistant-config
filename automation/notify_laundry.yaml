@@ -13,7 +13,7 @@
     - service: script.audio_notify
       data_template:
         tts_msg: "The Washing Machine is now Done"
-        mplayer: "echo_dot_bedroom"
+        mplayer: "echo_dot_main"
 
 - alias: "Laundry Dryer is Done"
   initial_state: True
@@ -30,4 +30,4 @@
     - service: script.audio_notify
       data_template:
         tts_msg: "The Clothes Dryer is now Done"
-        mplayer: "echo_dot_bedroom"
+        mplayer: "echo_dot_main"

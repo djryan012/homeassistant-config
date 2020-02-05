@@ -44,7 +44,7 @@
     - service: script.audio_notify
       data_template:
         tts_msg: "Georgina is Now Home"
-        mplayer: "echo_dot_bedroom"
+        mplayer: "echo_dot_main"
 
 - alias: "David is Home"
   initial_state: True
@@ -70,4 +70,4 @@
     # - service: script.audio_notify
     #   data_template:
     #     tts_msg: "David is Now Home"
-    #     mplayer: "echo_dot_bedroom"
+    #     mplayer: "echo_dot_main"

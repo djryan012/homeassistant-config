@@ -11,7 +11,7 @@
     - service: script.audio_notify
       data_template:
         tts_msg: "Home Assistant has Restarting"
-        mplayer: "echo_dot_bedroom"
+        mplayer: "echo_dot_main"
 
 - alias: Update Available Notification
   trigger:
@@ -71,13 +71,6 @@
       data:
         message: 'The pond filter may have an issue as of {{now().strftime("%H:%M")}}'
 
-# - alias: "Internet Speed Connection Great"
-#   trigger:
-#     - platform: template
-#       value_template: "{{ states('sensor.speedtest_download')|float >= 10 }}"
-#   action:
-#     - service: shell_command.green
-
 - alias: "Internet Speed Connection Poor"
   trigger:
     - platform: template
@@ -85,5 +78,16 @@
   action:
     - service: notify.telbot_david
       data:
-        message: 'Internet Speed is {{ sensor.speedtest_download}}"'
+        message: "Internet Speed is {{ sensor.speedtest_download}}"
 
+- alias: Persistent Notification
+  trigger:
+    platform: template
+    value_template: "{{ states('persistent_notification.httplogin') != 'unknown' }}"    
+  action:
+    - service: notify.telbot_david
+      data:
+        message: 'Notify: {{ state_attr(persistent_notification.http_login, message)}}'
+    # - service: notify.telbot_david
+    #   data:
+    #     message: 'Hass.io is back up as of {{now().strftime("%H:%M:%S")}}'
