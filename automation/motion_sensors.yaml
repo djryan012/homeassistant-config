@@ -1,7 +1,6 @@
 #####  Turn Side light on with motion  #####
 - alias: "Side Light on by camera sensor"
   initial_state: True
-  # hide_entity: True
   trigger:
     - platform: state
       entity_id: binary_sensor.sideyard_motion_sensor
@@ -45,7 +44,6 @@
 #####  Turn Patio light on with motion  #####
 - alias: "Patio Light on by camera sensor"
   initial_state: True
-  # hide_entity: True
   trigger:
     - platform: state
       entity_id: binary_sensor.backyard_motion_sensor

@@ -1,7 +1,6 @@
 
 # - alias: 'Pond Filter Issue for Mark'
 #   initial_state: True
-#   hide_entity: True
 #   trigger:
 #     - platform: state
 #       entity_id: binary_sensor.open_close_sensor_47_fa_00 # Sensor8	(Pond Filter)

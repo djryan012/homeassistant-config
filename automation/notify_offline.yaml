@@ -24,7 +24,6 @@
 
 - alias: "Tradfri Lights Unavailable"
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: state
       entity_id: light.bedroomww_d,light.bedroomww_g,light.dinningroomww,light.kitchenww_1,light.kitchenww_2,light.livingroomww_1,light.livingroomww_2,light.officews,light.porchww,light.sideyardww

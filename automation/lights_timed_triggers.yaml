@@ -1,7 +1,6 @@
 #####  Exterior lights on at sunset  #####
 - alias: "Porch Light ON"
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: sun
       event: sunset
@@ -15,7 +14,6 @@
 #####  Dim porch light at 10pm  #####
 - alias: 'Dim down porch light'
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: time
       at: "22:00:00"
@@ -29,7 +27,6 @@
 #####  Turn porch light off at sunrise  #####
 - alias: "Porch Light off at sunrise"
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: sun
       event: sunrise

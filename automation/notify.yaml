@@ -1,6 +1,5 @@
 - alias: 'Hass Startup Notification'
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: homeassistant
       event: start
@@ -26,7 +25,6 @@
 
 - alias: "Battery is low in Sensor"
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: numeric_state
       entity_id: sensor.office_motion_sensor,sensor.tradfri_remote_control,sensor.exterior_motion_sensor
@@ -38,7 +36,6 @@
 
 - alias: "Tell David to leave for work"
   initial_state: True
-  hide_entity: false
   trigger:
     - platform: state
       entity_id: sensor.my_event_offset_1
@@ -58,7 +55,6 @@
 
 - alias: 'Pond Filter Issue'
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: state
       entity_id: binary_sensor.pond_filter_status # Sensor8	(Pond Filter)

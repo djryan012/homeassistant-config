@@ -1,6 +1,5 @@
 - alias: 'living_room_fan'
   initial_state: True
-  # hide_entity: True
   trigger:
     - platform: state
       entity_id: input_select.living_room_fan
@@ -11,7 +10,6 @@
 
 - alias: 'master_bedroom_fan'
   initial_state: True
-  # hide_entity: True
   trigger:
     - platform: state
       entity_id: input_select.master_bedroom_fan
@@ -22,7 +20,7 @@
 
 - alias: 'office_fan'
   initial_state: True
-  # hide_entity: True
+
   trigger:
     - platform: state
       entity_id: input_select.office_fan

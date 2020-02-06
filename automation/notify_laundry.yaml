@@ -1,6 +1,5 @@
 - alias: "Laundry Washer is Done"
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: numeric_state
       entity_id: sensor.pow1_power
@@ -17,7 +16,6 @@
 
 - alias: "Laundry Dryer is Done"
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: numeric_state
       entity_id: sensor.pow2_power

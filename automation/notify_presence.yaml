@@ -1,6 +1,5 @@
 - alias: "Georgina Leaving Work"
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: state
       entity_id: person.georgina
@@ -15,7 +14,6 @@
 
 - alias: "Georgina is Home"
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: state
       entity_id: person.georgina
@@ -48,7 +46,6 @@
 
 - alias: "David is Home"
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: state
       entity_id: person.david

@@ -1,6 +1,5 @@
 - alias: "Georgina is Awake"
   initial_state: True
-  hide_entity: false
   trigger:
     - platform: state
       entity_id: input_boolean.georgina_status
@@ -10,7 +9,6 @@
 
 - alias: "Wake up David for Work"
   initial_state: True
-  hide_entity: false
   trigger:
     - platform: state
       entity_id: sensor.my_event_offset_2
@@ -33,7 +31,6 @@
 
 - alias: "Reset David Sleeping"
   initial_state: True
-  # hide_entity: True
   trigger:
     - platform: state
       entity_id: input_boolean.david_phone_charging
@@ -50,7 +47,6 @@
 
 - alias: "Reset Georgina Sleeping"
   initial_state: True
-  # hide_entity: True
   trigger:
     - platform: state
       entity_id: input_boolean.georgina_phone_charging

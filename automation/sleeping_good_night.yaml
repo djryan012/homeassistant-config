@@ -33,7 +33,6 @@
 # Turn off bedroom lights when Georgina goes to sleep
 - alias: 'Bedroom Lights Out Georgina asleep'
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: state
       entity_id: input_boolean.georgina_status
@@ -50,7 +49,6 @@
 # Turn off bedroom lights when David goes to sleep
 - alias: 'Bedroom Lights Out David asleep'
   initial_state: True
-  hide_entity: True
   trigger:
     - platform: state
       entity_id: input_boolean.david_status
