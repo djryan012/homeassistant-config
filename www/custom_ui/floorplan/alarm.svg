@@ -758,17 +758,17 @@
      borderopacity="1"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.4837628"
-     inkscape:cx="411.81133"
-     inkscape:cy="362.42358"
+     inkscape:zoom="1.3229549"
+     inkscape:cx="807.38196"
+     inkscape:cy="506.04391"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1680"
-     inkscape:window-height="987"
-     inkscape:window-x="1272"
-     inkscape:window-y="-8"
+     inkscape:window-width="1280"
+     inkscape:window-height="1001"
+     inkscape:window-x="-8"
+     inkscape:window-y="18"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -816,8 +816,7 @@
      id="layer2"
      inkscape:label="Floorplan"
      style="display:inline;opacity:1"
-     transform="translate(0,40.000016)"
-     sodipodi:insensitive="true">
+     transform="translate(0,40.000016)">
     <g
        style="display:inline;opacity:1;stroke-width:0.72749466"
        transform="matrix(1.4316496,0,0,1.4316496,-758.10896,-64.951734)"
@@ -1103,7 +1102,7 @@
     <path
        style="display:inline;opacity:1;fill:#5b5b5b;fill-opacity:1;stroke-width:3.07446051"
        inkscape:connector-curvature="0"
-       d="m 1144.8302,388.01846 a 3.0721551,3.0767663 0 0 0 -3.0721,3.0767 3.0721551,3.0767663 0 0 0 3.0721,3.07678 3.0721551,3.0767663 0 0 0 3.0721,-3.07678 3.0721551,3.0767663 0 0 0 -3.0721,-3.0767 m 1.5361,-27.69092 c 13.8248,0 14.1627,10.984 6.9124,14.61471 -3.0414,1.50746 -4.3932,4.73814 -4.9769,7.59953 1.4746,0.61527 2.7649,1.5692 3.748,2.79983 11.3671,-6.15355 23.5943,-3.72295 23.5943,7.29188 0,13.84551 -10.9677,14.15309 -14.5928,6.8612 -1.5361,-3.04603 -4.7926,-4.39969 -7.6497,-4.98429 -0.6141,1.47685 -1.5668,2.73837 -2.7956,3.7843 6.1136,11.35342 3.6866,23.56808 -7.3118,23.56808 -13.8248,0 -14.1013,-11.01485 -6.8509,-14.64534 3.0107,-1.50766 4.3624,-4.70754 4.9768,-7.53809 -1.5053,-0.6153 -2.8263,-1.59998 -3.8094,-2.83064 -11.3363,6.09202 -23.5021,3.69214 -23.5021,-7.29199 0,-13.84544 10.9368,-14.18379 14.562,-6.89194 1.5361,3.04607 4.7619,4.36899 7.619,4.95364 0.5844,-1.47687 1.5668,-2.7691 2.8263,-3.75363 -6.1136,-11.35327 -3.6865,-23.53725 7.2504,-23.53725 z"
+       d="m 811.30814,352.74209 a 3.0721551,3.0767663 0 0 0 -3.0721,3.0767 3.0721551,3.0767663 0 0 0 3.0721,3.07678 3.0721551,3.0767663 0 0 0 3.0721,-3.07678 3.0721551,3.0767663 0 0 0 -3.0721,-3.0767 m 1.5361,-27.69092 c 13.8248,0 14.1627,10.984 6.9124,14.61471 -3.0414,1.50746 -4.3932,4.73814 -4.9769,7.59953 1.4746,0.61527 2.7649,1.5692 3.748,2.79983 11.3671,-6.15355 23.5943,-3.72295 23.5943,7.29188 0,13.84551 -10.9677,14.15309 -14.5928,6.8612 -1.5361,-3.04603 -4.7926,-4.39969 -7.6497,-4.98429 -0.6141,1.47685 -1.5668,2.73837 -2.7956,3.7843 6.1136,11.35342 3.6866,23.56808 -7.3118,23.56808 -13.8248,0 -14.1013,-11.01485 -6.8509,-14.64534 3.0107,-1.50766 4.3624,-4.70754 4.9768,-7.53809 -1.5053,-0.6153 -2.8263,-1.59998 -3.8094,-2.83064 -11.3363,6.09202 -23.5021,3.69214 -23.5021,-7.29199 0,-13.84544 10.9368,-14.18379 14.562,-6.89194 1.5361,3.04607 4.7619,4.36899 7.619,4.95364 0.5844,-1.47687 1.5668,-2.7691 2.8263,-3.75363 -6.1136,-11.35327 -3.6865,-23.53725 7.2504,-23.53725 z"
        id="fan.livingroom_ceiling_fan" />
     <circle
        transform="matrix(1.0415174,0,0,1.0415174,-352.6039,-43.018639)"
@@ -1256,13 +1255,13 @@
        style="display:inline;fill:#e7376b;fill-opacity:1;stroke-width:1.5" />
     <rect
        inkscape:label="#binary_sensor.front_window_status"
-       transform="matrix(0,1.0415174,-1.0415174,0,-352.6039,-43.018639)"
-       y="-1207.1532"
-       x="880.2121"
-       height="107.98934"
-       width="12.192359"
+       transform="rotate(90)"
+       y="-1029.8386"
+       x="873.73755"
+       height="114.2869"
+       width="12.698552"
        id="binary_sensor.front_window_status"
-       style="display:inline;fill:#e7376b;fill-opacity:1;stroke-width:1.49999988" />
+       style="display:inline;fill:#e7376b;fill-opacity:1;stroke-width:1.57482481" />
     <rect
        transform="matrix(1.0415174,0,0,1.0415174,-352.6039,-43.018639)"
        inkscape:label="#rect11351-0"
@@ -1620,7 +1619,7 @@
     <text
        y="146.81775"
        x="1564.3855"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48.50232315px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:end;writing-mode:lr-tb;text-anchor:end;display:inline;fill:#808080;stroke-width:1.83589387"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:43.99999999px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:end;writing-mode:lr;text-anchor:end;display:inline;fill:#808080;stroke-width:1.83589387;"
        id="sensor.floorplan_date">Friday, June 30</text>
     <g
        inkscape:label="#climate"
@@ -1643,7 +1642,7 @@
        id="g6070"
        transform="translate(-63.000061)">
       <path
-         d="m 1217.0215,1127.2692 c 0,0 -11.049,11.5751 -11.049,18.415 0.3507,6.1383 5.7875,10.6982 11.9258,10.3474 5.6121,-0.3507 9.9966,-4.7352 10.3474,-10.3474 -0.1754,-6.8399 -11.2242,-18.415 -11.2242,-18.415 m 4.5598,11.5751 1.9291,1.7538 -11.0489,10.5229 -1.9292,-1.7538 m 2.2799,-10.3475 c 1.2278,0 2.28,0.8769 2.28,2.1046 v 0 0 c 0,1.2277 -1.0522,2.2799 -2.28,2.1046 v 0 0 c -1.2276,0 -2.2799,-0.8769 -2.2799,-2.1046 v 0 0 c 0,-1.2277 1.0523,-2.1046 2.2799,-2.1046 v 0 0 m 8.243,7.7168 c 1.2276,0 2.1045,1.0523 1.9291,2.2799 -0.1754,1.2277 -1.0522,2.1046 -2.2798,1.9292 -1.0524,0 -1.9293,-1.0523 -1.9293,-2.1046 v 0 c 0,-1.2276 1.0522,-2.1045 2.28,-2.1045 z"
+         d="m 1163.0215,1127.2692 c 0,0 -11.049,11.5751 -11.049,18.415 0.3507,6.1383 5.7875,10.6982 11.9258,10.3474 5.6121,-0.3507 9.9966,-4.7352 10.3474,-10.3474 -0.1754,-6.8399 -11.2242,-18.415 -11.2242,-18.415 m 4.5598,11.5751 1.9291,1.7538 -11.0489,10.5229 -1.9292,-1.7538 m 2.2799,-10.3475 c 1.2278,0 2.28,0.8769 2.28,2.1046 v 0 0 c 0,1.2277 -1.0522,2.2799 -2.28,2.1046 v 0 0 c -1.2276,0 -2.2799,-0.8769 -2.2799,-2.1046 v 0 0 c 0,-1.2277 1.0523,-2.1046 2.2799,-2.1046 v 0 0 m 8.243,7.7168 c 1.2276,0 2.1045,1.0523 1.9291,2.2799 -0.1754,1.2277 -1.0522,2.1046 -2.2798,1.9292 -1.0524,0 -1.9293,-1.0523 -1.9293,-2.1046 v 0 c 0,-1.2276 1.0522,-2.1045 2.28,-2.1045 z"
          style="display:inline;fill:#808080;stroke-width:1.36266005"
          inkscape:transform-center-y="-0.42710137"
          inkscape:transform-center-x="-12.385736"
@@ -1658,7 +1657,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#808080;stroke-width:1.36266005;enable-background:new"
          inkscape:label="#sensor.echo_humidity"
          id="sensor.echo_humidity"
-         x="1156.9347"
+         x="1180.9347"
          y="1151.995">XX</text>
     </g>
     <g
@@ -1805,7 +1804,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;opacity:1;fill:#808080;stroke-width:1.41643345"
          transform="scale(1.0000053,0.9999947)"
          id="sensor.usg_download"
-         x="320.00449"
+         x="317.00452"
          y="1150.9968">XX</text>
       <text
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#808080;stroke-width:1.62123764"
@@ -1820,7 +1819,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;opacity:1;fill:#808080;stroke-width:1.62123764;enable-background:new"
          inkscape:label="#sensor.usg_upload"
          id="sensor.usg_upload"
-         x="498.12726"
+         x="495.12726"
          y="1150.9907">XX</text>
       <text
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#808080;stroke-width:1.62123764"
@@ -1836,7 +1835,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;opacity:1;fill:#808080;stroke-width:1.41643345"
          transform="scale(1.0000053,0.9999947)"
          id="sensor.processor_use"
-         x="714.37708"
+         x="711.37708"
          y="1150.9968">XX</text>
       <text
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#808080;stroke-width:1.62123764"
@@ -1851,7 +1850,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;opacity:1;fill:#808080;stroke-width:1.62123764;enable-background:new"
          inkscape:label="#sensor.memory_use_percent"
          id="sensor.memory_use_percent"
-         x="907.72717"
+         x="904.72717"
          y="1150.9907">XX</text>
       <text
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#808080;stroke-width:1.62123764"
@@ -1862,13 +1861,13 @@
     <g
        id="g6090">
       <text
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;display:inline;opacity:1;fill:#808080;stroke-width:1.62123764;enable-background:new;"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;opacity:1;fill:#808080;stroke-width:1.62123764;enable-background:new"
          inkscape:label="#sensor.wallpanel_battery_level"
          id="sensor.wallpanel_battery_level"
-         x="106.06877"
+         x="103.06877"
          y="1151.2726">XX</text>
       <text
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.00000001px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;display:inline;fill:#808080;stroke-width:1.62123764;"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#808080;stroke-width:1.62123764"
          id="text7909-1-6-5-2"
          x="6.5541105"
          y="1151.2726">Battery</text>
@@ -1920,62 +1919,97 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;display:inline;stroke-width:1.19052088"
        inkscape:label="#climate">XX</text>
     <text
-       y="208.92062"
-       x="1529.6292"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:end;writing-mode:lr;text-anchor:end;display:inline;fill:#e6e6e6;stroke-width:1.83589387;"
+       y="222.48354"
+       x="1342.8247"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;display:inline;fill:#e6e6e6;stroke-width:1.83589387"
        id="label-automation"
        inkscape:label="#Label">
       <tspan
          sodipodi:role="line"
          id="tspan6182"
-         x="1529.6292"
-         y="208.92062">Automation Overides</tspan>
+         x="1342.8247"
+         y="222.48354">Automation Overides</tspan>
     </text>
     <text
-       y="275.47968"
-       x="1411.926"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:end;writing-mode:lr-tb;text-anchor:end;display:inline;fill:#e6e6e6;stroke-width:1.83589387"
+       y="279.61786"
+       x="1144.0553"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#e6e6e6;stroke-width:1.83589387"
        id="label-vacation"
        inkscape:label="#Label">
       <tspan
          sodipodi:role="line"
          id="tspan6268"
-         x="1411.926"
-         y="275.47968">Vacation Mode</tspan>
+         x="1144.0553"
+         y="279.61786">Vacation Mode</tspan>
     </text>
     <text
-       y="326.3978"
-       x="1420.2581"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:end;writing-mode:lr-tb;text-anchor:end;display:inline;fill:#e6e6e6;stroke-width:1.83589387"
+       y="330.53598"
+       x="1140.9967"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#e6e6e6;stroke-width:1.83589387"
        id="label-vacation-7"
        inkscape:label="#Label">
       <tspan
          sodipodi:role="line"
          id="tspan6266"
-         x="1420.2581"
-         y="326.3978">Pet Away Mode</tspan>
+         x="1140.9967"
+         y="330.53598">Pet Away Mode</tspan>
     </text>
     <text
-       y="379.72659"
-       x="1406.9866"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:end;writing-mode:lr-tb;text-anchor:end;display:inline;fill:#e6e6e6;stroke-width:1.83589387"
+       y="383.86478"
+       x="1142.4908"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#e6e6e6;stroke-width:1.83589387"
        id="label-camera_notify"
        inkscape:label="#Label">
       <tspan
          sodipodi:role="line"
          id="tspan6264"
-         x="1406.9866"
-         y="379.72659">Camera Notify</tspan>
+         x="1142.4908"
+         y="383.86478">Camera Notify</tspan>
     </text>
     <rect
        style="opacity:1;vector-effect:none;fill:#231f26;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.04999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
-       id="rect1217"
+       id="light.dinning_table_light"
        width="101.01871"
        height="13.629507"
        x="806.31317"
        y="692.79498"
        ry="1.3468665"
        inkscape:label="#light.dinning_table_light" />
+    <text
+       y="-12.372437"
+       x="515.58807"
+       id="sensor.solaredge_current_power_template"
+       transform="scale(1.0000053,0.9999947)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;opacity:1;fill:#808080;stroke-width:1.41643345"
+       inkscape:label="#sensor.solaredge_current_power_template">XX</text>
+    <text
+       y="-11.098888"
+       x="413.12988"
+       id="text7909-1-4-0"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#808080;stroke-width:1.62123764">
+      <tspan
+         y="-11.098888"
+         x="413.12988"
+         id="tspan1240"
+         sodipodi:role="line">Current</tspan>
+    </text>
+    <text
+       y="-12.372326"
+       x="713.41583"
+       id="sensor.solaredge_energy_today_template"
+       inkscape:label="#sensor.solaredge_energy_today_template"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:ArialMT;-inkscape-font-specification:'ArialMT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;opacity:1;fill:#808080;stroke-width:1.62123764;enable-background:new">XX</text>
+    <text
+       y="-14.045177"
+       x="629.90411"
+       id="text7909-1-6-5-5"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#808080;stroke-width:1.62123764">
+      <tspan
+         y="-14.045177"
+         x="629.90411"
+         id="tspan1242"
+         sodipodi:role="line">Today</tspan>
+    </text>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -1995,8 +2029,7 @@
      inkscape:groupmode="layer"
      id="layer7"
      inkscape:label="Clock"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <text
        inkscape:label="#sensor.floorplan_time"
        y="137.32034"

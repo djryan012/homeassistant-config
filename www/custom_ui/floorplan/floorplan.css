@@ -15,19 +15,19 @@ svg, svg * {
   /* font-weight : bold !important; */
   /* font-size : 15px !important; */
 }
-.static-text-date
-{
-  font-family : Helvetica !important;
-  /* font-weight : bold !important; */
-  /* font-size : 16px !important; */
-  fill : #FFFFA6 !important;
-}
 .static-text-time
 {
   font-family : Helvetica !important;
   /* font-weight : bold !important; */
-  /* font-size : 35px !important; */
-  fill: #FFFFA6 !important;
+  /* font-size : 60px !important; */
+  /* fill: #FFFFA6 !important; */
+}
+.static-text-date
+{
+  font-family : Helvetica !important;
+  /* font-weight : bold !important; */
+  /* font-size : 1em !important; */
+  /* fill : #FFFFA6 !important; */
 }
 .static-temp
 {
@@ -39,6 +39,7 @@ svg, svg * {
 /* Text Home/Away */
 .text-home {
   fill: rgb(88, 203, 238) !important;
+  text-transform: uppercase;
 }
 .text-away {
   fill: #E7376B !important;
@@ -52,7 +53,7 @@ svg, svg * {
   fill: #cccccc !important;
 }
 .button-on {
-  fill: orange !important;
+  fill: rgb(159, 255, 159) !important;
 }
 .button-off {
   fill: #cccccc !important;

@@ -49,6 +49,13 @@ rules:
     text_template: '${entity.state ? Math.ceil(entity.state) + "%": "undefined"}'
     class_template: 'return "static-text";'
 
+  - name: solar_edge
+    entities:
+      - sensor.solaredge_current_power_template
+      - sensor.solaredge_energy_today_template
+    text_template: '${entity.state ? entity.state + " kWh": "undefined"}'
+    class_template: 'return "static-text";'
+
   - name: text_font_date
     entities:
       - sensor.floorplan_date
