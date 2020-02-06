@@ -82,6 +82,9 @@ cards:
         name: Side Door Sconce
       - entity: light.patio_lights
         name: Patio Lights
+      - entity: switch.sonoff_pow3
+        name: Yard Lights Power
+        icon: mdi:toggle-switch
 
   - type: entities
     title: Miscellaneous
@@ -89,9 +92,6 @@ cards:
     entities:
       - entity: switch.sonoff2
         name: Feed Dog Reminder
-        icon: mdi:toggle-switch
-      - entity: switch.sonoff_pow3
-        name: Backyard Lights
         icon: mdi:toggle-switch
       - entity: switch.sonoff1
         name: Christmas Tree

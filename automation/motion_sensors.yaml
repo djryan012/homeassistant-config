@@ -17,7 +17,7 @@
     - service: homeassistant.turn_on
       entity_id: light.sideyardww
       data:
-        brightness: 150
+        brightness: 220
         transition: 0
 #####  Turn Side light off with motion  #####
 - alias: "Side Light off by camera sensor"
