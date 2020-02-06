@@ -20,7 +20,6 @@
       data:
         brightness: 150
         transition: 0
-
 #####  Turn Side light off with motion  #####
 - alias: "Side Light off by camera sensor"
   initial_state: True
@@ -41,8 +40,51 @@
     - service: homeassistant.turn_off
       entity_id: light.sideyardww
       data:
-#        brightness: 0
-        transition: 15
+        transition: 10
+
+#####  Turn Patio light on with motion  #####
+- alias: "Patio Light on by camera sensor"
+  initial_state: True
+  # hide_entity: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.backyard_motion_sensor
+      from: 'off'
+      to: 'on'
+  condition:
+      condition: or  # 'when dark' condition: either after sunset or before sunrise
+      conditions:
+        - condition: sun
+          after: sunset
+        - condition: sun
+          before: sunrise
+  action:
+    - service: homeassistant.turn_on
+      entity_id: light.patio_lights
+      data:
+        brightness: 150
+        transition: 0
+#####  Turn Patio light off with motion  #####
+- alias: "Patio Light off by camera sensor"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.backyard_motion_sensor
+      to: 'off'
+      for:
+        minutes: 10
+  condition:
+      condition: or  # 'when dark' condition: either after sunset or before sunrise
+      conditions:
+        - condition: sun
+          after: sunset
+        - condition: sun
+          before: sunrise
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.patio_lights
+      data:
+        transition: 10
 
 ####### Test
 - alias: "Turn on off garage lights when there is movement"
