@@ -66,44 +66,44 @@ insteon:
   devices:
     # On/off switch devices (outlets, wall switches, appliance modules, etc).
     switch:
-      - 48.7a.4e: 'Switch1' #Inside Door
-      - 48.79.ba: 'Switch2' #Outside Door
-      - 54.4b.92: 'Switch3' #???
+      - 48.7a.4e: 'garage inside switch' #Switch1
+      - 48.79.ba: 'garage outside switch' #Switch2
+      # - 54.4b.92: '' #Switch3
 
-    # Dimming devices (outlets, wall switches, lamp modules, etc).
+    # Dimming devices (outlets, wall switches, lamp modules, etc)
     dimmer:
-      - 4f.b2.53: 'Dimmer1' #Patio Lights
-      - 4f.b0.cf: 'Dimmer2' #Dinning Table Light
-      - 43.3f.1C: 'Dimmer3' #Dinning Room Switch
+      - 4f.b2.53: 'Patio Dimmer' #Dimmer1
+      - 4f.b0.cf: 'Dinning Table Dimmer' #Dimmer2
+      - 43.3f.1C: 'Dinning Room Switch' #Dimmer3
 
     # FanLinc fan controller (dimmer+fan).
     fan_linc:
-      - 3f.d9.93: 'Fanlinc1' #Master Bedroom
-      - 47.99.0f: 'Fanlinc2' #Office
-      - 47.98.21: 'Fanlinc3' #Living Room
+      - 3f.d9.93: 'Master Fan' #Fanlinc1
+      - 47.99.0f: 'Office Fan' #Fanlinc2
+      - 47.98.21: 'Livingroom Fan' #Fanlinc3
 
-    # KeypadLinc (dimmer+scene controller).
+    # KeypadLinc (dimmer+scene controller)
     keypad_linc:
-      - 46.fb.73: 'Keypad1' #Master Bedroom
-      - 51.79.ba: 'Keypad2' #Office
-      - 50.a1.f8: 'Keypad3' #Living Room
+      - 46.fb.73: 'Master Keypad' #Keypad1
+      - 51.79.ba: 'Office Keypad' #Keypad2
+      - 50.a1.f8: 'Livingroom Keypad' #Keypad3
 
-    # Battery powered sensors (door, hidden door, window).
+    # Battery powered sensors (door, hidden door, window)
     battery_sensor:
-      - 47.fa.ec: 'Sensor1' #Master Window
-      - 47.f5.78: 'Sensor2' #Guest Window
-      - 47.f9.3b: 'Sensor3' #Office Window
-      - 47.f2.e9: 'Sensor4' #Slider Door
-      - 47.f2.f0: 'Sensor5' #Side Door
-      - 47.fa.75: 'Sensor6' #Front Window
-      - 47.fc.14: 'Sensor7' #Kitchen Window
-      - 47.fa.00: 'Sensor8' #Pond Filter
-      - 54.3b.88: 'Door1' #Front Door
+      - 47.fa.ec: 'Master Sliding Window' #Sensor1
+      - 47.f5.78: 'Guest Sliding Window' #Sensor2
+      - 47.f9.3b: 'Office Sliding Window' #Sensor3
+      - 47.f2.e9: 'Slider Door' #Sensor4
+      - 47.f2.f0: 'Garage Side Door' #Sensor5
+      - 47.fa.75: 'Front Window' #Sensor6
+      - 47.fc.14: 'Kitchen Window' #Sensor7
+      - 47.fa.00: 'Pond Filter' #Sensor8
+      - 54.3b.88: 'Front Door' #Door1
 
-    # Battery powered motion sensors.
+    # Battery powered motion sensors
     motion:
-      - 4f.99.d9: 'motion1' #Garage
-      # - 4f.99.24: 'motion2' #Front Yard
+      - 4f.99.d9: 'Garage Motion' #Motion1
+      # - 4f.99.24: '' #Motion2
 
 #==========================================================================
 #
