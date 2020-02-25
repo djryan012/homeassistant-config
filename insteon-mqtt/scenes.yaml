@@ -23,6 +23,8 @@
       - dinning room switch
       - dinning table dimmer:
           ramp_rate: 2
+
+# Master Keypad Fanlinc Scenes
   - controllers:
       - master keypad:
           group: 4
@@ -66,6 +68,8 @@
           group: 2
           on_level: 33.3
           data_2: 28
+
+# Office Keypad Fanlinc Scenes
   - controllers:
       - office keypad:
           data_2: 28
@@ -109,6 +113,7 @@
           group: 2
           on_level: 66.7
           data_2: 28
+
   - controllers:
       - livingroom keypad: 3
     responders:
