@@ -91,7 +91,7 @@ cards:
           height: 1px
           background: '#62717b'
       - entity: switch.living_room_keypad_main #light.living_room_keypad_switch
-        name: Living Room Keypad Dimmer
+        name: Living Room Keypad Main
         icon: mdi:toggle-switch
       - entity: switch.living_room_keypad_a #keypad_a
         name: Living Room Keypad A

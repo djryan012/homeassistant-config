@@ -5,7 +5,7 @@ title: Device Status
 icon: mdi:information-outline
 cards:
   - type: custom:vertical-stack-in-card
-    title: Unifi Status
+    # title: Unifi Status
     cards:
       - type: horizontal-stack
         title: Unifi Network Status
@@ -27,7 +27,6 @@ cards:
             graph: line
             detail: 2
       - type: glance
-        # title: Occupancy Sensors
         entities:
           - entity: sensor.unifi_gateway_www
             name: WWW
@@ -36,6 +35,13 @@ cards:
           - entity: sensor.unifi_gateway_lan
             name: Lan
         columns: 3
+      - type: entities
+        # title: Controller
+        show_header_toggle: false
+        entities:
+          - entity: sensor.unifi_gateway_alerts
+          - entity: sensor.unifi_gateway_firmware_upgradable
+            name: Firmware Upgrades
 
   - type: glance
     title: Occupancy Sensors
@@ -54,6 +60,9 @@ cards:
         name: Front Door
       - entity: binary_sensor.sideyard_motion_sensor
         name: Side Door
+      - entity: binary_sensor.gate_motion_status
+        name: Side Gate
+
     columns: 4
   - type: entities
     title: Window's and Door's
@@ -173,6 +182,22 @@ cards:
     title: Falcon Player
     show_header_toggle: false
     entities:
-      - entity: sensor.fpp_repeat_status
-      - entity: sensor.fpp_status
+      - entity: sensor.fpp_branch
       - entity: sensor.fpp_version
+        name: Version
+      - entity: sensor.fpp_status
+        name: Status
+      # - entity: sensor.fpp_position_status
+      - entity: sensor.fpp_name_status
+        name: Name
+      - entity: sensor.fpp_repeat_status
+        name: Repeat
+      # - entity: sensor.fpp_section_status
+      #   name: Section
+      # - entity: sensor.fpp_section_position_status
+      - entity: sensor.fpp_sequence_status
+        name: Sequence
+      # - entity: sensor.fpp_media_title
+      # - entity: sensor.fpp_media_status
+      # - entity: sensor.fpp_media_artist
+      # - entity: sensor.fpp_playlist_details

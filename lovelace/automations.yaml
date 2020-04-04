@@ -4,42 +4,6 @@
 title: Automations
 icon: mdi:home-automation
 cards:
-  # - type: entities
-  #   title: Vacation Mode
-  #   show_header_toggle: false
-  #   entities:
-  #     - entity: input_boolean.vacation
-  #       icon: mdi:beach
-  - type: entities
-    title: Cameras
-    show_header_toggle: false
-    entities:
-      - entity: automation.notify_if_camera_is_offline
-      # - entity: automation.backyardcamera_offline
-      # - entity: automation.frontdoorcamera_offline
-      # - entity: automation.frontyardcamera_offline
-      - entity: automation.side_light_off_by_camera_sensor
-      - entity: automation.side_light_on_by_camera_sensor
-      # - entity: automation.sideyardcamera_offline
-      # - entity: automation.make_s4_cam_hidden
-      # - entity: automation.make_s4_cam_visible
-
-  - type: entities
-    title: Dog
-    show_header_toggle: false
-    entities:
-      - entity: automation.feed_the_dog_evening
-      - entity: automation.feed_the_dog_morning_weekends
-      - entity: automation.feed_the_dog_morning_weekdays
-      - entity: automation.turn_off_pet_away_mode
-      - entity: automation.turn_on_pet_away_mode
-
-  # - type: entities
-  #   title: Network Security
-  #   show_header_toggle: false
-  #   entities:
-  #     - entity: automation.notify_if_new_devices
-
   - type: entities
     title: Climate
     show_header_toggle: false
@@ -76,7 +40,11 @@ cards:
         # name: C9's Off at Sunrise
         # icon: mdi:led-off
       - entity: automation.dinning_light_out
-      - entity: automation.office_light_out
+      # - entity: automation.office_light_out
+      - entity: automation.patio_light_on_by_camera_sensor
+      # - entity: automation.patio_light_off_by_camera_sensor
+      # - entity: automation.side_light_off_by_sensor
+      - entity: automation.side_light_on_by_sensor
 
   - type: entities
     title: Notification
@@ -97,6 +65,9 @@ cards:
       - entity: automation.tradfri_lights_unavailable
       - entity: automation.update_available_notification
       - entity: automation.internet_speed_connection_poor
+      - entity: automation.persistent_notification
+      - entity: automation.notify_if_camera_is_offline
+      # - entity: automation.notify_if_new_devices
 
   - type: entities
     title: Home Assistant
@@ -122,8 +93,6 @@ cards:
     title: Other
     show_header_toggle: false
     entities:
-      # - entity: automation.butter_away
-      # - entity: automation.butter_home
       - entity: automation.reset_david_sleeping
       - entity: automation.reset_georgina_sleeping
       - entity: automation.georgina_is_awake
@@ -137,3 +106,13 @@ cards:
       - entity: automation.wallpanel_off_when_leaving
       - entity: automation.wallpanel_on_when_awake
       - entity: automation.wallpanel_on_when_home
+
+  - type: entities
+    title: Dog
+    show_header_toggle: false
+    entities:
+      - entity: automation.feed_the_dog_evening
+      - entity: automation.feed_the_dog_morning_weekends
+      - entity: automation.feed_the_dog_morning_weekdays
+      - entity: automation.turn_off_pet_away_mode
+      - entity: automation.turn_on_pet_away_mode

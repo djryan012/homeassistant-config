@@ -50,41 +50,36 @@ cards:
         icon: mdi:harddisk
     columns: 3
 
-  - type: glance
-    title: Home Assistant Info
-    entities:
-      - entity: sensor.installed_version
-        name: Installed Ver.
-        icon: mdi:folder-download
-      - entity: sensor.lets_encrypt_expiration
-        name: Lets Encrypt Expiration
-        icon: mdi:timelapse
-      - entity: sensor.hassio_version
-        name: Latest Release
-        icon: mdi:github-circle
-      - entity: sensor.hacs
-        name: HACs Udpates
-        icon: mdi:folder-download
-    columns: 2
-
-  # - type: entities
-  #   title: Hassio Update
-  #   show_header_toggle: false
-  #   entities:
-  #     - entity: updater.updater
+  - type: vertical-stack
+    # title: Home Assistant Info
+    cards:
+      - type: glance
+        title: Home Assistant Info
+        entities:
+          - entity: sensor.installed_version
+            name: Installed Ver.
+            icon: mdi:folder-download
+          - entity: sensor.hassio_version
+            name: Latest Release
+            icon: mdi:github-circle
+      - type: glance
+        entities:
+          - entity: sensor.lets_encrypt_expiration
+            name: Encryption Exp.
+            icon: mdi:timelapse
+          - entity: sensor.hacs
+            name: HACs Updates
+            icon: mdi:folder-download
 
   - type: entities
     title: Batteries
     show_header_toggle: false
     entities:
+      - entity: sensor.tradfri_remote_control
+        icon: mdi:battery-50
+        name: Tradfri Remote Battery
     # Motion
-      # - entity: sensor.tradfri_remote_control
-      #   icon: mdi:battery-50
-      #   name: Tradfri Remote Battery
-      # - entity: sensor.exterior_motion_sensor
-      #   icon: mdi:battery-50
-      #   name: Tradfri Exterior Motoin
-      - entity: sensor.office_motion_sensor
+      - entity: sensor.tradfri_motion_sensor
         icon: mdi:battery-50
         name: Tradfri Office Motion
       - entity: binary_sensor.garage_motion_battery

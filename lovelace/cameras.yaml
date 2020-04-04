@@ -11,7 +11,6 @@ cards:
     entities:
       - camera.front_yard
       - binary_sensor.frontyard_motion_sensor
-      # - binary_sensor.front_yard_watchdog
     camera_image: camera.front_yard
 
   - type: picture-glance
@@ -20,7 +19,6 @@ cards:
       - light.porchww
       - camera.front_door
       - binary_sensor.front_door_motion_sensor
-      # - binary_sensor.front_door_watchdog
     camera_image: camera.front_door
 
   - type: picture-glance
@@ -31,7 +29,6 @@ cards:
       - switch.sonoff_pow3
       - camera.back_yard
       - binary_sensor.backyard_motion_sensor
-      # - binary_sensor.back_yard_watchdog
     camera_image: camera.back_yard
 
   - type: picture-glance
@@ -39,7 +36,6 @@ cards:
     entities: 
       - camera.motioneye
       - binary_sensor.window_motion_sensor
-      # - binary_sensor.motioneye_watchdog
     camera_image: camera.motioneye
 
   - type: picture-glance
@@ -47,6 +43,5 @@ cards:
     entities:
       - light.sideyardww
       - camera.side_yard
-      - binary_sensor.sideyard_motion_sensor
-      # - binary_sensor.side_yard_watchdog
+      - binary_sensor.gate_motion_status
     camera_image: camera.side_yard
