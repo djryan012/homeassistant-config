@@ -7,7 +7,7 @@
       offset: '-00:30:00'
   condition:
     - condition: state
-      entity_id: group.persons
+      entity_id: group.all_persons
       state: 'home'
   action:
     - service: homeassistant.turn_on
@@ -24,7 +24,7 @@
       event: sunset
   condition:
     - condition: state
-      entity_id: group.persons
+      entity_id: group.all_persons
       state: 'not_home'
   action:
     - service: light.turn_on
@@ -38,7 +38,9 @@
   initial_state: True
   trigger:
     - platform: state
-      entity_id: group.persons
+      entity_id: 
+        - group.persons
+        - group.guest
       to: 'not_home'
   condition:
     - condition: numeric_state
@@ -58,20 +60,6 @@
 #     entity_id:
 #       - input_boolean.wallpanel_blackout
 
-# # Wallpanel on when home
-# - alias: 'Wallpanel on when home'
-#   initial_state: True
-#   trigger:
-#     - platform: state
-#       entity_id: group.persons
-#       from: 'not_home'
-#       to: 'home'
-#   action:
-#     service: script.wallpanel_clock
-#     service: homeassistant.turn_off
-#     entity_id:
-#       - input_boolean.wallpanel_blackout
-
 # Light on when getting home
 - alias: "Light on when getting home"
   initial_state: True
@@ -80,6 +68,7 @@
       entity_id: 
         - person.david
         - person.georgina
+        - group.guest
         # - device_tracker.michael_iphone
       from: 'not_home'
       to: 'home'
@@ -98,25 +87,3 @@
       data:
         brightness: 203
         transition: 4
-
-# Lights out no motion detected
-- alias: "Dinning Light out"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.echo_occupancy
-      to: 'off'
-  action:
-    - service: homeassistant.turn_off
-      entity_id:
-        -  group.dining_room
-- alias: "Office Light out"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.office_occupancy
-      to: 'off'
-  action:
-    - service: homeassistant.turn_off
-      entity_id:
-        -  group.office

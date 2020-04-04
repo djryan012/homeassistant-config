@@ -19,14 +19,14 @@ cards:
         icon: mdi:lan
       - entity: device_tracker.unifi_switch
         icon: mdi:lan
-      - entity: device_tracker.unifi_ap_lite
+      - entity: device_tracker.unifi_ap_ac_lite
         icon: mdi:access-point
 
   - type: entities
     title: Home Automation
     show_header_toggle: false
     entities:
-      - entity: device_tracker.kiosk_touchpad
+      - entity: device_tracker.fire_tablet_10
         icon: mdi:amazon-alexa
       - entity: device_tracker.echo_dot_main
         icon: mdi:amazon-alexa
@@ -95,18 +95,24 @@ cards:
       - entity: device_tracker.david_s_pixel
         name: David Wifi
         icon: mdi:cellphone-android
-      - entity: device_tracker.pixel_3a
-        name: David HA Client
-        icon: mdi:cellphone-android
+      # - entity: device_tracker.pixel_3a
+      #   name: David HA Client
+      #   icon: mdi:cellphone-android
       - entity: device_tracker.georgina_zanzito
         name: Georgina Zanzito
         icon: mdi:cellphone-android
       - entity: device_tracker.georgina_pixel_3xl
         name: Georgina Wifi
         icon: mdi:cellphone-android
-      - entity: device_tracker.michaels_mbp
-        name: Michael's iphone
-        icon: mdi:cellphone-iphone
+      # - entity: device_tracker.michaels_mbp
+      #   name: Michael's iphone
+      #   icon: mdi:cellphone-iphone
+      - entity: device_tracker.michael_sr_phone
+        name: Michael Sr Phone
+        icon: mdi:cellphone-android
+      - entity: device_tracker.isela_s_phone
+        name: Isela's Phone
+        icon: mdi:cellphone-android
 
   - type: entities
     title: Cameras
@@ -123,5 +129,5 @@ cards:
         icon: mdi:cctv
       - entity: device_tracker.camera_sideyard
         icon: mdi:cctv
-      - entity: device_tracker.pi_motion_eye
+      - entity: device_tracker.motioneye_os
         icon: mdi:cctv

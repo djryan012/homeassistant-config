@@ -8,25 +8,18 @@ persons:
     - person.georgina
     # - device_tracker.michael_iphone
 
-# battery_info:
-#   name: Battery Status
-#   entities:
-#     - sensor.office_motion_sensor
-#     - sensor.tradfri_remote_control
-#     - sensor.exterior_motion_sensor
-#     - sensor.ip_webcam_battery_level
+known_guest:
+  name: Known Guest
+  entities:
+    - person.isela
+    - person.michael_jr
+    - person.michael_sr
 
-# binary_sensors:
-#   name: Device Status
-#   entities:
-#     - binary_sensor.wan_connection
-#     - binary_sensor.samsung_tv
-#     - binary_sensor.ecobee
-#     - binary_sensor.frontdoor_camera
-#     - binary_sensor.frontyard_camera
-#     - binary_sensor.backyard_camera
-#     - binary_sensor.sideyard_camera
-#     - binary_sensor.s4_camera
+all_persons:
+  name: All Persons
+  entities:
+    - group.persons
+    - group.known_guest
 
 occupancy:
   name: Occupancy Sensors
@@ -76,3 +69,23 @@ wallpanel:
     - sensor.wallpanel_battery_level
     - sensor.wallpanel_charging
     - sensor.wallpanel_light_level
+
+# battery_info:
+#   name: Battery Status
+#   entities:
+#     - sensor.office_motion_sensor
+#     - sensor.tradfri_remote_control
+#     - sensor.exterior_motion_sensor
+#     - sensor.ip_webcam_battery_level
+
+# binary_sensors:
+#   name: Device Status
+#   entities:
+#     - binary_sensor.wan_connection
+#     - binary_sensor.samsung_tv
+#     - binary_sensor.ecobee
+#     - binary_sensor.frontdoor_camera
+#     - binary_sensor.frontyard_camera
+#     - binary_sensor.backyard_camera
+#     - binary_sensor.sideyard_camera
+#     - binary_sensor.s4_camera

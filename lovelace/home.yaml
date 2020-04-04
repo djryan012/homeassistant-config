@@ -33,6 +33,18 @@ cards:
         icon: mdi:battery-charging
     columns: 4
   - type: glance
+    title: Known Guest
+    entities:
+      - entity: person.michael_jr
+        # name: Michael Jr
+      - entity: person.michael_sr
+        # name: Michael Sr
+        # icon: mdi:cellphone-android
+      - entity: person.isela
+        # name: Isela's
+        # icon: mdi:cellphone-android
+    columns: 3
+  - type: glance
     title: Window's and Door's
     entities:
       - entity: binary_sensor.master_window_status # Sensor1 (Master Window)
@@ -103,7 +115,7 @@ cards:
     cards:
       - type: weather-forecast
         title: Weather
-        entity: weather.echo
+        entity: weather.dark_sky
       - type: thermostat
         entity: climate.echo
         name: Thermostat Graph

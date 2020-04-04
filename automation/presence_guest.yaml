@@ -1,0 +1,25 @@
+# #########################################################
+# #                TURN ON GUEST MODE                     #
+# #########################################################
+# - alias: Turn on Guest Mode
+#   trigger:
+#     platform: state
+#     entity_id: group.known_guest
+#     from: 'not_home'
+#     to: 'home'
+#   action:
+#     - service: automation.turn_off
+#       entity_id: automation.good_night_trigger
+
+# #########################################################
+# #                 TURN OFF GUEST MODE                   #
+# #########################################################
+# - alias: Turn off Guest Mode
+#   trigger:
+#     platform: state
+#     entity_id: group.known_guest
+#     from: 'home'
+#     to: 'not_home'
+#   action:
+#     - service: automation.turn_on
+#       entity_id: automation.good_night_trigger
