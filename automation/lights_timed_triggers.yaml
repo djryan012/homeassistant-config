@@ -6,7 +6,7 @@
       event: sunset
   action:
     - service: homeassistant.turn_on
-      entity_id: light.porchww
+      entity_id: light.porch_light
       data:
         brightness: 150
         transition: 30
@@ -19,7 +19,7 @@
       at: "22:00:00"
   action:
     - service: light.turn_on
-      entity_id: light.porchww
+      entity_id: light.porch_light
       data:
         brightness: 15
         transition: 60
@@ -32,4 +32,4 @@
       event: sunrise
   action:
     - service: homeassistant.turn_off
-      entity_id: light.porchww
+      entity_id: light.porch_light

@@ -16,7 +16,7 @@ cards:
   - type: picture-glance
     title: Front Door
     entities:
-      - light.porchww
+      - light.porch_light
       - camera.front_door
       - binary_sensor.front_door_motion_sensor
     camera_image: camera.front_door
@@ -41,7 +41,7 @@ cards:
   - type: picture-glance
     title: Sideyard
     entities:
-      - light.sideyardww
+      - light.sideyard_light
       - camera.side_yard
       - binary_sensor.gate_motion_status
     camera_image: camera.side_yard

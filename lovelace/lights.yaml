@@ -9,18 +9,18 @@ cards:
     title: Kitchen
     show_header_toggle: false
     entities:
-      - entity: light.kitchenww_1
+      - entity: light.kitchen_pendant_1
         name: Kitchen Pendent 1
-      - entity: light.kitchenww_2
+      - entity: light.kitchen_pendant_2
         name: Kitchen Pendent 2
 
   - type: entities
     title: Living Room
     show_header_toggle: false
     entities:
-      - entity: light.livingroomww_1
+      - entity: light.livingroom_light_1
         name: Livingroom Light 1
-      - entity: light.livingroomww_2
+      - entity: light.livingroom_light_2
         name: Livingroom Light 2
       - entity: input_select.living_room_fan #Living Room_fan
         name: Living Room Fan
@@ -30,9 +30,9 @@ cards:
     title: Master Bedroom
     show_header_toggle: false
     entities:
-      - entity: light.bedroomww_d
+      - entity:light.david_nightstand
         name: David Nightstand
-      - entity: light.bedroomww_g
+      - entity: light.georgina_nightstand
         name: Georgina Nightstand
       - entity: light.master_ceiling_light #bedroom_light
         name: Master Fan's Light
@@ -44,7 +44,7 @@ cards:
     title: Dinning Room
     show_header_toggle: false
     entities:
-      - entity: light.dinningroomww
+      - entity: light.dinning_floor_lamp
         name: Dinningroom Light
       - entity: light.dinning_table_light #Dinning Room_light
         name: Dinning Table Light
@@ -53,7 +53,7 @@ cards:
     title: Office
     show_header_toggle: false
     entities:
-      - entity: light.officews
+      - entity: light.office_desk_light
         name: Office DeskLight
       - entity: light.office_ceiling_light #office_light
         name: Office Fan's Light
@@ -76,9 +76,9 @@ cards:
     title: Outside Lights
     show_header_toggle: false
     entities:
-      - entity: light.porchww
+      - entity: light.porch_light
         name: Front Porch Sconce
-      - entity: light.sideyardww
+      - entity: light.sideyard_light
         name: Side Door Sconce
       - entity: light.patio_lights
         name: Patio Lights

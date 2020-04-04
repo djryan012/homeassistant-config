@@ -86,7 +86,7 @@ cards:
             icon: mdi:lightbulb
             tap_action:
               action: toggle
-          - entity: light.dinningroomww
+          - entity: light.dinning_floor_lamp
             name: Dinning
             tap_action:
               action: toggle
@@ -94,11 +94,11 @@ cards:
       - type: glance
         title: Outside Lights
         entities:
-          - entity: light.porchww
+          - entity: light.porch_light
             tap_action:
               action: toggle
             name: Porch
-          - entity: light.sideyardww
+          - entity: light.sideyard_light
             name: Sideyard
             tap_action:
               action: toggle

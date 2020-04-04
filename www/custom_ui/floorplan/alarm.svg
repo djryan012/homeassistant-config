@@ -1074,7 +1074,7 @@
        cy="232.79152"
        cx="1129.3286"
        style="display:inline;fill:#231f26;stroke-width:1.875"
-       id="light.livingroomww_1"
+       id="light.livingroom_light_1"
        transform="matrix(1.0415174,0,0,1.0415174,-352.6039,-43.018639)"
        inkscape:label="#light" />
     <circle
@@ -1082,7 +1082,7 @@
        cy="235.61835"
        cx="1308.834"
        style="display:inline;fill:#231f26;stroke-width:1.875"
-       id="light.livingroomww_2"
+       id="light.livingroom_light_2"
        transform="matrix(1.0415174,0,0,1.0415174,-352.6039,-43.018639)" />
     <circle
        cy="757.17316"
@@ -1097,7 +1097,7 @@
        cy="570.32788"
        cx="925.48535"
        style="display:inline;fill:#231f26;stroke-width:1.875"
-       id="light.dinningroomww"
+       id="light.dinning_floor_lamp"
        inkscape:label="#light" />
     <path
        style="display:inline;opacity:1;fill:#5b5b5b;fill-opacity:1;stroke-width:3.07446051"
@@ -1110,7 +1110,7 @@
        cy="513.20215"
        cx="877.26215"
        style="display:inline;fill:#231f26;stroke-width:1.875"
-       id="light.kitchenww_1"
+       id="light.kitchen_pendant_1"
        inkscape:label="#light" />
     <circle
        transform="matrix(1.0415174,0,0,1.0415174,-352.6039,-43.018639)"
@@ -1118,7 +1118,7 @@
        cy="415.12366"
        cx="877.26215"
        style="display:inline;fill:#231f26;stroke-width:1.875"
-       id="light.kitchenww_2"
+       id="light.kitchen_pendant_2"
        inkscape:label="#light" />
     <g
        id="light.kitchen">
@@ -1190,7 +1190,7 @@
        cy="1061.0601"
        cx="876.32507"
        style="display:inline;fill:#231f26;stroke-width:1.875"
-       id="light.officews" />
+       id="light.office_desk_light" />
     <path
        style="display:inline;opacity:1;fill:#5b5b5b;fill-opacity:1;stroke-width:3.20210409"
        inkscape:connector-curvature="0"
@@ -1216,7 +1216,7 @@
        cy="80.984001"
        cx="370.88876"
        style="display:inline;fill:#231f26;stroke-width:1.875"
-       id="light.bedroomww_g" />
+       id="light.georgina_nightstand" />
     <rect
        transform="matrix(1.0415174,0,0,1.0415174,-352.6039,-43.018639)"
        inkscape:label="#rect11351"
@@ -1524,13 +1524,13 @@
     <path
        style="display:inline;fill:#ffffa6;stroke-width:2.40123773"
        d="m 1580.6965,514.61834 c 0.055,-4.39531 -2.5719,-8.65064 -6.4766,-10.64358 -1.6976,-0.89039 -3.6119,-1.36533 -5.5296,-1.36262 0,8.08416 0,16.16831 0,24.25246 4.966,-0.13498 9.6751,-3.51397 11.3118,-8.21767 0.4616,-1.28961 0.6955,-2.6592 0.6944,-4.02859 z"
-       id="light.sideyardww"
+       id="light.sideyard_light"
        inkscape:connector-curvature="0" />
     <path
        d="m 708.43965,898.40695 c -6.72352,0 -12.0062,-5.52284 -12.0062,-12.00619 v 0 h 24.25247 c -0.24018,6.48335 -5.52286,12.00619 -12.24627,12.00619 z"
        style="display:inline;fill:#ffffa6;stroke-width:2.40123773"
        inkscape:connector-curvature="0"
-       id="light.porchww" />
+       id="light.porch_light" />
     <text
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#808080;stroke-width:1.04151738"
        id="text741"

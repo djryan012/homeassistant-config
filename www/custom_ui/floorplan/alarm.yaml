@@ -107,14 +107,14 @@ rules:
       - light.dinning_table_light
       - light.master_ceiling_light
       - light.office_ceiling_light
-      - light.bedroomww_d
-      - light.bedroomww_g
-      - light.dinningroomww
-      - light.kitchenww_1
-      - light.kitchenww_2
-      - light.livingroomww_1
-      - light.livingroomww_2
-      - light.officews
+      -light.david_nightstand
+      - light.georgina_nightstand
+      - light.dinning_floor_lamp
+      - light.kitchen_pendant_1
+      - light.kitchen_pendant_2
+      - light.livingroom_light_1
+      - light.livingroom_light_2
+      - light.office_desk_light
     states:
       - state: 'on'
         class: 'light-on'
@@ -123,8 +123,8 @@ rules:
 
   - name: Outdoor Lights
     entities:
-      - light.porchww
-      - light.sideyardww
+      - light.porch_light
+      - light.sideyard_light
       - light.patio_lights
     states:
       - state: 'on'

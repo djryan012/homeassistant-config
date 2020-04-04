@@ -17,14 +17,14 @@ georgina_going_to_sleep:
   sequence:
   - alias: ''
     data:
-      entity_id: light.bedroomww_g, light.bedroom_light
+      entity_id: light.georgina_nightstand, light.bedroom_light
     service: light.turn_off
   - condition: state
-    entity_id: light.bedroomww_d
+    entity_id:light.david_nightstand
     state: 'on'
   - data:
       brightness: '25'
-      entity_id: light.bedroomww_d
+      entity_id:light.david_nightstand
       transition: '6'
     service: light.turn_on
 
@@ -32,14 +32,14 @@ david_going_to_sleep:
   sequence:
   - alias: ''
     data:
-      entity_id: light.bedroomww_d, light.bedroom_light
+      entity_id:light.david_nightstand, light.bedroom_light
     service: light.turn_off
   - condition: state
-    entity_id: light.bedroomww_g
+    entity_id: light.georgina_nightstand
     state: 'on'
   - data:
       brightness: '25'
-      entity_id: light.bedroomww_g
+      entity_id: light.georgina_nightstand
       transition: '6'
     service: light.turn_on
 
@@ -49,8 +49,8 @@ interior_off:
       entity_id: 
         - group.interior_lights
         - group.garage
-        - light.bedroomww_d
-        - light.bedroomww_g
+        -light.david_nightstand
+        - light.georgina_nightstand
         - light.master_ceiling_light #MasterCeiling Light
         - light.office_ceiling_light
     - service: input_boolean.turn_on
@@ -83,14 +83,14 @@ side_light_on:
         before: sunrise
   - service: light.turn_on
     data:
-      entity_id: light.sideyardww
+      entity_id: light.sideyard_light
       brightness: 220
 
 side_light_off:
   sequence:
   - service: light.turn_off
     data:
-      entity_id: light.sideyardww
+      entity_id: light.sideyard_light
       transition: 6
 
 lights_on_when_waking_up:

@@ -61,32 +61,32 @@ input_boolean.david_status:
 input_boolean.georgina_status:
   icon: mdi:hotel
 
-light.livingroomww_1:
+light.livingroom_light_1:
   friendly_name: Livingroom 1
-light.livingroomww_2:
+light.livingroom_light_2:
   friendly_name: Livingroom 2
 
-light.kitchenww_1:
+light.kitchen_pendant_1:
   friendly_name: Kitchen Pendent 1
-light.kitchenww_2:
+light.kitchen_pendant_2:
   friendly_name: Kitchen Pendent 2
 
-light.dinningroomww:
+light.dinning_floor_lamp:
   friendly_name: Dining Room
 
 light.master_ceiling_light:
   friendly_name: Bedroom Light
 light.bedroomww_d:
   friendly_name: David Nightstand
-light.bedroomww_g:
+light.georgina_nightstand:
   friendly_name: Georgina Nightstand
 
-light.porchww:
+light.porch_light:
   friendly_name: Front Porch
-light.sideyardww:
+light.sideyard_light:
   friendly_name: Side Yard
 
-light.officews:
+light.office_desk_light:
   friendly_name: Office Desk
 light.office_ceiling_light:
   friendly_name: Office Light
