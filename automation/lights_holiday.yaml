@@ -45,8 +45,7 @@
 - alias: 'Monthly Holiday Color Scene OFF'
   initial_state: True
   trigger:
-    - platform: sun
-      event: sunrise
-      offset: '-00:30:00'
+    - platform: time
+      at: "02:30:00"
   action:
     - service: script.monthly_color_off
