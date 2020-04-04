@@ -1,0 +1,36 @@
+####################################################
+#                      MQTT                        #
+####################################################
+#https://www.home-assistant.io/components/sensor.mqtt/
+
+# SonOff Devices
+- platform: mqtt
+  name: "POW1 Power"
+  state_topic: "tele/sonoff_pow1/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "POW1 Voltage"
+  state_topic: "tele/sonoff_pow1/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "POW2 Power"
+  state_topic: "tele/sonoff_pow2/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "POW2 Voltage"
+  state_topic: "tele/sonoff_pow2/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "POW3 Power"
+  state_topic: "tele/sonoff_pow3/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "POW3 Voltage"
+  state_topic: "tele/sonoff_pow3/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"

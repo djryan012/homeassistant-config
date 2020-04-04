@@ -1,0 +1,46 @@
+####################################################
+#       Falcon Player MQTT Status Updates          #
+####################################################
+#https://www.home-assistant.io/components/sensor.mqtt/
+
+- platform: mqtt
+  name: "FPP Version"
+  state_topic: "hassio/falcon/player/FPP/version"
+- platform: mqtt
+  name: "FPP Branch"
+  state_topic: "hassio/falcon/player/FPP/branch"
+- platform: mqtt
+  name: "FPP Status"
+  state_topic: "hassio/falcon/player/FPP/status"
+# - platform: mqtt
+#   name: "FPP Position Status"
+#   state_topic: "hassio/falcon/player/FPP/playlist/position/status"
+- platform: mqtt
+  name: "FPP Name Status"
+  state_topic: "hassio/falcon/player/FPP/playlist/name/status"
+- platform: mqtt
+  name: "FPP Repeat Status"
+  state_topic: "hassio/falcon/player/FPP/playlist/repeat/status"
+
+- platform: mqtt
+  name: "FPP Section Status"
+  state_topic: "hassio/falcon/player/FPP/playlist/section/status"
+# - platform: mqtt
+#   name: "FPP Section Position Status"
+#   state_topic: "hassio/falcon/player/FPP/playlist/sectionPosition/status"
+- platform: mqtt
+  name: "FPP Sequence Status"
+  state_topic: "hassio/falcon/player/FPP/playlist/sequence/status"
+
+# - platform: mqtt
+#   name: "FPP Media Title"
+#   state_topic: "hassio/falcon/player/FPP/playlist/media/title"
+# - platform: mqtt
+#   name: "FPP Media Status"
+#   state_topic: "hassio/falcon/player/FPP/playlist/media/status"
+# - platform: mqtt
+#   name: "FPP Media Artist"
+#   state_topic: "hassio/falcon/player/FPP/playlist/media/artist"
+# - platform: mqtt
+#   name: "FPP Playlist Details"
+#   state_topic: "hassio/falcon/player/FPP/playlist_details"
