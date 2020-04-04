@@ -20,11 +20,11 @@ georgina_going_to_sleep:
       entity_id: light.georgina_nightstand, light.bedroom_light
     service: light.turn_off
   - condition: state
-    entity_id:light.david_nightstand
+    entity_id: light.david_nightstand
     state: 'on'
   - data:
       brightness: '25'
-      entity_id:light.david_nightstand
+      entity_id: light.david_nightstand
       transition: '6'
     service: light.turn_on
 
@@ -32,7 +32,7 @@ david_going_to_sleep:
   sequence:
   - alias: ''
     data:
-      entity_id:light.david_nightstand, light.bedroom_light
+      entity_id: light.david_nightstand, light.bedroom_light
     service: light.turn_off
   - condition: state
     entity_id: light.georgina_nightstand
@@ -49,7 +49,7 @@ interior_off:
       entity_id: 
         - group.interior_lights
         - group.garage
-        -light.david_nightstand
+        - light.david_nightstand
         - light.georgina_nightstand
         - light.master_ceiling_light #MasterCeiling Light
         - light.office_ceiling_light

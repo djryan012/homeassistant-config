@@ -22,13 +22,13 @@ dining_table:
     - light.dinning_room_switch
 
 bedroom:
-    -light.david_nightstand
+    - light.david_nightstand
     - light.georgina_nightstand
     - light.master_ceiling_light #Master Fanlinc Light
     - switch.master_keypad_main
 
 nightstands:
-    -light.david_nightstand
+    - light.david_nightstand
     - light.georgina_nightstand
 
 office:

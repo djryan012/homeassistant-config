@@ -107,7 +107,7 @@ rules:
       - light.dinning_table_light
       - light.master_ceiling_light
       - light.office_ceiling_light
-      -light.david_nightstand
+      - light.david_nightstand
       - light.georgina_nightstand
       - light.dinning_floor_lamp
       - light.kitchen_pendant_1
