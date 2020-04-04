@@ -1,90 +1,4 @@
-#####  Turn Side light on with motion  #####
-- alias: "Side Light on by camera sensor"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.sideyard_motion_sensor
-      from: 'off'
-      to: 'on'
-  condition:
-      condition: or  # 'when dark' condition: either after sunset or before sunrise
-      conditions:
-        - condition: sun
-          after: sunset
-        - condition: sun
-          before: sunrise
-  action:
-    - service: homeassistant.turn_on
-      entity_id: light.sideyardww
-      data:
-        brightness: 220
-        transition: 0
-#####  Turn Side light off with motion  #####
-- alias: "Side Light off by camera sensor"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.sideyard_motion_sensor
-      to: 'off'
-      for:
-        minutes: 10
-  condition:
-      condition: or  # 'when dark' condition: either after sunset or before sunrise
-      conditions:
-        - condition: sun
-          after: sunset
-        - condition: sun
-          before: sunrise
-  action:
-    - service: homeassistant.turn_off
-      entity_id: light.sideyardww
-      data:
-        transition: 10
-
-#####  Turn Patio light on with motion  #####
-- alias: "Patio Light on by camera sensor"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.backyard_motion_sensor
-      from: 'off'
-      to: 'on'
-  condition:
-      condition: or  # 'when dark' condition: either after sunset or before sunrise
-      conditions:
-        - condition: sun
-          after: sunset
-        - condition: sun
-          before: sunrise
-  action:
-    - service: homeassistant.turn_on
-      entity_id: light.patio_lights
-      data:
-        brightness: 150
-        transition: 0
-#####  Turn Patio light off with motion  #####
-- alias: "Patio Light off by camera sensor"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.backyard_motion_sensor
-      to: 'off'
-      for:
-        minutes: 10
-  condition:
-      condition: or  # 'when dark' condition: either after sunset or before sunrise
-      conditions:
-        - condition: sun
-          after: sunset
-        - condition: sun
-          before: sunrise
-  action:
-    - service: homeassistant.turn_off
-      entity_id: light.patio_lights
-      data:
-        transition: 10
-
-####### Test
+ ##### Garage Lights
 - alias: "Turn on off garage lights when there is movement"
   initial_state: True
   trigger:
@@ -99,3 +13,81 @@
   action:
     - service_template: '{% if trigger.to_state.state == "on" %}switch.turn_on{% elif trigger.to_state.state == "off" %}switch.turn_off{% endif %}'
       entity_id: group.garage
+
+# #####  Turn Side light on/off with motion  #####
+# - alias: "Side Light on by Sensor"
+#   initial_state: True
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.gate_motion_status
+#       to: 'on'
+#     - platform: state
+#       entity_id: binary_sensor.gate_motion_status
+#       to: 'off'
+#       for:
+#         minutes: 5
+#   action:
+#     - service_template: >
+#         script.side_light_{{ 'on' if is_state('light.test','on') else 'off' }}
+
+####  Turn Side light on with motion  #####
+- alias: "Side Light on by Sensor"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.gate_motion_status
+      to: 'on'
+  action:
+    - service: script.side_light_on
+- alias: "Side Light off by Sensor"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.gate_motion_status
+      to: 'off'
+  action:
+    - service: script.side_light_off
+
+
+#####  Turn Patio light on with motion  #####
+- alias: "Patio Light on by camera sensor"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.backyard_motion_sensor
+      from: 'off'
+      to: 'on'
+  condition:
+      condition: and  # 'when dark' condition: either after sunset or before sunrise
+      conditions:
+        - condition: sun
+          after: sunset
+        - condition: sun
+          before: sunrise
+        - condition: state
+          entity_id: light.patio_lights
+          state: 'off'
+          # optional: trigger only if state was this for last X time.
+          for:
+             seconds: 15
+        - condition: state
+          entity_id: light.patio_lights
+          state: 'on'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: light.patio_lights
+      data:
+        brightness: 150
+        transition: 0
+
+# Lights out no motion detected
+- alias: "Dinning Light out"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.echo_occupancy
+      to: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+        -  group.dining_room

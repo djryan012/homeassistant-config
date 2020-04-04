@@ -7,9 +7,9 @@ lights_on_when_waking_up:
       state: 'below_horizon'
     - condition: time
       after: '00:00:00'
-    - service: light.turn_on
+    - service: homeassistant.turn_on
       data:
-        entity_id: group.kitchen_pendants
+        entity_id: group.kitchen_pendents
         brightness: 25
         transition: 3
 
@@ -55,6 +55,9 @@ interior_off:
         - light.office_ceiling_light
     - service: input_boolean.turn_on
       entity_id: input_boolean.wallpanel_blackout
+    - condition: state
+      entity_id: group.known_guest
+      state: 'not_home'
     - service: script.switch_turn_off_all
 
 switch_turn_off_all:
@@ -69,3 +72,36 @@ switch_turn_off_all:
       entity_id: switch.office_keypad_main
     - service: switch.turn_off
       entity_id: switch.office_keypad_d
+
+side_light_on:
+  sequence:
+  - condition: or  # 'when dark' condition: either after sunset or before sunrise
+    conditions:
+      - condition: sun
+        after: sunset
+      - condition: sun
+        before: sunrise
+  - service: light.turn_on
+    data:
+      entity_id: light.sideyardww
+      brightness: 220
+
+side_light_off:
+  sequence:
+  - service: light.turn_off
+    data:
+      entity_id: light.sideyardww
+      transition: 6
+
+lights_on_when_waking_up:
+  sequence:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: time
+      after: '00:00:00'
+    - service: homeassistant.turn_on
+      data:
+        entity_id: group.kitchen_pendents
+        brightness: 25
+        transition: 3
