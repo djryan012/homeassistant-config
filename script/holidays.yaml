@@ -39,18 +39,15 @@ monthly_color_scene:
         topic: hassio/falcon/player/FPP/playlist/name/set
         payload: >
           monthly_
-          {%- if states.sensor.flag.state == "True" -%}
-          RWB
-          {%- elif now().strftime("%m%d")|int == 101 -%}
+          {%- if now().strftime("%m%d")|int == 101 -%}
           new_years_day
           {%- elif now().strftime("%m%d")|int == 120-%}
           mlk
           {%- elif now().strftime("%m%d")|int == 214-%}
           valentine
-          {%- elif now().strftime("%m%d")|int == 228 -%}
+          {%- elif now().strftime("%m%d")|int >= 225
+          and now().strftime("%m%d")|int <= 228-%}         
           marti_gras
-          {%- elif now().strftime("%m%d")|int == 314 -%}
-          pi
           {%- elif now().strftime("%m%d")|int == 317 -%}
           st_patty
           {%- elif now().strftime("%m%d")|int >= 419
@@ -71,6 +68,8 @@ monthly_color_scene:
           christmas
           {%- elif now().strftime("%m%d")|int == 1231 -%}
           new_years_eve
+          {%- elif states.sensor.flag.state == "True" -%}
+          rwb
           {%- else -%}
           standard
           {%- endif -%}_colors
