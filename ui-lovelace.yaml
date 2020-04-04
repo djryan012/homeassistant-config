@@ -23,10 +23,10 @@ views:
   - !include lovelace/cameras.yaml
   - !include lovelace/lights.yaml
   - !include lovelace/device_status.yaml
-  - !include lovelace/media_players.yaml
   - !include lovelace/ha.yaml
   - !include lovelace/connected_devices.yaml
   - !include lovelace/weather.yaml
+  - !include lovelace/media_players.yaml
   - !include lovelace/automations.yaml
   # - !include lovelace/blueiris.yaml # Have all blueiris functions working in camera page
   - !include lovelace/test.yaml

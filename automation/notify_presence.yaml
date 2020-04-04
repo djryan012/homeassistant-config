@@ -3,7 +3,7 @@
   trigger:
     - platform: state
       entity_id: person.georgina
-      from: 'JWC Factory'
+      from: 'JWC Office'
       to: 'not_home'
   action:
     - service: mqtt.publish

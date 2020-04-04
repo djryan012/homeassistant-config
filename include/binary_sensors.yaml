@@ -82,7 +82,7 @@
   device_class: 'window'
 - platform: mqtt
   name: Master Window Battery
-  state_topic: 'insteon/47.fa.ec/low_battery'
+  state_topic: 'insteon/47.fa.ec/battery'
   device_class: 'battery'
 
 # Sensor2 (Guest Window)
@@ -92,7 +92,7 @@
   device_class: 'window'
 - platform: mqtt
   name: Guest Window Battery
-  state_topic: 'insteon/47.f5.78/low_battery'
+  state_topic: 'insteon/47.f5.78/battery'
   device_class: 'battery'
 
 # Sensor3 (Office Window)
@@ -102,7 +102,7 @@
   device_class: 'window'
 - platform: mqtt
   name: Office Window Battery
-  state_topic: 'insteon/47.f9.3b/low_battery'
+  state_topic: 'insteon/47.f9.3b/battery'
   device_class: 'battery'
 
 # Sensor4 (Slider Door)
@@ -112,7 +112,7 @@
   device_class: 'door'
 - platform: mqtt
   name: Slider Door Battery
-  state_topic: 'insteon/47.f2.e9/low_battery'
+  state_topic: 'insteon/47.f2.e9/battery'
   device_class: 'battery'
 
 # Sensor5 (Side Door)
@@ -122,7 +122,7 @@
   device_class: 'door'
 - platform: mqtt
   name: Side Door Battery
-  state_topic: 'insteon/47.f2.f0/low_battery'
+  state_topic: 'insteon/47.f2.f0/battery'
   device_class: 'battery'
 
 # Sensor6 (Front Window)
@@ -132,7 +132,7 @@
   device_class: 'window'
 - platform: mqtt
   name: Front Window Battery
-  state_topic: 'insteon/47.fa.75/low_battery'
+  state_topic: 'insteon/47.fa.75/battery'
   device_class: 'battery'
 
 # Sensor7 (Kitchen Window)
@@ -142,7 +142,7 @@
   device_class: 'window'
 - platform: mqtt
   name: Kitchen Window Battery
-  state_topic: 'insteon/47.fc.14/low_battery'
+  state_topic: 'insteon/47.fc.14/battery'
   device_class: 'battery'
 
 # Sensor8 (Pond Filter)
@@ -154,7 +154,7 @@
   device_class: 'moisture' #'problem'
 - platform: mqtt
   name: Pond Filter Battery
-  state_topic: 'insteon/47.fa.00/low_battery'
+  state_topic: 'insteon/47.fa.00/battery'
   device_class: 'battery'
 
 # Door1 (Front Door)
@@ -164,17 +164,27 @@
   device_class: 'door'
 - platform: mqtt
   name: Front Door Battery
-  state_topic: 'insteon/54.3b.88/low_battery'
+  state_topic: 'insteon/54.3b.88/battery'
   device_class: 'battery'
 
-# Motion sensors (Garage)
+# Motion 1 (Garage)
 - platform: mqtt
   name: Garage Motion Status
   state_topic: 'insteon/4f.99.d9/state'
   device_class: 'motion'
 - platform: mqtt
   name: Garage Motion Battery
-  state_topic: 'insteon/4f.99.d9/low_battery'
+  state_topic: 'insteon/4f.99.d9/battery'
+  device_class: 'battery'
+
+# Motion 3 (Side Gate)
+- platform: mqtt
+  name: Gate Motion Status
+  state_topic: 'insteon/4f.99.e6/state'
+  device_class: 'motion'
+- platform: mqtt
+  name: Gate Motion Battery
+  state_topic: 'insteon/4f.99.e6/battery'
   device_class: 'battery'
 
 #WallPanel Motion Detection

@@ -13,7 +13,7 @@ homeassistant:
     - type: trusted_networks
       trusted_networks:
         - 192.168.1.0/24
-        - 172.30.0.0/16
+        - 172.30.33.4
     - type: homeassistant
 
 http:
@@ -90,6 +90,7 @@ alexa_media:
       include_devices:
         - "Echo Dot Main"
         - "Echo Dot Bedroom"
+        - "Echo Input"
 
 blueiris:
   host: !secret blueiris_host
@@ -188,3 +189,7 @@ telegram_bot:
 
 tradfri:
   host: !secret tradfri_host
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
