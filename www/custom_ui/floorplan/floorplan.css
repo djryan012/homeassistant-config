@@ -92,9 +92,24 @@ svg, svg * {
 .light-on {
   fill: yellow !important;
   fill-opacity: 1.0;
+  /* stroke: #FFFFA6 !important; */
+  /* stroke-width: 10; */
+  /* stroke-opacity: 0.25; */
+}
+
+.outdoor-light-off {
+  fill: yellow !important;
+  fill-opacity: .25;
   stroke: #FFFFA6 !important;
-  stroke-width: 10;
-  stroke-opacity: 0.25;
+  stroke-width: 2;
+  stroke-opacity: 0.2;
+}
+.outdoor-light-on {
+  fill: yellow !important;
+  fill-opacity: 1.0;
+  /* stroke: #FFFFA6 !important; */
+  /* stroke-width: 10; */
+  /* stroke-opacity: 0.25; */
 }
 
 #fan\.livingroom_ceiling_fan, #fan\.master_ceiling_fan, #fan\.office_ceiling_fan {
@@ -112,12 +127,11 @@ svg, svg * {
 .fan-on {
 fill: #ff8a65 !important;
 -webkit-animation: rotation 2s infinite linear;
+transform-box: fill-box;
 }
 .fan-off {
 fill: #424242 !important;
 }
-
-
 
 .blackout-on{
 width: 100%;
