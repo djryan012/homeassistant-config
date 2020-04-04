@@ -13,10 +13,14 @@
     - platform: state
       entity_id: sensor.my_event_offset_2
       to: 'on'
-  condition:
+  condition: 
     - condition: template 
       value_template: >
         {% if is_state('person.david', 'home') %} true
+        {% else %} false {% endif %}
+    - condition: template 
+      value_template: >
+        {% if state_attr('calendar.disney_work_schedule', 'description') == None  %} true
         {% else %} false {% endif %}
   action:
     - service: mqtt.publish

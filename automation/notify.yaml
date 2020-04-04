@@ -46,6 +46,10 @@
         {% if is_state('person.david', 'home') %} true
         {% elif is_state('person.david', 'not_home') %} true
         {% else %} false {% endif %}
+    - condition: template 
+      value_template: >
+        {% if state_attr('calendar.disney_work_schedule', 'description') == None  %} true
+        {% else %} false {% endif %}
   action:
     - service: mqtt.publish
       data_template:
