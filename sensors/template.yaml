@@ -39,6 +39,7 @@
     ecobee_sensor_compare_temp:
       value_template: "{{(states.sensor.echo_temperature.state | float -  states.sensor.bedroom_temperature.state | float ) | round(1) | abs }}"
       friendly_name: "Temperature Compare"
+      unit_of_measurement: temperature
     ecobee_fanmode:
       value_template: "{{ state_attr('climate.echo', 'fan_mode') }}"
       friendly_name: "Fan Mode"
