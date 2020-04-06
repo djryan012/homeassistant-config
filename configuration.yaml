@@ -26,28 +26,28 @@ frontend:
   javascript_version: latest
   themes: !include www/themes.yaml
 
-history:
-  include:
-    domains:
-      - sensor
-      - switch
-      - media_player
-      - light
-      - binary_sensor
-      # - cover
-  exclude:
-    entities:
-      - sensor.last_boot
-      - sensor.date
-      - sensor.pi_hole_ads_blocked_today
-      - sensor.pi_hole_ads_percentage_blocked_today
-      - sensor.pi_hole_dns_queries_today
-      - sensor.last_boot
-      - sensor.last_boot_templated
-      - sensor.floorplan_date
-      - sensor.floorplan_time
-      - sensor.ha_uptime
-      - sensor.time
+# history:
+#   include:
+#     domains:
+#       - sensor
+#       - switch
+#       - media_player
+#       - light
+#       - binary_sensor
+#       # - cover
+#   exclude:
+#     entities:
+#       - sensor.last_boot
+#       - sensor.date
+#       - sensor.pi_hole_ads_blocked_today
+#       - sensor.pi_hole_ads_percentage_blocked_today
+#       - sensor.pi_hole_dns_queries_today
+#       - sensor.last_boot
+#       - sensor.last_boot_templated
+#       - sensor.floorplan_date
+#       - sensor.floorplan_time
+#       - sensor.ha_uptime
+#       - sensor.time
 
 lovelace:
   mode: yaml
@@ -65,6 +65,7 @@ binary_sensor: !include include/binary_sensors.yaml
 # emulated_hue: !include include/emulated_hue.yaml #Node Red taking care of this
 fan: !include include/fan.yaml
 group: !include_dir_merge_named group
+history: !include include/history.yaml
 input_boolean: !include include/input_boolean.yaml
 input_select: !include include/input_select.yaml
 light: !include include/lights.yaml
@@ -187,8 +188,8 @@ telegram_bot:
       # - !secret telegram_chatID_Georgina
       # - !secret telegram_chatID_Mark
 
-tradfri:
-  host: !secret tradfri_host
+# tradfri:
+#   host: !secret tradfri_host
 
 weather:
   - platform: darksky

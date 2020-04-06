@@ -1,0 +1,55 @@
+use_include_order: true
+include:
+  domains:
+    - switch
+    - light
+    - binary_sensor
+  entities:
+    - sensor.bedroom_temperature
+    - sensor.david_battery_level
+    - sensor.disk_use_percent_home
+    - sensor.echo_humidity
+    - sensor.echo_temperature
+    - sensor.ecobee_fanstate
+    - sensor.ecobee_sensor_compare_temp
+    - sensor.fpp_name_status
+    - sensor.fpp_status
+    - sensor.georgina_battery_level
+    - sensor.last_boot
+    - sensor.living_room_temperature
+    - sensor.load_15m
+    - sensor.load_1m
+    - sensor.load_5m
+    - sensor.memory_use_percent
+    - sensor.office_temperature
+    - sensor.pow1_power
+    - sensor.pow2_power
+    - sensor.pow3_power
+    - sensor.processor_use
+    - sensor.solaredge_current_power_template
+    - sensor.time_online
+    - sensor.unifi_gateway_lan
+    - sensor.unifi_gateway_wan
+    - sensor.unifi_gateway_www
+    - sensor.usg_download
+    - sensor.usg_upload
+    - sensor.wallpanel_battery_level
+    - sensor.wallpanel_charging
+    - sensor.wallpanel_light_level
+    - sensor.wallpanel_screenbrightness
+    - sensor.yr_symbol
+exclude:
+  entities:
+    - switch.unifi_poe_00_00_00_00_00_01
+    - binary_sensor.updater
+    - binary_sensor.front_door_battery
+    - binary_sensor.front_window_battery
+    - binary_sensor.garage_motion_battery
+    - binary_sensor.gate_motion_battery
+    - binary_sensor.guest_window_battery
+    - binary_sensor.kitchen_window_battery
+    - binary_sensor.master_window_battery
+    - binary_sensor.office_window_battery
+    - binary_sensor.pond_filter_battery
+    - binary_sensor.side_door_battery
+    - binary_sensor.slider_door_battery
