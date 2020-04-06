@@ -6,7 +6,7 @@ title: Switches
 icon: mdi:test-tube
 cards:
   - type: entities
-    title: Insteon
+    title: Insteon Misc.
     show_header_toggle: false
     entities:
       - entity: switch.garage_inside #garage_inside
@@ -15,10 +15,19 @@ cards:
       - entity: switch.garage_side  #garage_side
         name: Garage Sidedoor Switch
         icon: mdi:toggle-switch
-      - entity: light.backyard_lights  #patio lights
+      - type: divider
+        style:
+          height: 1px
+          background: '#62717b'
+      - entity: light.patio_lights  #patio lights
         name: Back Patio Lights
-        type: custom:slider-entity-row
-        break_slider: true
+        # type: custom:slider-entity-row
+        # break_slider: true
+      - entity: light.kitchen_Down_lights
+        name: Kitchen Can Lights
+        # type: custom:slider-entity-row
+        # break_slider: false
+
   - type: entities
     title: Master Bedroom Insteon
     show_header_toggle: false

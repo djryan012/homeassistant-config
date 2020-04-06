@@ -9,6 +9,8 @@ cards:
     title: Kitchen
     show_header_toggle: false
     entities:
+      - entity: light.kitchen_down_lights
+        name: Kitchen Down Lights
       - entity: light.kitchen_pendant_1
         name: Kitchen Pendent 1
       - entity: light.kitchen_pendant_2

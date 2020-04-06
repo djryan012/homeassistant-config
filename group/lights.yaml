@@ -6,10 +6,10 @@ living_room:
     - light.livingroom_light_2
 
 kitchen:
-    - light.kitchen_pendant_1
-    - light.kitchen_pendant_2
+    - group.kitche_pendants
+    - light.kitchen_down_lights
 
-kitchen_pendents:
+kitchen_pendants:
     - light.kitchen_pendant_1
     - light.kitchen_pendant_2
 

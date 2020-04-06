@@ -45,3 +45,11 @@
   command_topic: "insteon/43.3f.1c/level"
   brightness: true
   qos: 2
+
+- platform: mqtt
+  schema: json
+  name: "Kitchen Down Lights" #Dimmer5
+  state_topic: "insteon/55.94.84/state"
+  command_topic: "insteon/55.94.84/level"
+  brightness: true
+  qos: 2
