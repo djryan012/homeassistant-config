@@ -46,6 +46,6 @@
   initial_state: True
   trigger:
     - platform: time
-      at: "02:30:00"
+      at: "00:30:00"
   action:
     - service: script.monthly_color_off

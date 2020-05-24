@@ -2,7 +2,7 @@ This is my configuration for Home Assistant.
 
 I'm currently running [Home Assistant](https://home-assistant.io) version __0.106.5__ with the Hassio OS.  (https://home-assistant.io/hassio/). I have moved all files that would use the "!include" syntax to there own folder for better orginization and quicker editing.
 
-Github copy of <a href="https://travis-ci.com/djryan012/homeassistant-config"><img src="https://travis-ci.com/djryan012/homeassistant-config.svg?branch=master"/></a> according to travis-ci.com
+Github copy of my Home Assistant config which is <a href="https://travis-ci.com/djryan012/homeassistant-config"><img src="https://travis-ci.com/djryan012/homeassistant-config.svg?branch=master"/></a> according to travis-ci.com
 
 # Hardware Running Hassio
 * [Raspberry Pi 3](http://a.co/8dDGqmT)

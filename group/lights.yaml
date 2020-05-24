@@ -6,7 +6,7 @@ living_room:
     - light.livingroom_light_2
 
 kitchen:
-    - group.kitche_pendants
+    - group.kitchen_pendants
     - light.kitchen_down_lights
 
 kitchen_pendants:
@@ -34,7 +34,7 @@ nightstands:
 office:
     - light.office_desk_light
     - light.office_ceiling_light
-    - switch.keypad_link_main
+    - switch.office_keypad_main
 
 garage:
   name: Garage

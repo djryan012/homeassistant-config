@@ -8,4 +8,4 @@
 #https://home-assistant.io/components/sensor.cert_expiry/
 - platform: cert_expiry
   host: !secret base_url
-  name: Lets Encrypt Expiration
+  # name: Lets Encrypt Expiration Depricated v0.109
