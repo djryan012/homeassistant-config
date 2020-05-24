@@ -1,0 +1,112 @@
+# Turn on fan_min_on_time if sensors are within 3 degress
+- alias: 'Ecobee Fan on'
+  initial_state: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.ecobee_temp_compare_bedroom
+      above: 3
+  condition:
+    - condition: state
+      entity_id: group.window_sensors
+      state: 'off'
+  action:
+    - service: climate.ecobee_set_fan_min_on_time
+      data:
+        entity_id: climate.echo
+        fan_min_on_time: 20
+
+# Turn off fan_min_on_time if sensors are within 3 degress
+- alias: 'Ecobee Fan off'
+  initial_state: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.ecobee_temp_compare_bedroom
+      below: 3
+  action:
+  - service: climate.ecobee_set_fan_min_on_time
+    data:
+      entity_id: climate.echo
+      fan_min_on_time: 0
+
+# Turn ON Climate Control to Auto if windows closed
+- alias: 'Ecobee set to Auto'
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: group.window_sensors
+      from: 'on'
+      to: 'off'
+  action:
+    - service: climate.set_hvac_mode
+      data:
+        entity_id: climate.echo
+        hvac_mode: heat_cool #breaking change in v0.109
+
+# Turn OFF Climate Control if windows are opened
+- alias: 'Ecobee set to OFF'
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: group.window_sensors
+      from: 'off'
+      to: 'on'
+  action:
+    - service: climate.set_hvac_mode
+      data:
+        entity_id: climate.echo
+        hvac_mode: 'off'
+
+# Set preset back to sleep mode if people sleeping
+- alias: Ecobee preset mode Sleep
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: group.sleep_status
+      to: 'on'
+  action:
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.echo
+        preset_mode: 'Sleep'
+
+# Set preset back to sleep mode if people sleeping
+- alias: Ecobee preset mode Resume
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: group.sleep_status
+      from: 'on'
+      to: 'off'
+  action:
+    - service: ecobee.resume_program
+      entity_id: climate.echo
+
+
+# - alias: Announce temp cooler outside
+#   initial_state: True
+#   # trigger:
+#   #   platform: template 
+#   #   value_template: {{ (states.sensor.) > (state_attr('weather.dark_sky', 'tempurature')) }}
+#   # # trigger:
+#   #   - platform: numeric_state
+#   #     entity_id: sensor.echo_temperature
+#   #     above: 3
+#   # condition:
+#   #   - condition: state
+#   #     entity_id: group.window_sensors
+#   #     state: 'off'
+#   trigger:
+#     platform: template
+#     value_template: "{{ ( states.sensor.taupunkt_garten.state  ) < ( states.sensor.taupunkt_keller.state ) }}"
+  
+
+
+#     platform: template 
+#       {% if state_attr(sensor.echo_temperature >     {{ (states.sensor.fibaro_system_fgms001zw5_motion_sensor_temperature_4'))
+#         > ( }}
+
+#   action:
+#     - service: script.audio_notify
+#       data_template:
+#         tts_msg: "its now cooler outside than inside"
+#         mplayer: "echo_dot_main"
