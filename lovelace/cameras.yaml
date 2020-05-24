@@ -32,10 +32,10 @@ cards:
     camera_image: camera.back_yard
 
   - type: picture-glance
-    title: Window View 
+    title: Sconce Light
     entities: 
       - camera.motioneye
-      - binary_sensor.window_motion_sensor
+      - binary_sensor.sconce_motion_sensor
     camera_image: camera.motioneye
 
   - type: picture-glance
