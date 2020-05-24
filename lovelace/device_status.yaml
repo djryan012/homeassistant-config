@@ -34,7 +34,9 @@ cards:
             name: Wan
           - entity: sensor.unifi_gateway_lan
             name: Lan
-        columns: 3
+          - entity: sensor.unifi_gateway_wlan
+            name: Lan
+        columns: 4
       - type: entities
         # title: Controller
         show_header_toggle: false
@@ -43,8 +45,27 @@ cards:
           - entity: sensor.unifi_gateway_firmware_upgradable
             name: Firmware Upgrades
 
+  - type: entities
+    title: FreeNas Server
+    show_header_toggle: false
+    entities:
+      - entity: sensor.fn_alert_level
+        name: Alert Level
+      - entity: sensor.fn_alert_message
+        name: Alert Message
+      - entity: sensor.fn_pool1_report
+        name: 2TB Media Mirror
+      - entity: sensor.fn_pool1_pct_used
+        name: 2TB Media Mirror
+      - entity: sensor.fn_pool2_report
+        name: 125GB Docker Mirror
+      - entity: sensor.fn_pool2_pct_used
+        name: 125GB Docker Mirror
+      - entity: sensor.fn_version
+        name: Version
+
   - type: glance
-    title: Occupancy Sensors
+    title: Echo Sensors
     entities:
       - entity: binary_sensor.echo_occupancy
         name: Dining Room
@@ -54,6 +75,9 @@ cards:
         name: Office
       - entity: binary_sensor.bedroom_occupancy
         name: Bedroom
+  - type: glance
+    title: Occupancy Sensors
+    entities:
       - entity: binary_sensor.garage_motion_status
         name: Garage
       - entity: binary_sensor.front_door_motion_sensor
@@ -62,7 +86,12 @@ cards:
         name: Side Door
       - entity: binary_sensor.gate_motion_status
         name: Side Gate
-
+      - entity: binary_sensor.sconce_motion_sensor
+        name: Light Sconce
+      - entity: binary_sensor.tradfri_office_sensor
+        name: Office Tradfri
+      - entity: binary_sensor.tradfri_motion_sensor
+        name: Tradfri Motion
     columns: 4
   - type: entities
     title: Window's and Door's
@@ -182,6 +211,7 @@ cards:
     title: Falcon Player
     show_header_toggle: false
     entities:
+      - entity: automation.monthly_holiday_color_scene_on
       - entity: sensor.fpp_branch
       - entity: sensor.fpp_version
         name: Version
