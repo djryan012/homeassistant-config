@@ -91,3 +91,22 @@
     - service: homeassistant.turn_off
       entity_id:
         -  group.dining_room
+
+
+####  Wetbar Control with motion  #####
+- alias: "Wetbar on by Sensor"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.tradfri_motion_sensor
+      to: 'on'
+  action:
+    - service: script.wetbar_on
+- alias: "Wetbar off by Sensor"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.tradfri_motion_sensor
+      to: 'off'
+  action:
+    - service: script.wetbar_off
