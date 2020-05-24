@@ -114,6 +114,15 @@ wetbar_off:
       entity_id: light.kitchen_wetbar_rgbw
       transition: 1
 
+restore_wetbar:
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.kitchen_wetbar_rgbw
+      brightness: 100
+      color_temp: 350
+      transition: 1
+
 feed_dog_reminder:
   sequence:
   - service: light.turn_on
@@ -123,3 +132,4 @@ feed_dog_reminder:
       # rgb_color: [255,0,0]
       xy_color: [0.701, 0.299]
       transition: 6
+
