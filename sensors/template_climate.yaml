@@ -24,9 +24,9 @@
     #   friendly_name: "Temperature Compare"
     #   unit_of_measurement: temperature
 
-    ecobee_temp_compare_livingroom:
+    ecobee_temp_compare_living_room:
       value_template: "{{(states.sensor.echo_temperature.state | float -  states.sensor.living_room_temperature.state | float ) | round(1) | abs }}"
-      friendly_name: "Livingroom Temperature Compare"
+      friendly_name: "Living Room Temperature Compare"
       unit_of_measurement: °F
     ecobee_temp_compare_bedroom:
       value_template: "{{(states.sensor.echo_temperature.state | float -  states.sensor.bedroom_temperature.state | float ) | round(1) | abs }}"

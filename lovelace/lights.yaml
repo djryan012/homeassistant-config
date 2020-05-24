@@ -19,8 +19,8 @@ cards:
     title: Living Room
     show_header_toggle: true
     entities:
-      - entity: light.livingroom_light_1
-      - entity: light.livingroom_light_2
+      - entity: light.living_room_light_1
+      - entity: light.living_room_light_2
       - entity: input_select.living_room_fan #Living Room_fan
         name: Living Room Fan
         icon: mdi:fan

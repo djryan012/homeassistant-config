@@ -2,8 +2,8 @@
 ########  LIGHTING GROUPS
 ########################################################################
 living_room:
-    - light.livingroom_light_1
-    - light.livingroom_light_2
+    - light.living_room_light_1
+    - light.living_room_light_2
 
 kitchen:
     - group.kitchen_pendants
@@ -49,8 +49,8 @@ exterior:
 interior_lights:
   name: Interior Lights
   entities:
-    - light.livingroom_light_1
-    - light.livingroom_light_2
+    - light.living_room_light_1
+    - light.living_room_light_2
     - light.kitchen_pendant_1
     - light.kitchen_pendant_2
     - light.dinning_floor_lamp

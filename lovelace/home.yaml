@@ -116,7 +116,7 @@ cards:
       - entity: sensor.office_temperature
         name: Office
 
-      - entity: sensor.ecobee_temp_compare_livingroom
+      - entity: sensor.ecobee_temp_compare_living_room
         name: Living Dif
       - entity: sensor.ecobee_temp_compare_bedroom
         name: Bedroom Dif

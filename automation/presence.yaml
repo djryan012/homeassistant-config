@@ -28,7 +28,7 @@
       state: 'not_home'
   action:
     - service: light.turn_on
-      entity_id: light.livingroom_light_2
+      entity_id: light.living_room_light_2
       data:
         brightness: 15
         transition: 4
@@ -54,7 +54,7 @@
       - group.office
       - group.bedroom
       - group.garage
-      - light.livingroom_light_1
+      - light.living_room_light_1
 #     service: script.wallpanel_clock
 #     service: homeassistant.turn_on
 #     entity_id:

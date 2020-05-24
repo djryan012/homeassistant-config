@@ -92,7 +92,7 @@ cards:
     title: Living Room Insteon
     show_header_toggle: false
     entities:
-      - entity: fan.livingroom_ceiling_fan #Living Room_fan
+      - entity: fan.living_room_ceiling_fan #Living Room_fan
         name: Living Room Fan
         icon: mdi:fan
       - type: divider

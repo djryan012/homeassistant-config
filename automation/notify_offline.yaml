@@ -26,7 +26,7 @@
   initial_state: True
   trigger:
     - platform: state
-      entity_id: light.david_nightstand,light.georgina_nightstand,light.dinning_floor_lamp,light.kitchen_pendant_1,light.kitchen_pendant_2,light.livingroom_light_1,light.livingroom_light_2,light.office_desk_light,light.porch_light,light.sideyard_light,light.kitchen_wetbar_rgbw
+      entity_id: light.david_nightstand,light.georgina_nightstand,light.dinning_floor_lamp,light.kitchen_pendant_1,light.kitchen_pendant_2,light.living_room_light_1,light.living_room_light_2,light.office_desk_light,light.porch_light,light.sideyard_light,light.kitchen_wetbar_rgbw
       to: unavailable
       for:
         minutes: 1

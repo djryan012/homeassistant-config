@@ -3,7 +3,7 @@
 smart_home:
   filter:
     include_entities:
-      - fan.livingroom_ceiling_fan
+      - fan.living_room_ceiling_fan
       - fan.master_ceiling_fan
       - fan.office_ceiling_fan
       - group.bedroom
@@ -28,8 +28,8 @@ smart_home:
       - light.kitchen_pendant_1
       - light.kitchen_pendant_2
       - light.kitchen_wetbar_rgbw
-      - light.livingroom_light_1
-      - light.livingroom_light_2
+      - light.living_room_light_1
+      - light.living_room_light_2
       - light.master_ceiling_light
       - light.office_ceiling_light
       - light.office_desk_light
@@ -38,8 +38,8 @@ smart_home:
       - light.sideyard_light
 
   entity_config:
-    fan.livingroom_ceiling_fan:
-      name: Livingroom Fan
+    fan.living_room_ceiling_fan:
+      name: Living Room Fan
       display_categories: FAN
     fan.master_ceiling_fan:
       name: Bedroom Fan
@@ -111,10 +111,10 @@ smart_home:
     light.kitchen_wetbar_rgbw:
       name: Kitchen Wetbar
       display_categories: LIGHT
-    light.livingroom_light_1:
+    light.living_room_light_1:
       name: 
       display_categories: LIGHT
-    light.livingroom_light_2:
+    light.living_room_light_2:
       name: 
       display_categories: LIGHT
     light.master_ceiling_light:
