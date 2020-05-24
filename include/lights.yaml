@@ -53,3 +53,35 @@
   command_topic: "insteon/55.94.84/level"
   brightness: true
   qos: 2
+
+- platform: mqtt
+  schema: json
+  name: Whole House RGB
+  state_topic: "hassio/falcon/player/FPP/light/Whole House/state"
+  command_topic: "hassio/falcon/player/FPP/light/Whole House/cmd"
+  brightness: true
+  rgb: true
+
+# - platform: mqtt
+#   schema: json
+#   name: Left Section RGB
+#   state_topic: "hassio/falcon/player/FPP/light/Left Section/state"
+#   command_topic: "hassio/falcon/player/FPP/light/Left Section/cmd"
+#   brightness: true
+#   rgb: true
+
+# - platform: mqtt
+#   schema: json
+#   name: Mid Section RGB
+#   state_topic: "hassio/falcon/player/FPP/light/Mid Section/state"
+#   command_topic: "hassio/falcon/player/FPP/light/Mid Section/cmd"
+#   brightness: true
+#   rgb: true
+
+# - platform: mqtt
+#   schema: json
+#   name: Right Section RGB
+#   state_topic: "hassio/falcon/player/FPP/light/Right Section/state"
+#   command_topic: "hassio/falcon/player/FPP/light/Right Section/cmd"
+#   brightness: true
+#   rgb: true
