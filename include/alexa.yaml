@@ -1,0 +1,195 @@
+# Alexa Smart Home Skill API via https://github.com/mike-grant/haaska
+# https://www.home-assistant.io/integrations/alexa.smart_home/
+smart_home:
+  filter:
+    include_entities:
+      - fan.livingroom_ceiling_fan
+      - fan.master_ceiling_fan
+      - fan.office_ceiling_fan
+      - group.bedroom
+      - group.dining_room
+      - group.dining_table
+      - group.garage
+      - group.interior_lights
+      - group.kitchen
+      - group.kitchen_pendants
+      - group.living_room
+      - group.nightstands
+      - group.office
+      - input_boolean.camera_notifications
+      - script.wetbar_on
+      - switch.sonoff_pow3
+      - light.david_nightstand
+      - light.dinning_floor_lamp
+      - light.dinning_room_switch
+      - light.dinning_table_light
+      - light.georgina_nightstand
+      - light.kitchen_down_lights
+      - light.kitchen_pendant_1
+      - light.kitchen_pendant_2
+      - light.kitchen_wetbar_rgbw
+      - light.livingroom_light_1
+      - light.livingroom_light_2
+      - light.master_ceiling_light
+      - light.office_ceiling_light
+      - light.office_desk_light
+      - light.patio_lights
+      - light.porch_light
+      - light.sideyard_light
+
+  entity_config:
+    fan.livingroom_ceiling_fan:
+      name: Livingroom Fan
+      display_categories: FAN
+    fan.master_ceiling_fan:
+      name: Bedroom Fan
+      display_categories: FAN
+    fan.office_ceiling_fan:
+      name: Office Fan
+      display_categories: FAN
+
+    group.bedroom:
+      name: Bedroom Lights
+      display_categories: LIGHT
+    group.dining_room:
+      name: Dinning Room Lights
+      display_categories: LIGHT
+    group.dining_table:
+      name: Dining Table
+      display_categories: LIGHT
+    group.garage:
+      name: 
+      display_categories: LIGHT
+    group.interior_lights:
+      name: 
+      display_categories: LIGHT
+    group.kitchen:
+      name: 
+      display_categories: LIGHT
+    group.kitchen_pendants:
+      name: 
+      display_categories: LIGHT
+    group.living_room:
+      name: 
+      display_categories: LIGHT
+    group.nightstands:
+      name: 
+      display_categories: LIGHT
+    group.office:
+      name: 
+      display_categories: LIGHT
+      
+    input_boolean.camera_notifications:
+      name: Camera Notify Overide
+      display_categories: SWITCH
+
+
+    light.david_nightstand:
+      name: 
+      display_categories: LIGHT
+    light.dinning_floor_lamp:
+      name: 
+      display_categories: LIGHT
+    light.dinning_room_switch:
+      name: 
+      display_categories: LIGHT
+    light.dinning_table_light:
+      name: 
+      display_categories: LIGHT
+    light.georgina_nightstand:
+      name: 
+      display_categories: LIGHT
+    light.kitchen_down_lights:
+      name: 
+      display_categories: LIGHT
+    light.kitchen_pendant_1:
+      name: 
+      display_categories: LIGHT
+    light.kitchen_pendant_2:
+      name: 
+      display_categories: LIGHT
+    light.kitchen_wetbar_rgbw:
+      name: Kitchen Wetbar
+      display_categories: LIGHT
+    light.livingroom_light_1:
+      name: 
+      display_categories: LIGHT
+    light.livingroom_light_2:
+      name: 
+      display_categories: LIGHT
+    light.master_ceiling_light:
+      name: 
+      display_categories: LIGHT
+    light.office_ceiling_light:
+      name: 
+      display_categories: LIGHT
+    light.office_desk_light:
+      name: 
+      display_categories: LIGHT
+    light.patio_lights:
+      name: 
+      display_categories: LIGHT
+    light.porch_light:
+      name: 
+      display_categories: LIGHT
+    light.sideyard_light:
+      name: 
+      display_categories: LIGHT
+
+    light.kitchen_wetbar_rgbw:
+
+
+    script.wetbar_on:
+      name: Restore Wetbar
+      display_categories: SCENE_TRIGGER
+
+    switch.sonoff_pow3:
+      name: Backyard Light Power
+      display_categories: SWITCH
+
+# Available domains
+# Currently, the following domains are available to be used with Alexa:
+# alarm_control_panel
+# alert
+# automation (enables/disables)
+# binary_sensor
+# climate
+# cover
+# fan (supports on/off and set speed)
+# group
+# input_boolean
+# light
+# lock (lock and unlock, but unlock is untested as Amazon has disabled unlock for now)
+# media_player (play, pause, stop, set volume, adjust volume, next track, and previous track)
+# scene
+# script (enables/disables)
+# sensor
+# switch
+
+# Example
+# alexa:
+#   (map) (Optional) Configuration options for the Amazon Alexa integration.
+#   filter:
+#     (map) (Optional) description: Filters for entities to include/exclude from Alexa.
+#     include_entities:
+#       (list) (Optional) description: Entity IDs to include.
+#     include_domains:
+#       (list) (Optional) Domains to include.
+#     exclude_entities:
+#       (list) (Optional) Entity IDs to exclude.
+#     exclude_domains:
+#       (list) (Optional) Domains to exclude.
+
+#   entity_config:
+#     (map) (Optional) Entity specific configuration for Alexa.
+#     ENTITY_ID:
+#       (map) (Optional) Entity to configure.
+#       name:
+#         (string) (Optional) Name of entity to show in Alexa.
+#       description:
+#         (string) (Optional) Description of entity to show in Alexa.
+#       display_categories:
+#         (string) (Optional) The display category to use in Alexa. Available cate
+
+# display-categories
+# https://developer.amazon.com/en-US/docs/alexa/device-apis/alexa-discovery.html#display-categories

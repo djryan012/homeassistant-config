@@ -11,7 +11,7 @@
       state: 'home'
   action:
     - service: homeassistant.turn_on
-      entity_id: group.kitchen
+      entity_id: group.kitchen_pendants
       data:
         brightness: 203
         transition: 4

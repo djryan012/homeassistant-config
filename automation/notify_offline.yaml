@@ -22,13 +22,15 @@
       data:
         message: '{{ trigger.to_state.attributes.friendly_name }} has gone offline as of {{now().strftime("%H:%M")}}'
 
-- alias: "Tradfri Lights Unavailable"
+- alias: "DeCONZ Lights Unavailable"
   initial_state: True
   trigger:
     - platform: state
-      entity_id: light.david_nightstand,light.georgina_nightstand,light.dinning_floor_lamp,light.kitchen_pendant_1,light.kitchen_pendant_2,light.livingroom_light_1,light.livingroom_light_2,light.office_desk_light,light.porch_light,light.sideyard_light
+      entity_id: light.david_nightstand,light.georgina_nightstand,light.dinning_floor_lamp,light.kitchen_pendant_1,light.kitchen_pendant_2,light.livingroom_light_1,light.livingroom_light_2,light.office_desk_light,light.porch_light,light.sideyard_light,light.kitchen_wetbar_rgbw
       to: unavailable
+      for:
+        minutes: 1
   action:
     - service: notify.telbot_david
       data_template:
-        message: 'Tradfri Light {{trigger.from_state.attributes.friendly_name}} is Unavailable'
+        message: '{{trigger.from_state.attributes.friendly_name}} is Offline'

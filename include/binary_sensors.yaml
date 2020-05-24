@@ -17,7 +17,7 @@
   payload_on: 'on'
   payload_off: 'off'
 - platform: mqtt
-  name: Window Motion Sensor
+  name: Sconce Motion Sensor
   state_topic: 'blueIris/motioneye/motion'
   device_class: motion
   payload_on: 'on'

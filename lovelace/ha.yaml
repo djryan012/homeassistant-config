@@ -75,13 +75,13 @@ cards:
     title: Batteries
     show_header_toggle: false
     entities:
-      - entity: sensor.tradfri_remote_control
+    # Motion Sensors
+      - entity: sensor.tradfri_office_sensor_battery_level
         icon: mdi:battery-50
-        name: Tradfri Remote Battery
-    # Motion
-      - entity: sensor.tradfri_motion_sensor
+        name: Tradfri Office 
+      - entity: sensor.tradfri_motion_sensor_battery_level
         icon: mdi:battery-50
-        name: Tradfri Office Motion
+        name: Tradfri Motion
       - entity: binary_sensor.garage_motion_battery
         icon: mdi:battery-50
         name: Garage Motion Sensor

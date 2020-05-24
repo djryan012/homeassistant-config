@@ -32,6 +32,8 @@ cards:
         icon: mdi:amazon-alexa
       - entity: device_tracker.echo_dot_bedroom
         icon: mdi:amazon-alexa
+      - entity: device_tracker.echo_input
+        icon: mdi:amazon-alexa
       - entity: device_tracker.ecobee3
         icon: mdi:thermostat-box
       - entity: device_tracker.smarthome_laptop
@@ -40,22 +42,26 @@ cards:
         icon: mdi:home-assistant
       - entity: device_tracker.tradfri
         icon: mdi:server-network
+      - entity: device_tracker.hp_newbie
+        icon: mdi:server-network
+        
 
   - type: entities
     title: Media Players
     show_header_toggle: false
     entities:
-      - entity: device_tracker.samsung_tv
-        icon: mdi:television
       - entity: device_tracker.chromecast
         icon: mdi:cast
+      - entity: device_tracker.xbox_one
+        icon: mdi:xbox
       - entity: device_tracker.roku_express
         icon: mdi:cast
       - entity: device_tracker.roku_garage
         icon: mdi:cast
+      - entity: device_tracker.samsung_tv
+        icon: mdi:television
       - entity: device_tracker.xbox_one
         icon: mdi:xbox
-
 
   - type: entities
     title: Sonoffs
@@ -76,7 +82,7 @@ cards:
     title: Home Computing
     show_header_toggle: false
     entities:
-      - entity: device_tracker.hp_newbie
+      - entity: device_tracker.greenenvy
         icon: mdi:desktop-classic
       - entity: device_tracker.canon_printer
         name: Canon Printer
@@ -95,23 +101,26 @@ cards:
       - entity: device_tracker.david_s_pixel
         name: David Wifi
         icon: mdi:cellphone-android
-      # - entity: device_tracker.pixel_3a
-      #   name: David HA Client
-      #   icon: mdi:cellphone-android
+      - entity: device_tracker.pixel_3a
+        name: David HA Client
+        icon: mdi:cellphone-android
       - entity: device_tracker.georgina_zanzito
         name: Georgina Zanzito
         icon: mdi:cellphone-android
       - entity: device_tracker.georgina_pixel_3xl
         name: Georgina Wifi
         icon: mdi:cellphone-android
-      # - entity: device_tracker.michaels_mbp
-      #   name: Michael's iphone
-      #   icon: mdi:cellphone-iphone
+      - entity: device_tracker.georgina_s_kindle
+        name: Georgina Kindle
+
       - entity: device_tracker.michael_sr_phone
         name: Michael Sr Phone
         icon: mdi:cellphone-android
       - entity: device_tracker.isela_s_phone
         name: Isela's Phone
+        icon: mdi:cellphone-android
+      - entity: device_tracker.jackie_s_phone
+        name: Jackies's Phone
         icon: mdi:cellphone-android
 
   - type: entities
@@ -129,5 +138,5 @@ cards:
         icon: mdi:cctv
       - entity: device_tracker.camera_sideyard
         icon: mdi:cctv
-      - entity: device_tracker.motioneye_os
+      - entity: device_tracker.motion_eye_wifi
         icon: mdi:cctv
