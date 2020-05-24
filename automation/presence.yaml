@@ -50,7 +50,7 @@
     service: homeassistant.turn_off
     entity_id:
       - group.kitchen
-      - group.dining_room
+      - group.dinning_room
       - group.office
       - group.bedroom
       - group.garage

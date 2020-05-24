@@ -50,7 +50,7 @@ cards:
         icon: mdi:lightbulb
         tap_action:
           action: toggle
-      - entity: group.dining_room
+      - entity: group.dinning_room
         name: Dinning
         icon: mdi:lightbulb
         tap_action:

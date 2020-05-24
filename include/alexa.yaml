@@ -7,8 +7,8 @@ smart_home:
       - fan.master_ceiling_fan
       - fan.office_ceiling_fan
       - group.bedroom
-      - group.dining_room
-      - group.dining_table
+      - group.dinning_room
+      - group.dinning_table
       - group.garage
       - group.interior_lights
       - group.kitchen
@@ -51,11 +51,11 @@ smart_home:
     group.bedroom:
       name: Bedroom Lights
       display_categories: LIGHT
-    group.dining_room:
+    group.dinning_room:
       name: Dinning Room Lights
       display_categories: LIGHT
-    group.dining_table:
-      name: Dining Table
+    group.dinning_table:
+      name: dinning Table
       display_categories: LIGHT
     group.garage:
       name: 

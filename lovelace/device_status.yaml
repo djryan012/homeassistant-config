@@ -68,7 +68,7 @@ cards:
     title: Echo Sensors
     entities:
       - entity: binary_sensor.echo_occupancy
-        name: Dining Room
+        name: Dinning Room
       - entity: binary_sensor.living_room_occupancy
         name: Living Room
       - entity: binary_sensor.office_occupancy

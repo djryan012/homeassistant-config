@@ -90,7 +90,7 @@
   action:
     - service: homeassistant.turn_off
       entity_id:
-        -  group.dining_room
+        -  group.dinning_room
 
 
 ####  Wetbar Control with motion  #####
