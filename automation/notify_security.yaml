@@ -1,0 +1,62 @@
+#########################################################
+#                 FAILED LOGIN ATTEMPTS                 #
+#########################################################
+# - alias: "Send notification upon failed login attempt"
+#   initial_state: True
+#   trigger:
+#     - platform: state
+#       entity_id: persistent_notification.http_login
+#   condition:
+#     - condition: template
+#       value_template: "{{ trigger.to_state.state != 'None' }}"
+#   action:
+#     - service: notify.telbot_david
+#       data:
+#         message: "Failed login attempt"
+
+#########################################################
+#           NOTIFY OF NEW DEVICE ON NETWORK             #
+#########################################################
+- alias: Notify If New Devices
+  initial_state: True
+  trigger:
+    - platform: event
+      event_type: device_tracker_new_device
+  action:
+    - service: notify.telbot_david
+      data:
+        message: "New device: {{trigger.event.data.entity_id}}"
+
+# - alias: Notify for new devices
+#   trigger:
+#     platform: event
+#     event_type: device_tracker_new_device
+#   action:
+#     - service: notify.mobile_app_pixel_3a
+#       data_template:
+#         message: >
+#           New device:
+#           {{trigger.event.data.host_name}}
+#           ({{trigger.event.data.entity_id}})
+#         title: New device
+
+
+####################   Copied Over ##################################
+
+- alias: "Persistent Login"
+  trigger:
+    - platform: template
+      value_template: "{{ states('persistent_notification.http_login') != 'unknown' }}"    
+  action:
+    - service: notify.telbot_david
+      data:
+        message: 'Notify: {{ state_attr(persistent_notification.http_login, message)}}'
+        
+- alias: "Persistent Check Config"
+  trigger:
+    - platform: template
+      value_template: "{{ states('persistent_notification.invalid_config') != 'unknown' }}"    
+  action:
+    - service: notify.telbot_david
+      data:
+        message: 'Notify: {{ state_attr(persistent_notification.invalid_config, message)}}'

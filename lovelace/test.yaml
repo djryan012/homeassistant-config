@@ -23,8 +23,8 @@ cards:
         name: Back Patio Lights
         # type: custom:slider-entity-row
         # break_slider: true
-      - entity: light.kitchen_Down_lights
-        name: Kitchen Can Lights
+      - entity: light.kitchen_down_lights
+        name: Kitchen Down Lights
         # type: custom:slider-entity-row
         # break_slider: false
 
@@ -92,7 +92,7 @@ cards:
     title: Living Room Insteon
     show_header_toggle: false
     entities:
-      - entity: fan.livingroom_ceiling_fan #Living Room_fan
+      - entity: fan.living_room_ceiling_fan #Living Room_fan
         name: Living Room Fan
         icon: mdi:fan
       - type: divider
@@ -137,3 +137,25 @@ cards:
       - entity: sensor.wallpanel_screenon
       - entity: input_boolean.wallpanel_blackout
       - entity: input_boolean.wallpanel_ideal
+  - type: entities
+    title: Solar Edge System
+    show_header_toggle: false
+    entities:
+      # - entity: sensor.solaredge_batteries
+      - entity: sensor.solaredge_current_power
+      - entity: sensor.solaredge_energy_today
+      - entity: sensor.solaredge_energy_this_month
+      - entity: sensor.solaredge_energy_this_year
+      - entity: sensor.solaredge_lifetime_energy
+      - entity: sensor.solaredge_site_details
+      - entity: sensor.solaredge_current_power_template
+      - entity: sensor.solaredge_energy_today_template
+
+      # - entity: sensor.solaredge_gateways
+      # - entity: sensor.solaredge_grid_power
+      # - entity: sensor.solaredge_inverters
+      # - entity: sensor.solaredge_meters
+      # - entity: sensor.solaredge_power_consumption
+      # - entity: sensor.solaredge_sensors
+      # - entity: sensor.solaredge_solar_power
+      # - entity: sensor.solaredge_storage_power

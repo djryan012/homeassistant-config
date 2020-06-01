@@ -1,11 +1,12 @@
-##### LIVINGROOM FAN #####
+##### LIVING ROOM FAN #####
 living_room_fan_off:
   sequence:
-    - service: switch.turn_off
-      entity_id: fan.livingroom_ceiling_fan
+    - service: fan.turn_off
+      entity_id: fan.living_room_ceiling_fan
     - delay:
         seconds: 0.7
     - service: switch.turn_off
+      entity_id: switch.living_room_keypad_a
     - delay:
         seconds: 0.7
     - service: switch.turn_off
@@ -14,12 +15,16 @@ living_room_fan_off:
         seconds: 0.7
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_c
+    - delay:
+        seconds: 0.7
+    - service: switch.turn_on
+      entity_id: switch.living_room_keypad_d
 
 living_room_fan_low:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.livingroom_ceiling_fan
+        entity_id: fan.living_room_ceiling_fan
         speed: low
     - delay:
         seconds: 0.7
@@ -33,12 +38,16 @@ living_room_fan_low:
         seconds: 0.7
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_c
+    - delay:
+        seconds: 0.7
+    - service: switch.turn_off
+      entity_id: switch.living_room_keypad_d
 
 living_room_fan_medium:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.livingroom_ceiling_fan
+        entity_id: fan.living_room_ceiling_fan
         speed: medium
     - delay:
         seconds: 0.7
@@ -52,12 +61,16 @@ living_room_fan_medium:
         seconds: 0.7
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_c
+    - delay:
+        seconds: 0.7
+    - service: switch.turn_off
+      entity_id: switch.living_room_keypad_d
 
 living_room_fan_high:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.livingroom_ceiling_fan
+        entity_id: fan.living_room_ceiling_fan
         speed: high
     - delay:
         seconds: 0.7
@@ -71,6 +84,10 @@ living_room_fan_high:
         seconds: 0.7
     - service: switch.turn_on
       entity_id: switch.living_room_keypad_c
+    - delay:
+        seconds: 0.7
+    - service: switch.turn_off
+      entity_id: switch.living_room_keypad_d
 
 ##### MASTER FAN #####
 master_bedroom_fan_off:

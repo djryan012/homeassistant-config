@@ -52,9 +52,9 @@
 #     - medium
 #     - high
 
-##   Insteon Livingroom Ceiling Fan   47.98.21
+##   Insteon Living Room Ceiling Fan   47.98.21
 - platform: mqtt
-  name: "Livingroom Ceiling Fan"
+  name: "Living Room Ceiling Fan"
   state_topic: "insteon/47.98.21/fan/state"
   command_topic: "insteon/47.98.21/fan/set"
   speed_state_topic: "insteon/47.98.21/fan/speed/state"

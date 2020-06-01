@@ -9,7 +9,7 @@ midnight:
   primary-text-color: '#FFFFFF'                                                   # Primary text colour, here is referencing dark-primary-color
   text-primary-color: '#FFFFFF'                                                   # Primary text colour
   secondary-text-color: '#8c8d90'                                                 # For secondary titles in more info boxes etc.
-  disabled-text-color: '#7F848E'                                                  # Disabled text colour
+  disabled-text-color: '#FFFFFF' #7F848E                                                  # Disabled text colour
   label-badge-border-color: 'green'                                               # Label badge border, just a reference value
 
   # Background colors
@@ -66,3 +66,5 @@ midnight:
   google-green-500: '#39E949'
 
   card-background-color: '#00000070'
+
+  ha-entity-toggle: 'var(--accent-color)'

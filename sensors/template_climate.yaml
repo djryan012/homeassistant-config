@@ -1,0 +1,38 @@
+- platform: template
+  sensors:
+    ecobee_fanmode:
+      value_template: "{{ state_attr('climate.echo', 'fan_mode') }}"
+      friendly_name: "Fan Mode"
+    ecobee_fanstate:
+      value_template: "{{ state_attr('climate.echo', 'fan') }}"
+      friendly_name: "Fan State"
+    ecobee_operationmode:
+      value_template: "{{ state_attr('climate.echo', 'hvac_mode') }}"
+      friendly_name: "HVAC Mode"
+    ecobee_operatingstate:
+      value_template: "{{ state_attr('climate.echo', 'operation') }}"
+      friendly_name: "HVAC State"
+    ecobee_setpoint:
+      value_template: "{{ state_attr('climate.echo', 'temperature') }}"
+      friendly_name: "HVAC Setpoint"
+    ecobee_preset_mode:
+      value_template: "{{ state_attr('climate.echo', 'preset_mode') }}"
+      friendly_name: "Preset Mode"
+
+    # ecobee_sensor_compare_temp:
+    #   value_template: "{{(states.sensor.echo_temperature.state | float -  states.sensor.bedroom_temperature.state | float ) | round(1) | abs }}"
+    #   friendly_name: "Temperature Compare"
+    #   unit_of_measurement: temperature
+
+    ecobee_temp_compare_living_room:
+      value_template: "{{(states.sensor.echo_temperature.state | float -  states.sensor.living_room_temperature.state | float ) | round(1) | abs }}"
+      friendly_name: "Living Room Temperature Compare"
+      unit_of_measurement: °F
+    ecobee_temp_compare_bedroom:
+      value_template: "{{(states.sensor.echo_temperature.state | float -  states.sensor.bedroom_temperature.state | float ) | round(1) | abs }}"
+      friendly_name: "Bedroom Temperature Compare"
+      unit_of_measurement: °F
+    ecobee_temp_compare_office:
+      value_template: "{{(states.sensor.echo_temperature.state | float -  states.sensor.office_temperature.state | float ) | round(1) | abs }}"
+      friendly_name: "Office Temperature Compare"
+      unit_of_measurement: °F

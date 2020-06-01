@@ -5,18 +5,18 @@ stylesheet: /local/custom_ui/floorplan/floorplan.css
 rules:
   - name: input_booleans
     entities:
-      - input_boolean.david_phone_charging
       - input_boolean.david_status
-      - input_boolean.dog
-      - input_boolean.georgina_phone_charging
       - input_boolean.georgina_status
       - input_boolean.vacation
+      - input_boolean.dog
       - input_boolean.camera_notifications
     states:
       - state: 'on'
         class: 'button-on'
       - state: 'off'
         class: 'button-off'
+    # action:
+    #   service: homeassistant.toggle
 
   - name: thermostats_temp
     entities:
@@ -90,6 +90,9 @@ rules:
         class: 'switch-on'
       - state: 'off'
         class: 'switch-off'
+    # action:
+    #   domain: switch
+    #   service: toggle
 
   - name: fan
     entities:
@@ -112,6 +115,7 @@ rules:
       - light.dinning_floor_lamp
       - light.kitchen_pendant_1
       - light.kitchen_pendant_2
+      - light.kitchen_down_lights
       - light.livingroom_light_1
       - light.livingroom_light_2
       - light.office_desk_light
@@ -120,6 +124,9 @@ rules:
         class: 'light-on'
       - state: 'off'
         class: 'light-off'
+    # action:
+    #   # domain: light
+    #   service: light.toggle
 
   - name: Outdoor Lights
     entities:
@@ -131,6 +138,9 @@ rules:
         class: 'outdoor-light-on'
       - state: 'off'
         class: 'outdoor-light-off'
+    # action:
+    #   domian: light
+    #   service: toggle
 
   - name: Echo Occupancy
     entities:
