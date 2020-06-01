@@ -1,0 +1,200 @@
+# Alexa Smart Home Skill API via https://github.com/mike-grant/haaska
+# https://www.home-assistant.io/integrations/alexa.smart_home/
+smart_home:
+  filter:
+    include_entities:
+      - fan.living_room_ceiling_fan
+      - fan.master_ceiling_fan
+      - fan.office_ceiling_fan
+      - group.bedroom
+      - group.dinning_room
+      - group.dinning_table
+      - group.garage
+      - group.interior_lights
+      - group.kitchen
+      - group.kitchen_pendants
+      - group.living_room
+      - group.nightstands
+      - group.office
+      - input_boolean.camera_notifications
+      - light.david_nightstand
+      - light.dinning_floor_lamp
+      - light.georgina_nightstand
+      - light.kitchen_down_lights
+      - light.kitchen_pendant_1
+      - light.kitchen_pendant_2
+      - light.kitchen_wetbar_rgbw
+      - light.living_room_light_1
+      - light.living_room_light_2
+      - light.master_ceiling_light
+      - light.office_ceiling_light
+      - light.office_desk_light
+      - light.patio_lights
+      - light.porch_light
+      - light.sideyard_light
+      - script.restore_wetbar
+      - switch.sonoff_pow3
+
+  entity_config:
+    fan.living_room_ceiling_fan:
+      name: Living Room Fan
+      display_categories: FAN
+    fan.master_ceiling_fan:
+      name: Bedroom Fan
+      display_categories: FAN
+    fan.office_ceiling_fan:
+      name: Office Fan
+      display_categories: FAN
+
+    group.bedroom:
+      name: Bedroom Lights
+      display_categories: LIGHT
+    group.dinning_room:
+      name: Dinning Room Lights
+      display_categories: LIGHT
+    group.dinning_table:
+      name: Dinning Table
+      display_categories: LIGHT
+    group.garage:
+      name: Garage Lights
+      display_categories: LIGHT
+    group.interior_lights:
+      name: Interior Lights
+      display_categories: LIGHT
+    group.kitchen:
+      name: Kitchen Lights
+      display_categories: LIGHT
+    group.kitchen_pendants:
+      name: Kitchen Pendants
+      display_categories: LIGHT
+    group.living_room:
+      name: Living Room Lights
+      display_categories: LIGHT
+    group.nightstands:
+      name: Nightstands
+      display_categories: LIGHT
+    group.office:
+      name: Office Lights
+      display_categories: LIGHT
+      
+    input_boolean.camera_notifications:
+      name: Camera Notify Overide
+      display_categories: SWITCH
+
+    light.david_nightstand:
+      name: David Nightstand
+      display_categories: LIGHT
+    light.dinning_floor_lamp:
+      name: Dinning Floor Lamp
+      display_categories: LIGHT
+    light.georgina_nightstand:
+      name: Georgina Nightstand
+      display_categories: LIGHT
+    light.kitchen_down_lights:
+      name: Kitchen Down Lights
+      display_categories: LIGHT
+    light.kitchen_pendant_1:
+      name: Kitchen Pendant One
+      display_categories: LIGHT
+    light.kitchen_pendant_2:
+      name: Kitchen Pendant Two
+      display_categories: LIGHT
+    light.kitchen_wetbar_rgbw:
+      name: Kitchen Wetbar
+      display_categories: LIGHT
+    light.living_room_light_1:
+      name: Living Room Light One
+      display_categories: LIGHT
+    light.living_room_light_2:
+      name: Living Room Light Two
+      display_categories: LIGHT
+    light.master_ceiling_light:
+      name: Bedroom Ceiling Light
+      display_categories: LIGHT
+    light.office_ceiling_light:
+      name: Office Ceiling Light
+      display_categories: LIGHT
+    light.office_desk_light:
+      name: Office Desk Light
+      display_categories: LIGHT
+    light.patio_lights:
+      name: Patio Lights
+      display_categories: LIGHT
+    light.porch_light:
+      name: Porch Light
+      display_categories: LIGHT
+    light.sideyard_light:
+      name: Sideyard Lights
+      display_categories: LIGHT
+
+    script.restore_wetbar:
+      name: Restore Wetbar
+      description: Change wetbar back to wetbar on look
+      display_categories: SCENE_TRIGGER
+
+    switch.sonoff_pow3:
+      name: Backyard Light Power
+      display_categories: SWITCH
+
+# ACTIVITY_TRIGGER    | A combination of devices set to a specific state. Use activity triggers for scenes when the state changes must occur in a specific order. For example, for a scene named "watch Netflix" you might power on the TV first, and then set the input to HDMI1.
+# CAMERA              | A media device with video or photo functionality.
+# COMPUTER            | A non-mobile computer, such as a desktop computer.
+# CONTACT_SENSOR      | An endpoint that detects and reports changes in contact between two surfaces.
+# DOOR                | A door.
+# DOORBELL            | A doorbell.
+# EXTERIOR_BLIND      | A window covering on the outside of a structure.
+# FAN                 | A fan.
+# GAME_CONSOLE        | A game console, such as Microsoft Xbox or Nintendo Switch
+# GARAGE_DOOR         | A garage door. Garage doors must implement the ModeController interface to open and close the door.
+# INTERIOR_BLIND      | A window covering on the inside of a structure.
+# LAPTOP              | A laptop or other mobile computer.
+# LIGHT               | A light source or fixture.
+# MICROWAVE           | A microwave oven.
+# MOBILE_PHONE        | A mobile phone.
+# MOTION_SENSOR       | An endpoint that detects and reports movement in an area.
+# MUSIC_SYSTEM        | A network-connected music system.
+# NETWORK_HARDWARE    | A network router.
+# OTHER               | An endpoint that doesn't belong to one of the other categories.
+# OVEN                | An oven cooking appliance.
+# PHONE               | A non-mobile phone, such as landline or an IP phone.
+# SCENE_TRIGGER       | A combination of devices set to a specific state. Use scene triggers for scenes when the order of the state change is not important. For example, for a scene named "bedtime" you might turn off the lights and lower the thermostat, in any order.
+# SCREEN              | A projector screen.
+# SECURITY_PANEL      | A security panel.
+# SMARTLOCK           | An endpoint that locks.
+# SMARTPLUG           | A module that is plugged into an existing electrical outlet, and then has a device plugged into it. For example, a user can plug a smart plug into an outlet, and then plug a lamp into the smart plug. A smart plug can control a variety of devices.
+# SPEAKER             | A speaker or speaker system.
+# STREAMING_DEVICE    | A streaming device such as Apple TV, Chromecast, or Roku.
+# SWITCH              | A switch wired directly to the electrical system. A switch can control a variety of devices.
+# TABLET              | A tablet computer.
+# TEMPERATURE_SENSOR  | An endpoint that reports temperature, but does not control it. The temperature data of the endpoint is not shown in the Alexa app. If your endpoint also controls temperature, use THERMOSTAT instead.
+# THERMOSTAT          | An endpoint that controls temperature, stand-alone air conditioners, or heaters with direct temperature control. If your endpoint senses temperature but does not control it, use TEMPERATURE_SENSOR instead.
+# TV                  | A television.
+# WEARABLE            | A network-connected wearable device, such as an Apple Watch, Fitbit, or Samsung Gear.
+
+# Example
+# alexa:
+#   (map) (Optional) Configuration options for the Amazon Alexa integration.
+#   filter:
+#     (map) (Optional) description: Filters for entities to include/exclude from Alexa.
+#     include_entities:
+#       (list) (Optional) description: Entity IDs to include.
+#     include_domains:
+#       (list) (Optional) Domains to include.
+#     exclude_entities:
+#       (list) (Optional) Entity IDs to exclude.
+#     exclude_domains:
+#       (list) (Optional) Domains to exclude.
+
+#   entity_config:
+#     (map) (Optional) Entity specific configuration for Alexa.
+#     ENTITY_ID:
+#       (map) (Optional) Entity to configure.
+#       name:
+#         (string) (Optional) Name of entity to show in Alexa.
+#       description:
+#         (string) (Optional) Description of entity to show in Alexa.
+#       display_categories:
+#         (string) (Optional) The display category to use in Alexa. Available cate
+
+# display-categories
+# https://developer.amazon.com/en-US/docs/alexa/device-apis/alexa-discovery.html#display-categories
