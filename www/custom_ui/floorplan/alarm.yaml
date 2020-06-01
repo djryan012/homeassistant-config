@@ -96,7 +96,7 @@ rules:
 
   - name: fan
     entities:
-      - fan.livingroom_ceiling_fan
+      - fan.living_room_ceiling_fan
       - fan.master_ceiling_fan
       - fan.office_ceiling_fan
     states:
@@ -116,8 +116,13 @@ rules:
       - light.kitchen_pendant_1
       - light.kitchen_pendant_2
       - light.kitchen_down_lights
+<<<<<<< HEAD
       - light.livingroom_light_1
       - light.livingroom_light_2
+=======
+      - light.living_room_light_1
+      - light.living_room_light_2
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
       - light.office_desk_light
     states:
       - state: 'on'

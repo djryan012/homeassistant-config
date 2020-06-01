@@ -13,7 +13,10 @@ from ..helpers.misc import version_left_higher_then_right
 from ..helpers.install import install_repository, version_to_install
 
 from custom_components.hacs.hacsbase.exceptions import HacsException
+<<<<<<< HEAD
 from custom_components.hacs.store import async_remove_store
+=======
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 from custom_components.hacs.globals import get_hacs
 from custom_components.hacs.helpers.information import (
     get_info_md_content,
@@ -127,10 +130,17 @@ class HacsRepository:
         """Return pending upgrade."""
         if not self.can_install:
             return False
+<<<<<<< HEAD
         if self.data.installed:
             if self.data.selected_tag is not None:
                 if self.data.selected_tag == self.data.default_branch:
                     if self.data.installed_commit != self.data.last_commit:
+=======
+        if self.status.installed:
+            if self.status.selected_tag is not None:
+                if self.status.selected_tag == self.data.default_branch:
+                    if self.versions.installed_commit != self.versions.available_commit:
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
                         return True
                     return False
             if self.display_installed_version != self.display_available_version:
@@ -268,7 +278,11 @@ class HacsRepository:
             if self.data.description is None or len(self.data.description) == 0:
                 raise HacsException("Missing repository description")
 
+<<<<<<< HEAD
     async def common_update(self, ignore_issues=False):
+=======
+    async def common_update(self):
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
         """Common information update steps of the repository."""
         self.logger.debug("Getting repository information")
 
@@ -343,21 +357,36 @@ class HacsRepository:
                 raise HacsException("No hacs.json file in the root of the repository.")
             return
         if self.hacs.action:
+<<<<<<< HEAD
             self.logger.info("Found hacs.json")
 
         self.ref = version_to_install(self)
 
+=======
+            self.logger.debug("Found hacs.json")
+
+        if self.ref is None:
+            self.ref = version_to_install(self)
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
         try:
             manifest = await self.repository_object.get_contents("hacs.json", self.ref)
             self.repository_manifest = HacsManifest.from_dict(
                 json.loads(manifest.content)
             )
             self.data.update_data(json.loads(manifest.content))
+<<<<<<< HEAD
         except (AIOGitHubAPIException, Exception) as exception:  # Gotta Catch 'Em All
             if self.hacs.action:
                 raise HacsException(f"hacs.json file is not valid ({exception}).")
         if self.hacs.action:
             self.logger.info("hacs.json is valid")
+=======
+        except (AIOGitHubException, Exception) as exception:  # Gotta Catch 'Em All
+            if self.hacs.action:
+                raise HacsException(f"hacs.json file is not valid ({exception}).")
+        if self.hacs.action:
+            self.logger.debug("hacs.json is valid")
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 
     def remove(self):
         """Run remove tasks."""
@@ -374,7 +403,11 @@ class HacsRepository:
         self.logger.info("Uninstalling")
         if not await self.remove_local_directory():
             raise HacsException("Could not uninstall")
+<<<<<<< HEAD
         self.data.installed = False
+=======
+        self.status.installed = False
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
         if self.data.category == "integration":
             if self.data.config_flow:
                 await self.reload_custom_components()

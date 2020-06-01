@@ -27,6 +27,7 @@
       data:
         message: "New device: {{trigger.event.data.entity_id}}"
 
+<<<<<<< HEAD
 # - alias: Notify for new devices
 #   trigger:
 #     platform: event
@@ -40,6 +41,8 @@
 #           ({{trigger.event.data.entity_id}})
 #         title: New device
 
+=======
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 
 ####################   Copied Over ##################################
 
@@ -60,3 +63,14 @@
     - service: notify.telbot_david
       data:
         message: 'Notify: {{ state_attr(persistent_notification.invalid_config, message)}}'
+<<<<<<< HEAD
+=======
+
+  # action:
+  #   - service: script.notify_engine
+  #     data_template:
+  #       value1: 'Bad Login: '
+  #       value2: 'There was a Hack attempt!'
+  #       value3: 'Go Check the GUI for details.'
+  #       who: 'carlo'
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da

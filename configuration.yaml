@@ -153,7 +153,11 @@ panel_custom:
   #     hide_app_toolbar:
   #     config: /local/custom_ui/floorplan/floorclock.yaml
 
+<<<<<<< HEAD
 # samsungtv:     # Moved to UI Integration vs yaml config
+=======
+# samsungtv:
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 #   - host: !secret samsungtv_host
 
 telegram_bot:

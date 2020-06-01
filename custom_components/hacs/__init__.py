@@ -6,7 +6,11 @@ https://hacs.xyz/
 """
 
 import voluptuous as vol
+<<<<<<< HEAD
 from aiogithubapi import GitHub, AIOGitHubAPIException
+=======
+from aiogithubapi import AIOGitHub, AIOGitHubException
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 from homeassistant import config_entries
 from homeassistant.const import EVENT_HOMEASSISTANT_START
 from homeassistant.const import __version__ as HAVERSION
@@ -17,7 +21,11 @@ from homeassistant.helpers.event import async_call_later
 
 from custom_components.hacs.configuration_schema import hacs_config_combined
 from custom_components.hacs.const import DOMAIN, ELEMENT_TYPES, STARTUP, VERSION
+<<<<<<< HEAD
 from custom_components.hacs.constrains import check_constrains
+=======
+from custom_components.hacs.constrains import check_constans, check_requirements
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 from custom_components.hacs.helpers.remaining_github_calls import get_fetch_updates_for
 from custom_components.hacs.hacsbase.configuration import Configuration
 from custom_components.hacs.hacsbase.data import HacsData
@@ -70,7 +78,11 @@ async def async_setup_entry(hass, config_entry):
     config_entry.add_update_listener(reload_hacs)
     try:
         startup_result = await hacs_startup()
+<<<<<<< HEAD
     except AIOGitHubAPIException:
+=======
+    except AIOGitHubException:
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
         startup_result = False
     if not startup_result:
         hacs.system.disabled = True
@@ -84,7 +96,11 @@ async def startup_wrapper_for_yaml():
     hacs = get_hacs()
     try:
         startup_result = await hacs_startup()
+<<<<<<< HEAD
     except AIOGitHubAPIException:
+=======
+    except AIOGitHubException:
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
         startup_result = False
     if not startup_result:
         hacs.system.disabled = True

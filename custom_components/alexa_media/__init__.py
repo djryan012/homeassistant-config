@@ -313,6 +313,7 @@ async def setup_alexa(hass, config_entry, login_obj):
                 hide_email(email),
                 login_obj.status,
             )
+<<<<<<< HEAD
             if login_obj.status:
                 await login_obj.reset()
                 await login_obj.login()
@@ -320,6 +321,16 @@ async def setup_alexa(hass, config_entry, login_obj):
             return
         except BaseException as err:
             raise
+=======
+            if login_obj.status and not await test_login_status(
+                hass, config_entry, login_obj, setup_alexa
+            ):
+                login_obj.status = {}
+                await login_obj.reset()
+                await login_obj.login()
+            return
+        except BaseException as err:
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
             raise UpdateFailed(f"Error communicating with API: {err}")
 
         await process_notifications(login_obj, raw_notifications)

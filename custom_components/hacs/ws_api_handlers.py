@@ -70,9 +70,16 @@ async def hacs_settings(hass, connection, msg):
 
     elif action == "clear_new":
         for repo in hacs.repositories:
+<<<<<<< HEAD
             if repo.data.new:
                 hacs.logger.debug(f"Clearing new flag from '{repo.data.full_name}'")
                 repo.data.new = False
+=======
+            if msg.get("category") == repo.data.category:
+                if repo.status.new:
+                    hacs.logger.debug(f"Clearing new flag from '{repo.data.full_name}'")
+                    repo.status.new = False
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
     else:
         hacs.logger.error(f"WS action '{action}' is not valid")
     hass.bus.async_fire("hacs/config", {})
@@ -205,9 +212,12 @@ async def hacs_repository(hass, connection, msg):
             await repository.install()
             if not was_installed:
                 hass.bus.async_fire("hacs/reload", {"force": True})
+<<<<<<< HEAD
 
         elif action == "not_new":
             repository.data.new = False
+=======
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 
         elif action == "uninstall":
             await repository.uninstall()
@@ -248,11 +258,19 @@ async def hacs_repository(hass, connection, msg):
 
         await hacs.data.async_write()
         message = None
+<<<<<<< HEAD
     except AIOGitHubAPIException as exception:
         message = str(exception)
         hass.bus.async_fire("hacs/error", {"message": str(exception)})
     except AttributeError as exception:
         message = f"Could not use repository with ID {repo_id} ({exception})"
+=======
+    except AIOGitHubException as exception:
+        message = str(exception)
+        hass.bus.async_fire("hacs/error", {"message": str(exception)})
+    except AttributeError as exception:
+        message = f"Could not use repository with ID {repo_id}"
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
     except Exception as exception:  # pylint: disable=broad-except
         message = str(exception)
 
@@ -261,7 +279,10 @@ async def hacs_repository(hass, connection, msg):
         hass.bus.async_fire("hacs/error", {"message": message})
 
     repository.state = None
+<<<<<<< HEAD
     connection.send_message(websocket_api.result_message(msg["id"], {}))
+=======
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 
 
 @websocket_api.async_response

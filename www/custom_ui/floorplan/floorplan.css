@@ -112,7 +112,7 @@ svg, svg * {
   /* stroke-opacity: 0.25; */
 }
 
-#fan\.livingroom_ceiling_fan, #fan\.master_ceiling_fan, #fan\.office_ceiling_fan {
+#fan\.living_room_ceiling_fan, #fan\.master_ceiling_fan, #fan\.office_ceiling_fan {
   transform-origin: center;
   }
 @-webkit-keyframes rotation {
