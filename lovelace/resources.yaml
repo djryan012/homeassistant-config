@@ -12,3 +12,5 @@
 # # Add to the version number at the end of URL when updating.
 # - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.1
 #   type: module
+- type: module
+  url: /local/floorplan/floorplan-card.js?v=1.1.14
