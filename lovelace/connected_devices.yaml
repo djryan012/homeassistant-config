@@ -103,12 +103,6 @@ cards:
         icon: mdi:cellphone-android
       - entity: device_tracker.pixel_3a
         name: David HA Client
-<<<<<<< HEAD
-=======
-        icon: mdi:cellphone-android
-      - entity: device_tracker.georgina_zanzito
-        name: Georgina Zanzito
->>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
         icon: mdi:cellphone-android
       # - entity: device_tracker.georgina_zanzito
       #   name: Georgina Zanzito
@@ -125,15 +119,9 @@ cards:
       - entity: device_tracker.isela_s_phone
         name: Isela's Phone
         icon: mdi:cellphone-android
-<<<<<<< HEAD
       # - entity: device_tracker.jackie_s_phone
       #   name: Jackies's Phone
       #   icon: mdi:cellphone-android
-=======
-      - entity: device_tracker.jackie_s_phone
-        name: Jackies's Phone
-        icon: mdi:cellphone-android
->>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 
   - type: entities
     title: Cameras

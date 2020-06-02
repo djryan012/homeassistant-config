@@ -144,20 +144,16 @@ panel_custom:
     url_path: floorplan
     config:
       hide_app_toolbar:
-      config: /local/custom_ui/floorplan/floorplan.yaml
+      config: /local/floorplan/floorplan.yaml
   # - name: clock
   #   sidebar_title: Alarm Clock
   #   sidebar_icon: mdi:clock
   #   url_path: clock
   #   config:
   #     hide_app_toolbar:
-  #     config: /local/custom_ui/floorplan/floorclock.yaml
+  #     config: /local/floorplan/floorclock.yaml
 
-<<<<<<< HEAD
 # samsungtv:     # Moved to UI Integration vs yaml config
-=======
-# samsungtv:
->>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 #   - host: !secret samsungtv_host
 
 telegram_bot:
