@@ -1,6 +1,6 @@
 name: Alarm Panel
-image: /local/custom_ui/floorplan/alarm.svg
-stylesheet: /local/custom_ui/floorplan/floorplan.css
+image: /local/floorplan/alarm.svg
+stylesheet: /local/floorplan/floorplan.css
 
 rules:
   - name: input_booleans
@@ -237,7 +237,7 @@ rules:
   #         imageName = "snowy-day-1";
   #         break;
   #     }
-  #     return "/local/custom_ui/floorplan/images/weather/" + imageName + ".svg";
+  #     return "/local/floorplan/images/weather/" + imageName + ".svg";
   #     '
 
   - name: Camera Images

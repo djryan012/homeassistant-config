@@ -15,5 +15,5 @@ fully_kiosk:
     media_player: media_player.alarm_clock
 
 pages:
-  -  /local/custom_ui/floorplan/clock.yaml
-  # -  /local/custom_ui/floorplan/clock_config.yaml
+  -  /local/floorplan/clock.yaml
+  # -  /local/floorplan/clock_config.yaml

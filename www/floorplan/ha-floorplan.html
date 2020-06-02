@@ -1,16 +1,5 @@
-<!--
-    Floorplan for Home Assistant
-    Version: 1.0.8.3
-    By Petar Kozul
-    https://github.com/pkozul/ha-floorplan
-  -->
-
-<script src="lib/jquery-3.3.1.min.js"></script>
-<script src="lib/moment.min.js"></script>
-<script src="lib/yaml.min.js"></script>
-
-<!-- As documented here for Google Chrome, removes the need for touchstart -->
-<meta name="viewport" content="width=device-width">
+<script src="./lib/jquery-3.4.1.min.js"></script>
+<script src="./lib/yaml.min.js"></script>
 
 <dom-module id="ha-floorplan">
 
@@ -63,7 +52,7 @@
 
     <template is='dom-if' if='[[isLoading]]'>
       <div class='loading-container'>
-        <paper-spinner active alt='Loading'></paper-spinner>
+        <paper-spinner-lite active alt='Loading'></paper-spinner>
       </div>
     </template>
 
@@ -123,12 +112,12 @@
     }
 
     initFloorplan() {
-      this.loadScript('/local/custom_ui/floorplan/lib/floorplan.js')
+      this.loadScript('/local/floorplan/lib/floorplan.js')
         .then(() => {
           this.floorplan = new Floorplan();
 
           let options = {
-            doc: this.root,
+            root: this.root,
             hass: this.hass,
             openMoreInfo: this.openMoreInfo.bind(this),
             setIsLoading: this.setIsLoading.bind(this),

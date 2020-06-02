@@ -1,5 +1,0 @@
-date_format: MMM-DD-YYYY
-#log_level: debug
-
-pages:
-  -  /local/custom_ui/floorplan/alarm.yaml
