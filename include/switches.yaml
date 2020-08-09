@@ -17,6 +17,15 @@
   payload_off: 'OFF'
   qos: 1
   retain: true
+- platform: mqtt
+  name: 'Garage Utility Outlet' #Switch3
+  state_topic: 'insteon/54.4b.92/state'
+  command_topic: 'insteon/54.4b.92/set'
+  optimistic: true
+  payload_on: 'ON'
+  payload_off: 'OFF'
+  qos: 1
+  retain: true
 
   #------------------------------------------------------------------------
   # Keypad Linc
@@ -165,6 +174,3 @@
   payload_off: 'OFF'
   qos: 1
   retain: true
-
-# Creates switch to arm and disarm BlueIris (available only when profiles and admin password are provided)
-- platform: blueiris

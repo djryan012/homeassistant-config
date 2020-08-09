@@ -1,21 +1,273 @@
+name: Alarm Panel
+image: /local/custom_ui/floorplan/floorplan.svg
+stylesheet: /local/custom_ui/floorplan/floorplan.css
+
 date_format: MMM-DD-YYYY
 #log_level: debug
 
-fully_kiosk:
+# pages:
+#   -  /local/custom_ui/floorplan/alarm.yaml
 
-  - name: Bedroom Alarm Panel
-    address: B4:7C:9C:9E:85:90
-    motion_sensor: binary_sensor.bedroom_motion
-    plugged_sensor: binary_sensor.bedroom_plugged
-    screensaver_light: light.bedroom_screensaver
-    media_player: media_player.bedroom_alarm_panel
+rules:
+  - name: input_booleans
+    entities:
+      - input_boolean.david_status
+      - input_boolean.georgina_status
+      - input_boolean.vacation
+      - input_boolean.dog
+      - input_boolean.camera_notifications
+    states:
+      - state: 'on'
+        class: 'button-on'
+      - state: 'off'
+        class: 'button-off'
+    # action:
+    #   service: homeassistant.toggle
 
-  # - name: Entry Alarm Panel
-  #   address: 00:FC:8B:4A:D5:CF
+  - name: thermostats_temp
+    entities:
+      - climate.echo
+    text_template: '${entity.attributes.current_temperature ? Math.ceil(entity.attributes.current_temperature) + "°": "undefined"}'
+    class_template: 'return "static-temp";'
+
+  - name: temp_round
+    entities:
+      - sensor.bedroom_temperature
+      - sensor.echo_temperature
+      - sensor.living_room_temperature
+      - sensor.office_temperature
+    text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
+    class_template: 'return "static-temp";'
+
+  - name: text_speed
+    entities:
+      - sensor.usg_download
+      - sensor.usg_upload
+    text_template: '${entity.state ? Math.ceil(entity.state): "undefined"}'
+    # text_template: '${entity.state ? Math.ceil(entity.state) + " mb": "undefined"}'
+    class_template: 'return "static-text";'
+
+  - name: text_percentage
+    entities:
+      - sensor.processor_use
+      - sensor.memory_use_percent
+      - sensor.wallpanel_battery_level
+      - sensor.echo_humidity
+    text_template: '${entity.state ? Math.ceil(entity.state) + "%": "undefined"}'
+    class_template: 'return "static-text";'
+
+  - name: solar_edge
+    entities:
+      - sensor.solaredge_current_power_template
+      - sensor.solaredge_energy_today_template
+    text_template: '${entity.state ? entity.state + " kWh": "undefined"}'
+    class_template: 'return "static-text";'
+
+  - name: text_font_date
+    entities:
+      - sensor.floorplan_date
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    # class_template: 'return "static-text-date";'
+
+  - name: text_font_time
+    entities:
+      - sensor.floorplan_time
+      - sensor.clock_time
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    # class_template: 'return "static-text-time";'
+
+  - name: Family
+    entities:
+      - person.david
+      - person.georgina
+    text_template: '${entity.state ? entity.state.replace("not_home", "away") : "undefined"}'
+    states:
+      - state: 'home'
+        class: 'text-home'
+      - state: 'not_home'
+        class: 'text-away'
+
+  - name: switches
+    entities:
+      - group.garage
+      - switch.sonoff1
+      - switch.sonoff2
+    states:
+      - state: 'on'
+        class: 'switch-on'
+      - state: 'off'
+        class: 'switch-off'
+    # action:
+    #   domain: switch
+    #   service: toggle
+
+  - name: fan
+    entities:
+      - fan.living_room_ceiling_fan
+      - fan.master_ceiling_fan
+      - fan.office_ceiling_fan
+    states:
+      - state: 'on'
+        class: 'fan-on'
+      - state: 'off'
+        class: 'fan-off'
+
+  - name: Lights
+    entities:
+      - light.dinning_table_light
+      - light.master_ceiling_light
+      - light.office_ceiling_light
+      - light.david_nightstand
+      - light.georgina_nightstand
+      - light.dinning_floor_lamp
+      - light.kitchen_pendant_1
+      - light.kitchen_pendant_2
+      - light.kitchen_down_lights
+      - light.living_room_light_1
+      - light.living_room_light_2
+      - light.office_desk_light
+      - light.kitchen_wetbar_rgbw
+    states:
+      - state: 'on'
+        class: 'light-on'
+      - state: 'off'
+        class: 'light-off'
+    # action:
+    #   # domain: light
+    #   service: light.toggle
+
+  - name: Outdoor Lights
+    entities:
+      - light.porch_light
+      - light.sideyard_light
+      - light.patio_lights
+    states:
+      - state: 'on'
+        class: 'outdoor-light-on'
+      - state: 'off'
+        class: 'outdoor-light-off'
+    # action:
+    #   domian: light
+    #   service: toggle
+
+  - name: Echo Occupancy
+    entities:
+      - binary_sensor.echo_occupancy
+      - binary_sensor.living_room_occupancy
+      - binary_sensor.office_occupancy
+      - binary_sensor.bedroom_occupancy
+    states:
+      - state: 'on'
+        class: 'detect-on'
+      - state: 'off'
+        class: 'detect-off'
+
+  - name: Windows
+    entities:
+      - binary_sensor.master_window_status
+      - binary_sensor.guest_window_status
+      - binary_sensor.office_window_status
+      - binary_sensor.front_window_status
+      - binary_sensor.kitchen_window_status
+    states:
+      - state: 'off'
+        class: 'window-closed'
+      - state: 'on'
+        class: 'window-open'
+
+  - name: Doors
+    entities:
+      - binary_sensor.side_door_status
+      - binary_sensor.front_door_status
+      - binary_sensor.slider_door_status
+    states:
+      - state: 'off'
+        class: 'door-closed'
+      - state: 'on'
+        class: 'door-open'
+
+  - name: Presence
+    entities:
+      - input_boolean.david_status
+      - input_boolean.georgina_status
+    states:
+      - state: 'on'
+        class: 'presence-on'
+      - state: 'off'
+        class: 'presence-off'
+
+  # - name: Garage Doors
   #   entities:
-  #     - binary_sensor.entry_motion
-  #     - binary_sensor.entry_plugged
-  #     - media_player.entry_alarm_panel
+  #     - cover.large_garage
+  #     - cover.small_garage
+  #   states:
+  #     - state: 'closed'
+  #       class: 'window-closed'
+  #     - state: 'open'
+  #       class: 'window-open'
 
-pages:
-  -  /local/custom_ui/floorplan/alarm.yaml
+  # - name: Dark Sky Sensors
+  #   entities:
+  #     - sensor.dark_sky_minutely_summary
+  #   image_template: '
+  #     var imageName = "";
+  #     switch (entity.attributes.entity_picture) {
+  #       case "/static/images/darksky/weather-sunny.svg":
+  #         imageName = "sunny-1";
+  #         break;
+
+  #       case "/static/images/darksky/weather-night.svg":
+  #         imageName = "night-1";
+  #         break;
+
+  #       case "/static/images/darksky/weather-partlycloudy.svg":
+  #         imageName = "partlycloudy-day-1";
+  #         break;
+
+  #       case "/static/images/darksky/weather-cloudy.svg":
+  #         imageName = "partlycloudy-night-1";
+  #         break;
+
+  #       case "/static/images/darksky/weather-cloudy.svg":
+  #         imageName = "cloudy-day-1";
+  #         break;
+
+  #       case "/static/images/darksky/weather-pouring.svg":
+  #         imageName = "thunder";
+  #         break;
+
+  #       case "/static/images/darksky/weather-snowy.svg":
+  #         imageName = "snowy-day-1";
+  #         break;
+  #     }
+  #     return "/local/custom_ui/floorplan/images/weather/" + imageName + ".svg";
+  #     '
+
+  - name: Camera Images
+    entities:
+      - camera.blueiris_front_door
+      - camera.blueiris_front_yard
+      - camera.blueiris_back_yard
+      - camera.blueiris_motion_eye
+      - camera.blueiris_side_yard
+      - camera.blueiris_motion_eye
+    image_template: '${entity.attributes.entity_picture}'
+    # image_refresh_interval: 20 # in seconds - Future options if needed.
+
+### WALLPANEL Overide
+  # - name: Blackout
+  #   entities:
+  #     - input_boolean.wallpanel_blackout
+  #   states:
+  #     - state: 'on'
+  #       class: 'blackout-on'
+  #     - state: 'off'
+  #       class: 'blackout-off'
+  # - name: Dimmer
+  #   entities:
+  #     - input_boolean.wallpanel_ideal
+  #   states:
+  #     - state: 'on'
+  #       class: 'dimmer-on'
+  #     - state: 'off'
+  #       class: 'dimmer-off'

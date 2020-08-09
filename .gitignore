@@ -1,6 +1,6 @@
 # # Example .gitignore file for your config dir.
 # # A * ensures that everything will be ignored.
-*.*
+
 
 # # You can whitelist files/folders with !, these will not be ignored.
 !*.yaml
@@ -25,6 +25,16 @@
 !sensors
 !www
 
+# # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+*.*
+www/snapshot_*
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml
+google_calendars.yaml
+snapshot_*
+*.key
+
 # # Ignore folders.
 .storage
 .cloud
@@ -33,10 +43,6 @@
 node-red
 insteon-mqtt
 custom_components
-
-# # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
-ip_bans.yaml
-secrets.yaml
-known_devices.yaml
-google_calendars.yaml
-snapshot_*
+people/
+ui/
+js/

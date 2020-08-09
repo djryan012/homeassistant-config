@@ -62,6 +62,9 @@ cards:
           - entity: sensor.hassio_version
             name: Latest Release
             icon: mdi:github-circle
+            tap_action:
+              action: url
+              url_path: https://www.home-assistant.io
       - type: glance
         entities:
           - entity: sensor.lets_encrypt_expiration
@@ -70,18 +73,21 @@ cards:
           - entity: sensor.hacs
             name: HACs Updates
             icon: mdi:folder-download
+            tap_action:
+              action: url
+              url_path: http://192.168.1.110:8123/hacs
 
   - type: entities
     title: Batteries
     show_header_toggle: false
     entities:
-      - entity: sensor.tradfri_remote_control
+    # Motion Sensors
+      - entity: sensor.tradfri_office_sensor_battery_level
         icon: mdi:battery-50
-        name: Tradfri Remote Battery
-    # Motion
-      - entity: sensor.tradfri_motion_sensor
+        name: Tradfri Office 
+      - entity: sensor.tradfri_wetbar_sensor_battery_level
         icon: mdi:battery-50
-        name: Tradfri Office Motion
+        name: Tradfri Motion
       - entity: binary_sensor.garage_motion_battery
         icon: mdi:battery-50
         name: Garage Motion Sensor

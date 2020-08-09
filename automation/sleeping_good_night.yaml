@@ -29,6 +29,7 @@
             {% else %} true {% endif %}
   action:
     - service: script.interior_off
+    - service: script.wallpanel_1_percent
 
 # Turn off bedroom lights when Georgina goes to sleep
 - alias: 'Bedroom Lights Out Georgina asleep'

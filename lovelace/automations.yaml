@@ -10,11 +10,15 @@ cards:
     entities:
       - entity: automation.ecobee_fan_off
       - entity: automation.ecobee_fan_on
-      - entity: automation.ceiling_fan_on_while_sleeping
       - entity: automation.ecobee_set_to_auto
       - entity: automation.ecobee_set_to_off
       - entity: automation.ecobee_preset_mode_sleep
       - entity: automation.ecobee_preset_mode_resume
+      - entity: automation.bedroom_fan_on_while_sleeping
+      - entity: automation.bedroom_fan_off_while_sleeping
+      - entity: automation.office_fan_on_while_occupied
+      - entity: automation.office_fan_off_while_occupied
+
 
   - type: entities
     title: Lights
@@ -27,7 +31,7 @@ cards:
       - entity: automation.kitchen_on_in_the_evening
       - entity: automation.porch_light_on
       - entity: automation.dim_down_porch_light
-      - entity: automation.porch_light_off_at_sunrise
+      - entity: automation.sunrise_lighting_control
       - entity: automation.nightlight_for_dog
       - entity: automation.good_night_trigger
       # - entity: automation.garage_lights_on_by_motion
@@ -62,10 +66,11 @@ cards:
       - entity: automation.pond_filter_issue
       # - entity: automation.pond_filter_issue_for_mark
       - entity: automation.battery_is_low_in_sensor
-      - entity: automation.tradfri_lights_unavailable
+      - entity: automation.deconz_lights_unavailable
       - entity: automation.update_available_notification
       - entity: automation.internet_speed_connection_poor
-      - entity: automation.persistent_notification
+      - entity: automation.failed_login
+      - entity: automation.persistent_check_config
       - entity: automation.notify_if_camera_is_offline
       # - entity: automation.notify_if_new_devices
 
@@ -104,8 +109,6 @@ cards:
       - entity: automation.wallpanel_motion_clear
       - entity: automation.wallpanel_motion_detected
       - entity: automation.wallpanel_off_when_leaving
-      - entity: automation.wallpanel_on_when_awake
-      - entity: automation.wallpanel_on_when_home
 
   - type: entities
     title: Dog

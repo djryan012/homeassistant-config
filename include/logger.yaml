@@ -11,21 +11,16 @@ logs:
   aiohttp.access: critical
   aiohttp.server: critical
   # custom_components.media_player.floorplan_speaker: error
-  # custom_components.media_player.living_room: info
+  custom_components.blueiris.api.blue_iris_api: warn
   homeassistant.core: error
   homeassistant.components.automation: warn
   homeassistant.components.binary_sensor: error
-  # homeassistant.components.climate.nest: warn
   homeassistant.components.device_tracker: error
   homeassistant.components.discovery: warn
-  # homeassistant.components.feedreader: warn
   homeassistant.components.http: warn
   homeassistant.components.media_player: info
-  # homeassistant.components.sensor.pi_hole: critical
   homeassistant.components.sensor.rest: critical
   homeassistant.components.recorder: error
-  # homeassistant.components.sensor.darksky: warn
-  # homeassistant.components.zwave: warn
   homeassistant.helpers.script: info
   homeassistant.helpers.entity: critical
   homeassistant.exceptions: info
@@ -34,16 +29,3 @@ logs:
   requests.packages.urllib3.connectionpool: critical
   urllib3.connectionpool: error
   root: warn
-  # skybellpy: warn
-
-# My old config for logger, using modified logger from CCOSTAN
-# logger:
-#   default: critical
-#   logs:
-#     homeassistant.components: warning
-    # insteonplm: debug
-#     custom_components.my_integration: debug
-# # for v 1.0.0
-#     custom_components.alexa_media: debug
-# # for API debugging (verbose and intended for service debugging)
-#     alexapy: debug

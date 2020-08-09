@@ -34,7 +34,9 @@ cards:
             name: Wan
           - entity: sensor.unifi_gateway_lan
             name: Lan
-        columns: 3
+          - entity: sensor.unifi_gateway_wlan
+            name: Lan
+        columns: 4
       - type: entities
         # title: Controller
         show_header_toggle: false
@@ -43,8 +45,27 @@ cards:
           - entity: sensor.unifi_gateway_firmware_upgradable
             name: Firmware Upgrades
 
+  - type: entities
+    title: FreeNas Server
+    show_header_toggle: false
+    entities:
+      - entity: sensor.fn_alert_level
+        name: Alert Level
+      - entity: sensor.fn_alert_message
+        name: Alert Message
+      - entity: sensor.fn_pool1_report
+        name: 2TB Media Mirror
+      - entity: sensor.fn_pool1_pct_used
+        name: 2TB Media Mirror
+      - entity: sensor.fn_pool2_report
+        name: 125GB Docker Mirror
+      - entity: sensor.fn_pool2_pct_used
+        name: 125GB Docker Mirror
+      - entity: sensor.fn_version
+        name: Version
+
   - type: glance
-    title: Occupancy Sensors
+    title: Echo Sensors
     entities:
       - entity: binary_sensor.echo_occupancy
         name: Dining Room
@@ -54,16 +75,33 @@ cards:
         name: Office
       - entity: binary_sensor.bedroom_occupancy
         name: Bedroom
+  - type: glance
+    title: Motion Sensors
+    entities:
+      - entity: binary_sensor.blueiris_back_yard_motion
+        name: Back Yard
+      - entity: binary_sensor.blueiris_front_door_motion
+        name: Front Door
+      - entity: binary_sensor.blueiris_front_yard_motion
+        name: Front Yard
+      - entity: binary_sensor.blueiris_motion_eye_motion
+        name: Porch Light
+      - entity: binary_sensor.blueiris_side_yard_motion
+        name: Side Yard
       - entity: binary_sensor.garage_motion_status
         name: Garage
-      - entity: binary_sensor.front_door_motion_sensor
-        name: Front Door
-      - entity: binary_sensor.sideyard_motion_sensor
-        name: Side Door
       - entity: binary_sensor.gate_motion_status
-        name: Side Gate
-
+        name: Gate
+      - entity: binary_sensor.kitchen_motion_status
+        name: Kitchen
+      - entity: binary_sensor.tradfri_office_sensor
+        name: Office
+      - entity: binary_sensor.tradfri_wetbar_sensor
+        name: Wetbar
+      - entity: binary_sensor.wallpanel_motion_sensor
+        name: Wallpanel
     columns: 4
+
   - type: entities
     title: Window's and Door's
     show_header_toggle: false
@@ -82,7 +120,7 @@ cards:
         style:
           height: 2px
           background: '#62717b'
-      - entity: binary_sensor.front_door_status       # Door1 (Front Door)
+      - entity: binary_sensor.front_door_status # Door1 (Front Door)
         name: Frontdoor
       - entity: binary_sensor.slider_door_status # Sensor4 (Slider Door)
         name: Sliding
@@ -166,37 +204,28 @@ cards:
         name: POW3 Volts
         icon: mdi:power-socket-us
   - type: entities
-    title: Automation Overides
-    show_header_toggle: false
-    entities:
-      - entity: input_boolean.vacation
-        name: Vacation Mode
-        icon: mdi:toggle-switch
-      - entity: input_boolean.dog
-        name: Pet Away Mode
-        icon: mdi:toggle-switch
-      - entity: input_boolean.camera_notifications
-        name: Camera Notify
-        icon: mdi:toggle-switch
-  - type: entities
     title: Falcon Player
     show_header_toggle: false
     entities:
-      - entity: sensor.fpp_branch
-      - entity: sensor.fpp_version
-        name: Version
+      - entity: switch.garage_utility_outlet
+      - entity: automation.monthly_holiday_color_scene_on
+      - entity: sensor.flag
+        name: Flag Day
       - entity: sensor.fpp_status
-        name: Status
-      # - entity: sensor.fpp_position_status
+        name: Player Status
       - entity: sensor.fpp_name_status
         name: Name
       - entity: sensor.fpp_repeat_status
         name: Repeat
+      - entity: sensor.fpp_sequence_status
+        name: Sequence
+      # - entity: sensor.fpp_branch
+      # - entity: sensor.fpp_version
+      #   name: Version
       # - entity: sensor.fpp_section_status
       #   name: Section
       # - entity: sensor.fpp_section_position_status
-      - entity: sensor.fpp_sequence_status
-        name: Sequence
+      # - entity: sensor.fpp_position_status
       # - entity: sensor.fpp_media_title
       # - entity: sensor.fpp_media_status
       # - entity: sensor.fpp_media_artist

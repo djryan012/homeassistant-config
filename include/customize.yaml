@@ -3,8 +3,8 @@ binary_sensor.floorplan:
   config:
     config: /local/custom_ui/floorplan/floorplan.yaml
 
-camera.gs4:
-  hidden: true
+camera.blueiris_all_cameras:
+  icon: mdi:video-plus
 camera.frontdoor:
   friendly_name: Front Door
 camera.frontyard:
@@ -12,10 +12,17 @@ camera.frontyard:
 camera.backyard:
   friendly_name: Backyard
 
-device_tracker.david_zanzito:
-  friendly_name: David
-device_tracker.georgina_zanzito:
+device_tracker.pixel_3a:
+  friendly_name: Davids Phone
+  entity_picture: "/local/star_trek.jpg"
+device_tracker.pixel_3a_xl:
   friendly_name: Georgina
+  entity_picture: "/local/r2d2.jpg"
+
+person.david:
+  entity_picture: "/local/star_trek.jpg"
+person.georgina:
+  entity_picture: "/local/r2d2.jpg"
 
 fan.fanlinc_3f_d9_93_fan:
   friendly_name: Bedroom Fan
@@ -61,10 +68,10 @@ input_boolean.david_status:
 input_boolean.georgina_status:
   icon: mdi:hotel
 
-light.livingroom_light_1:
-  friendly_name: Livingroom 1
-light.livingroom_light_2:
-  friendly_name: Livingroom 2
+light.living_room_light_1:
+  friendly_name: Living_room 1
+light.living_room_light_2:
+  friendly_name: Living_room 2
 
 light.kitchen_pendant_1:
   friendly_name: Kitchen Pendent 1
@@ -99,32 +106,6 @@ media_player.fonda:
 media_player.samsung_tv:
   friendly_name: Samsung TV
 
-person.david:
-  entity_picture: "/local/star_trek.jpg"
-person.georgina:
-  entity_picture: "/local/r2d2.jpg"
-
-scene.bedroom_normal:
-  friendly_name: Nightstand Preset Normal
-scene.bedroom_bright:
-  friendly_name: Nightstand Preset Full
-scene.bedroom_dim:
-  friendly_name: Nightstand Preset Dim
-
-scene.kitchen_normal:
-  friendly_name: Kitchen Preset Normal
-scene.kitchen_bright:
-  friendly_name: Kitchen Preset Full
-scene.kitchen_dim:
-  friendly_name: Kitchen Preset Dim
-
-scene.livingroom_normal:
-  friendly_name: Livingroom Preset Normal
-scene.livingroom_bright:
-  friendly_name: Livingroom Preset Full
-scene.livingroom_dim:
-  friendly_name: Livingroom Preset Dim
-
 sensor.office_motion_sensor:
   friendly_name: Ikea MotionSensor Office
   icon: mdi:battery-outline
@@ -134,11 +115,19 @@ sensor.exterior_motion_sensor:
 sensor.tradfri_remote_control:
   friendly_name: Ikea Light Remote
   icon: mdi:battery-outline
-sensor.ecobee_sensor_compare_temp:
-  friendly_name: Compare Temp
-  icon: mdi:thermometer-lines
-  device_class: temperature
 
+sensor.ecobee_temp_compare_living_room:
+  friendly_name: Living_room Temperature Compare
+  device_class: temperature
+  icon: mdi:thermometer-lines
+sensor.ecobee_temp_compare_bedroom:
+  friendly_name: Bedroom Temperature Compare
+  device_class: temperature
+  icon: mdi:thermometer-lines
+sensor.ecobee_temp_compare_office:
+  friendly_name: Office Temperature Compare
+  device_class: temperature
+  icon: mdi:thermometer-lines
 
 sensor.pow1_power:
   icon: mdi:washing-machine
@@ -146,10 +135,8 @@ sensor.pow2_power:
   icon: mdi:tumble-dryer
 
 switch.sonoff1:
-  friendly_name: Floor Lamp #Christmas Tree
   assumed_state: false
 switch.sonoff2:
-  friendly_name: Feed Dog
   assumed_state: false
 switch.sonoff_pow3:
   friendly_name: Backyard Lights

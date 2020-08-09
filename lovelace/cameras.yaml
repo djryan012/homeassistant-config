@@ -9,17 +9,17 @@ cards:
   - type: picture-glance
     title: Front Yard
     entities:
-      - camera.front_yard
-      - binary_sensor.frontyard_motion_sensor
-    camera_image: camera.front_yard
+      - camera.blueiris_front_yard
+      - binary_sensor.blueiris_front_yard_motion
+    camera_image: camera.blueiris_front_yard
 
   - type: picture-glance
     title: Front Door
     entities:
       - light.porch_light
-      - camera.front_door
-      - binary_sensor.front_door_motion_sensor
-    camera_image: camera.front_door
+      - camera.blueiris_front_door
+      - binary_sensor.blueiris_front_yard_motion
+    camera_image: camera.blueiris_front_door
 
   - type: picture-glance
     title: Back Yard
@@ -27,21 +27,21 @@ cards:
       # - binary_sensor.pond_filter_status # Sensor8 Pond Filter
       - light.patio_lights
       - switch.sonoff_pow3
-      - camera.back_yard
-      - binary_sensor.backyard_motion_sensor
-    camera_image: camera.back_yard
+      - camera.blueiris_back_yard
+      - binary_sensor.blueiris_back_yard_motion
+    camera_image: camera.blueiris_back_yard
 
   - type: picture-glance
-    title: Window View 
+    title: Sconce Light
     entities: 
-      - camera.motioneye
-      - binary_sensor.window_motion_sensor
-    camera_image: camera.motioneye
+      - camera.blueiris_motion_eye
+      - binary_sensor.blueiris_motion_eye_motion
+    camera_image: camera.blueiris_motion_eye
 
   - type: picture-glance
     title: Sideyard
     entities:
       - light.sideyard_light
-      - camera.side_yard
+      - camera.blueiris_side_yard
       - binary_sensor.gate_motion_status
-    camera_image: camera.side_yard
+    camera_image: camera.blueiris_side_yard

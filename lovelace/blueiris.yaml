@@ -1,74 +1,33 @@
-# Example ui-lovelace.yaml view entry
 title: Blue Iris
-icon: mdi:eye
-
+icon: mdi:security-network
 cards:
-  # Front Door camera
-  - type: custom:vertical-stack-in-card
-    cards:
-      - type: picture-entity
-        entity: camera.front_door
-        name: Front Door
-        show_state: false
-      - type: glance
-        entities:
-          - entity: binary_sensor.front_door_motion
-            name: Motion
-          # - entity: binary_sensor.front_door_watchdog
-          #   name: Watchdog
-
-  # Motion Eye
-  - type: custom:vertical-stack-in-card
-    cards:
-      - type: picture-entity
-        entity: camera.motioneye
-        name: Window View
-        show_state: false
-      - type: glance
-        entities:
-          - entity: binary_sensor.motioneye_motion
-            name: Motion
-          # - entity: binary_sensor.motioneye_watchdog
-          #   name: Watchdog  
-
-  # Front Yard camera
-  - type: custom:vertical-stack-in-card
-    cards:
-      - type: picture-entity
-        entity: camera.front_yard
-        name: Front Yard
-        show_state: false
-      - type: glance
-        entities:
-          - entity: binary_sensor.front_yard_motion
-            name: Motion
-          # - entity: binary_sensor.front_yard_watchdog
-          #   name: Watchdog  
-
-  # Back Yard camera
-  - type: custom:vertical-stack-in-card
-    cards:
-      - type: picture-entity
-        entity: camera.back_yard
-        name: Back Yard
-        show_state: false
-      - type: glance
-        entities:
-          - entity: binary_sensor.back_yard_motion
-            name: Motion
-          # - entity: binary_sensor.back_yard_watchdog
-          #   name: Watchdog
-
-  # Side Yard camera
-  - type: custom:vertical-stack-in-card
-    cards:
-      - type: picture-entity
-        entity: camera.side_yard
-        name: Side Yard
-        show_state: false
-      - type: glance
-        entities:
-          - entity: binary_sensor.side_yard_motion
-            name: Motion
-          # - entity: binary_sensor.side_yard_watchdog
-          #   name: Watchdog
+  - type: entities
+    title: BlueIris NVR Integration
+    show_header_toggle: false
+    entities:
+      - entity: binary_sensor.blueiris_alerts
+      - entity: binary_sensor.blueiris_back_yard_connectivity
+      - entity: binary_sensor.blueiris_back_yard_motion
+      - entity: binary_sensor.blueiris_front_door_connectivity
+      - entity: binary_sensor.blueiris_front_door_motion
+      - entity: binary_sensor.blueiris_front_yard_connectivity
+      - entity: binary_sensor.blueiris_front_yard_motion
+      - entity: binary_sensor.blueiris_motion_eye_connectivity
+      - entity: binary_sensor.blueiris_motion_eye_motion
+      - entity: binary_sensor.blueiris_side_yard_connectivity
+      - entity: binary_sensor.blueiris_side_yard_motion
+      - entity: camera.blueiris_all_cameras
+      - entity: camera.blueiris_all_cameras_cycle
+      - entity: camera.blueiris_back_yard
+      - entity: camera.blueiris_front_door
+      - entity: camera.blueiris_front_yard
+      - entity: camera.blueiris_motion_eye
+      - entity: camera.blueiris_side_yard
+      - entity: switch.blueiris_profile_active
+      - entity: switch.blueiris_profile_alert
+      - entity: switch.blueiris_profile_inactive
+      - entity: switch.blueiris_profile_profile_3
+      - entity: switch.blueiris_profile_profile_4
+      - entity: switch.blueiris_profile_profile_5
+      - entity: switch.blueiris_profile_profile_6
+      - entity: switch.blueiris_profile_profile_7

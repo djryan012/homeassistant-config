@@ -11,7 +11,7 @@
       state: 'home'
   action:
     - service: homeassistant.turn_on
-      entity_id: group.kitchen
+      entity_id: group.kitchen_pendants
       data:
         brightness: 203
         transition: 4
@@ -28,7 +28,7 @@
       state: 'not_home'
   action:
     - service: light.turn_on
-      entity_id: light.livingroom_light_2
+      entity_id: light.living_room_light_2
       data:
         brightness: 15
         transition: 4
@@ -54,7 +54,7 @@
       - group.office
       - group.bedroom
       - group.garage
-      - light.livingroom_light_1
+      - light.living_room_light_1
 #     service: script.wallpanel_clock
 #     service: homeassistant.turn_on
 #     entity_id:
@@ -68,8 +68,6 @@
       entity_id: 
         - person.david
         - person.georgina
-        - group.guest
-        # - device_tracker.michael_iphone
       from: 'not_home'
       to: 'home'
   condition:
@@ -83,7 +81,7 @@
     - service: homeassistant.turn_on
       entity_id:
         - light.dinning_floor_lamp
-        - group.kitchen
+        - group.kitchen_pendants
       data:
         brightness: 203
         transition: 4

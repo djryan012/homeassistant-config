@@ -15,13 +15,14 @@
 - alias: Update Available Notification
   trigger:
     - platform: state
-      entity_id: binary_sensor.updater
-      from: 'off'
-      to: 'on'
+      entity_id: updater.updater
+  condition:
+    - condition: template
+      value_template: "{{ states('updater.updater') != 'unknown' }}"
   action:
-    - service: notify.notify
-      data:
-        message: 'Update for Home Assistant is available.'
+    - service: notify.telbot_david
+      data_template:
+        message: "Home Assistant {{ states.updater.updater.state }} is now available."
 
 - alias: "Battery is low in Sensor"
   initial_state: True
@@ -39,6 +40,7 @@
   trigger:
     - platform: state
       entity_id: sensor.my_event_offset_1
+      from: 'off'
       to: 'on'
   condition:
     - condition: template 
@@ -51,11 +53,9 @@
         {% if state_attr('calendar.disney_work_schedule', 'description') == None  %} true
         {% else %} false {% endif %}
   action:
-    - service: mqtt.publish
-      data_template:
-        topic: zanzito/david/alarm/play
-        payload: 'Time to leave for Work'
-        retain: false
+    - service: notify.mobile_app_david_pixel_3a_app
+      data:
+        message: "Time to leave for Work"
 
 - alias: 'Pond Filter Issue'
   initial_state: True
@@ -80,14 +80,30 @@
       data:
         message: "Internet Speed is {{ sensor.speedtest_download}}"
 
-- alias: Persistent Notification
+- alias: Notify for new devices
   trigger:
-    platform: template
-    value_template: "{{ states('persistent_notification.httplogin') != 'unknown' }}"    
+    platform: event
+    event_type: device_tracker_new_device
   action:
-    - service: notify.telbot_david
-      data:
-        message: 'Notify: {{ state_attr(persistent_notification.http_login, message)}}'
-    # - service: notify.telbot_david
-    #   data:
-    #     message: 'Hass.io is back up as of {{now().strftime("%H:%M:%S")}}'
+    - service: notify.mobile_app_david_pixel_3a_app
+      data_template:
+        message: >
+          New device:
+          {{trigger.event.data.host_name}}
+          ({{trigger.event.data.entity_id}})
+        title: New device
+
+- alias: Announce temp cooler outside
+  initial_state: True
+  trigger:
+    - platform: template 
+      value_template: "{{ states('sensor.echo_temperature') | int > state_attr('weather.dark_sky', 'temperature')}}"
+  condition:
+    - condition: time
+      after: '15:00:00'
+      before: '23:59:00'
+  action:
+    - service: script.audio_notify
+      data_template:
+        tts_msg: "its now cooler outside than inside"
+        mplayer: "echo_dot_main"

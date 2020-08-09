@@ -112,7 +112,7 @@ svg, svg * {
   /* stroke-opacity: 0.25; */
 }
 
-#fan\.livingroom_ceiling_fan, #fan\.master_ceiling_fan, #fan\.office_ceiling_fan {
+#fan\.living_room_ceiling_fan, #fan\.master_ceiling_fan, #fan\.office_ceiling_fan {
   transform-origin: center;
   }
 @-webkit-keyframes rotation {
@@ -125,12 +125,12 @@ svg, svg * {
 }
 
 .fan-on {
-fill: #ff8a65 !important;
--webkit-animation: rotation 2s infinite linear;
+/* fill: #ff8a65 !important; */
+-webkit-animation: rotation 3s infinite linear;
 transform-box: fill-box;
 }
 .fan-off {
-fill: #424242 !important;
+fill: #686868 !important;
 }
 
 .blackout-on{
