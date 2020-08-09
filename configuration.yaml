@@ -72,29 +72,29 @@ alexa_media:
         - "Echo Dot Bedroom"
         - "Echo Input"
 
-blueiris:
-  host: !secret blueiris_host
-  port: !secret blueiris_port
-  # [optional] Blue Iris admin username and password
-  username: !secret blueiris_admin_username
-  password: !secret blueiris_admin_password
-  # # List of camera objects
-  camera:
-    - id: frontyard
-      name: "Front Yard"
-      room: "Exterior"
-    - id: frontdoor
-      name: "Front Door"
-      room: "Exterior"
-    - id: sideyard
-      name: "Side Yard"
-      room: "Exterior"
-    - id: backyard
-      name: "Back Yard"
-      room: "Exterior"
-    - id: motioneye
-      name: "MotionEye"
-      room: "Exterior"
+# blueiris:
+#   host: !secret blueiris_host
+#   port: !secret blueiris_port
+#   # [optional] Blue Iris admin username and password
+#   username: !secret blueiris_admin_username
+#   password: !secret blueiris_admin_password
+#   # # List of camera objects
+#   camera:
+#     - id: frontyard
+#       name: "Front Yard"
+#       room: "Exterior"
+#     - id: frontdoor
+#       name: "Front Door"
+#       room: "Exterior"
+#     - id: sideyard
+#       name: "Side Yard"
+#       room: "Exterior"
+#     - id: backyard
+#       name: "Back Yard"
+#       room: "Exterior"
+#     - id: motioneye
+#       name: "MotionEye"
+#       room: "Exterior"
 
 camera:
   - platform: blueiris

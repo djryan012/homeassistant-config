@@ -128,7 +128,5 @@ cards:
     entities:
       - entity: person.michael_jr
       - entity: person.michael_sr
-      - entity: person.isela
       - entity: person.jackie
-
     # columns: 3
