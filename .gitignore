@@ -32,7 +32,11 @@
 .vscode
 node-red
 insteon-mqtt
+
 custom_components
+people/
+js/
+ui/
 
 # # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
