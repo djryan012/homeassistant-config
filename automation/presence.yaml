@@ -11,7 +11,7 @@
       state: 'home'
   action:
     - service: homeassistant.turn_on
-      entity_id: group.kitchen
+      entity_id: group.kitchen_pendants
       data:
         brightness: 203
         transition: 4
@@ -28,7 +28,7 @@
       state: 'not_home'
   action:
     - service: light.turn_on
-      entity_id: light.livingroom_light_2
+      entity_id: light.living_room_light_2
       data:
         brightness: 15
         transition: 4
@@ -50,11 +50,11 @@
     service: homeassistant.turn_off
     entity_id:
       - group.kitchen
-      - group.dining_room
+      - group.dinning_room
       - group.office
       - group.bedroom
       - group.garage
-      - light.livingroom_light_1
+      - light.living_room_light_1
 #     service: script.wallpanel_clock
 #     service: homeassistant.turn_on
 #     entity_id:

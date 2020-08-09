@@ -24,8 +24,7 @@
         brightness: 15
         transition: 60
 
-#####  Turn porch light off at sunrise  #####
-- alias: "Porch Light off at sunrise"
+- alias: "Sunrise Lighting Control"
   initial_state: True
   trigger:
     - platform: sun
@@ -33,3 +32,5 @@
   action:
     - service: homeassistant.turn_off
       entity_id: light.porch_light
+    - service: homeassistant.turn_on
+      entity_id: switch.sonoff_pow3 # backyard lights power switch

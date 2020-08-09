@@ -1,7 +1,11 @@
 """Constants for HACS"""
 NAME_LONG = "HACS (Home Assistant Community Store)"
 NAME_SHORT = "HACS"
-VERSION = "0.23.2"
+<<<<<<< HEAD
+VERSION = "1.0.3"
+=======
+VERSION = "0.24.3"
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
 DOMAIN = "hacs"
 PROJECT_URL = "https://github.com/hacs/integration/"
 CUSTOM_UPDATER_LOCATIONS = [
@@ -15,8 +19,8 @@ DOMAIN_DATA = f"{NAME_SHORT.lower()}_data"
 ELEMENT_TYPES = ["integration", "plugin"]
 
 IFRAME = {
-    "title": "Community",
-    "icon": "mdi:alpha-c-box",
+    "title": "HACS",
+    "icon": "hacs:hacs",
     "url": "/community_overview",
     "path": "community",
     "require_admin": True,

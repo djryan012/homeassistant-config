@@ -21,11 +21,11 @@ system_info:
     - sensor.time_online
     - sensor.processor_use
     - sensor.memory_use_percent
-    - sensor.disk_use_percent
-    - sensor.speedtest_ping
-    - sensor.speedtest_download
-    - sensor.speedtest_upload
-    - input_boolean.ha_uptime
+    # - sensor.disk_use_percent
+    # - sensor.speedtest_ping
+    # - sensor.speedtest_download
+    # - sensor.speedtest_upload
+    # - input_boolean.ha_uptime
 
 falcon_player:
   name: Falcon Player
@@ -33,3 +33,12 @@ falcon_player:
     - sensor.fpp_repeat_status
     - sensor.fpp_status
     - sensor.fpp_version
+
+freenas_server_monitor:
+  name: FreeNAS Server Monitor
+  entities:
+    - sensor.fn_version
+    - sensor.fn_alert_level
+    - sensor.fn_alert_message
+    # - sensor.fn_trunk_report
+    # - sensor.fn_trunk_pct_used

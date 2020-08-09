@@ -6,7 +6,7 @@
   initial_state: True
   trigger:
     platform: time
-    at: '05:00'
+    at: '07:00'
   condition:
     condition: time
     weekday:
@@ -16,8 +16,10 @@
       - thu
       - fri
   action:
-    service: homeassistant.turn_on
-    entity_id: switch.sonoff2
+    service: script.feed_dog_reminder
+  # action:
+  #   - service: script.turn_on
+  #     entity_id: script.master_bedroom_fan_low
 
 - alias: "Feed The Dog Morning Weekends"
   initial_state: True
@@ -30,9 +32,7 @@
       - sat
       - sun
   action:
-    service: homeassistant.turn_on
-    entity_id: switch.sonoff2
-
+    service: script.feed_dog_reminder
 
 #########################################################
 #                  FEED THE DOG - EVENING               #
@@ -42,7 +42,6 @@
   initial_state: True
   trigger:
     platform: time
-    at: '17:00'
+    at: '18:00'
   action:
-    service: homeassistant.turn_on
-    entity_id: switch.sonoff2
+    service: script.feed_dog_reminder

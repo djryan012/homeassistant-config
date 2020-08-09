@@ -20,38 +20,17 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
+api:
 config:
 discovery:
 frontend:
   javascript_version: latest
   themes: !include www/themes.yaml
-
-# history:
-#   include:
-#     domains:
-#       - sensor
-#       - switch
-#       - media_player
-#       - light
-#       - binary_sensor
-#       # - cover
-#   exclude:
-#     entities:
-#       - sensor.last_boot
-#       - sensor.date
-#       - sensor.pi_hole_ads_blocked_today
-#       - sensor.pi_hole_ads_percentage_blocked_today
-#       - sensor.pi_hole_dns_queries_today
-#       - sensor.last_boot
-#       - sensor.last_boot_templated
-#       - sensor.floorplan_date
-#       - sensor.floorplan_time
-#       - sensor.ha_uptime
-#       - sensor.time
-
 lovelace:
   mode: yaml
+  resources: !include lovelace/resources.yaml
 map:
+mobile_app:
 sun:
 system_health:
 updater:
@@ -60,9 +39,9 @@ updater:
 ####################################################
 #                     Includes                     #
 ####################################################
+alexa: !include include/alexa.yaml
 automation: !include_dir_merge_list automation/
 binary_sensor: !include include/binary_sensors.yaml
-# emulated_hue: !include include/emulated_hue.yaml #Node Red taking care of this
 fan: !include include/fan.yaml
 group: !include_dir_merge_named group
 history: !include include/history.yaml
@@ -73,7 +52,7 @@ logger: !include include/logger.yaml
 media_player: !include include/media_players.yaml
 person: !include include/person.yaml
 recorder: !include include/recorder.yaml
-scene: !include_dir_merge_list scene
+# scene: !include_dir_merge_list scene ## Converted scenes to scripts
 script: !include_dir_merge_named script
 sensor: !include_dir_merge_list sensors/
 # speedtestdotnet: !include include/speedtest.yaml #Pi3 cant detect past 100mb using Unifi USG via Nodered
@@ -125,7 +104,6 @@ device_tracker:
     devices:
       david_zanzito: zanzito/david/location
       georgina_zanzito: zanzito/georgina/location
-      # georgina_pixel: zanzito/georgina/location
 
 ecobee:
   api_key: !secret ecobee_api_key
@@ -145,11 +123,6 @@ mqtt:
   password: !secret Mosq_password
   client_id: home-assistant
   keepalive: 60
-
-# namecheapdns:
-#   host: !secret namecheap_host
-#   domain: !secret namecheap_domain
-#   password: !secret namecheap_dns
 
 notify:
   - platform: alexa_media
@@ -171,14 +144,17 @@ panel_custom:
     url_path: floorplan
     config:
       hide_app_toolbar:
-      config: /local/custom_ui/floorplan/floorplan.yaml
+      config: /local/floorplan/floorplan.yaml
   # - name: clock
   #   sidebar_title: Alarm Clock
   #   sidebar_icon: mdi:clock
   #   url_path: clock
   #   config:
   #     hide_app_toolbar:
-  #     config: /local/custom_ui/floorplan/floorclock.yaml
+  #     config: /local/floorplan/floorclock.yaml
+
+# samsungtv:     # Moved to UI Integration vs yaml config
+#   - host: !secret samsungtv_host
 
 telegram_bot:
   - platform: broadcast

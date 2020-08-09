@@ -93,15 +93,43 @@ side_light_off:
       entity_id: light.sideyard_light
       transition: 6
 
-lights_on_when_waking_up:
+wetbar_on:
   sequence:
-    - condition: state
-      entity_id: sun.sun
-      state: 'below_horizon'
-    - condition: time
-      after: '00:00:00'
-    - service: homeassistant.turn_on
-      data:
-        entity_id: group.kitchen_pendants
-        brightness: 25
-        transition: 3
+  - condition: state
+    entity_id: light.kitchen_wetbar_rgbw
+    state: 'off'
+  - service: light.turn_on
+    data:
+      entity_id: light.kitchen_wetbar_rgbw
+      brightness: 100
+      color_temp: 350
+      transition: 1
+
+wetbar_off:
+  sequence:
+  - condition: template
+    value_template: "{{ (state_attr('light.kitchen_wetbar_rgbw', 'color_temp')|int) == 350 }}"
+  - service: light.turn_off
+    data:
+      entity_id: light.kitchen_wetbar_rgbw
+      transition: 1
+
+restore_wetbar:
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.kitchen_wetbar_rgbw
+      brightness: 100
+      color_temp: 350
+      transition: 1
+
+feed_dog_reminder:
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.kitchen_wetbar_rgbw
+      brightness: 255
+      # rgb_color: [255,0,0]
+      xy_color: [0.701, 0.299]
+      transition: 6
+

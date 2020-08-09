@@ -7,23 +7,20 @@ icon: mdi:lightbulb-on-outline
 cards:
   - type: entities
     title: Kitchen
-    show_header_toggle: false
+    show_header_toggle: true
     entities:
       - entity: light.kitchen_down_lights
-        name: Kitchen Down Lights
-      - entity: light.kitchen_pendant_1
-        name: Kitchen Pendent 1
-      - entity: light.kitchen_pendant_2
-        name: Kitchen Pendent 2
+      - entity: group.kitchen_pendants
+        name: Kitchen Pendants
+        icon: mdi:lightbulb
+      - entity: light.kitchen_wetbar_rgbw
 
   - type: entities
     title: Living Room
-    show_header_toggle: false
+    show_header_toggle: true
     entities:
-      - entity: light.livingroom_light_1
-        name: Livingroom Light 1
-      - entity: light.livingroom_light_2
-        name: Livingroom Light 2
+      - entity: light.living_room_light_1
+      - entity: light.living_room_light_2
       - entity: input_select.living_room_fan #Living Room_fan
         name: Living Room Fan
         icon: mdi:fan
@@ -33,9 +30,7 @@ cards:
     show_header_toggle: false
     entities:
       - entity: light.david_nightstand
-        name: David Nightstand
       - entity: light.georgina_nightstand
-        name: Georgina Nightstand
       - entity: light.master_ceiling_light #bedroom_light
         name: Master Fan's Light
       - entity: input_select.master_bedroom_fan #bedroom_fan
@@ -44,12 +39,12 @@ cards:
 
   - type: entities
     title: Dinning Room
-    show_header_toggle: false
+    show_header_toggle: true
     entities:
       - entity: light.dinning_floor_lamp
-        name: Dinningroom Light
+        name: Floor Lamp
       - entity: light.dinning_table_light #Dinning Room_light
-        name: Dinning Table Light
+        name: Dinning Table
 
   - type: entities
     title: Office
@@ -65,13 +60,13 @@ cards:
 
   - type: entities
     title: Garage
-    show_header_toggle: true
+    show_header_toggle: false
     entities:
       - entity: switch.garage_inside #garage_inside
-        name: Garage Inside Switch
+        name: Inside Switch
         icon: mdi:toggle-switch
       - entity: switch.garage_side  #garage_side
-        name: Garage Sidedoor Switch
+        name: Sidedoor Switch
         icon: mdi:toggle-switch
 
   - type: entities
@@ -80,22 +75,23 @@ cards:
     entities:
       - entity: light.porch_light
         name: Front Porch Sconce
-      - entity: light.sideyard_light
-        name: Side Door Sconce
       - entity: light.patio_lights
         name: Patio Lights
+      - entity: light.sideyard_light
+        name: Side Door Sconce
       - entity: switch.sonoff_pow3
         name: Yard Lights Power
         icon: mdi:toggle-switch
+      - entity: light.whole_house_rgb
 
   - type: entities
     title: Miscellaneous
     show_header_toggle: false
     entities:
-      - entity: switch.sonoff2
-        name: Feed Dog Reminder
-        icon: mdi:toggle-switch
       - entity: switch.sonoff1
-        name: Christmas Tree
+        name: SonOff 1
+        icon: mdi:toggle-switch
+      - entity: switch.sonoff2
+        name: SonOff 2
         icon: mdi:toggle-switch
         
