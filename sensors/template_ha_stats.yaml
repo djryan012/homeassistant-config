@@ -1,0 +1,87 @@
+#Thanks to @ccostan for the code here.  Some Intresting HA stats
+- platform: template
+  sensors:
+    sensor_count:
+      friendly_name: 'Number of Sensors'
+      entity_id: []
+      value_template: >
+        {%- set domains = ['sensor'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+    automation_count:
+      friendly_name: 'Number of Automations'
+      entity_id: []
+      value_template: >
+        {%- set domains = ['automation'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+    script_count:
+      friendly_name: 'Number of Scripts'
+      entity_id: []
+      value_template: >
+        {%- set domains = ['script'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+    switch_count:
+      friendly_name: 'Number of Switches'
+      entity_id: []
+      value_template: >
+        {%- set domains = ['switch'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+    binary_sensor_count:
+      friendly_name: 'Number of Binary Sensors'
+      entity_id: []
+      value_template: >
+        {%- set domains = ['binary_sensor'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+    lights_count:
+      friendly_name: 'Number of Lights'
+      entity_id: []
+      value_template: >
+        {%- set domains = ['light'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+    tracker_count:
+      friendly_name: 'Number of Devices'
+      entity_id: []
+      value_template: >
+        {%- set domains = ['device_tracker'] -%}
+        {%- for domain in domains -%}
+          {%- for item in states[domain] -%}
+            {% if loop.first %}
+              {{loop.length}}
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}

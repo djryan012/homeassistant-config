@@ -1,0 +1,80 @@
+- platform: rest
+  name: FN_pool1_report
+  json_attributes:
+    - name
+    - status
+    - used_pct
+    - is_decrypted
+  resource: http://192.168.1.100/api/v1.0/storage/volume/Media_Collection/?format=json
+  value_template: '{{ value_json.status }}'
+  username: !secret fn_user
+  password: !secret fn_password
+  authentication: basic
+  scan_interval: 3600
+  headers:
+    Content-Type: application/json
+
+- platform: template
+  sensors:
+    fn_pool1_pct_used:
+      value_template: '{{ states.sensor.fn_pool1_report.attributes["used_pct"].title() }}'
+      entity_id: sensor.fn_pool1_report
+
+- platform: rest
+  name: FN_pool2_report
+  json_attributes:
+    - name
+    - status
+    - used_pct
+    - is_decrypted
+  resource: http://192.168.1.100/api/v1.0/storage/volume/USB_Docker/?format=json
+  value_template: '{{ value_json.status }}'
+  username: !secret fn_user
+  password: !secret fn_password
+  authentication: basic
+  scan_interval: 3600
+  headers:
+    Content-Type: application/json
+
+- platform: template
+  sensors:
+    fn_pool2_pct_used:
+      value_template: '{{ states.sensor.fn_pool2_report.attributes["used_pct"].title() }}'
+      entity_id: sensor.fn_pool2_report
+    
+- platform: rest
+  name: FN_alert_level
+  resource: http://192.168.1.100/api/v1.0/system/alert/?format=json
+  value_template: "{{ value_json['objects'][0].level }}"
+  username: !secret fn_user
+  password: !secret fn_password
+  authentication: basic
+  scan_interval: 3600
+  headers:
+    Content-Type: application/json
+
+- platform: rest
+  name: FN_alert_message
+  resource: http://192.168.1.100/api/v1.0/system/alert/?format=json
+  value_template: "{{ value_json['objects'][0].message }}"
+  username: !secret fn_user
+  password: !secret fn_password
+  authentication: basic
+  scan_interval: 3600
+  headers:
+    Content-Type: application/json
+
+- platform: rest
+  name: FN_version
+  json_attributes:
+    - fullversion
+    - name
+    - version
+  resource: http://192.168.1.100/api/v1.0/system/version/?format=json
+  value_template: '{{ value_json.fullversion }}'
+  username: !secret fn_user
+  password: !secret fn_password
+  authentication: basic
+  scan_interval: 3600
+  headers:
+    Content-Type: application/json

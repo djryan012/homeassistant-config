@@ -1,0 +1,13 @@
+views:
+  - !include home.yaml
+  - !include cameras.yaml
+  - !include lights.yaml
+  - !include device_status.yaml
+  - !include ha.yaml
+  - !include connected_devices.yaml
+  - !include weather.yaml
+  - !include media_players.yaml
+  - !include automations.yaml
+  - !include insteon.yaml
+  - !include test.yaml
+  - !include blueiris.yaml

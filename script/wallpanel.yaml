@@ -1,0 +1,33 @@
+## Brightness levels for Tablet running Wallpanel
+
+wallpanel_full_day:
+  sequence: 
+    - service: mqtt.publish
+      data_template:
+        topic: wallpanel/mywallpanel/command
+        payload: "{\"brightness\": \"255\"}"
+        retain: true
+
+wallpanel_full_night:
+  sequence: 
+    - service: mqtt.publish
+      data_template:
+        topic: wallpanel/mywallpanel/command
+        payload: "{\"brightness\": \"200\"}"
+        retain: true
+
+wallpanel_dim:
+  sequence: 
+    - service: mqtt.publish
+      data_template:
+        topic: wallpanel/mywallpanel/command
+        payload: "{\"brightness\": \"50\"}"
+        retain: true
+
+wallpanel_1_percent:
+  sequence: 
+    - service: mqtt.publish
+      data_template:
+        topic: wallpanel/mywallpanel/command
+        payload: "{\"brightness\": \"1\"}"
+        retain: true
