@@ -15,13 +15,14 @@
 - alias: Update Available Notification
   trigger:
     - platform: state
-      entity_id: binary_sensor.updater
-      from: 'off'
-      to: 'on'
+      entity_id: updater.updater
+  condition:
+    - condition: template
+      value_template: "{{ states('updater.updater') != 'unknown' }}"
   action:
-    - service: notify.notify
-      data:
-        message: 'Update for Home Assistant is available.'
+    - service: notify.telbot_david
+      data_template:
+        message: "Home Assistant {{ states.updater.updater.state }} is now available."
 
 - alias: "Battery is low in Sensor"
   initial_state: True
@@ -33,29 +34,6 @@
     - service: notify.telbot_david
       data_template:
         message: '{{trigger.from_state.attributes.friendly_name}} Battery is below 20%'
-
-- alias: "Tell David to leave for work"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: sensor.my_event_offset_1
-      to: 'on'
-  condition:
-    - condition: template 
-      value_template: >
-        {% if is_state('person.david', 'home') %} true
-        {% elif is_state('person.david', 'not_home') %} true
-        {% else %} false {% endif %}
-    - condition: template 
-      value_template: >
-        {% if state_attr('calendar.disney_work_schedule', 'description') == None  %} true
-        {% else %} false {% endif %}
-  action:
-    - service: mqtt.publish
-      data_template:
-        topic: zanzito/david/alarm/play
-        payload: 'Time to leave for Work'
-        retain: false
 
 - alias: 'Pond Filter Issue'
   initial_state: True
@@ -79,15 +57,3 @@
     - service: notify.telbot_david
       data:
         message: "Internet Speed is {{ sensor.speedtest_download}}"
-
-- alias: Persistent Notification
-  trigger:
-    platform: template
-    value_template: "{{ states('persistent_notification.httplogin') != 'unknown' }}"    
-  action:
-    - service: notify.telbot_david
-      data:
-        message: 'Notify: {{ state_attr(persistent_notification.http_login, message)}}'
-    # - service: notify.telbot_david
-    #   data:
-    #     message: 'Hass.io is back up as of {{now().strftime("%H:%M:%S")}}'

@@ -1,0 +1,32 @@
+title: Floor plan
+views:
+  - title: Floor plan
+    panel: true
+    cards:
+        - type: picture-elements
+          image: /local/custom_ui/floorplan/floorplan v2_0.svg
+          elements:
+            - type: state-badge
+              entity: sensor.echo_temperature
+              style:
+                top: 58%
+                left: 34%
+                font-size: 8px
+            - type: state-badge
+              entity: sensor.living_room_temperature
+              style:
+                top: 40%
+                left: 40%
+                font-size: 8px
+            - type: state-badge
+              entity: sensor.bedroom_temperature
+              style:
+                top: 25%
+                left: 10%
+                font-size: 8px
+            - type: state-badge
+              entity: sensor.office_temperature
+              style:
+                top: 80%
+                left: 25%
+                font-size: 8px
