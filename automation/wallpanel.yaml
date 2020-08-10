@@ -1,5 +1,4 @@
 - alias: "Wallpanel Motion Detected"
-  initial_state: True
   trigger:
     - platform: state
       entity_id: binary_sensor.wallpanel_motion_sensor
@@ -8,52 +7,72 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.wallpanel_ideal
+    - service: script.wallpanel_full_night
 
 - alias: "Wallpanel Motion Clear"
-  initial_state: True
   trigger:
     - platform: state
       entity_id: binary_sensor.wallpanel_motion_sensor
       from: 'on'
       to: 'off'
-      # for:
-      #   minutes: 1
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.wallpanel_ideal
+    - service: script.wallpanel_dim
+
+- alias: "Wallpanel Dim"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.wallpanel_motion_sensor
+      from: 'on'
+      to: 'off'
+      for:
+        minutes: 10
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.wallpanel_ideal
+    - service: script.wallpanel_1_percent
 
 - alias: 'Wallpanel Off when leaving'
-  initial_state: True
   trigger:
     - platform: state
       entity_id: group.persons
       to: 'not_home'
   action:
-    service: input_boolean.turn_on
-    entity_id: input_boolean.wallpanel_blackout
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.wallpanel_blackout
+    - service: script.wallpanel_1_percent
 
-- alias: 'Wallpanel on when home'
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: 
-      - person.david
-      - person.georgina
-      from: 'not_home'
-      to: 'home'
-  action:
-    service: input_boolean.turn_off
-    entity_id: input_boolean.wallpanel_blackout
+# - alias: 'Wallpanel on when home'
+#   trigger:
+#     - platform: state
+#       entity_id: 
+#       - person.david
+#       - person.georgina
+#       from: 'not_home'
+#       to: 'home'
+#   action:
+#     - service: input_boolean.turn_off
+#       entity_id: input_boolean.wallpanel_blackout
+#     - service: mqtt.publish
+#       data_template:
+#         topic: wallpanel/mywallpanel/command
+#         payload: "{\"brightness\": \"200\"}"
+#         retain: false
 
-- alias: 'Wallpanel on when awake'
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: 
-      - input_boolean.david_status
-      - input_boolean.georgina_status
-      from: 'on'
-      to: 'off'
-  action:
-    service: input_boolean.turn_off
-    entity_id: input_boolean.wallpanel_blackout
+# - alias: 'Wallpanel on when awake'
+#   trigger:
+#     - platform: state
+#       entity_id: 
+#       - input_boolean.david_status
+#       - input_boolean.georgina_status
+#       from: 'on'
+#       to: 'off'
+#   action:
+#     - service: input_boolean.turn_off
+#       entity_id: input_boolean.wallpanel_blackout
+#     - service: mqtt.publish
+#       data_template:
+#         topic: wallpanel/mywallpanel/command
+#         payload: "{\"brightness\": \"200\"}"
+#         retain: false

@@ -1,130 +1,6 @@
-####################################################
-#                   SWITCHES                       #
-####################################################
-
-title: Switches
+title: Test Page
 icon: mdi:test-tube
 cards:
-  - type: entities
-    title: Insteon Misc.
-    show_header_toggle: false
-    entities:
-      - entity: switch.garage_inside #garage_inside
-        name: Garage Inside Switch
-        icon: mdi:toggle-switch
-      - entity: switch.garage_side  #garage_side
-        name: Garage Sidedoor Switch
-        icon: mdi:toggle-switch
-      - type: divider
-        style:
-          height: 1px
-          background: '#62717b'
-      - entity: light.patio_lights  #patio lights
-        name: Back Patio Lights
-        # type: custom:slider-entity-row
-        # break_slider: true
-      - entity: light.kitchen_Down_lights
-        name: Kitchen Can Lights
-        # type: custom:slider-entity-row
-        # break_slider: false
-
-  - type: entities
-    title: Master Bedroom Insteon
-    show_header_toggle: false
-    entities:
-      - entity: light.master_ceiling_light #bedroom_light
-        type: custom:slider-entity-row
-        break_slider: true
-        name: Master Fan's Light
-      - entity: fan.master_ceiling_fan #bedroom_fan
-        name: Master Fan
-        icon: mdi:fan
-      - type: divider
-        style:
-          height: 1px
-          background: '#62717b'
-      - entity: switch.master_keypad_main #light.keypad_switch
-        name: Bedroom Keypad Dimmer
-        icon: mdi:toggle-switch
-      - entity: switch.master_keypad_a #keypad_a
-        name: Bedroom Keypad A
-        icon: mdi:toggle-switch
-      - entity: switch.master_keypad_b #keypad_b
-        name: Bedroom Keypad B
-        icon: mdi:toggle-switch
-      - entity: switch.master_keypad_c #keypad_c
-        name: Bedroom Keypad C
-        icon: mdi:toggle-switch
-      - entity: switch.master_keypad_d #keypad_d
-        name: Bedroom Keypad D
-        icon: mdi:toggle-switch
-  - type: entities
-    title: Office Insteon
-    show_header_toggle: false
-    entities:
-      - entity: light.office_ceiling_light #office_light
-        type: custom:slider-entity-row
-        break_slider: true
-        name: Office Fan's Light
-      - entity: fan.office_ceiling_fan #office_fan
-        name: Office Fan
-        icon: mdi:fan
-      - type: divider
-        style:
-          height: 1px
-          background: '#62717b'
-      - entity: switch.office_keypad_main #light.office_keypad_switch
-        name: Office Keypad Dimmer
-        icon: mdi:toggle-switch
-      - entity: switch.office_keypad_a #keypad_a
-        name: Office Keypad A
-        icon: mdi:toggle-switch
-      - entity: switch.office_keypad_b #keypad_b
-        name: Office Keypad B
-        icon: mdi:toggle-switch
-      - entity: switch.office_keypad_c #keypad_c
-        name: Office Keypad C
-        icon: mdi:toggle-switch
-      - entity: switch.office_keypad_d #keypad_d
-        name: Office Keypad D
-        icon: mdi:toggle-switch
-  - type: entities
-    title: Living Room Insteon
-    show_header_toggle: false
-    entities:
-      - entity: fan.livingroom_ceiling_fan #Living Room_fan
-        name: Living Room Fan
-        icon: mdi:fan
-      - type: divider
-        style:
-          height: 1px
-          background: '#62717b'
-      - entity: switch.living_room_keypad_main #light.living_room_keypad_switch
-        name: Living Room Keypad Main
-        icon: mdi:toggle-switch
-      - entity: switch.living_room_keypad_a #keypad_a
-        name: Living Room Keypad A
-        icon: mdi:toggle-switch
-      - entity: switch.living_room_keypad_b #keypad_b
-        name: Living Room Keypad B
-        icon: mdi:toggle-switch
-      - entity: switch.living_room_keypad_c #keypad_c
-        name: Living Room Keypad C
-        icon: mdi:toggle-switch
-      - entity: switch.living_room_keypad_d #keypad_d
-        name: Living Room Keypad D
-        icon: mdi:toggle-switch
-  - type: entities
-    title: Dinning Room Insteon
-    show_header_toggle: false
-    entities:
-      - entity: light.dinning_table_light #Dinning Room_light
-        name: Dinning Table Light
-        type: custom:slider-entity-row
-        break_slider: true
-      - entity: light.dinning_room_switch
-        name: Dinning Table Switch
-        icon: mdi:toggle-switch
   - type: entities
     title: Wall Panel Tablet
     show_header_toggle: false
@@ -137,3 +13,25 @@ cards:
       - entity: sensor.wallpanel_screenon
       - entity: input_boolean.wallpanel_blackout
       - entity: input_boolean.wallpanel_ideal
+  - type: entities
+    title: Solar Edge System
+    show_header_toggle: false
+    entities:
+      # - entity: sensor.solaredge_batteries
+      - entity: sensor.solaredge_current_power
+      - entity: sensor.solaredge_energy_today
+      - entity: sensor.solaredge_energy_this_month
+      - entity: sensor.solaredge_energy_this_year
+      - entity: sensor.solaredge_lifetime_energy
+      - entity: sensor.solaredge_site_details
+      - entity: sensor.solaredge_current_power_template
+      - entity: sensor.solaredge_energy_today_template
+
+      # - entity: sensor.solaredge_gateways
+      # - entity: sensor.solaredge_grid_power
+      # - entity: sensor.solaredge_inverters
+      # - entity: sensor.solaredge_meters
+      # - entity: sensor.solaredge_power_consumption
+      # - entity: sensor.solaredge_sensors
+      # - entity: sensor.solaredge_solar_power
+      # - entity: sensor.solaredge_storage_power

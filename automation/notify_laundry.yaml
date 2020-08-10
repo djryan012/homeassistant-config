@@ -13,6 +13,9 @@
       data_template:
         tts_msg: "The Washing Machine is now Done"
         mplayer: "echo_dot_main"
+    - service: notify.mobile_app_georgina_pixel_3a_xl_app
+      data:
+        message: "The Washing Machine is now Done"
 
 - alias: "Laundry Dryer is Done"
   initial_state: True
@@ -29,3 +32,6 @@
       data_template:
         tts_msg: "The Clothes Dryer is now Done"
         mplayer: "echo_dot_main"
+    - service: notify.mobile_app_georgina_pixel_3a_xl_app
+      data:
+        message: "The Washing Machine is now Done"

@@ -20,38 +20,29 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
+api:
 config:
 discovery:
 frontend:
   javascript_version: latest
   themes: !include www/themes.yaml
 
-# history:
-#   include:
-#     domains:
-#       - sensor
-#       - switch
-#       - media_player
-#       - light
-#       - binary_sensor
-#       # - cover
-#   exclude:
-#     entities:
-#       - sensor.last_boot
-#       - sensor.date
-#       - sensor.pi_hole_ads_blocked_today
-#       - sensor.pi_hole_ads_percentage_blocked_today
-#       - sensor.pi_hole_dns_queries_today
-#       - sensor.last_boot
-#       - sensor.last_boot_templated
-#       - sensor.floorplan_date
-#       - sensor.floorplan_time
-#       - sensor.ha_uptime
-#       - sensor.time
+lovelace: !include lovelace.yaml
 
-lovelace:
-  mode: yaml
+# lovelace:
+#   mode: yaml
+#   resources: !include lovelace/resources.yaml
+#   dashboards:
+#     lovelace-dashboard:
+#       mode: yaml
+#       filename: !include ui-kiosk.yaml
+#       title: Dashboard
+#       icon: mdi:monitor-dashboard
+#       # show_in_sidebar: true
+#       # require_admin: false
+
 map:
+mobile_app:
 sun:
 system_health:
 updater:
@@ -60,9 +51,9 @@ updater:
 ####################################################
 #                     Includes                     #
 ####################################################
+alexa: !include include/alexa.yaml
 automation: !include_dir_merge_list automation/
 binary_sensor: !include include/binary_sensors.yaml
-# emulated_hue: !include include/emulated_hue.yaml #Node Red taking care of this
 fan: !include include/fan.yaml
 group: !include_dir_merge_named group
 history: !include include/history.yaml
@@ -73,7 +64,7 @@ logger: !include include/logger.yaml
 media_player: !include include/media_players.yaml
 person: !include include/person.yaml
 recorder: !include include/recorder.yaml
-scene: !include_dir_merge_list scene
+# scene: !include_dir_merge_list scene ## Converted scenes to scripts
 script: !include_dir_merge_named script
 sensor: !include_dir_merge_list sensors/
 # speedtestdotnet: !include include/speedtest.yaml #Pi3 cant detect past 100mb using Unifi USG via Nodered
@@ -93,39 +84,37 @@ alexa_media:
         - "Echo Dot Bedroom"
         - "Echo Input"
 
-blueiris:
-  host: !secret blueiris_host
-  port: !secret blueiris_port
-  # [optional] Blue Iris admin username and password
-  username: !secret blueiris_admin_username
-  password: !secret blueiris_admin_password
-  # # List of camera objects
-  camera:
-    - id: frontyard
-      name: "Front Yard"
-      room: "Exterior"
-    - id: frontdoor
-      name: "Front Door"
-      room: "Exterior"
-    - id: sideyard
-      name: "Side Yard"
-      room: "Exterior"
-    - id: backyard
-      name: "Back Yard"
-      room: "Exterior"
-    - id: motioneye
-      name: "MotionEye"
-      room: "Exterior"
+# blueiris:
+#   host: !secret blueiris_host
+#   port: !secret blueiris_port
+#   # [optional] Blue Iris admin username and password
+#   username: !secret blueiris_admin_username
+#   password: !secret blueiris_admin_password
+#   # # List of camera objects
+#   camera:
+#     - id: frontyard
+#       name: "Front Yard"
+#       room: "Exterior"
+#     - id: frontdoor
+#       name: "Front Door"s
+#       room: "Exterior"
+#     - id: sideyard
+#       name: "Side Yard"
+#       room: "Exterior"
+#     - id: backyard
+#       name: "Back Yard"
+#       room: "Exterior"
+#     - id: motioneye
+#       name: "MotionEye"
+#       room: "Exterior"
+# camera:
+#   - platform: blueiris
 
-camera:
-  - platform: blueiris
-
-device_tracker:
-  - platform: mqtt_json
-    devices:
-      david_zanzito: zanzito/david/location
-      georgina_zanzito: zanzito/georgina/location
-      # georgina_pixel: zanzito/georgina/location
+# device_tracker:
+#   - platform: mqtt_json
+#     devices:
+#       david_zanzito: zanzito/david/location
+#       georgina_zanzito: zanzito/georgina/location
 
 ecobee:
   api_key: !secret ecobee_api_key
@@ -135,8 +124,8 @@ google:
   client_secret: !secret google_client_secret
   track_new_calendar: false
 
-hacs: #https://custom-components.github.io/hacs/installation/configuration/
-  token: !secret hacs
+# hacs: #https://custom-components.github.io/hacs/installation/configuration/
+#   token: !secret hacs
 
 mqtt:
   broker: !secret Mosq_broker
@@ -145,11 +134,6 @@ mqtt:
   password: !secret Mosq_password
   client_id: home-assistant
   keepalive: 60
-
-# namecheapdns:
-#   host: !secret namecheap_host
-#   domain: !secret namecheap_domain
-#   password: !secret namecheap_dns
 
 notify:
   - platform: alexa_media
@@ -166,19 +150,15 @@ notify:
 
 panel_custom:
   - name: floorplan
-    sidebar_title: Alarm Panel
-    sidebar_icon: mdi:shield-home
+    sidebar_title: Wall Panel
+    sidebar_icon: mdi:tablet-dashboard
     url_path: floorplan
     config:
       hide_app_toolbar:
       config: /local/custom_ui/floorplan/floorplan.yaml
-  # - name: clock
-  #   sidebar_title: Alarm Clock
-  #   sidebar_icon: mdi:clock
-  #   url_path: clock
-  #   config:
-  #     hide_app_toolbar:
-  #     config: /local/custom_ui/floorplan/floorclock.yaml
+
+# samsungtv:
+#   - host: !secret samsungtv_host
 
 telegram_bot:
   - platform: broadcast

@@ -34,6 +34,10 @@
 
 monthly_color_scene:
   sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.garage_utility_outlet
+    - delay:
+        seconds: 15
     - service: mqtt.publish
       data_template:
         topic: hassio/falcon/player/FPP/playlist/name/set
@@ -57,6 +61,10 @@ monthly_color_scene:
           starwars
           {%- elif now().strftime("%m%d")|int == 505 -%}
           cinco_de_mayo
+          {%- elif now().strftime("%m%d")|int == 614 -%}
+          standard
+          {%- elif now().strftime("%m%d")|int == 704 -%}
+          4th_of_july
           {%- elif now().strftime("%m%d")|int >= 1001
           and now().strftime("%m%d")|int <= 1031-%}
           halloween
@@ -95,3 +103,7 @@ monthly_color_off:
         topic: hassio/falcon/player/FPP/playlist/repeat/set
         payload: '0'
         retain: false
+    - delay:
+        seconds: 10
+    - service: homeassistant.turn_off
+      entity_id: switch.garage_utility_outlet

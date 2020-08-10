@@ -4,36 +4,36 @@
 
 # Creates binary sensors according to cameras defined in the platform
 # - platform: blueiris 
-- platform: mqtt
-  name: Front Door Motion Sensor
-  state_topic: 'blueIris/frontdoor/motion'
-  device_class: motion
-  payload_on: 'on'
-  payload_off: 'off'
-- platform: mqtt
-  name: Sideyard Motion Sensor
-  state_topic: 'blueIris/sideyard/motion'
-  device_class: motion
-  payload_on: 'on'
-  payload_off: 'off'
-- platform: mqtt
-  name: Window Motion Sensor
-  state_topic: 'blueIris/motioneye/motion'
-  device_class: motion
-  payload_on: 'on'
-  payload_off: 'off'
-- platform: mqtt
-  name: Backyard Motion Sensor
-  state_topic: 'blueIris/backyard/motion'
-  device_class: motion
-  payload_on: 'on'
-  payload_off: 'off'
-- platform: mqtt
-  name: Frontyard Motion Sensor
-  state_topic: 'blueIris/frontyard/motion'
-  device_class: motion
-  payload_on: 'on'
-  payload_off: 'off'
+# - platform: mqtt
+#   name: Front Door Motion Sensor
+#   state_topic: 'blueIris/frontdoor/motion'
+#   device_class: motion
+#   payload_on: 'on'
+#   payload_off: 'off'
+# - platform: mqtt
+#   name: Sideyard Motion Sensor
+#   state_topic: 'blueIris/sideyard/motion'
+#   device_class: motion
+#   payload_on: 'on'
+#   payload_off: 'off'
+# - platform: mqtt
+#   name: Sconce Motion Sensor
+#   state_topic: 'blueIris/motioneye/motion'
+#   device_class: motion
+#   payload_on: 'on'
+#   payload_off: 'off'
+# - platform: mqtt
+#   name: Backyard Motion Sensor
+#   state_topic: 'blueIris/backyard/motion'
+#   device_class: motion
+#   payload_on: 'on'
+#   payload_off: 'off'
+# - platform: mqtt
+#   name: Frontyard Motion Sensor
+#   state_topic: 'blueIris/frontyard/motion'
+#   device_class: motion
+#   payload_on: 'on'
+#   payload_off: 'off'
 
 # Insteon Open / Close Sensors
 # Sensor1 (Master Window)
@@ -138,6 +138,20 @@
   state_topic: 'insteon/4f.99.d9/battery'
   device_class: 'battery'
 
+# Motion 2 (Kitchen)
+- platform: mqtt
+  name: Kitchen Motion Status
+  state_topic: 'insteon/4f.99.24/state'
+  device_class: 'motion'
+- platform: mqtt
+  name: Kitchen Motion Battery
+  state_topic: 'insteon/4f.99.24/battery'
+  device_class: 'battery'
+- platform: mqtt
+  name: Kitchen Motion Light
+  state_topic: 'insteon/4f.99.24/dawn'
+  device_class: 'light'
+
 # Motion 3 (Side Gate)
 - platform: mqtt
   name: Gate Motion Status
@@ -147,6 +161,10 @@
   name: Gate Motion Battery
   state_topic: 'insteon/4f.99.e6/battery'
   device_class: 'battery'
+- platform: mqtt
+  name: Gate Motion Light
+  state_topic: 'insteon/4f.99.e6/dawn'
+  device_class: 'light'
 
 #WallPanel Motion Detection
 - platform: mqtt

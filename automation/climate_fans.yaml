@@ -1,0 +1,124 @@
+#### MASTER BEDROOM FAN
+- alias: 'Bedroom Fan On while Sleeping'
+  initial_state: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bedroom_temperature
+      above: 76
+  condition:
+    - condition: state
+      entity_id: group.sleep_status
+      state: 'on'
+  action:
+    - service: script.turn_on
+      entity_id: script.master_bedroom_fan_low
+
+- alias: 'Bedroom Fan Off while Sleeping'
+  initial_state: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bedroom_temperature
+      below: 75
+  condition:
+    - condition: state
+      entity_id: group.sleep_status
+      state: 'on'
+  action:
+    - service: script.turn_on
+      entity_id: script.master_bedroom_fan_off
+
+#### OFFICE FAN
+- alias: 'Office Fan On while Occupied'
+  initial_state: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.office_temperature
+      above: 80
+    - platform: state
+      entity_id: binary_sensor.tradfri_office_sensor
+      to: 'on'
+      for:
+        minutes: 10
+  condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.tradfri_office_sensor
+          state: 'on'
+          for:
+            minutes: 10
+        - condition: numeric_state
+          entity_id: sensor.office_temperature
+          above: 80
+  action:
+    - service: script.turn_on
+      entity_id: script.office_fan_low
+
+- alias: 'Office Fan Off while Occupied'
+  initial_state: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.office_temperature
+      below: 77
+    - platform: state
+      entity_id: binary_sensor.tradfri_office_sensor
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.tradfri_office_sensor
+          state: 'off'
+        - condition: numeric_state
+          entity_id: sensor.office_temperature
+          below: 78
+  action:
+    - service: script.turn_on
+      entity_id: script.office_fan_off
+
+- alias: 'Window Fan Off'
+  initial_state: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bedroom_temperature
+      below: 72
+  condition:
+    - condition: time
+      after: '00:00:00'
+      before: '07:00:00'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.sonoff2
+
+- alias: 'Window Fan at 7am'
+  initial_state: True
+  trigger:
+    - platform: time
+      at: "07:00:00"
+  condition:
+      - condition: state
+        entity_id: switch.sonoff2
+        state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.sonoff2
+
+- alias: 'Window Fan On'
+  initial_state: True
+  trigger:
+    - platform: template 
+      value_template: "{{ states('sensor.echo_temperature') | int > state_attr('weather.dark_sky', 'temperature')}}"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.window_sensors
+        state: 'on'
+      - condition: time
+        after: '15:00:00'
+        before: '23:59:00'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.sonoff2

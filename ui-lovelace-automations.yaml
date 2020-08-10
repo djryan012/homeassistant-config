@@ -1,0 +1,5 @@
+
+title: Automations
+# custom_header: !include lovelace/custom_header.yaml
+views:
+  - !include lovelace/automations.yaml

@@ -1,0 +1,45 @@
+#########################################################
+#                 FAILED LOGIN ATTEMPTS                 #
+#########################################################
+- alias: "Failed Login"
+  trigger:
+    - platform: template
+      value_template: "{{ states('persistent_notification.http_login') != 'unknown' }}"
+      # value_template: "{{ states('persistent_notification.http_login') == 'notifying' }}"
+  action:
+    - service: notify.telbot_david
+      data:
+        message: "Notify: {{ state_attr('persistent_notification.http_login', 'message') }}"
+
+- alias: "IP Ban"
+  trigger:
+    - platform: template
+      value_template: "{{ states('persistent_notification.ip_ban') == 'notifying' }}"
+  action:
+    - service: notify.telbot_david
+      data:
+        message: "Notify: {{ state_attr('persistent_notification.ip_ban', 'message') }}"
+
+#########################################################
+#           NOTIFY OF NEW DEVICE ON NETWORK             #
+#########################################################
+# - alias: Notify If New Devices
+#   initial_state: True
+#   trigger:
+#     - platform: event
+#       event_type: device_tracker_new_device
+#   action:
+#     - service: notify.telbot_david
+#       data:
+#         message: "New device: {{trigger.event.data.entity_id}}"
+
+####################   Copied Over ##################################
+
+- alias: "Persistent Check Config"
+  trigger:
+    - platform: template
+      value_template: "{{ states('persistent_notification.invalid_config') != 'unknown' }}"    
+  action:
+    - service: notify.telbot_david
+      data:
+        message: "Notify: {{ state_attr('persistent_notification.invalid_config', 'message') }}"

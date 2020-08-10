@@ -1,0 +1,5 @@
+device_tracker.pixel_3a:
+  icon: '"/local/star_trek.jpg"'
+
+device_tracker.pixel_3a_xl:
+  icon: '"/local/r2d2.jpg"'

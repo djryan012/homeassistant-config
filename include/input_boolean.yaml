@@ -32,4 +32,4 @@ dog:
 
 camera_notifications:
   name: Camera Notifications
-  initial: on
+  initial: off

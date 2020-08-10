@@ -3,91 +3,90 @@ Support for Blue Iris.
 For more details about this platform, please refer to the documentation at
 https://home-assistant.io/components/switch.blueiris/
 """
-import asyncio
 import logging
 
-from homeassistant.core import callback
-from homeassistant.helpers.dispatcher import async_dispatcher_connect
+from homeassistant.components.switch import SwitchEntity
+from homeassistant.core import HomeAssistant
 
-from homeassistant.components.switch import SwitchDevice
-from .const import *
+from .helpers.const import *
+from .models.base_entity import BlueIrisEntity, async_setup_base_entry
+from .models.entity_data import EntityData
 
 _LOGGER = logging.getLogger(__name__)
 
 DEPENDENCIES = [DOMAIN]
 
-
-@asyncio.coroutine
-def async_setup_platform(hass, config, async_add_entities,
-                         discovery_info=None):
-    """Set up the Blue Iris switch platform."""
-    bi_data = hass.data.get(DATA_BLUEIRIS)
-
-    if not bi_data:
-        return
-
-    profile_switch = BlueIrisProfileSwitch(bi_data)
-
-    async_add_entities([profile_switch], True)
+CURRENT_DOMAIN = DOMAIN_SWITCH
 
 
-class BlueIrisProfileSwitch(SwitchDevice):
-    """An abstract class for an Blue Iris arm switch."""
-    def __init__(self, bi_data):
-        """Initialize the settings switch."""
-        super().__init__()
+async def async_setup_entry(hass, config_entry, async_add_devices):
+    """Set up the BlueIris Switch."""
+    await async_setup_base_entry(
+        hass, config_entry, async_add_devices, CURRENT_DOMAIN, get_switch
+    )
 
-        self._bi_data = bi_data
 
-        self._name = 'blueiris_alerts'
-        self._friendly_name = "Blue Iris Arm / Disarm"
-        self._state = False
+async def async_unload_entry(hass, config_entry):
+    _LOGGER.info(f"async_unload_entry {CURRENT_DOMAIN}: {config_entry}")
+
+    return True
+
+
+def get_switch(hass: HomeAssistant, host: str, entity: EntityData):
+    switch = BlueIrisProfileSwitch()
+    switch.initialize(hass, host, entity, CURRENT_DOMAIN)
+
+    return switch
+
+
+class BlueIrisProfileSwitch(SwitchEntity, BlueIrisEntity):
+    """Class for an BlueIris switch."""
 
     @property
-    def name(self):
-        """Return the name of the node."""
-        return self._name
-
-    async def async_added_to_hass(self):
-        """Register callbacks."""
-        async_dispatcher_connect(self.hass, SIGNAL_UPDATE_BLUEIRIS,
-                                 self._update_callback)
-
-    @callback
-    def _update_callback(self):
-        """Call update method."""
-        self.async_schedule_update_ha_state(True)
-
-    @asyncio.coroutine
-    def async_update(self):
-        """Get the updated status of the switch."""
-
-        self._state = self._bi_data.is_blue_iris_armed()
+    def profile_id(self):
+        return self.entity.id
 
     @property
     def is_on(self):
         """Return the boolean response if the node is on."""
-        return self._state
+        return self.entity.state
 
-    @asyncio.coroutine
-    def async_turn_on(self, **kwargs):
+    async def async_turn_on(self, **kwargs):
         """Turn device on."""
-        self._bi_data.update_blue_iris_profile(True)
-        self.async_schedule_update_ha_state()
+        await self.set_profile(self.profile_id)
 
-    @asyncio.coroutine
-    def async_turn_off(self, **kwargs):
+    async def async_turn_off(self, **kwargs):
         """Turn device off."""
-        self._bi_data.update_blue_iris_profile(False)
-        self.async_schedule_update_ha_state()
+        to_profile_id = 1
+        if self.profile_id == 1:
+            to_profile_id = 0
 
-    @property
-    def icon(self):
-        """Return the icon for the switch."""
-        return DEFAULT_ICON
+        await self.set_profile(to_profile_id)
+
+    async def set_profile(self, profile_id):
+        await self.api.set_profile(profile_id)
+
+        self.entity_manager.update()
+
+        await self.ha.dispatch_all()
 
     def turn_on(self, **kwargs) -> None:
         pass
 
     def turn_off(self, **kwargs) -> None:
         pass
+
+    async def async_setup(self):
+        pass
+
+    def _immediate_update(self, previous_state: bool):
+        if previous_state != self.entity.state:
+            _LOGGER.debug(
+                f"{self.name} updated from {previous_state} to {self.entity.state}"
+            )
+
+        super()._immediate_update(previous_state)
+
+    async def async_added_to_hass_local(self):
+        """Subscribe MQTT events."""
+        _LOGGER.info(f"Added new {self.name}")
