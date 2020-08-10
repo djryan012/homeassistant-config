@@ -85,7 +85,7 @@ cards:
       - entity: sensor.tradfri_office_sensor_battery_level
         icon: mdi:battery-50
         name: Tradfri Office 
-      - entity: sensor.tradfri_wetbar_sensor_battery_level
+      - entity: sensor.tradfri_motion_sensor_battery_level
         icon: mdi:battery-50
         name: Tradfri Motion
       - entity: binary_sensor.garage_motion_battery

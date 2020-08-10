@@ -26,21 +26,9 @@ discovery:
 frontend:
   javascript_version: latest
   themes: !include www/themes.yaml
-
-lovelace: !include lovelace.yaml
-
-# lovelace:
-#   mode: yaml
-#   resources: !include lovelace/resources.yaml
-#   dashboards:
-#     lovelace-dashboard:
-#       mode: yaml
-#       filename: !include ui-kiosk.yaml
-#       title: Dashboard
-#       icon: mdi:monitor-dashboard
-#       # show_in_sidebar: true
-#       # require_admin: false
-
+lovelace:
+  mode: yaml
+  resources: !include lovelace/resources.yaml
 map:
 mobile_app:
 sun:
@@ -96,7 +84,7 @@ alexa_media:
 #       name: "Front Yard"
 #       room: "Exterior"
 #     - id: frontdoor
-#       name: "Front Door"s
+#       name: "Front Door"
 #       room: "Exterior"
 #     - id: sideyard
 #       name: "Side Yard"
@@ -107,14 +95,15 @@ alexa_media:
 #     - id: motioneye
 #       name: "MotionEye"
 #       room: "Exterior"
-# camera:
-#   - platform: blueiris
 
-# device_tracker:
-#   - platform: mqtt_json
-#     devices:
-#       david_zanzito: zanzito/david/location
-#       georgina_zanzito: zanzito/georgina/location
+camera:
+  - platform: blueiris
+
+device_tracker:
+  - platform: mqtt_json
+    devices:
+      david_zanzito: zanzito/david/location
+      georgina_zanzito: zanzito/georgina/location
 
 ecobee:
   api_key: !secret ecobee_api_key
@@ -155,9 +144,16 @@ panel_custom:
     url_path: floorplan
     config:
       hide_app_toolbar:
-      config: /local/custom_ui/floorplan/floorplan.yaml
+      config: /local/floorplan/floorplan.yaml
+  # - name: clock
+  #   sidebar_title: Alarm Clock
+  #   sidebar_icon: mdi:clock
+  #   url_path: clock
+  #   config:
+  #     hide_app_toolbar:
+  #     config: /local/floorplan/floorclock.yaml
 
-# samsungtv:
+# samsungtv:     # Moved to UI Integration vs yaml config
 #   - host: !secret samsungtv_host
 
 telegram_bot:

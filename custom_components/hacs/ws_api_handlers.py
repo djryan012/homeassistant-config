@@ -63,7 +63,7 @@ async def hacs_settings(hass, connection, msg):
         for repository in hacs.repositories:
             if repository.pending_upgrade:
                 repository.data.selected_tag = None
-                await repository.async_install()
+                await repository.install()
         hacs.system.status.upgrading_all = False
         hacs.system.status.background_task = False
         hass.bus.async_fire("hacs/status", {})
@@ -71,9 +71,22 @@ async def hacs_settings(hass, connection, msg):
 
     elif action == "clear_new":
         for repo in hacs.repositories:
+<<<<<<< HEAD
             if repo.data.new and repo.data.category in msg.get("categories", []):
                 hacs.logger.debug(f"Clearing new flag from '{repo.data.full_name}'")
                 repo.data.new = False
+=======
+<<<<<<< HEAD
+            if repo.data.new:
+                hacs.logger.debug(f"Clearing new flag from '{repo.data.full_name}'")
+                repo.data.new = False
+=======
+            if msg.get("category") == repo.data.category:
+                if repo.status.new:
+                    hacs.logger.debug(f"Clearing new flag from '{repo.data.full_name}'")
+                    repo.status.new = False
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
+>>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
     else:
         hacs.logger.error(f"WS action '{action}' is not valid")
     hass.bus.async_fire("hacs/config", {})
@@ -215,6 +228,7 @@ async def hacs_repository(hass, connection, msg):
             repository.status.updated_info = True
 
         elif action == "install":
+<<<<<<< HEAD
             repository.data.new = False
             was_installed = repository.data.installed
             await repository.async_install()
@@ -223,6 +237,18 @@ async def hacs_repository(hass, connection, msg):
 
         elif action == "not_new":
             repository.data.new = False
+=======
+            was_installed = repository.data.installed
+            await repository.install()
+            if not was_installed:
+                hass.bus.async_fire("hacs/reload", {"force": True})
+<<<<<<< HEAD
+
+        elif action == "not_new":
+            repository.data.new = False
+=======
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
+>>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
 
         elif action == "uninstall":
             repository.data.new = False
@@ -270,6 +296,7 @@ async def hacs_repository(hass, connection, msg):
 
         await hacs.data.async_write()
         message = None
+<<<<<<< HEAD
     except AIOGitHubAPIException as exception:
         message = exception
     except AttributeError as exception:
@@ -283,6 +310,33 @@ async def hacs_repository(hass, connection, msg):
 
     repository.state = None
     connection.send_message(websocket_api.result_message(msg["id"], data))
+=======
+<<<<<<< HEAD
+    except AIOGitHubAPIException as exception:
+        message = str(exception)
+        hass.bus.async_fire("hacs/error", {"message": str(exception)})
+    except AttributeError as exception:
+        message = f"Could not use repository with ID {repo_id} ({exception})"
+=======
+    except AIOGitHubException as exception:
+        message = str(exception)
+        hass.bus.async_fire("hacs/error", {"message": str(exception)})
+    except AttributeError as exception:
+        message = f"Could not use repository with ID {repo_id}"
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
+    except Exception as exception:  # pylint: disable=broad-except
+        message = str(exception)
+
+    if message is not None:
+        hacs.logger.error(message)
+        hass.bus.async_fire("hacs/error", {"message": message})
+
+    repository.state = None
+<<<<<<< HEAD
+    connection.send_message(websocket_api.result_message(msg["id"], {}))
+=======
+>>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
+>>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
 
 
 @websocket_api.async_response
@@ -351,7 +405,23 @@ async def hacs_repository_data(hass, connection, msg):
             repository.data.selected_tag = data
             await repository.update_repository()
 
+<<<<<<< HEAD
             repository.state = None
+=======
+    elif action == "set_version":
+        repository.data.selected_tag = data
+        await repository.update_repository()
+        repository.state = None
+
+    elif action == "install":
+        was_installed = repository.data.installed
+        repository.data.selected_tag = data
+        await repository.update_repository()
+        await repository.install()
+        repository.state = None
+        if not was_installed:
+            hass.bus.async_fire("hacs/reload", {"force": True})
+>>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
 
         elif action == "install":
             was_installed = repository.data.installed

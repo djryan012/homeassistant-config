@@ -1,4 +1,4 @@
-title: Fonda House
+title: Home
 background: center / cover no-repeat url("/local/background3.jpg") fixed
 views:
   - !include lovelace/home.yaml
@@ -9,7 +9,6 @@ views:
   # - !include lovelace/connected_devices.yaml
   - !include lovelace/weather.yaml
   - !include lovelace/media_players.yaml
-  # - !include lovelace/automations.yaml
-  # - !include lovelace/insteon.yaml
-  # - !include lovelace/test.yaml
-  # - !include lovelace/blueiris.yaml
+  - !include lovelace/automations.yaml
+  - !include lovelace/test.yaml
+  # - !include lovelace/floorplan.yaml

@@ -34,9 +34,9 @@ cards:
   - type: picture-glance
     title: Sconce Light
     entities: 
-      - camera.blueiris_motion_eye
-      - binary_sensor.blueiris_motion_eye_motion
-    camera_image: camera.blueiris_motion_eye
+      - camera.motioneye
+      - binary_sensor.sconce_motion_sensor
+    camera_image: camera.motioneye
 
   - type: picture-glance
     title: Sideyard

@@ -54,8 +54,17 @@ class HacsPythonScript(HacsRepository):
                     self.logger.error(error)
         return self.validate.success
 
-    async def async_post_registration(self):
+    async def registration(self, ref=None):
         """Registration."""
+        if ref is not None:
+            self.ref = ref
+            self.force_branch = True
+        if not await self.validate_repository():
+            return False
+
+        # Run common registration steps.
+        await self.common_registration()
+
         # Set name
         find_file_name(self)
 

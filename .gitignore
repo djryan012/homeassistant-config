@@ -13,6 +13,7 @@
 !*.py
 !*.css
 !*.HA_VERSION
+# !travis*
 
 # # Included folders.
 !automation
@@ -31,9 +32,10 @@
 .vscode
 node-red
 insteon-mqtt
+
 custom_components
-js/
 people/
+js/
 ui/
 
 # # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
@@ -43,4 +45,3 @@ secrets.yaml
 known_devices.yaml
 google_calendars.yaml
 snapshot_*
-*.key

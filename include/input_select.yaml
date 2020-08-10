@@ -10,7 +10,7 @@ guest_bedroom_fan:
     - High
 
 living_room_fan:
-  name: Living_room Fan
+  name: Living Room Fan
   options:
     - "Off"
     - Low
@@ -37,12 +37,12 @@ office_fan:
 # SCENES
 ############################################################
 # living_room_preset:
-#   name: Living_room Presets
+#   name: Living Room Presets
 #   options:
 #     - Select One
-#     - Living_room Dim
-#     - Living_room Normal
-#     - Living_room Bright
+#     - Living Room Dim
+#     - Living Room Normal
+#     - Living Room Bright
 #   initial: Select One
 
 # bedroom_preset:

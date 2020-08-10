@@ -78,34 +78,7 @@
     - service: script.turn_on
       entity_id: script.office_fan_off
 
-- alias: 'Window Fan Off'
-  initial_state: True
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.bedroom_temperature
-      below: 72
-  condition:
-    - condition: time
-      after: '00:00:00'
-      before: '07:00:00'
-  action:
-    - service: switch.turn_off
-      entity_id: switch.sonoff2
-
-- alias: 'Window Fan at 7am'
-  initial_state: True
-  trigger:
-    - platform: time
-      at: "07:00:00"
-  condition:
-      - condition: state
-        entity_id: switch.sonoff2
-        state: 'on'
-  action:
-    - service: switch.turn_off
-      entity_id: switch.sonoff2
-
-- alias: 'Window Fan On'
+- alias: 'Window Fan On when cooler outside'
   initial_state: True
   trigger:
     - platform: template 
@@ -122,3 +95,56 @@
   action:
     - service: switch.turn_on
       entity_id: switch.sonoff2
+
+- alias: 'Window Fan off at 7am'
+  initial_state: True
+  trigger:
+    - platform: time
+      at: "07:00:00"
+  condition:
+      - condition: state
+        entity_id: switch.sonoff2
+        state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.sonoff2
+
+- alias: 'Window Fan Off at 72'
+  initial_state: True
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bedroom_temperature
+      below: 72
+  condition:
+    - condition: time
+      after: '00:00:00'
+      before: '07:00:00'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.sonoff2
+
+
+- id: '1595393405978'
+  alias: window fan off at 73
+  description: ''
+  trigger:
+  - below: '73.1'
+    entity_id: sensor.bedroom_temperature
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.sonoff2
+    service: switch.turn_off
+- id: '1595577722294'
+  alias: Window Fan Off
+  description: ''
+  trigger:
+  - below: '74'
+    entity_id: sensor.bedroom_temperature
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.sonoff2
+    service: switch.turn_off
