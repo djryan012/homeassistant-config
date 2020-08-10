@@ -99,27 +99,28 @@ wetbar_on:
   - service: light.turn_on
     data:
       entity_id: light.kitchen_wetbar_rgbw
-      brightness: 100
-      color_temp: 350
-      transition: 1
+      brightness: 180
+      color_temp: 370
+      transition: 2
 
 wetbar_off:
   sequence:
   - condition: template
-    value_template: "{{ (state_attr('light.kitchen_wetbar_rgbw', 'color_temp')|int) == 350 }}"
+    # value_template: "{{ (state_attr('light.kitchen_wetbar_rgbw', 'color_temp')|int) == 370 }}" DISABLED UNTIL COLOR TEMP FIXED
+    value_template: "{{ (state_attr('light.kitchen_wetbar_rgbw', 'brightness')|int) == 180 }}"
   - service: light.turn_off
     data:
       entity_id: light.kitchen_wetbar_rgbw
-      transition: 1
+      transition: 3
 
 restore_wetbar:
   sequence:
   - service: light.turn_on
     data:
       entity_id: light.kitchen_wetbar_rgbw
-      brightness: 100
-      color_temp: 350
-      transition: 1
+      brightness: 180
+      color_temp: 370
+      transition: 2
 
 feed_dog_reminder:
   sequence:

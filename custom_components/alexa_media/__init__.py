@@ -303,42 +303,18 @@ async def setup_alexa(hass, config_entry, login_obj):
                     if bluetooth is not None
                     else "",
                 )
-                if (devices is None or bluetooth is None) and not (
-                    hass.data[DATA_ALEXAMEDIA]["accounts"][email]["configurator"]
-                ):
-                    raise AlexapyLoginError()
         except (AlexapyLoginError, JSONDecodeError):
             _LOGGER.debug(
                 "%s: Alexa API disconnected; attempting to relogin : status %s",
                 hide_email(email),
                 login_obj.status,
             )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
             if login_obj.status:
                 await login_obj.reset()
                 await login_obj.login()
                 await test_login_status(hass, config_entry, login_obj, setup_alexa)
-<<<<<<< HEAD
             return
         except BaseException as err:
-=======
-            return
-        except BaseException as err:
-            raise
-=======
-            if login_obj.status and not await test_login_status(
-                hass, config_entry, login_obj, setup_alexa
-            ):
-                login_obj.status = {}
-                await login_obj.reset()
-                await login_obj.login()
-            return
-        except BaseException as err:
->>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
->>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
             raise UpdateFailed(f"Error communicating with API: {err}")
 
         await process_notifications(login_obj, raw_notifications)

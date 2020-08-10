@@ -68,7 +68,7 @@ cards:
     title: Echo Sensors
     entities:
       - entity: binary_sensor.echo_occupancy
-        name: Dinning Room
+        name: Dining Room
       - entity: binary_sensor.living_room_occupancy
         name: Living Room
       - entity: binary_sensor.office_occupancy
@@ -76,18 +76,30 @@ cards:
       - entity: binary_sensor.bedroom_occupancy
         name: Bedroom
   - type: glance
-    title: Occupancy Sensors
+    title: Motion Sensors
     entities:
+      - entity: binary_sensor.blueiris_back_yard_motion
+        name: Back Yard
+      - entity: binary_sensor.blueiris_front_door_motion
+        name: Front Door
+      - entity: binary_sensor.blueiris_front_yard_motion
+        name: Front Yard
+      - entity: binary_sensor.blueiris_motion_eye_motion
+        name: Porch Light
+      - entity: binary_sensor.blueiris_side_yard_motion
+        name: Side Yard
       - entity: binary_sensor.garage_motion_status
         name: Garage
       - entity: binary_sensor.gate_motion_status
-        name: Side Gate
-      - entity: binary_sensor.sconce_motion_sensor
-        name: Light Sconce
+        name: Gate
+      - entity: binary_sensor.kitchen_motion_status
+        name: Kitchen
       - entity: binary_sensor.tradfri_office_sensor
-        name: Office Tradfri
-      - entity: binary_sensor.tradfri_motion_sensor
-        name: Tradfri Motion
+        name: Office
+      - entity: binary_sensor.tradfri_wetbar_sensor
+        name: Wetbar
+      - entity: binary_sensor.wallpanel_motion_sensor
+        name: Wallpanel
     columns: 4
 
   - type: entities
@@ -195,10 +207,10 @@ cards:
     title: Falcon Player
     show_header_toggle: false
     entities:
+      - entity: switch.garage_utility_outlet
       - entity: automation.monthly_holiday_color_scene_on
-      - entity: sensor.fpp_branch
-      - entity: sensor.fpp_version
-        name: Version
+      - entity: sensor.flag
+        name: Flag Day
       - entity: sensor.fpp_status
         name: Player Status
       - entity: sensor.fpp_name_status

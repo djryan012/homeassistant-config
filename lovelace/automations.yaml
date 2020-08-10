@@ -69,7 +69,7 @@ cards:
       - entity: automation.deconz_lights_unavailable
       - entity: automation.update_available_notification
       - entity: automation.internet_speed_connection_poor
-      - entity: automation.persistent_login
+      - entity: automation.failed_login
       - entity: automation.persistent_check_config
       - entity: automation.notify_if_camera_is_offline
       # - entity: automation.notify_if_new_devices

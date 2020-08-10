@@ -7,9 +7,9 @@ cards:
   - type: picture-glance
     title: Front Door
     entities:
-      - camera.front_door
-      - camera.all
-    camera_image: camera.front_door
+      - camera.blueiris_front_door
+      - camera.blueiris_all_cameras
+    camera_image: camera.blueiris_front_door
   - type: vertical-stack
     cards:
       - type: glance
@@ -50,7 +50,7 @@ cards:
         icon: mdi:lightbulb
         tap_action:
           action: toggle
-      - entity: group.dinning_room
+      - entity: group.dining_room
         name: Dinning
         icon: mdi:lightbulb
         tap_action:
@@ -96,10 +96,6 @@ cards:
         name: Patio
         tap_action:
           action: toggle
-      # - entity: switch.sonoff_pow3
-      #   name: Backyard
-      #   tap_action:
-      #     action: toggle
     columns: 3
   - type: weather-forecast
     title: Weather
@@ -123,10 +119,22 @@ cards:
       - entity: sensor.ecobee_temp_compare_office
         name: Office Dif
     columns: 3
+  - type: entities
+    title: Automation Overides
+    show_header_toggle: false
+    entities:
+      - entity: input_boolean.vacation
+        name: Vacation Mode
+        icon: mdi:toggle-switch
+      - entity: input_boolean.dog
+        name: Pet Away Mode
+        icon: mdi:toggle-switch
+      - entity: input_boolean.camera_notifications
+        name: Camera Notify
+        icon: mdi:toggle-switch
   - type: glance
     title: Known Guest
     entities:
       - entity: person.michael_jr
       - entity: person.michael_sr
       - entity: person.jackie
-    # columns: 3

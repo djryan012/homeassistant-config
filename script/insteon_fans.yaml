@@ -1,4 +1,4 @@
-##### LIVING ROOM FAN #####
+##### LIVING_ROOM FAN #####
 living_room_fan_off:
   sequence:
     - service: fan.turn_off

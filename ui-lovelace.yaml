@@ -9,6 +9,6 @@ views:
   # - !include lovelace/connected_devices.yaml
   - !include lovelace/weather.yaml
   - !include lovelace/media_players.yaml
-  - !include lovelace/automations.yaml
-  - !include lovelace/test.yaml
+  # - !include lovelace/automations.yaml
+  # - !include lovelace/test.yaml
   # - !include lovelace/floorplan.yaml

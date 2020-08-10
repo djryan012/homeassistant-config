@@ -94,6 +94,9 @@ async def setup_frontend():
 
     hacs.hass.http.register_view(HacsFrontend())
     hacs.frontend.version_running = FE_VERSION
+    hacs.frontend.version_expected = await hacs.hass.async_add_executor_job(
+        get_frontend_version
+    )
 
     # Add to sidepanel
     custom_panel_config = {

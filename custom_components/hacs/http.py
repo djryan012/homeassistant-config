@@ -22,30 +22,6 @@ class HacsFrontend(HomeAssistantView):
         return await get_file_response(requested_file)
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-class HacsPluginViewLegacy(HacsFrontend):
-    """Alias for legacy, remove with 1.0"""
-
-    name = "community_plugin"
-    url = r"/community_plugin/{requested_file:.+}"
-
-    async def get(self, request, requested_file):  # pylint: disable=unused-argument
-        """DEPRECATED."""
-        hacs = get_hacs()
-        if hacs.system.ha_version.split(".")[1] >= "107":
-            logger = Logger("hacs.deprecated")
-            logger.warning(
-                "The '/community_plugin/*' is deprecated and will be removed in an upcoming version of HACS, it has been replaced by '/hacsfiles/*', if you use the UI to manage your lovelace configuration, you can update this by going to the settings tab in HACS, if you use YAML to manage your lovelace configuration, you manually need to replace the URL in your resources."
-            )
-
-        return await get_file_response(requested_file)
-
-
->>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
->>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
 async def get_file_response(requested_file):
     """Get file."""
     hacs = get_hacs()

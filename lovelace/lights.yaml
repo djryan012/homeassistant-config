@@ -83,6 +83,7 @@ cards:
         name: Yard Lights Power
         icon: mdi:toggle-switch
       - entity: light.whole_house_rgb
+      - entity: switch.garage_utility_outlet
 
   - type: entities
     title: Miscellaneous

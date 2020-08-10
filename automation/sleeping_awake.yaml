@@ -7,6 +7,36 @@
   action:
     - service: script.lights_on_when_waking_up
 
+- alias: "Wake up David for Work"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: sensor.my_event_offset_2
+      from: 'off'
+      to: 'on'
+  condition: 
+    - condition: template 
+      value_template: >
+        {% if is_state('person.david', 'home') %} true
+        {% else %} false {% endif %}
+    - condition: template 
+      value_template: >
+        {% if state_attr('calendar.disney_work_schedule', 'description') == None  %} true
+        {% else %} false {% endif %}
+  action:
+    # - service: mqtt.publish
+    #   data_template:
+    #     topic: zanzito/david/alarm/play
+    #     payload: 'Wake up for work'
+    #     retain: false
+    - service: notify.mobile_app_david_pixel_3a_app
+      data:
+        message: "Wake up for Work"
+    - service: script.lights_on_when_waking_up
+    # - service: notify.telbot_david
+    #   data:
+    #     message: 'Wake Up'
+
 - alias: "Reset David Sleeping"
   initial_state: True
   trigger:

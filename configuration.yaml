@@ -14,6 +14,7 @@ homeassistant:
       trusted_networks:
         - 192.168.1.0/24
         - 172.30.33.4
+        - 192.168.1.109
     - type: homeassistant
 
 http:
@@ -26,9 +27,21 @@ discovery:
 frontend:
   javascript_version: latest
   themes: !include www/themes.yaml
-lovelace:
-  mode: yaml
-  resources: !include lovelace/resources.yaml
+
+lovelace: !include lovelace.yaml
+
+# lovelace:
+#   mode: yaml
+#   resources: !include lovelace/resources.yaml
+#   dashboards:
+#     lovelace-dashboard:
+#       mode: yaml
+#       filename: !include ui-kiosk.yaml
+#       title: Dashboard
+#       icon: mdi:monitor-dashboard
+#       # show_in_sidebar: true
+#       # require_admin: false
+
 map:
 mobile_app:
 sun:
@@ -84,7 +97,7 @@ alexa_media:
 #       name: "Front Yard"
 #       room: "Exterior"
 #     - id: frontdoor
-#       name: "Front Door"
+#       name: "Front Door"s
 #       room: "Exterior"
 #     - id: sideyard
 #       name: "Side Yard"
@@ -95,15 +108,14 @@ alexa_media:
 #     - id: motioneye
 #       name: "MotionEye"
 #       room: "Exterior"
+# camera:
+#   - platform: blueiris
 
-camera:
-  - platform: blueiris
-
-device_tracker:
-  - platform: mqtt_json
-    devices:
-      david_zanzito: zanzito/david/location
-      georgina_zanzito: zanzito/georgina/location
+# device_tracker:
+#   - platform: mqtt_json
+#     devices:
+#       david_zanzito: zanzito/david/location
+#       georgina_zanzito: zanzito/georgina/location
 
 ecobee:
   api_key: !secret ecobee_api_key
@@ -144,17 +156,14 @@ panel_custom:
     url_path: floorplan
     config:
       hide_app_toolbar:
-      config: /local/floorplan/floorplan.yaml
-  # - name: clock
-  #   sidebar_title: Alarm Clock
-  #   sidebar_icon: mdi:clock
-  #   url_path: clock
-  #   config:
-  #     hide_app_toolbar:
-  #     config: /local/floorplan/floorclock.yaml
+      config: /local/custom_ui/floorplan/floorplan.yaml
 
-# samsungtv:     # Moved to UI Integration vs yaml config
+# samsungtv:
 #   - host: !secret samsungtv_host
+
+solaredge:
+  api_key: !secret solaredge_api
+  site_id: !secret solaredge_siteid
 
 telegram_bot:
   - platform: broadcast

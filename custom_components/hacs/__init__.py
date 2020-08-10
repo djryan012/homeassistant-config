@@ -6,15 +6,7 @@ https://hacs.xyz/
 """
 
 import voluptuous as vol
-<<<<<<< HEAD
 from aiogithubapi import GitHub, AIOGitHubAPIException
-=======
-<<<<<<< HEAD
-from aiogithubapi import GitHub, AIOGitHubAPIException
-=======
-from aiogithubapi import AIOGitHub, AIOGitHubException
->>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
->>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
 from homeassistant import config_entries
 from homeassistant.const import EVENT_HOMEASSISTANT_START
 from homeassistant.const import __version__ as HAVERSION
@@ -23,19 +15,9 @@ from homeassistant.exceptions import ConfigEntryNotReady, ServiceNotFound
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from homeassistant.helpers.event import async_call_later
 
-<<<<<<< HEAD
 from custom_components.hacs.configuration_schema import hacs_config_combined, FRONTEND_REPO, FRONTEND_REPO_URL
 from custom_components.hacs.const import DOMAIN, ELEMENT_TYPES, STARTUP, VERSION
 from custom_components.hacs.constrains import check_constrains
-=======
-from custom_components.hacs.configuration_schema import hacs_config_combined
-from custom_components.hacs.const import DOMAIN, ELEMENT_TYPES, STARTUP, VERSION
-<<<<<<< HEAD
-from custom_components.hacs.constrains import check_constrains
-=======
-from custom_components.hacs.constrains import check_constans, check_requirements
->>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
->>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
 from custom_components.hacs.helpers.remaining_github_calls import get_fetch_updates_for
 from custom_components.hacs.hacsbase.configuration import Configuration
 from custom_components.hacs.hacsbase.data import HacsData
@@ -60,7 +42,6 @@ async def async_setup(hass, config):
         return True
     if hacs.configuration and hacs.configuration.config_type == "flow":
         return True
-<<<<<<< HEAD
 
     configuration = config[DOMAIN]
 
@@ -73,12 +54,6 @@ async def async_setup(hass, config):
     hacs.hass = hass
     hacs.session = async_create_clientsession(hass)
     hacs.configuration = Configuration.from_dict(configuration)
-=======
-    hass.data[DOMAIN] = config
-    hacs.hass = hass
-    hacs.session = async_create_clientsession(hass)
-    hacs.configuration = Configuration.from_dict(config[DOMAIN])
->>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
     hacs.configuration.config = config
     hacs.configuration.config_type = "yaml"
     await startup_wrapper_for_yaml()
@@ -104,15 +79,7 @@ async def async_setup_entry(hass, config_entry):
     config_entry.add_update_listener(reload_hacs)
     try:
         startup_result = await hacs_startup()
-<<<<<<< HEAD
     except AIOGitHubAPIException:
-=======
-<<<<<<< HEAD
-    except AIOGitHubAPIException:
-=======
-    except AIOGitHubException:
->>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
->>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
         startup_result = False
     if not startup_result:
         hacs.system.disabled = True
@@ -126,15 +93,7 @@ async def startup_wrapper_for_yaml():
     hacs = get_hacs()
     try:
         startup_result = await hacs_startup()
-<<<<<<< HEAD
     except AIOGitHubAPIException:
-=======
-<<<<<<< HEAD
-    except AIOGitHubAPIException:
-=======
-    except AIOGitHubException:
->>>>>>> 6242ccaeaadc264f1b2fbb9b2ede8cbde4a3a6da
->>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
         startup_result = False
     if not startup_result:
         hacs.system.disabled = True
@@ -152,10 +111,7 @@ async def startup_wrapper_for_yaml():
 async def hacs_startup():
     """HACS startup tasks."""
     hacs = get_hacs()
-<<<<<<< HEAD
 
-=======
->>>>>>> f7eb2f1e28e5e6032ce74f0cd933a9cb50cc71ed
     if hacs.configuration.debug:
         try:
             await hacs.hass.services.async_call(
