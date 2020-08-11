@@ -9,11 +9,6 @@
     - service: notify.mobile_app_david_pixel_3a_app
       data:
         message: "Georgina has left Work as of {{ now().strftime(%H:%M) }} "
-    # - service: mqtt.publish
-    #   data_template:
-    #     topic: zanzito/david/notification
-    #     payload: 'Georgina has left Work as of {{now().strftime("%H:%M")}}'
-    #     retain: false
 
 - alias: "Georgina is Home"
   initial_state: True
@@ -37,11 +32,6 @@
       for:
         minutes: 5
   action:
-    # - service: mqtt.publish
-    #   data_template:
-    #     topic: zanzito/david/notification
-    #     payload: 'Georgina is Home as of {{now().strftime("%H:%M")}}'
-    #     retain: false
     - service: notify.mobile_app_david_pixel_3a_app
       data:
         message: "Georgina is Home as of {{now().strftime(%H:%M)}}"
@@ -65,11 +55,6 @@
         {% if is_state('input_boolean.georgina_status', 'off') %} true
         {% else %} false {% endif %}
   action:
-    # - service: mqtt.publish
-    #   data_template:
-    #     topic: zanzito/georgina/notification
-    #     payload: 'David is Home as of {{now().strftime("%H:%M")}}'
-    #     retain: false
     - service: notify.mobile_app_georgina_pixel_3a_xl_app
       data:
         message: "David is Home as of {{now().strftime(%H:%M)}}"
