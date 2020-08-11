@@ -179,6 +179,7 @@ class AlexaClient(MediaPlayerDevice):
         self._device_owner_customer_id = None
         self._software_version = None
         self._available = None
+        self._assumed_state = False
         self._capabilities = []
         self._cluster_members = []
         self._locale = None
@@ -331,7 +332,7 @@ class AlexaClient(MediaPlayerDevice):
             )
         if not event_serial:
             return
-        self.available = True
+        self._available = True
         self.async_schedule_update_ha_state()
         if "last_called_change" in event:
             if event_serial == self.device_serial_number or any(
@@ -499,6 +500,7 @@ class AlexaClient(MediaPlayerDevice):
         session = None
         if self.available:
             _LOGGER.debug("%s: Refreshing %s", self.account, self.name)
+            self._assumed_state = False
             if "PAIR_BT_SOURCE" in self._capabilities:
                 self._source = self._get_source()
                 self._source_list = self._get_source_list()
@@ -582,7 +584,6 @@ class AlexaClient(MediaPlayerDevice):
                 )
             if self._session.get("state"):
                 self._media_player_state = self._session["state"]
-                self._media_pos = self._session.get("progress", {}).get("mediaProgress")
                 self._media_title = self._session.get("infoText", {}).get("title")
                 self._media_artist = self._session.get("infoText", {}).get("subText1")
                 self._media_album_name = self._session.get("infoText", {}).get(
@@ -593,8 +594,15 @@ class AlexaClient(MediaPlayerDevice):
                     if self._session.get("mainArt")
                     else None
                 )
-                self._media_duration = self._session.get("progress", {}).get(
-                    "mediaLength"
+                self._media_pos = (
+                    self._session.get("progress", {}).get("mediaProgress")
+                    if self._session.get("progress")
+                    else None
+                )
+                self._media_duration = (
+                    self._session.get("progress", {}).get("mediaLength")
+                    if self._session.get("progress")
+                    else None
                 )
                 if not self._session.get("lemurVolume"):
                     self._media_is_muted = (
@@ -743,6 +751,11 @@ class AlexaClient(MediaPlayerDevice):
         self._available = state
 
     @property
+    def assumed_state(self):
+        """Return whether the state is an assumed_state."""
+        return self._assumed_state
+
+    @property
     def hidden(self):
         """Return whether the sensor should be hidden."""
         return "MUSIC_SKILL" not in self._capabilities
@@ -801,6 +814,8 @@ class AlexaClient(MediaPlayerDevice):
             or email not in self.hass.data[DATA_ALEXAMEDIA]["accounts"]
             or self._login.session.closed
         ):
+            self._assumed_state = True
+            self.available = False
             return
         device = self.hass.data[DATA_ALEXAMEDIA]["accounts"][email]["devices"][
             "media_player"
@@ -1134,6 +1149,13 @@ class AlexaClient(MediaPlayerDevice):
         )
 
     @_catch_login_errors
+    async def async_send_dropin_notification(self, message, **kwargs):
+        """Send notification dropin to the media player's associated mobile devices."""
+        await self.alexa_api.send_dropin_notification(
+            message, customer_id=self._customer_id, **kwargs
+        )
+
+    @_catch_login_errors
     async def async_play_media(self, media_type, media_id, enqueue=None, **kwargs):
         # pylint: disable=unused-argument
         """Send the play_media command to the media player."""
@@ -1181,6 +1203,8 @@ class AlexaClient(MediaPlayerDevice):
                     "options"
                 ].get(CONF_QUEUE_DELAY, DEFAULT_QUEUE_DELAY),
             )
+        elif media_type == "image":
+            await self.alexa_api.set_background(media_id)
         else:
             await self.alexa_api.play_music(
                 media_type,
