@@ -9,17 +9,17 @@ kitchen:
     - group.kitchen_pendants
     - light.kitchen_down_lights
 
-kitchen_pendants:
-    - light.kitchen_pendant_1
-    - light.kitchen_pendant_2
+# kitchen_pendants:
+#     - light.kitchen_pendant_1
+#     - light.kitchen_pendant_2
 
 dining_room:
     - light.dinning_floor_lamp
     - group.dining_table
 
-dining_table:
-    - light.dinning_table_light
-    - light.dinning_room_switch
+# dining_table:
+#     - light.dinning_table_light
+#     - light.dinning_room_switch
 
 bedroom:
     - light.david_nightstand
