@@ -6,27 +6,27 @@ smart_home:
       - fan.living_room_ceiling_fan
       - fan.master_ceiling_fan
       - fan.office_ceiling_fan
-      - group.bedroom
-      - group.dinning_room
-      - group.dinning_table
-      - group.garage
-      - group.interior_lights
-      - group.kitchen
-      - group.kitchen_pendants
-      - group.living_room
-      - group.nightstands
-      - group.office
       - input_boolean.camera_notifications
       - light.david_nightstand
-      - light.dinning_floor_lamp
+      - light.bedroom
+      - light.dining_floor_lamp
+      - light.dining_table
+      - light.dining_room
+      - light.garage
       - light.georgina_nightstand
+      - light.interior_lights
+      - light.kitchen
       - light.kitchen_down_lights
+      - light.kitchen_pendants
       - light.kitchen_pendant_1
       - light.kitchen_pendant_2
       - light.kitchen_wetbar_rgbw
+      - light.living_room
       - light.living_room_light_1
       - light.living_room_light_2
       - light.master_ceiling_light
+      - light.nightstands
+      - light.office
       - light.office_ceiling_light
       - light.office_desk_light
       - light.patio_lights
@@ -48,52 +48,42 @@ smart_home:
       name: Office Fan
       display_categories: FAN
 
-    group.bedroom:
-      name: Bedroom Lights
-      display_categories: LIGHT
-    group.dinning_room:
-      name: Dinning Room Lights
-      display_categories: LIGHT
-    group.dinning_table:
-      name: Dinning Table
-      display_categories: LIGHT
-    group.garage:
-      name: Garage Lights
-      display_categories: LIGHT
-    group.interior_lights:
-      name: Interior Lights
-      display_categories: LIGHT
-    group.kitchen:
-      name: Kitchen Lights
-      display_categories: LIGHT
-    group.kitchen_pendants:
-      name: Kitchen Pendants
-      display_categories: LIGHT
-    group.living_room:
-      name: Living Room Lights
-      display_categories: LIGHT
-    group.nightstands:
-      name: Nightstands
-      display_categories: LIGHT
-    group.office:
-      name: Office Lights
-      display_categories: LIGHT
-      
     input_boolean.camera_notifications:
       name: Camera Notify Overide
       display_categories: SWITCH
 
+    light.bedroom:
+      name: Bedroom Lights
+      display_categories: LIGHT
     light.david_nightstand:
       name: David Nightstand
       display_categories: LIGHT
-    light.dinning_floor_lamp:
-      name: Dinning Floor Lamp
+    light.dining_floor_lamp:
+      name: Dining Floor Lamp
+      display_categories: LIGHT
+    light.dining_room:
+      name: Dining Room Lights
+      display_categories: LIGHT
+    light.dining_table:
+      name: Dining Table
+      display_categories: LIGHT
+    light.garage:
+      name: Garage Lights
       display_categories: LIGHT
     light.georgina_nightstand:
       name: Georgina Nightstand
       display_categories: LIGHT
+    light.interior_lights:
+      name: Interior Lights
+      display_categories: LIGHT
+    light.kitchen:
+      name: Kitchen Lights
+      display_categories: LIGHT
     light.kitchen_down_lights:
       name: Kitchen Down Lights
+      display_categories: LIGHT
+    light.kitchen_pendants:
+      name: Kitchen Pendants
       display_categories: LIGHT
     light.kitchen_pendant_1:
       name: Kitchen Pendant One
@@ -104,6 +94,9 @@ smart_home:
     light.kitchen_wetbar_rgbw:
       name: Kitchen Wetbar
       display_categories: LIGHT
+    light.living_room:
+      name: Living Room Lights
+      display_categories: LIGHT
     light.living_room_light_1:
       name: Living Room Light One
       display_categories: LIGHT
@@ -112,6 +105,12 @@ smart_home:
       display_categories: LIGHT
     light.master_ceiling_light:
       name: Bedroom Ceiling Light
+      display_categories: LIGHT
+    light.nightstands:
+      name: Nightstands
+      display_categories: LIGHT
+    light.office:
+      name: Office Lights
       display_categories: LIGHT
     light.office_ceiling_light:
       name: Office Ceiling Light

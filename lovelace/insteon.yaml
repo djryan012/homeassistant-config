@@ -111,13 +111,13 @@ cards:
         name: Living Room Keypad D
         icon: mdi:toggle-switch
   - type: entities
-    title: Dinning Room Insteon
+    title: Dining Room Insteon
     show_header_toggle: false
     entities:
-      - entity: light.dinning_table_light #Dinning Room_light
-        name: Dinning Table Light
+      - entity: light.dining_table_light #Dining Room_light
+        name: Dining Table Light
         type: custom:slider-entity-row
         break_slider: true
-      - entity: light.dinning_room_switch
-        name: Dinning Table Switch
+      - entity: light.dining_room_switch
+        name: Dining Table Switch
         icon: mdi:toggle-switch

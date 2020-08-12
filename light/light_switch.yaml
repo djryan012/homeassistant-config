@@ -1,0 +1,17 @@
+# https://www.home-assistant.io/integrations/light.switch/
+
+- platform: switch
+  name: Garage Inside
+  entity_id: switch.garage_inside
+
+- platform: switch
+  name: Garage Side
+  entity_id: switch.garage_side
+
+- platform: switch
+  name: Master Keypad Main
+  entity_id: switch.master_keypad_main
+
+- platform: switch
+  name: Office Keypad Main
+  entity_id: switch.office_keypad_main

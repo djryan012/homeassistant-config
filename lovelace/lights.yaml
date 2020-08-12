@@ -10,9 +10,7 @@ cards:
     show_header_toggle: true
     entities:
       - entity: light.kitchen_down_lights
-      - entity: group.kitchen_pendants
-        name: Kitchen Pendants
-        icon: mdi:lightbulb
+      - entity: light.kitchen_pendants
       - entity: light.kitchen_wetbar_rgbw
 
   - type: entities
@@ -43,8 +41,8 @@ cards:
     entities:
       - entity: light.dinning_floor_lamp
         name: Floor Lamp
-      - entity: light.dinning_table_light #Dinning Room_light
-        name: Dinning Table
+      - entity: light.dining_table
+        name: Dining Table
 
   - type: entities
     title: Office
@@ -62,12 +60,8 @@ cards:
     title: Garage
     show_header_toggle: false
     entities:
-      - entity: switch.garage_inside #garage_inside
-        name: Inside Switch
-        icon: mdi:toggle-switch
-      - entity: switch.garage_side  #garage_side
-        name: Sidedoor Switch
-        icon: mdi:toggle-switch
+      - entity: light.garage_lights
+      - entity: switch.garage_utility_outlet
 
   - type: entities
     title: Outside Lights
@@ -76,14 +70,12 @@ cards:
       - entity: light.porch_light
         name: Front Porch Sconce
       - entity: light.patio_lights
-        name: Patio Lights
       - entity: light.sideyard_light
         name: Side Door Sconce
+      - entity: light.whole_house_rgb
       - entity: switch.sonoff_pow3
         name: Yard Lights Power
-        icon: mdi:toggle-switch
-      - entity: light.whole_house_rgb
-      - entity: switch.garage_utility_outlet
+
 
   - type: entities
     title: Miscellaneous

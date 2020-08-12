@@ -40,24 +40,20 @@ cards:
   - type: glance
     title: General Lighting
     entities:
-      - entity: group.living_room
+      - entity: light.living_room
         name: Living
-        icon: mdi:lightbulb
         tap_action:
           action: toggle
-      - entity: group.kitchen
+      - entity: light.kitchen
         name: Kitchen
-        icon: mdi:lightbulb
         tap_action:
           action: toggle
-      - entity: group.dining_room
-        name: Dinning
-        icon: mdi:lightbulb
+      - entity: light.dining_room
+        name: Dining
         tap_action:
           action: toggle
-      - entity: group.office
+      - entity: light.office
         name: Office
-        icon: mdi:lightbulb
         tap_action:
           action: toggle
     columns: 4
@@ -71,7 +67,7 @@ cards:
       - entity: binary_sensor.office_window_status # Sensor3 (Office Window)
         name: Office
       - entity: binary_sensor.front_window_status # Sensor6 (Front Window)
-        name: Dinning
+        name: Dining
       - entity: binary_sensor.kitchen_window_status # Sensor7 (Kitchen Window)
         name: Kitchen
       - entity: binary_sensor.front_door_status # Door1 (Front Door)

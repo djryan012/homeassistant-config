@@ -4,84 +4,132 @@
 title: Automations
 icon: mdi:home-automation
 cards:
+
+  - type: entities
+    title: Automation Overides
+    show_header_toggle: false
+    entities:
+      - entity: input_boolean.vacation
+        name: Vacation Mode
+        icon: mdi:toggle-switch
+      - entity: input_boolean.dog
+        name: Pet Away Mode
+        icon: mdi:toggle-switch
+      - entity: input_boolean.camera_notifications
+        name: Camera Notify
+        icon: mdi:toggle-switch
+
   - type: entities
     title: Climate
     show_header_toggle: false
     entities:
       - entity: automation.ecobee_fan_off
+        secondary_info: last-triggered
       - entity: automation.ecobee_fan_on
+        secondary_info: last-triggered
       - entity: automation.ecobee_set_to_auto
+        secondary_info: last-triggered
       - entity: automation.ecobee_set_to_off
+        secondary_info: last-triggered
       - entity: automation.ecobee_preset_mode_sleep
+        secondary_info: last-triggered
       - entity: automation.ecobee_preset_mode_resume
+        secondary_info: last-triggered
       - entity: automation.bedroom_fan_on_while_sleeping
+        secondary_info: last-triggered
       - entity: automation.bedroom_fan_off_while_sleeping
+        secondary_info: last-triggered
       - entity: automation.office_fan_on_while_occupied
+        secondary_info: last-triggered
       - entity: automation.office_fan_off_while_occupied
-
+        secondary_info: last-triggered
 
   - type: entities
     title: Lights
     show_header_toggle: false
     entities:
       - entity: automation.bedroom_lights_out_david_asleep
+        secondary_info: last-triggered
       - entity: automation.bedroom_lights_out_georgina_asleep
+        secondary_info: last-triggered
       - entity: automation.light_on_when_getting_home
+        secondary_info: last-triggered
       - entity: automation.lights_out_when_leaving
+        secondary_info: last-triggered
       - entity: automation.kitchen_on_in_the_evening
+        secondary_info: last-triggered
       - entity: automation.porch_light_on
+        secondary_info: last-triggered
       - entity: automation.dim_down_porch_light
+        secondary_info: last-triggered
       - entity: automation.sunrise_lighting_control
+        secondary_info: last-triggered
       - entity: automation.nightlight_for_dog
+        secondary_info: last-triggered
       - entity: automation.good_night_trigger
-      # - entity: automation.garage_lights_on_by_motion
-      # - entity: automation.garage_lights_off_by_motion
+        secondary_info: last-triggered
       - entity: automation.turn_on_off_garage_lights_when_there_is_movement
+        secondary_info: last-triggered
       - entity: automation.monthly_holiday_color_scene_on
-        # name: C9's On at Sunset
-        # icon: mdi:led-on
+        secondary_info: last-triggered
       - entity: automation.monthly_holiday_color_scene_off
-        # name: C9's Off at Sunrise
-        # icon: mdi:led-off
+        secondary_info: last-triggered
       - entity: automation.dinning_light_out
-      # - entity: automation.office_light_out
+        secondary_info: last-triggered
       - entity: automation.patio_light_on_by_camera_sensor
-      # - entity: automation.patio_light_off_by_camera_sensor
-      # - entity: automation.side_light_off_by_sensor
+        secondary_info: last-triggered
       - entity: automation.side_light_on_by_sensor
+        secondary_info: last-triggered
 
   - type: entities
     title: Notification
     show_header_toggle: false
     entities:
       - entity: automation.hass_startup_notification
+        secondary_info: last-triggered
       - entity: automation.laundry_dryer_is_done
+        secondary_info: last-triggered
       - entity: automation.laundry_washer_is_done
+        secondary_info: last-triggered
       - entity: automation.georgina_is_home
+        secondary_info: last-triggered
       - entity: automation.david_is_home
+        secondary_info: last-triggered
       - entity: automation.georgina_leaving_work
+        secondary_info: last-triggered
       - entity: automation.tell_david_to_leave_for_work
+        secondary_info: last-triggered
       - entity: automation.wake_up_david_for_work
-      # - entity: automation.michael_is_home
+        secondary_info: last-triggered
       - entity: automation.pond_filter_issue
-      # - entity: automation.pond_filter_issue_for_mark
+        secondary_info: last-triggered
       - entity: automation.battery_is_low_in_sensor
+        secondary_info: last-triggered
       - entity: automation.deconz_lights_unavailable
+        secondary_info: last-triggered
       - entity: automation.update_available_notification
+        secondary_info: last-triggered
       - entity: automation.internet_speed_connection_poor
+        secondary_info: last-triggered
       - entity: automation.failed_login
+        secondary_info: last-triggered
       - entity: automation.persistent_check_config
+        secondary_info: last-triggered
       - entity: automation.notify_if_camera_is_offline
-      # - entity: automation.notify_if_new_devices
+        secondary_info: last-triggered
 
   - type: entities
     title: Home Assistant
     show_header_toggle: false
     entities:
       - entity: automation.hassio_snapshot
+        secondary_info: last-triggered
       - entity: automation.lets_encrypt_cert_did_not_update
+        secondary_info: last-triggered
       - entity: automation.let_s_encrypt_renewal
+        secondary_info: last-triggered
       - entity: automation.set_theme_to_midnight
+        secondary_info: last-triggered
 
   - type: entities
     title: Holiday
@@ -90,32 +138,50 @@ cards:
       - entity: automation.christmas_tree_on_when_home
         name: Christmas Tree On When Home
         icon: mdi:pine-tree
+        secondary_info: last-triggered
       - entity: automation.christmas_tree_off_when_away
         name: Tree Off When Away
         icon: mdi:pine-tree
+        secondary_info: last-triggered
 
   - type: entities
     title: Other
     show_header_toggle: false
     entities:
       - entity: automation.reset_david_sleeping
+        secondary_info: last-triggered
       - entity: automation.reset_georgina_sleeping
+        secondary_info: last-triggered
       - entity: automation.georgina_is_awake
+        secondary_info: last-triggered
       - entity: automation.living_room_fan
+        secondary_info: last-triggered
       - entity: automation.master_bedroom_fan
+        secondary_info: last-triggered
       - entity: automation.office_fan
+        secondary_info: last-triggered
       - entity: automation.turn_on_vacation_mode
+        secondary_info: last-triggered
       - entity: automation.turn_off_vacation_mode
+        secondary_info: last-triggered
       - entity: automation.wallpanel_motion_clear
+        secondary_info: last-triggered
       - entity: automation.wallpanel_motion_detected
+        secondary_info: last-triggered
       - entity: automation.wallpanel_off_when_leaving
+        secondary_info: last-triggered
 
   - type: entities
     title: Dog
     show_header_toggle: false
     entities:
       - entity: automation.feed_the_dog_evening
+        secondary_info: last-triggered
       - entity: automation.feed_the_dog_morning_weekends
+        secondary_info: last-triggered
       - entity: automation.feed_the_dog_morning_weekdays
+        secondary_info: last-triggered
       - entity: automation.turn_off_pet_away_mode
+        secondary_info: last-triggered
       - entity: automation.turn_on_pet_away_mode
+        secondary_info: last-triggered

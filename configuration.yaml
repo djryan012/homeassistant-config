@@ -14,7 +14,6 @@ homeassistant:
       trusted_networks:
         - 192.168.1.0/24
         - 172.30.33.4
-        - 192.168.1.109
     - type: homeassistant
 
 http:
@@ -60,7 +59,7 @@ group: !include_dir_merge_named group
 history: !include include/history.yaml
 input_boolean: !include include/input_boolean.yaml
 input_select: !include include/input_select.yaml
-light: !include include/light.yaml
+light: !include_dir_merge_list light
 logger: !include include/logger.yaml
 media_player: !include include/media_players.yaml
 person: !include include/person.yaml
@@ -68,7 +67,6 @@ recorder: !include include/recorder.yaml
 # scene: !include_dir_merge_list scene ## Converted scenes to scripts
 script: !include_dir_merge_named script
 sensor: !include_dir_merge_list sensors/
-# speedtestdotnet: !include include/speedtest.yaml #Pi3 cant detect past 100mb using Unifi USG via Nodered
 switch: !include include/switches.yaml
 zone: !include include/zones.yaml
 
