@@ -1,27 +1,69 @@
 This is my configuration for Home Assistant.
 
-I'm currently running [Home Assistant](https://home-assistant.io) version __0.106.5__ with the Hassio OS.  (https://home-assistant.io/hassio/). I have moved all files that would use the "!include" syntax to there own folder for better orginization and quicker editing.
+I'm currently running [Home Assistant](https://home-assistant.io) version __0.112.2__ with the Hassio Core ~~OS~~ running in Docker on a Ubuntu Server. 
+I still rely on repositories of other HA users for ideas and example code. 
 
-Github copy of my Home Assistant config which is <a href="https://travis-ci.com/djryan012/homeassistant-config"><img src="https://travis-ci.com/djryan012/homeassistant-config.svg?branch=master"/></a> according to travis-ci.com
+Current status of my Github copy of my Home Assistant is according to travis-ci.com.
 
-# Hardware Running Hassio
-* [Raspberry Pi 3](http://a.co/8dDGqmT)
+<a href="https://travis-ci.com/djryan012/homeassistant-config"><img src="https://travis-ci.com/djryan012/homeassistant-config.svg?branch=master"/></a>
 
-# System integration includes
-* Tradfri Lighting (Have moved to Deconz addon with a Conbee II Gateway due Tradfri gateway drop outs and adding other Zigbee products to house)
-* <a href="https://github.com/TD22057/insteon-mqtt">Insteon-MQTT</a> PLM (Switches, Keypad, FanLinc, Micro Dimmers/Switches, Door/Window Sensors, and Motion)  
+I have been using [Home Assistant](https://home-assistant.io) since July 2017 with version __0.48.0__.
+
+
+# Ubuntu Server Running Hassio +
+Ubuntu server running on an old Dell Inspiron laptop with docker containers. I have installed the Hassio Supervisor Docker version of Home Assistant.
+
+### Docker Container also running
+* <a href="https://unifi-network.ui.com/">Unifi Controller</a>
+* <a href="* https://www.portainer.io/">Portainer</a>
+* <a href= "https://github.com/FalconChristmas/fpp">FPP Christmas</a>
+* <a href= "https://containrrr.dev/watchtower">Watchtower</a>
+
+### Hassio Addons
+* Mosquitto MQTT Broker 
+* Node-Red
+* Samba
+* TasmoAdmin
+* deConz
+* <a href="https://github.com/TD22057/insteon-mqtt">Insteon-MQTT</a> (Custom addon)
+* Lets Encrypt
+
+# Hassio UI Based Integrations
+* Alexa Media Player
+* Blue Iris NVR
+* deCONZ
+* ecoBee
+* HACS
+* Mobile App
+* MQTT
+* PLEX
+* Roku
+* Ubiquiti Unifi
+* SolarEdge
+
+# Connected Devices
+## Hardwired Devices
+* USB Conbee II Gateway
+* Insteon  PLM (Switches, Keypad, FanLinc, Micro Dimmers/Switches, Door/Window Sensors, and Motion)  
+* Unifi (Gateway, Switch, AP)
+* BlueIris on its own Computer (moved away from zoneminder)
+
+## Zigbee Devices
+* Ikea TRÅDFRI LED Bulbs
+* Ikea TRÅDFRI Motion Sensors
+* Philips 
+
+## Wifi Connected Devices
 * Sonoff Relays (Basic & POW flashed wtih Tasmota)
 * Ecobee 3 (with 3 remote sensors)
 * Alexa (Two Echo Dots and One Echo Input)
-* Tasker APP (RestAPI post for sleeping and charging states)
-* Zanzito APP (tracking, notifications, alarm clock)
-* Custom Component using Hacs
-* BlueIris on its own Computer (moved away from zoneminder)
 * <a href="https://github.com/pkozul/ha-floorplan">Floorplan</a> on 10" AlexaFire Wall mounted using <a href="https://github.com/thanksmister/wallpanel-android">Wallpanel</a>
-* MQTT
-* SolarEdge
-* Lets Encrypt
-* Unifi Controller
-* UPnP
 
-I have been using [Home Assistant](https://home-assistant.io) since July 2017 with version __0.48.0__.
+## Phone Apps
+* HA Mobile Companion ((tracking, notifications, battery)
+* Tasker APP (RestAPI post for sleeping state ~~and charging states~~)
+* Telegram for Notifications
+
+## Deprecated
+* Zanzito APP (tracking, notifications, alarm clock) Developer not supporting
+* Tradfri Lighting Gateway (Have moved to Deconz addon with a Conbee II Gateway due Tradfri gateway drop outs and adding other Zigbee products to house).
