@@ -35,7 +35,7 @@
 deps
 node-red
 insteon-mqtt
-
+snapshots/
 audio/
 custom_components
 people/
@@ -48,7 +48,6 @@ ip_bans.yaml
 secrets.yaml
 known_devices.yaml
 google_calendars.yaml
-www/snapshot_*.*
 *.key
 home-assistant*
 *.disabled
