@@ -89,7 +89,7 @@ rules:
 
   - name: switches
     entities:
-      - group.garage
+      - light.garage
       - switch.sonoff1
       - switch.sonoff2
     states:

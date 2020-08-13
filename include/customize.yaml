@@ -31,25 +31,7 @@ fan.fanlinc_3f_d9_93_fan:
 fan.fanlinc_47_99_0f_fan:
   friendly_name: Office Fan
 
-group.garage:
-  friendly_name: Garage Lights
-group.living_room:
-  friendly_name: Living Room Lights
-group.kitchen:
-  friendly_name: Kitchen Lights
-group.dining_room:
-  friendly_name: Dining Room Lights
-group.office:
-  friendly_name: Office Lights
-group.bedroom:
-  friendly_name: Bedroom Lights
-group.nightstands:
-  friendly_name: Night Stands
-group.exterior:
-  friendly_name: Exterior Lights
-group.interior_lights:
-  friendly_name: Interior Lights
-  
+ 
 group.input_boolean:
   hidden: false
 group.all_automations:
@@ -70,31 +52,52 @@ input_boolean.david_status:
 input_boolean.georgina_status:
   icon: mdi:hotel
 
-light.living_room_light_1:
-  friendly_name: Living_room 1
-light.living_room_light_2:
-  friendly_name: Living_room 2
+light.dining_room:
+  friendly_name: Dining Room Lights
+light.dinning_floor_lamp:
+  friendly_name: Dining Room
 
+light.garage:
+  friendly_name: Garage Lights
+
+light.interior_lights:
+  friendly_name: Interior Lights
+
+light.kitchen:
+  friendly_name: Kitchen Lights
 light.kitchen_pendant_1:
   friendly_name: Kitchen Pendent 1
 light.kitchen_pendant_2:
   friendly_name: Kitchen Pendent 2
 
-light.dinning_floor_lamp:
-  friendly_name: Dining Room
+light.living_room:
+  friendly_name: Living Room Lights
+light.living_room_light_1:
+  friendly_name: Living_room 1
+light.living_room_light_2:
+  friendly_name: Living_room 2
 
+light.bedroom:
+  friendly_name: Bedroom Lights
 light.master_ceiling_light:
   friendly_name: Bedroom Light
+light.nightstands:
+  friendly_name: Night Stands
 light.bedroomww_d:
   friendly_name: David Nightstand
 light.georgina_nightstand:
   friendly_name: Georgina Nightstand
+
+light.exterior:
+  friendly_name: Exterior Lights
 
 light.porch_light:
   friendly_name: Front Porch
 light.sideyard_light:
   friendly_name: Side Yard
 
+light.office:
+  friendly_name: Office Lights
 light.office_desk_light:
   friendly_name: Office Desk
 light.office_ceiling_light:

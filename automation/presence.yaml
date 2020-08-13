@@ -11,7 +11,7 @@
       state: 'home'
   action:
     - service: homeassistant.turn_on
-      entity_id: group.kitchen_pendants
+      entity_id: light.kitchen_pendants
       data:
         brightness: 203
         transition: 4
@@ -49,7 +49,7 @@
   action:
     service: homeassistant.turn_off
     entity_id:
-      - group.kitchen
+      - light.kitchen
       - group.dining_room
       - group.office
       - group.bedroom
@@ -81,7 +81,7 @@
     - service: homeassistant.turn_on
       entity_id:
         - light.dinning_floor_lamp
-        - group.kitchen_pendants
+        - light.kitchen_pendants
       data:
         brightness: 203
         transition: 4

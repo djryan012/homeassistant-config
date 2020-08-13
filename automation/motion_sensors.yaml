@@ -12,7 +12,7 @@
         minutes: 20
   action:
     - service_template: '{% if trigger.to_state.state == "on" %}switch.turn_on{% elif trigger.to_state.state == "off" %}switch.turn_off{% endif %}'
-      entity_id: group.garage
+      entity_id: light.garage
 
 # #####  Turn Side light on/off with motion  #####
 # - alias: "Side Light on by Sensor"
@@ -90,7 +90,7 @@
   action:
     - service: homeassistant.turn_off
       entity_id:
-        -  group.dining_room
+        -  light.dining_room
 
 
 ####  Wetbar Control with motion  #####
