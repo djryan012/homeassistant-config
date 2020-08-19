@@ -165,12 +165,22 @@
   payload_off: 'OFF'
   qos: 1
   retain: true
+# Bricked on Tasmoto OTA Firmware Update
+# - platform: mqtt
+#   name: 'sonoff_pow3'
+#   command_topic: 'cmnd/sonoff_pow3/power'
+#   state_topic: 'stat/sonoff_pow3/POWER'
+#   optimistic: true
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+#   retain: true
+
+#### Shelly Relays
 - platform: mqtt
-  name: 'sonoff_pow3'
-  command_topic: 'cmnd/sonoff_pow3/power'
-  state_topic: 'stat/sonoff_pow3/POWER'
-  optimistic: true
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
+  name: 'Shelly1pm MQTT'
+  state_topic: 'shellies/shelly1pm-00139E/relay/0'
+  command_topic: 'shellies/shelly1pm-00139E/relay/0/command'
+  payload_on: 'on'
+  payload_off: 'off'
   retain: true

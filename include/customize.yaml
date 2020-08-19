@@ -143,7 +143,7 @@ switch.sonoff1:
   assumed_state: false
 switch.sonoff2:
   assumed_state: false
-switch.sonoff_pow3:
+switch.shelly1pm_mqtt:
   friendly_name: Backyard Lights
   assumed_state: false
 
@@ -151,4 +151,3 @@ switch.switchlinc_relay_dual_band_48_79_ba:
   friendly_name: Garage Side Door
 switch.switchlinc_relay_dual_band_48_7a_4e:
   friendly_name: Garage Inner Door
-

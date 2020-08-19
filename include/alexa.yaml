@@ -12,7 +12,7 @@ smart_home:
       - light.dining_floor_lamp
       - light.dining_table
       - light.dining_room
-      - light.garage
+      - light.garage_lights
       - light.georgina_nightstand
       - light.interior_lights
       - light.kitchen
@@ -35,7 +35,7 @@ smart_home:
       - script.restore_wetbar
       - switch.sonoff1
       - switch.sonoff2
-      - switch.sonoff_pow3
+      - switch.shelly1pm_mqtt
 
   entity_config:
     fan.living_room_ceiling_fan:
@@ -67,7 +67,7 @@ smart_home:
     light.dining_table:
       name: Dining Table
       display_categories: LIGHT
-    light.garage:
+    light.garage_lights:
       name: Garage Lights
       display_categories: LIGHT
     light.georgina_nightstand:
@@ -139,7 +139,7 @@ smart_home:
     switch.sonoff2:
       name: Sonoff 2
       display_categories: SWITCH
-    switch.sonoff_pow3:
+    switch.shelly1pm_mqtt:
       name: Backyard Light Power
       display_categories: SWITCH
 

@@ -73,9 +73,8 @@ cards:
       - entity: light.sideyard_light
         name: Side Door Sconce
       - entity: light.whole_house_rgb
-      - entity: switch.sonoff_pow3
-        name: Yard Lights Power
-
+      - entity: switch.shelly1pm_mqtt
+        name: Backyard Lights
 
   - type: entities
     title: Miscellaneous

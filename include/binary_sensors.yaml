@@ -173,3 +173,14 @@
   payload_on: '{"value":true}'
   payload_off: '{"value":false}'
   device_class: motion
+
+
+#### Status of Shelly switch input from PIR ###
+# "PIR Motion Sensor Status"
+#Shelly 1PM
+- platform: mqtt
+  name: 'Shelly1PM Motion'
+  state_topic: 'shellies/shelly1pm-00139E/input/0'
+  payload_on: "1"
+  payload_off: "0"
+  device_class: motion

@@ -33,4 +33,4 @@
     - service: homeassistant.turn_off
       entity_id: light.porch_light
     - service: homeassistant.turn_on
-      entity_id: switch.sonoff_pow3 # backyard lights power switch
+      entity_id: switch.shelly1pm_mqtt

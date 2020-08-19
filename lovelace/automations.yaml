@@ -80,6 +80,10 @@ cards:
         secondary_info: last-triggered
       - entity: automation.side_light_on_by_sensor
         secondary_info: last-triggered
+      - entity: automation.backyard_lights_on_by_sensor
+        secondary_info: last-triggered
+      - entity: automation.backyard_lights_off_by_sensor
+        secondary_info: last-triggered
 
   - type: entities
     title: Notification

@@ -100,6 +100,8 @@ cards:
         name: Wetbar
       - entity: binary_sensor.wallpanel_motion_sensor
         name: Wallpanel
+      - entity: binary_sensor.shelly1pm_motion
+        name: Shelly
     columns: 4
 
   - type: entities
@@ -194,15 +196,15 @@ cards:
         style:
           height: 2px
           background: '#62717b'
-      - entity: switch.sonoff_pow3
+      - entity: switch.shelly1pm_mqtt
         name: Backyard Motion Lights
         icon: mdi:toggle-switch
-      - entity: sensor.pow3_power
-        name: POW3 Watts
+      - entity: sensor.shelly1pm_power
+        name: Shelly1pm Watts
         icon: mdi:power-plug
-      - entity: sensor.pow3_voltage
-        name: POW3 Volts
-        icon: mdi:power-socket-us
+      - entity: binary_sensor.shelly1pm_motion
+        name: Shelly1pm Motion
+      #   icon: mdi:power-socket-us
   - type: entities
     title: Falcon Player
     show_header_toggle: false

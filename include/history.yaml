@@ -24,8 +24,10 @@ include:
     - sensor.office_temperature
     - sensor.pow1_power
     - sensor.pow2_power
-    - sensor.pow3_power
+    # - sensor.pow3_power
     - sensor.processor_use
+    - sensor.shelly1pm_energy
+    - sensor.shelly1pm_power
     - sensor.solaredge_current_power_template
     - sensor.time_online
     - sensor.unifi_gateway_lan
