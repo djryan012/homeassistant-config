@@ -50,7 +50,7 @@
         {% else %} false {% endif %}
     - condition: template 
       value_template: >
-        {% if state_attr('calendar.disney_work_schedule', 'description') == None  %} true
+        {% if state_attr('calendar.disney_work_schedule', 'description') == ''  %} true
         {% else %} false {% endif %}
   action:
     - service: notify.mobile_app_david_pixel_3a_app
