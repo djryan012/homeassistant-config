@@ -14,13 +14,13 @@
   brightness: true
   qos: 2
 
-# - platform: mqtt
-#   schema: json
-#   name: "Guest Ceiling Light" #Fanlinc3
-#   state_topic: "insteon/3f.d9.93/state"
-#   command_topic: "insteon/3f.d9.93/level"
-#   brightness: true
-#   qos: 2
+- platform: mqtt
+  schema: json
+  name: "Guest Ceiling Light" #Fanlinc3
+  state_topic: "insteon/47.98.c6/state"
+  command_topic: "insteon/47.98.c6/level"
+  brightness: true
+  qos: 2
 
 - platform: mqtt
   schema: json

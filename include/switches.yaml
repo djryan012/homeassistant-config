@@ -146,6 +146,43 @@
   payload_off: 'OFF'
   qos: 1
 
+# Guest Room Keypad Switch
+- platform: mqtt
+  name: 'Guest Room Keypad Main'
+  state_topic: 'insteon/47.98.c6/state/1'
+  command_topic: 'insteon/47.98.c6/set/1'
+  payload_on: 'ON'
+  payload_off: 'OFF'
+  qos: 1
+- platform: mqtt
+  name: 'Guest Room Keypad A'
+  state_topic: 'insteon/47.98.c6/state/3'
+  command_topic: 'insteon/47.98.c6/set/3'
+  payload_on: 'ON'
+  payload_off: 'OFF'
+  qos: 1
+- platform: mqtt
+  name: 'Guest Room Keypad B'
+  state_topic: 'insteon/47.98.c6/state/4'
+  command_topic: 'insteon/47.98.c6/set/4'
+  payload_on: 'ON'
+  payload_off: 'OFF'
+  qos: 1
+- platform: mqtt
+  name: 'Guest Room Keypad C'
+  state_topic: 'insteon/47.98.c6/state/5'
+  command_topic: 'insteon/47.98.c6/set/5'
+  payload_on: 'ON'
+  payload_off: 'OFF'
+  qos: 1
+- platform: mqtt
+  name: 'Guest Room Keypad D'
+  state_topic: 'insteon/47.98.c6/state/6'
+  command_topic: 'insteon/47.98.c6/set/6'
+  payload_on: 'ON'
+  payload_off: 'OFF'
+  qos: 1
+
 #### SonOff Relays
 - platform: mqtt
   name: 'sonoff1'

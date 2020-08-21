@@ -34,14 +34,14 @@
   #   - medium
   #   - high
 
-# ##   Insteon Guest Ceiling Fan   xx.xx.xx
-# - platform: mqtt
-#   name: "Guest Ceiling Fan"
-#   state_topic: "insteon/xx.xx.xx/fan/state"
-#   command_topic: "insteon/xx.xx.xx/fan/set"
-#   speed_state_topic: "insteon/xx.xx.xx/fan/speed/state"
-#   speed_command_topic: "insteon/xx.xx.xx/fan/speed/set"
-#   qos: 1
+# ##   Insteon Guest Ceiling Fan   47.98.c6
+- platform: mqtt
+  name: "Guest Ceiling Fan"
+  state_topic: "insteon/47.98.c6/fan/state"
+  command_topic: "insteon/47.98.c6/fan/set"
+  speed_state_topic: "insteon/47.98.c6/fan/speed/state"
+  speed_command_topic: "insteon/47.98.c6/fan/speed/set"
+  qos: 1
 #   payload_on: "ON"
 #   payload_off: "OFF"
 #   payload_low_speed: "low"

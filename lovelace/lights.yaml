@@ -57,6 +57,16 @@ cards:
         icon: mdi:fan
 
   - type: entities
+    title: Guest Room
+    show_header_toggle: false
+    entities:
+      - entity: light.guest_ceiling_light #guest_light
+        name: Office Fan's Light
+      - entity: input_select.guest_bedroom_fan #guest_fan
+        name: Office Fan
+        icon: mdi:fan
+
+  - type: entities
     title: Garage
     show_header_toggle: false
     entities:
