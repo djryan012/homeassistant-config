@@ -121,3 +121,33 @@ cards:
       - entity: light.dining_room_switch
         name: Dining Table Switch
         icon: mdi:toggle-switch
+  - type: entities
+    title: Guest Room Insteon
+    show_header_toggle: false
+    entities:
+      - entity: light.guest_ceiling_light #guest_room_light
+        type: custom:slider-entity-row
+        break_slider: true
+        name: Guest Ceiling Light
+      - entity: fan.guest_ceiling_fan #guest_room_fan
+        name: Guest Ceiling Fan
+        icon: mdi:fan
+      - type: divider
+        style:
+          height: 1px
+          background: '#62717b'
+      - entity: switch.guest_room_keypad_main #light.guest_room_keypad_switch
+        name: Guest Room Keypad Dimmer
+        icon: mdi:toggle-switch
+      - entity: switch.guest_room_keypad_a #keypad_a
+        name: Guest Room Keypad A
+        icon: mdi:toggle-switch
+      - entity: switch.guest_room_keypad_b #keypad_b
+        name: Guest Room Keypad B
+        icon: mdi:toggle-switch
+      - entity: switch.guest_room_keypad_c #keypad_c
+        name: Guest Room Keypad C
+        icon: mdi:toggle-switch
+      - entity: switch.guest_room_keypad_d #keypad_d
+        name: Guest Room Keypad D
+        icon: mdi:toggle-switch
