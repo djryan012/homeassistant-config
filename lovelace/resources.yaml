@@ -1,11 +1,8 @@
 # Include external resources only add when mode is yaml, otherwise manage in the resources in the lovelace configuration panel.
 
 # https://github.com/thomasloven/lovelace-slider-entity-row
-- url: local/slider-entity-row.js
-  type: js
-# https://github.com/custom-cards/vertical-stack-in-card
-- url: local/vertical-stack-in-card.js?v=v0.1.3
-  type: js
+- type: js
+  url: /local/js/slider-entity-row.js
 
 ##############################################      
 ################ UI Libraries ################ 
@@ -21,61 +18,64 @@
 
   ###### CUSTOM CARDS / COMPONENTS #####
 
-# - type: module
-#   url: /local/js/card-mod.js
-# - type: module
-#   url: /local/js/custom-header.js?v=1.5.1
-# - type: js
-#   url: /local/js/text-element.js?v=0.0.2
-# - type: module
-#   url: /local/js/config-template-card.js?v=1.1.2
-# - type: module
-#   url: /browser_mod.js
-# - type: js
-#   url: /local/js/bar-card.js
-# - type: module
-#   url: /local/js/button-entity-row.js
-# - type: module
-#   url: /local/js/circle-sensor-card.js
-# - type: js
-#   url: /local/js/light-entity-card.js
-# - type: module
-#   url: /local/js/layout-card.js
-# - type: module
-#   url: /local/js/mini-graph-card-bundle.js?v=0.9.3
-# - type: module
-#   url: /local/js/mini-media-player-bundle.js?v=1.7.0
-# - type: js
-#   url: /local/js/vertical-stack-in-card.js
-# - type: module
-#   url: /local/js/popup-backdrop-filter.js
-# - type: js
-#   url: /local/js/upcoming-media-card.js
-# - type: module
-#   url: /local/js/weather-card-chart.js
-# - type: module
-#   url: /local/js/simple-weather-card-bundle.js?v=0.7.2
-# - type: module
-#   url: /local/js/weather-card.js
-# - type: module
-#   url: /local/js/auto-entities.js
-# - type: module
-#   url: /local/js/now-playing-card.js
-# - type: module
-#   url: /local/js/button-card.js  
-  
+
+- type: module
+  url: /local/js/card-mod.js
+#- type: module
+ # url: /local/js/custom-header.js?v=1.5.1
+- type: js
+  url: /local/js/text-element.js?v=0.0.2
+- type: module
+  url: /local/js/config-template-card.js?v=1.1.2
+- type: module
+  url: /browser_mod.js
+- type: js
+  url: /local/js/bar-card.js
+- type: module
+  url: /local/js/button-entity-row.js
+- type: module
+  url: /local/js/circle-sensor-card.js
+- type: js
+  url: /local/js/light-entity-card.js
+- type: module
+  url: /local/js/layout-card.js
+- type: module
+  url: /local/js/mini-graph-card-bundle.js?v=0.9.3
+- type: module
+  url: /local/js/mini-media-player-bundle.js?v=1.7.0
+- type: js
+  url: /local/js/vertical-stack-in-card.js
+- type: module
+  url: /local/js/popup-backdrop-filter.js
+- type: js
+  url: /local/js/upcoming-media-card.js
+- type: module
+  url: /local/js/weather-card-chart.js
+- type: module
+  url: /local/js/simple-weather-card-bundle.js?v=0.7.2
+- type: module
+  url: /local/js/homekit-panel-card.js?v=0.4.7
+- type: module
+  url: /local/js/weather-card.js
+- type: module
+  url: /local/js/auto-entities.js
+- type: module
+  url: /local/js/now-playing-card.js
+- type: module
+  url: /local/js/button-card.js  
+
 #   ###################################################
 #   ##### CARDS I CREATED OR MODIFIED FOR STYLING #####
 #   ###################################################
 #   # I cannot support any issues with these, they are 
 #   # completely custom. I cant confirm that CSS styles 
 #   # will look right in any other browser than my own.
-  
-# - type: js
-#   url: /local/js/spotify-card.js?v=1.24.15
-# - type: module
-#   url: /local/js/buien-rain-card.js?v=0.0.60
-# - type: js
-#   url: /local/js/light-slider-card-lajv.js
-# - type: js
-#   url: /local/js/nightscout-card.js?v=0.0.31
+
+- type: js
+  url: /local/js/spotify-card.js?v=1.24.15
+- type: module
+  url: /local/js/buien-rain-card.js?v=0.0.60
+- type: js
+  url: /local/js/light-slider-card-lajv.js
+- type: js
+  url: /local/js/nightscout-card.js?v=0.0.31
