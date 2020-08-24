@@ -14,6 +14,7 @@ homeassistant:
       trusted_networks:
         - 192.168.1.0/24
         - 172.30.33.4
+        - 192.168.1.109
     - type: homeassistant
 
 http:
@@ -28,18 +29,6 @@ frontend:
   themes: !include www/themes.yaml
 
 lovelace: !include lovelace.yaml
-
-# lovelace:
-#   mode: yaml
-#   resources: !include lovelace/resources.yaml
-#   dashboards:
-#     lovelace-dashboard:
-#       mode: yaml
-#       filename: !include ui-kiosk.yaml
-#       title: Dashboard
-#       icon: mdi:monitor-dashboard
-#       # show_in_sidebar: true
-#       # require_admin: false
 
 map:
 mobile_app:
@@ -83,37 +72,7 @@ alexa_media:
         - "Echo Dot Bedroom"
         - "Echo Input"
 
-# blueiris:
-#   host: !secret blueiris_host
-#   port: !secret blueiris_port
-#   # [optional] Blue Iris admin username and password
-#   username: !secret blueiris_admin_username
-#   password: !secret blueiris_admin_password
-#   # # List of camera objects
-#   camera:
-#     - id: frontyard
-#       name: "Front Yard"
-#       room: "Exterior"
-#     - id: frontdoor
-#       name: "Front Door"s
-#       room: "Exterior"
-#     - id: sideyard
-#       name: "Side Yard"
-#       room: "Exterior"
-#     - id: backyard
-#       name: "Back Yard"
-#       room: "Exterior"
-#     - id: motioneye
-#       name: "MotionEye"
-#       room: "Exterior"
-# camera:
-#   - platform: blueiris
-
-# device_tracker:
-#   - platform: mqtt_json
-#     devices:
-#       david_zanzito: zanzito/david/location
-#       georgina_zanzito: zanzito/georgina/location
+browser_mod:
 
 ecobee:
   api_key: !secret ecobee_api_key
@@ -150,7 +109,7 @@ notify:
 panel_custom:
   - name: floorplan
     sidebar_title: Wall Panel
-    sidebar_icon: mdi:tablet-dashboard
+    sidebar_icon: mdi:floor-plan
     url_path: floorplan
     config:
       hide_app_toolbar:
@@ -171,9 +130,7 @@ telegram_bot:
       # - !secret telegram_chatID_Georgina
       # - !secret telegram_chatID_Mark
 
-# tradfri:
-#   host: !secret tradfri_host
-
 weather:
   - platform: darksky
     api_key: !secret darksky_api
+    mode: daily

@@ -7,14 +7,3 @@
   - service: frontend.set_theme
     data:
       name: midnight
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.nodered
-
-# - alias: 'Disable Automation on Restart'
-#   initial_state: True
-#   trigger:
-#     platform: homeassistant
-#     event: stop
-#   action:
-#     - service: automation.turn_off
-#       entity_id: automation.tradfri_lights_unavailable 

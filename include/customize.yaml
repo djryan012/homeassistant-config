@@ -48,9 +48,9 @@ group.all_switches:
   hidden: false
 
 input_boolean.david_status:
-  icon: mdi:hotel
+  icon: mdi:bed
 input_boolean.georgina_status:
-  icon: mdi:hotel
+  icon: mdi:bed
 
 light.dining_room:
   friendly_name: Dining Room Lights
