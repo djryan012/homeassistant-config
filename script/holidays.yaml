@@ -65,6 +65,8 @@ monthly_color_scene:
           standard
           {%- elif now().strftime("%m%d")|int == 704 -%}
           4th_of_july
+          {%- elif now().strftime("%m%d")|int == 901 -%}
+          WeMakeEvents
           {%- elif now().strftime("%m%d")|int >= 1001
           and now().strftime("%m%d")|int <= 1031-%}
           halloween
