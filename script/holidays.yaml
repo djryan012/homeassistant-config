@@ -34,8 +34,8 @@
 
 monthly_color_scene:
   sequence:
-    - service: homeassistant.turn_on
-      entity_id: switch.garage_utility_outlet
+    - service: switch.turn_on
+      entity_id: switch.sandevice_power
     - delay:
         seconds: 15
     - service: mqtt.publish
@@ -91,6 +91,8 @@ monthly_color_scene:
 
 monthly_color_off:
   sequence:
+    - service: switch.turn_off
+      entity_id: switch.sandevice_power
     - service: mqtt.publish
       data_template:
         topic: hassio/falcon/player/FPP/playlist/name/set
@@ -105,5 +107,4 @@ monthly_color_off:
         retain: false
     - delay:
         seconds: 10
-    - service: homeassistant.turn_off
-      entity_id: switch.garage_utility_outlet
+

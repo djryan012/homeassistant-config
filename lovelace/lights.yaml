@@ -71,7 +71,7 @@ cards:
     show_header_toggle: false
     entities:
       - entity: light.garage_lights
-      - entity: switch.garage_utility_outlet
+      - entity: switch.sandevice_power
 
   - type: entities
     title: Outside Lights
@@ -82,7 +82,6 @@ cards:
       - entity: light.patio_lights
       - entity: light.sideyard_light
         name: Side Door Sconce
-      - entity: light.whole_house_rgb
       - entity: switch.shelly1pm_mqtt
         name: Backyard Lights
 
@@ -90,6 +89,8 @@ cards:
     title: Miscellaneous
     show_header_toggle: false
     entities:
+      - entity: light.hallway_down_lights
+        name: Hallway Lights
       - entity: switch.sonoff1
         name: SonOff 1
         icon: mdi:toggle-switch

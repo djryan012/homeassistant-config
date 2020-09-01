@@ -18,7 +18,7 @@
   qos: 1
   retain: true
 - platform: mqtt
-  name: 'Garage Utility Outlet' #Switch3
+  name: 'SanDevice Power' #Switch3
   state_topic: 'insteon/54.4b.92/state'
   command_topic: 'insteon/54.4b.92/set'
   optimistic: true

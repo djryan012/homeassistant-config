@@ -48,7 +48,15 @@
 
 - platform: mqtt
   schema: json
-  name: "Kitchen Down Lights" #Dimmer5
+  name: "Hallway Down Lights" #Dimmer4 (Micro)
+  state_topic: "insteon/4f.b2.65/state"
+  command_topic: "insteon/4f.b2.65/level"
+  brightness: true
+  qos: 2
+  
+- platform: mqtt
+  schema: json
+  name: "Kitchen Down Lights" #Dimmer5 (Micro)
   state_topic: "insteon/55.94.84/state"
   command_topic: "insteon/55.94.84/level"
   brightness: true
