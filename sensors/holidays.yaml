@@ -1,0 +1,56 @@
+- platform: rest
+  resource: http://www.webcal.fi/cal.php?id=335&format=json&start_year=current_year&end_year=current_year&tz=America%2FLos_Angeles
+  name: Flag
+  scan_interval: 14400
+  value_template: >-
+    {%- set now_string = now().strftime('%Y-%m-%d') %}
+    {% for day_val in value_json if day_val.date == now_string  %}
+      True
+      {% else %}
+      False
+    {% endfor -%}
+    
+- platform: template
+  name: FPP Playlist
+  scan_interval: 1400
+  value_template: >-
+    {%- if now().strftime("%m%d")|int == 101 -%}
+    new_years_day
+    {%- elif now().strftime("%m%d")|int == 120-%}
+    mlk
+    {%- elif now().strftime("%m%d")|int == 214-%}
+    valentine
+    {%- elif now().strftime("%m%d")|int >= 225
+    and now().strftime("%m%d")|int <= 228-%}         
+    marti_gras
+    {%- elif now().strftime("%m%d")|int == 317 -%}
+    st_patty
+    {%- elif now().strftime("%m%d")|int >= 419
+    and now().strftime("%m%d")|int <= 421-%}
+    easter    
+    {%- elif now().strftime("%m%d")|int == 504 -%}
+    starwars
+    {%- elif now().strftime("%m%d")|int == 505 -%}
+    cinco_de_mayo
+    {%- elif now().strftime("%m%d")|int == 614 -%}
+    standard
+    {%- elif now().strftime("%m%d")|int == 704 -%}
+    4th_of_july
+    {%- elif now().strftime("%m%d")|int == 901 -%}
+    WeMakeEvents
+    {%- elif now().strftime("%m%d")|int >= 1001
+    and now().strftime("%m%d")|int <= 1031-%}
+    halloween
+    {%- elif now().strftime("%m%d")|int >= 1122
+    and now().strftime("%m%d")|int <= 1128-%}
+    thanksgiving 
+    {%- elif now().strftime("%m%d")|int >= 1201
+    and now().strftime("%m%d")|int <= 1230-%}
+    christmas
+    {%- elif now().strftime("%m%d")|int == 1231 -%}
+    new_years_eve
+    {%- elif states.sensor.flag.state == "True" -%}
+    rwb
+    {%- else -%}
+    standard
+    {%- endif -%}
