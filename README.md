@@ -1,6 +1,6 @@
 This is my configuration for Home Assistant.
 
-I'm currently running [Home Assistant](https://home-assistant.io) version __0.114.2__ with the Hassio Core ~~OS~~ running in Docker on a Ubuntu Server. 
+I'm currently running [Home Assistant](https://home-assistant.io) version __0.114.4__ with the HassOS running on Raspberry Pi 4 with 4gb. Switched back to Hass OS image due to the supervisor not being supproted by my Ubuntu installation.
 I still rely on repositories of other HA users for ideas and example code. 
 
 Current status of my Github copy of my Home Assistant is according to travis-ci.com.
