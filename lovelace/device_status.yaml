@@ -45,24 +45,24 @@ cards:
           - entity: sensor.unifi_gateway_firmware_upgradable
             name: Firmware Upgrades
 
-  - type: entities
-    title: FreeNas Server
-    show_header_toggle: false
-    entities:
-      - entity: sensor.fn_alert_level
-        name: Alert Level
-      - entity: sensor.fn_alert_message
-        name: Alert Message
-      - entity: sensor.fn_pool1_report
-        name: 2TB Media Mirror
-      - entity: sensor.fn_pool1_pct_used
-        name: 2TB Media Mirror
-      - entity: sensor.fn_pool2_report
-        name: 125GB Docker Mirror
-      - entity: sensor.fn_pool2_pct_used
-        name: 125GB Docker Mirror
-      - entity: sensor.fn_version
-        name: Version
+  # - type: entities
+  #   title: FreeNas Server
+  #   show_header_toggle: false
+  #   entities:
+  #     - entity: sensor.fn_alert_level
+  #       name: Alert Level
+  #     - entity: sensor.fn_alert_message
+  #       name: Alert Message
+  #     - entity: sensor.fn_pool1_report
+  #       name: 2TB Media Mirror
+  #     - entity: sensor.fn_pool1_pct_used
+  #       name: 2TB Media Mirror
+  #     - entity: sensor.fn_pool2_report
+  #       name: 125GB Docker Mirror
+  #     - entity: sensor.fn_pool2_pct_used
+  #       name: 125GB Docker Mirror
+  #     - entity: sensor.fn_version
+  #       name: Version
 
   - type: glance
     title: Echo Sensors
@@ -209,7 +209,7 @@ cards:
     title: Falcon Player
     show_header_toggle: false
     entities:
-      - entity: switch.garage_utility_outlet
+      - entity: switch.sandevice_power
       - entity: automation.monthly_holiday_color_scene_on
       - entity: sensor.flag
         name: Flag Day
