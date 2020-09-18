@@ -4,19 +4,19 @@ living_room_fan_off:
     - service: fan.turn_off
       entity_id: fan.living_room_ceiling_fan
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_c
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.living_room_keypad_d
 
@@ -27,19 +27,19 @@ living_room_fan_low:
         entity_id: fan.living_room_ceiling_fan
         speed: low
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.living_room_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_c
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_d
 
@@ -50,19 +50,19 @@ living_room_fan_medium:
         entity_id: fan.living_room_ceiling_fan
         speed: medium
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.living_room_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_c
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_d
 
@@ -73,19 +73,19 @@ living_room_fan_high:
         entity_id: fan.living_room_ceiling_fan
         speed: high
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.living_room_keypad_c
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.living_room_keypad_d
 
@@ -95,15 +95,15 @@ master_bedroom_fan_off:
     - service: fan.turn_off
       entity_id: fan.master_ceiling_fan
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.master_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.master_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.master_keypad_c
 
@@ -114,15 +114,15 @@ master_bedroom_fan_low:
         entity_id: fan.master_ceiling_fan
         speed: low
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.master_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.master_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.master_keypad_c
 
@@ -133,15 +133,15 @@ master_bedroom_fan_medium:
         entity_id: fan.master_ceiling_fan
         speed: medium
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.master_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.master_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.master_keypad_c
 
@@ -152,15 +152,15 @@ master_bedroom_fan_high:
         entity_id: fan.master_ceiling_fan
         speed: high
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.master_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.master_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.master_keypad_c
 
@@ -170,15 +170,15 @@ office_fan_off:
     - service: fan.turn_off
       entity_id: fan.office_ceiling_fan
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.office_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.office_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.office_keypad_c
 
@@ -189,15 +189,15 @@ office_fan_low:
         entity_id: fan.office_ceiling_fan
         speed: low
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.office_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.office_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.office_keypad_c
 
@@ -208,15 +208,15 @@ office_fan_medium:
         entity_id: fan.office_ceiling_fan
         speed: medium
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.office_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.office_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.office_keypad_c
 
@@ -227,15 +227,15 @@ office_fan_high:
         entity_id: fan.office_ceiling_fan
         speed: high
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.office_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.office_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.office_keypad_c
 
@@ -245,19 +245,19 @@ guest_room_fan_off:
     - service: fan.turn_off
       entity_id: fan.guest_ceiling_fan
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_c
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.guest_room_keypad_d
 
@@ -268,19 +268,19 @@ guest_room_fan_low:
         entity_id: fan.guest_ceiling_fan
         speed: low
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.guest_room_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_c
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_d
 
@@ -291,19 +291,19 @@ guest_room_fan_medium:
         entity_id: fan.guest_ceiling_fan
         speed: medium
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.guest_room_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_c
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_d
 
@@ -314,18 +314,18 @@ guest_room_fan_high:
         entity_id: fan.guest_ceiling_fan
         speed: high
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_a
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_b
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_on
       entity_id: switch.guest_room_keypad_c
     - delay:
-        seconds: 0.7
+        seconds: 1
     - service: switch.turn_off
       entity_id: switch.guest_room_keypad_d

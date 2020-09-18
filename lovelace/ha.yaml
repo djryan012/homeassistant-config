@@ -61,7 +61,7 @@ cards:
             icon: mdi:folder-download
           - entity: sensor.hassio_version
             name: Latest Release
-            icon: mdi:github-circle
+            icon: mdi:github
             tap_action:
               action: url
               url_path: https://www.home-assistant.io
@@ -149,7 +149,7 @@ cards:
         icon: mdi:star-circle
       - entity: sensor.subscribers
         name: Subscribers
-        icon: mdi:github-circle
+        icon: mdi:github
       - entity: sensor.issues
         name: Issues
         icon: mdi:alert-circle

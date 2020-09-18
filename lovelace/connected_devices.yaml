@@ -38,8 +38,8 @@ cards:
         icon: mdi:thermostat-box
       - entity: device_tracker.smarthome_laptop
         icon: mdi:server-network
-      # - entity: device_tracker.hassio
-      #   icon: mdi:home-assistant
+      - entity: device_tracker.hassio_pi4
+        icon: mdi:home-assistant
       # - entity: device_tracker.tradfri
       #   icon: mdi:server-network
       # - entity: device_tracker.hp_newbie
@@ -95,17 +95,11 @@ cards:
     title: Mobile Devices
     show_header_toggle: false
     entities:
-      - entity: device_tracker.david_zanzito
-        name: David Zanzito 
-        icon: mdi:cellphone-android
       - entity: device_tracker.david_s_pixel
         name: David Wifi
         icon: mdi:cellphone-android
       - entity: device_tracker.pixel_3a
         name: David HA Client
-        icon: mdi:cellphone-android
-      - entity: device_tracker.georgina_zanzito
-        name: Georgina Zanzito
         icon: mdi:cellphone-android
       - entity: device_tracker.georgina_pixel_3xl
         name: Georgina Wifi

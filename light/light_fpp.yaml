@@ -1,14 +1,18 @@
-- platform: mqtt
-  schema: json
-  name: Whole House RGB
-  state_topic: "hassio/falcon/player/FPP/light/Whole House/state"
-  command_topic: "hassio/falcon/player/FPP/light/Whole House/cmd"
-  brightness: true
-  rgb: true
+ ### Control a Pixel Overlay Model via Home Assistant's MQTT Light interface. The Pixel Overlay Model is treated as a C9s light.
+# hassio/falcon/player/FPP/light/${MODELNAME}/cmd
+# hassio/falcon/player/FPP/light/${MODELNAME}/state
 
 # - platform: mqtt
 #   schema: json
-#   name: Left Section RGB
+#   name: All Exterior C9s
+#   state_topic: "hassio/falcon/player/FPP/light/All C9s/state"
+#   command_topic: "hassio/falcon/player/FPP/light/All C9s/cmd"
+#   brightness: true
+#   rgb: true
+
+# - platform: mqtt
+#   schema: json
+#   name: Left Section C9s
 #   state_topic: "hassio/falcon/player/FPP/light/Left Section/state"
 #   command_topic: "hassio/falcon/player/FPP/light/Left Section/cmd"
 #   brightness: true
@@ -16,7 +20,7 @@
 
 # - platform: mqtt
 #   schema: json
-#   name: Mid Section RGB
+#   name: Mid Section C9s
 #   state_topic: "hassio/falcon/player/FPP/light/Mid Section/state"
 #   command_topic: "hassio/falcon/player/FPP/light/Mid Section/cmd"
 #   brightness: true
@@ -24,7 +28,7 @@
 
 # - platform: mqtt
 #   schema: json
-#   name: Right Section RGB
+#   name: Right Section C9s
 #   state_topic: "hassio/falcon/player/FPP/light/Right Section/state"
 #   command_topic: "hassio/falcon/player/FPP/light/Right Section/cmd"
 #   brightness: true

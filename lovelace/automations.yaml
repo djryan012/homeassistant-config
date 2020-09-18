@@ -80,10 +80,10 @@ cards:
         secondary_info: last-triggered
       - entity: automation.side_light_on_by_sensor
         secondary_info: last-triggered
-      - entity: automation.backyard_lights_on_by_sensor
-        secondary_info: last-triggered
-      - entity: automation.backyard_lights_off_by_sensor
-        secondary_info: last-triggered
+      # - entity: automation.backyard_lights_on_by_sensor
+      #   secondary_info: last-triggered
+      # - entity: automation.backyard_lights_off_by_sensor
+      #   secondary_info: last-triggered
 
   - type: entities
     title: Notification
@@ -132,8 +132,8 @@ cards:
         secondary_info: last-triggered
       - entity: automation.let_s_encrypt_renewal
         secondary_info: last-triggered
-      - entity: automation.set_theme_to_midnight
-        secondary_info: last-triggered
+      # - entity: automation.set_theme_to_midnight
+      #   secondary_info: last-triggered
 
   - type: entities
     title: Holiday

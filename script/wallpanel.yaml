@@ -31,3 +31,11 @@ wallpanel_1_percent:
         topic: wallpanel/mywallpanel/command
         payload: "{\"brightness\": \"1\"}"
         retain: true
+
+wallpanel_relaunch:
+  sequence: 
+    - service: mqtt.publish
+      data_template:
+        topic: wallpanel/mywallpanel/command
+        payload: "{\"relaunch\": \"true\"}"
+        retain: true
