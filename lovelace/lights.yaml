@@ -39,7 +39,7 @@ cards:
     title: Dinning Room
     show_header_toggle: true
     entities:
-      - entity: light.dinning_floor_lamp
+      - entity: light.dining_floor_lamp
         name: Floor Lamp
       - entity: light.dining_table
         name: Dining Table
@@ -84,6 +84,8 @@ cards:
         name: Side Door Sconce
       - entity: switch.shelly1pm_mqtt
         name: Backyard Lights
+      - entity: light.whole_house_rgb
+        name: Outside RGB Lights
 
   - type: entities
     title: Miscellaneous

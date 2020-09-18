@@ -25,7 +25,7 @@ smart_home:
       - light.living_room_light_1
       - light.living_room_light_2
       - light.master_ceiling_light
-      - light.nightstands
+      - light.night_stands
       - light.office
       - light.office_ceiling_light
       - light.office_desk_light

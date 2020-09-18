@@ -54,7 +54,7 @@ input_boolean.georgina_status:
 
 light.dining_room:
   friendly_name: Dining Room Lights
-light.dinning_floor_lamp:
+light.dining_floor_lamp:
   friendly_name: Dining Room
 
 light.garage:
