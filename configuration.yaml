@@ -6,8 +6,8 @@ homeassistant:
   elevation: 475
   unit_system: imperial
   time_zone: America/Los_Angeles
-  customize: !include include/customize.yaml
-  whitelist_external_dirs:
+  customize: !include integrations/customize.yaml
+  allowlist_external_dirs:
     - /config
   auth_providers:
     - type: trusted_networks
@@ -38,26 +38,25 @@ updater:
   include_used_components: true
 
 ####################################################
-#                     Includes                     #
+#               Included Integrations              #
 ####################################################
-alexa: !include include/alexa.yaml
-automation: !include_dir_merge_list automation/
-binary_sensor: !include include/binary_sensors.yaml
-fan: !include include/fan.yaml
-group: !include_dir_merge_named group
-history: !include include/history.yaml
-input_boolean: !include include/input_boolean.yaml
-input_select: !include include/input_select.yaml
-light: !include_dir_merge_list light
-logger: !include include/logger.yaml
-media_player: !include include/media_players.yaml
-person: !include include/person.yaml
-recorder: !include include/recorder.yaml
-# scene: !include_dir_merge_list scene ## Converted scenes to scripts
-script: !include_dir_merge_named script
-sensor: !include_dir_merge_list sensors/
-switch: !include include/switches.yaml
-zone: !include include/zones.yaml
+alexa: !include integrations/alexa.yaml
+automation: !include_dir_merge_list integrations/automation/
+binary_sensor: !include integrations/binary_sensors.yaml
+fan: !include integrations/fan.yaml
+group: !include_dir_merge_named integrations/group
+history: !include integrations/history.yaml
+input_boolean: !include integrations/input_boolean.yaml
+input_select: !include integrations/input_select.yaml
+light: !include_dir_merge_list integrations/light
+logger: !include integrations/logger.yaml
+media_player: !include integrations/media_players.yaml
+# person: !include integrations/person.yaml
+recorder: !include integrations/recorder.yaml
+script: !include_dir_merge_named integrations/script
+sensor: !include_dir_merge_list integrations/sensors/
+switch: !include integrations/switches.yaml
+zone: !include integrations/zones.yaml
 
 ####################################################
 #                   Integrations                   #
@@ -73,9 +72,16 @@ alexa_media:
         - "Echo Input"
 
 browser_mod:
+  prefix: "browser_"
 
 ecobee:
   api_key: !secret ecobee_api_key
+
+deebot:
+    username: !secret ECOVACS_USERNAME
+    password: !secret ECOVACS_PASSWORD
+    country: !secret TWO_LETTER_COUNTRY_CODE
+    continent: !secret TWO_LETTER_CONTINENT_CODE
 
 google:
   client_id: !secret google_client_id
@@ -92,6 +98,8 @@ mqtt:
   password: !secret Mosq_password
   client_id: home-assistant
   keepalive: 60
+  # discovery: true
+  # discovery_prefix: hassio/falcon/player/FPP/ha
 
 notify:
   - platform: alexa_media
@@ -118,9 +126,9 @@ panel_custom:
 # samsungtv:
 #   - host: !secret samsungtv_host
 
-solaredge:
-  api_key: !secret solaredge_api
-  site_id: !secret solaredge_siteid
+# solaredge:
+#   api_key: !secret solaredge_api
+#   site_id: !secret solaredge_siteid
 
 telegram_bot:
   - platform: broadcast
