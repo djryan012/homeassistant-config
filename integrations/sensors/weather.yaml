@@ -1,0 +1,23 @@
+####################################################
+#                       YR                         #
+####################################################
+
+# https://www.home-assistant.io/components/sensor.yr/
+- platform: yr
+
+
+- platform: darksky
+  api_key: !secret darksky
+  forecast:
+    - 0
+  hourly_forecast:
+    - 0
+  monitored_conditions:
+    - summary
+    - icon
+    - temperature
+    - cloud_cover
+    - dew_point
+    - uv_index
+    - moon_phase
+    - alerts

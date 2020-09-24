@@ -1,7 +1,0 @@
-# - platform: samsungtv_custom
-#   host: !secret smartTV_host
-#   mac: !secret smartTV_mac
-#   port: 8002
-#   sourcelist: '{"Xbox": "KEY_HDMI1", "Chromecast": "KEY_HDMI2"}'
-#   applist: "Netflix, Prime Video, HBO Go, ESPN, YouTube"
-#   protocol: ws

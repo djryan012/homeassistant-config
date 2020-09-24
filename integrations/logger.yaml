@@ -10,7 +10,6 @@ default: info
 logs:
   aiohttp.access: critical
   aiohttp.server: critical
-  # custom_components.media_player.floorplan_speaker: error
   custom_components.blueiris.api.blue_iris_api: warn
   homeassistant.core: error
   homeassistant.components.automation: warn
@@ -29,3 +28,4 @@ logs:
   requests.packages.urllib3.connectionpool: critical
   urllib3.connectionpool: error
   root: warn
+  custom_components.samsungtv_custom.media_player: debug

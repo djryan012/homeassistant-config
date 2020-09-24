@@ -17,17 +17,3 @@ audio_notify:
     #       "home") -%} also at home. {%- else -%} not at home. {%- endif %} The temperature
     #       inside is {{ states("sensor.broadlink_sensor_temperature") }} degrees. And
     #       outside it is {{ states("sensor.weather_temperature") }} degrees.'
-
-audio_test: 
-  sequence: 
-    - service: notify.alexa_media
-      data_template: 
-        data: 
-          type: announce
-        target: "media_player.echo_dot_main"
-        message: >
-            My name is Alexa I am the default voice for Amazon.  
-            <voice name="Kendra">My name is Kendra and I wold like to tell you a secret.</voice>
-            <voice name="Brian">My name is Brian and your secret is safe with me! Maybe.</voice>	
-            <voice name="Russell">I am Russell and I am not a real human, da.</voice>.
-            <voice name="Aditi">My name is Aditi and I think I am hindu possibly?</voice>

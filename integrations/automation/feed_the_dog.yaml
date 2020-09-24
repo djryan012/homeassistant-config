@@ -42,6 +42,6 @@
   initial_state: True
   trigger:
     platform: time
-    at: '18:00'
+    at: '17:30'
   action:
     service: script.feed_dog_reminder

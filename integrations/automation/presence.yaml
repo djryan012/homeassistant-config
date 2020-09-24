@@ -80,7 +80,7 @@
   action:
     - service: homeassistant.turn_on
       entity_id:
-        - light.dinning_floor_lamp
+        - light.dining_floor_lamp
         - light.kitchen_pendants
       data:
         brightness: 203

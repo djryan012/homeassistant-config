@@ -97,11 +97,11 @@
   initial_state: True
   trigger:
     - platform: template 
-      value_template: "{{ states('sensor.echo_temperature') | int > state_attr('weather.dark_sky', 'temperature')}}"
+      value_template: "{{ states('sensor.echo_temperature') | int -2 > state_attr('weather.dark_sky', 'temperature')}}"
   condition:
     - condition: time
       after: '15:00:00'
-      before: '23:59:00'
+      before: '21:00:00'
   action:
     - service: script.audio_notify
       data_template:

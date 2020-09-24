@@ -34,4 +34,4 @@
         mplayer: "echo_dot_main"
     - service: notify.mobile_app_georgina_pixel_3a_xl_app
       data:
-        message: "The Washing Machine is now Done"
+        message: "The Clothes Dryer is now Done"

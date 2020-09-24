@@ -9,7 +9,7 @@ lights_on_when_waking_up:
       after: '00:00:00'
     - service: homeassistant.turn_on
       data:
-        entity_id: light.kitchen_pendants
+        entity_id: light.kitchen_pendants, light.living_room_light_1
         brightness: 25
         transition: 3
 
@@ -17,7 +17,7 @@ georgina_going_to_sleep:
   sequence:
   - alias: ''
     data:
-      entity_id: light.georgina_nightstand, light.bedroom_light
+      entity_id: light.georgina_nightstand, light.master_ceiling_light
     service: light.turn_off
   - condition: state
     entity_id: light.david_nightstand
@@ -32,7 +32,7 @@ david_going_to_sleep:
   sequence:
   - alias: ''
     data:
-      entity_id: light.david_nightstand, light.bedroom_light
+      entity_id: light.david_nightstand, light.master_ceiling_light
     service: light.turn_off
   - condition: state
     entity_id: light.georgina_nightstand

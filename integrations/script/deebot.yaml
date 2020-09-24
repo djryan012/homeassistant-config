@@ -1,0 +1,19 @@
+# vacuum_script_clean_area:
+#   alias: clean area
+#   sequence:
+#   - service: vacuum.send_command
+#     data:
+#       command: spot_area
+#       entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+#       params:
+#         area: 0,2  # multiple areas index from your ecovacs app
+
+# vacuum_script_clean_map:
+#   alias: clean map
+#   sequence:
+#   - service: vacuum.send_command
+#     data:
+#       command: spot_area
+#       entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+#       params:
+#         map: "1580.0,-4087.0,3833.0,-7525.0"  # x,y coords from your ecovacs app

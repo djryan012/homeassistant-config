@@ -14,22 +14,6 @@
     - service_template: '{% if trigger.to_state.state == "on" %}light.turn_on{% elif trigger.to_state.state == "off" %}light.turn_off{% endif %}'
       entity_id: light.garage_lights
 
-# #####  Turn Side light on/off with motion  #####
-# - alias: "Side Light on by Sensor"
-#   initial_state: True
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.gate_motion_status
-#       to: 'on'
-#     - platform: state
-#       entity_id: binary_sensor.gate_motion_status
-#       to: 'off'
-#       for:
-#         minutes: 5
-#   action:
-#     - service_template: >
-#         script.side_light_{{ 'on' if is_state('light.test','on') else 'off' }}
-
 ####  Turn Side light on with motion  #####
 - alias: "Side Light on by Sensor"
   initial_state: True
@@ -47,31 +31,32 @@
       to: 'off'
   action:
     - service: script.side_light_off
+    
 #### Backyard Lights on by Sensor
-- alias: "Backyard Lights on by Sensor"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.shelly1pm_motion
-      to: 'on'
-  action:
-    - service: homeassistant.turn_on
-      entity_id: switch.shelly1pm_mqtt
-- alias: "Backyard Lights off by Sensor"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.shelly1pm_motion
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: binary_sensor.shelly1pm_motion
-      state: 'off'
-      for:
-          minutes: 5
-  action:
-    - service: homeassistant.turn_off
-      entity_id: switch.shelly1pm_mqtt
+# - alias: "Backyard Lights on by Sensor"
+#   initial_state: True
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.shelly1pm_motion
+#       to: 'on'
+#   action:
+#     - service: homeassistant.turn_on
+#       entity_id: switch.shelly1pm_mqtt
+# - alias: "Backyard Lights off by Sensor"
+#   initial_state: True
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.shelly1pm_motion
+#       to: 'off'
+#   condition:
+#     - condition: state
+#       entity_id: binary_sensor.shelly1pm_motion
+#       state: 'off'
+#       for:
+#           minutes: 5
+#   action:
+#     - service: homeassistant.turn_off
+#       entity_id: switch.shelly1pm_mqtt
 
 #####  Turn Patio light on with motion  #####
 - alias: "Patio Light on by camera sensor"
@@ -130,7 +115,6 @@
       below: 20
   action:
     - service: script.wetbar_on
-
 - alias: "Wetbar off by Sensor"
   initial_state: True
   trigger:
@@ -170,7 +154,7 @@
       entity_id: binary_sensor.kitchen_motion_status
       to: 'off'
       for: 
-        minutes: 1
+        minutes: 5
   condition:
     - condition: template
       value_template: "{{ state_attr('light.kitchen_down_lights', 'brightness') | int < 100 }}"
@@ -180,14 +164,14 @@
         entity_id: light.kitchen_down_lights
         transition: 3
 
-- alias: "Kitchen off by Sensor after 5min"
+- alias: "Kitchen off by Sensor after 30min"
   initial_state: True
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_motion_status
       to: 'off'
       for: 
-        minutes: 5
+        minutes: 30
   condition:
     - condition: template
       value_template: "{{ state_attr('light.kitchen_down_lights', 'brightness') | int > 100 }}"
