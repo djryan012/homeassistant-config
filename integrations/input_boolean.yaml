@@ -1,0 +1,35 @@
+david_sleeping:
+  name: David asleep
+  initial: off
+
+# david_phone_charging:
+#   name: David Phone Charging
+#   initial: off
+
+georgina_sleeping:
+  name: Georgina asleep
+  initial: off
+
+# georgina_phone_charging:
+#   name: Georinga Phone Charging
+#   initial: off
+
+vacation:
+  name: Vacation Mode
+  initial: off
+
+wallpanel_blackout:
+  name: Walpanel Blackout
+  initial: off
+
+wallpanel_ideal:
+  name: Walpanel Idle
+  initial: off
+
+dog:
+  name: Pet Away Mode
+  initial: off
+
+camera_notifications:
+  name: Camera Notifications
+  initial: off
