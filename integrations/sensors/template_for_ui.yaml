@@ -1,0 +1,50 @@
+- platform: template
+  sensors:
+    ## Calculates daylight brightness out of 100%
+    sunlight_pct:
+      entity_id:
+        - sun.sun
+        - sensor.dark_sky_cloud_coverage
+      value_template: >-
+        {%- set elevation = state_attr('sun.sun','elevation') | float %}
+        {%- set cloud_coverage = states('sensor.dark_sky_cloud_coverage') | float %}
+        {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
+        {%- set min_elevation = -6 %}
+        {%- set max_elevation = 90 %}
+        {%- set adjusted_elevation = elevation - min_elevation %}
+        {%- set adjusted_elevation = [adjusted_elevation,0] | max %}
+        {%- set adjusted_elevation = [adjusted_elevation,max_elevation - min_elevation] | min %}
+        {%- set adjusted_elevation = adjusted_elevation / (max_elevation - min_elevation) %}
+        {%- set adjusted_elevation = adjusted_elevation %}
+        {%- set adjusted_elevation = adjusted_elevation * 100 %}
+        {%- set brightness = adjusted_elevation * cloud_factor %}
+        {{ brightness | round }}
+      unit_of_measurement: '%'
+      device_class: 'illuminance'
+
+
+    ## Daylight brightness converted to opacity for CSS
+    sunlight_opacity:
+      entity_id:
+        - sensor.sunlight_pct
+      value_template: >-
+        {%- set sunpct = states('sensor.sunlight_pct') | float %}
+        {%- set opacity = sunpct / 100 | float %}
+        {{ opacity }}
+
+    ## Converts time and date into sentence for UI
+    day:
+      entity_id: sensor.date
+      value_template: >
+        {% set days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
+        {{ days[now().weekday()] }}
+
+    month:
+      value_template: >
+        {% set months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %}
+        {{ strptime(states('sensor.date'), '%Y-%m-%d').day }}
+        {{ months[now().month-1] }}
+
+    date_string:
+      friendly_name: "Full Date"
+      value_template: "{{ states('sensor.day') }}, {{ states('sensor.month') }} {{ now().year }}"

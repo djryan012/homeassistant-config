@@ -1,0 +1,112 @@
+#-------------------------------------------
+# @CCOSTAN
+# Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
+# Youtube Video description of how I use this script
+# https://www.vcloudinfo.com/2018/10/easy-smart-home-gadgets-i-use-for-my.html
+######################################################################################################
+###Script to turn on scene for the appropriate month for the front of the house but only when the sun is down.
+#  action:
+#   - service: script.monthly_color_scene
+#
+#   scenes should be named month_[01-12]_colors (month_06_colors)
+# Color help - http://www.esbnyc.com/explore/tower-lights/calendar
+######################################################################################################
+
+######################################################################################################
+# Falcon Player - FPP
+# MQTT events will be published to "$prefix/falcon/player/$hostname/" with playlist events being in the "playlist" subtopic.
+# FPP will respond to certain events:
+# hassio/falcon/player/FPP/set/playlist/${PLAYLISTNAME}/start >> Starts the playlist (optional payload can be index of item to start with)
+# hassio/falcon/player/FPP/set/playlist/${PLAYLISTNAME}/next >> Forces playing of the next item in the playlist (payload ignored)
+# hassio/falcon/player/FPP/set/playlist/${PLAYLISTNAME}/prev >> Forces playing of the previous item in the playlist (payload ignored)
+# hassio/falcon/player/FPP/set/playlist/${PLAYLISTNAME}/repeat >> If payload is "1", will turn on repeat, otherwise it is turned off
+# hassio/falcon/player/FPP/set/playlist/${PLAYLISTNAME}/sectionPosition >> Payload contains an integer for the position in the playlist (0 based)
+# hassio/falcon/player/FPP/set/playlist/${PLAYLISTNAME}/stop/now >> Forces the playlist to stop immediately. PLAYLISTNAME can be ALLPLAYLISTS.
+# hassio/falcon/player/FPP/set/playlist/${PLAYLISTNAME}/stop/graceful >> Gracefully stop playlist. PLAYLISTNAME can be ALLPLAYLISTS.
+# hassio/falcon/player/FPP/set/playlist/${PLAYLISTNAME}/stop/afterloop >> Allow playlist to finish current loop then stop. PLAYLISTNAME can be ALLPLAYLISTS.
+# hassio/falcon/player/FPP/event/ >> Starts the event identified by the payload. The payload format is MAJ_MIN identifying the event.
+# hassio/falcon/player/FPP/effect/start >> Starts the effect named in the payload
+# hassio/falcon/player/FPP/effect/stop >> Stops the effect named in the payload or all effects if payload is empty
+# hassio/falcon/player/FPP/light/${MODELNAME}/cmd
+# hassio/falcon/player/FPP/light/${MODELNAME}/state >> Control a Pixel Overlay Model via Home Assistant's MQTT Light interface. The Pixel Overlay Model is treated as a RGB light.
+######################################################################################################
+
+# 120 - Red, black and green in honor of Dr. Martin Luther King Jr. Day.
+# 214 - Heartbeat Lighting in honor of Valentine's Day.
+# 228 - New Orleans are green, gold, and purple for Marti Gras
+# 317 - Orange, White and Green in honor of St Patrick's Day
+# 419-421 - Pastel Colors in honor of Easter
+# 504 - Starwars represent the dark side (red) and the light side (blue)
+# 505 cinco_de_mayo - Red, White & Green for the Mexican Independence Day
+
+monthly_color_scene:
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.sandevice_power
+    - delay:
+        seconds: 15
+    - service: mqtt.publish
+      data_template:
+        topic: >
+          hassio/falcon/player/FPP/set/playlist/
+          {%- if now().strftime("%m%d")|int == 101 -%}
+          new_years_day
+          {%- elif now().strftime("%m%d")|int == 120-%}
+          mlk
+          {%- elif now().strftime("%m%d")|int == 214-%}
+          valentine
+          {%- elif now().strftime("%m%d")|int >= 225
+          and now().strftime("%m%d")|int <= 228-%}         
+          marti_gras
+          {%- elif now().strftime("%m%d")|int == 317 -%}
+          st_patty
+          {%- elif now().strftime("%m%d")|int >= 419
+          and now().strftime("%m%d")|int <= 421-%}
+          easter    
+          {%- elif now().strftime("%m%d")|int == 504 -%}
+          starwars
+          {%- elif now().strftime("%m%d")|int == 505 -%}
+          cinco_de_mayo
+          {%- elif now().strftime("%m%d")|int == 614 -%}
+          standard
+          {%- elif now().strftime("%m%d")|int == 704 -%}
+          4th_of_july
+          {%- elif now().strftime("%m%d")|int >= 0901
+          and now().strftime("%m%d")|int <= 0905-%}
+          we_make_events
+          {%- elif now().strftime("%m%d")|int >= 1001
+          and now().strftime("%m%d")|int <= 1030-%}
+          october
+          {%- elif now().strftime("%m%d")|int == 1031 -%}
+          holloween
+          {%- elif now().strftime("%m%d")|int >= 1122
+          and now().strftime("%m%d")|int <= 1128-%}
+          thanksgiving 
+          {%- elif now().strftime("%m%d")|int >= 1201
+          and now().strftime("%m%d")|int <= 1230-%}
+          christmas
+          {%- elif now().strftime("%m%d")|int == 1231 -%}
+          new_years_eve
+          {%- elif states.sensor.flag.state == "True" -%}
+          rwb
+          {%- else -%}
+          standard
+          {%- endif -%}/start
+    - delay:
+        seconds: 5
+    - service: mqtt.publish
+      data_template:
+        topic: hassio/falcon/player/FPP/playlist/repeat/set
+        payload: '1'
+        retain: false
+
+monthly_color_off:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.sandevice_power
+    - delay:
+        seconds: 5
+    - service: mqtt.publish
+      data_template:
+        topic: hassio/falcon/player/FPP/set/playlist/ALLPLAYLISTS/stop/now
+        retain: false
