@@ -41,6 +41,7 @@ custom_components
 people/
 js/
 ui/
+community/
 
 # # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 # *.*
@@ -51,3 +52,4 @@ google_calendars.yaml
 *.key
 home-assistant*
 *.disabled
+*.log

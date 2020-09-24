@@ -1,15 +1,9 @@
 title: Admin
-# custom_header: !include lovelace/custom_header.yaml
 views:
-  # - !include lovelace/home.yaml
-  # - !include lovelace/cameras.yaml
-  # - !include lovelace/lights.yaml
-  # - !include lovelace/device_status.yaml
   - !include lovelace/ha.yaml
+  - !include lovelace/ha_companion.yaml
   - !include lovelace/connected_devices.yaml
-  # - !include lovelace/weather.yaml
-  # - !include lovelace/media_players.yaml
-  # - !include lovelace/automations.yaml
   - !include lovelace/insteon.yaml
   - !include lovelace/test.yaml
   - !include lovelace/blueiris.yaml
+  - !include lovelace/automations.yaml

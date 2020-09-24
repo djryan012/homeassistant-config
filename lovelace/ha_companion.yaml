@@ -1,0 +1,42 @@
+title: HA App
+icon: mdi:cellphone-android
+cards:
+  - type: entities
+    title: Davids Mobile App
+    show_header_toggle: false
+    entities:
+        - entity: device_tracker.pixel_3a
+        - entity: binary_sensor.david_pixel_3a_app_is_charging
+        - entity: sensor.david_pixel_3a_app_audio_sensor
+        - entity: sensor.david_pixel_3a_app_battery_health
+        - entity: sensor.david_pixel_3a_app_battery_level
+        - entity: sensor.david_pixel_3a_app_battery_state
+        - entity: sensor.david_pixel_3a_app_charger_type
+        - entity: sensor.david_pixel_3a_app_do_not_disturb_sensor
+        - entity: sensor.david_pixel_3a_app_geocoded_location
+        - entity: sensor.david_pixel_3a_app_last_reboot
+        - entity: sensor.david_pixel_3a_app_light_sensor
+        - entity: sensor.david_pixel_3a_app_next_alarm
+        - entity: sensor.david_pixel_3a_app_pressure_sensor
+        - entity: sensor.david_pixel_3a_app_storage_sensor
+        - entity: sensor.david_pixel_3a_app_wifi_connection
+
+  - type: entities
+    title: Georgina Mobile App
+    show_header_toggle: false
+    entities:
+        - entity: device_tracker.pixel_3a_xl
+        - entity: binary_sensor.georgina_pixel_3a_xl_app_is_charging
+        - entity: sensor.georgina_pixel_3a_xl_app_audio_sensor
+        - entity: sensor.georgina_pixel_3a_xl_app_battery_health
+        - entity: sensor.georgina_pixel_3a_xl_app_battery_level
+        - entity: sensor.georgina_pixel_3a_xl_app_battery_state
+        - entity: sensor.georgina_pixel_3a_xl_app_charger_type
+        - entity: sensor.georgina_pixel_3a_xl_app_do_not_disturb_sensor
+        - entity: sensor.georgina_pixel_3a_xl_app_geocoded_location
+        - entity: sensor.georgina_pixel_3a_xl_app_last_reboot
+        - entity: sensor.georgina_pixel_3a_xl_app_light_sensor
+        - entity: sensor.georgina_pixel_3a_xl_app_next_alarm
+        - entity: sensor.georgina_pixel_3a_xl_app_pressure_sensor
+        - entity: sensor.georgina_pixel_3a_xl_app_storage_sensor
+        - entity: sensor.georgina_pixel_3a_xl_app_wifi_connection

@@ -15,7 +15,7 @@ cards:
     entity: media_player.echo_dot_main
   - type: media-control
     entity: media_player.echo_dot_bedroom
-  # - type: media-control
-  #   entity: media_player.samsung_tv_remote
+  - type: media-control
+    entity: media_player.livingroom_tv
   # - type: media-control
   #   entity: media_player.fondacast

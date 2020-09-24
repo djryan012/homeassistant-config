@@ -8,17 +8,10 @@ dashboards:
     icon: mdi:view-carousel
     show_in_sidebar: true
     require_admin: true
-  lovelace-automations:
-    mode: yaml
-    filename: ui-lovelace-automations.yaml
-    title: Automations
-    icon: mdi:robot
-    show_in_sidebar: true
-    require_admin: true
   lovelace-pretty:
     mode: yaml
     filename: ui-lovelace-pretty.yaml
-    title: Pretty
-    icon: mdi:tablet-dashboard
+    title: Lukevink
+    icon: mdi:beta
     show_in_sidebar: true
     require_admin: false

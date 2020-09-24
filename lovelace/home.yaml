@@ -17,18 +17,18 @@ cards:
         entities:
           - entity: person.david
             name: GPS
-          - entity: input_boolean.david_status
+          - entity: input_boolean.david_sleeping
             name: Sleeping?
-          - entity: sensor.david_pixel_3a_battery_level
+          - entity: sensor.david_pixel_3a_app_battery_level
             name: Battery
             # icon: mdi:battery-50
-          - entity:  sensor.david_pixel_3a_battery_state
+          - entity:  sensor.david_pixel_3a_app_battery_state
             name: Charging?
             icon: mdi:battery-charging
 
           - entity: person.georgina
             name: GPS
-          - entity: input_boolean.georgina_status
+          - entity: input_boolean.georgina_sleeping
             name: Sleeping?
           - entity: sensor.georgina_pixel_3a_xl_app_battery_level
             name: Battery

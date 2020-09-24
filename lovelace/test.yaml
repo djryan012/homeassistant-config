@@ -35,3 +35,9 @@ cards:
       # - entity: sensor.solaredge_sensors
       # - entity: sensor.solaredge_solar_power
       # - entity: sensor.solaredge_storage_power
+
+  - type: entities
+    title: Deebot 901
+    show_header_toggle: false
+    entities:
+      - entity: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35

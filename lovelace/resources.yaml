@@ -18,15 +18,16 @@
 
   ###### CUSTOM CARDS / COMPONENTS #####
 
+- type: module   ### Updated via HACS
+  url: /hacsfiles/custom-header/custom-header.js
+- type: module
+  url: /hacsfiles/config-template-card/config-template-card.js
+
 
 - type: module
   url: /local/js/card-mod.js
-#- type: module
- # url: /local/js/custom-header.js?v=1.5.1
 - type: js
-  url: /local/js/text-element.js?v=0.0.2
-- type: module
-  url: /local/js/config-template-card.js?v=1.1.2
+  url: /local/js/text-element.js
 - type: module
   url: /browser_mod.js
 - type: js
@@ -40,9 +41,9 @@
 - type: module
   url: /local/js/layout-card.js
 - type: module
-  url: /local/js/mini-graph-card-bundle.js?v=0.9.3
+  url: /local/js/mini-graph-card-bundle.js
 - type: module
-  url: /local/js/mini-media-player-bundle.js?v=1.7.0
+  url: /local/js/mini-media-player-bundle.js
 - type: js
   url: /local/js/vertical-stack-in-card.js
 - type: module
@@ -52,9 +53,9 @@
 - type: module
   url: /local/js/weather-card-chart.js
 - type: module
-  url: /local/js/simple-weather-card-bundle.js?v=0.7.2
-- type: module
-  url: /local/js/homekit-panel-card.js?v=0.4.7
+  url: /local/js/simple-weather-card-bundle.js
+# - type: module
+#   url: /local/js/homekit-panel-card.js
 - type: module
   url: /local/js/weather-card.js
 - type: module
@@ -71,10 +72,10 @@
 #   # completely custom. I cant confirm that CSS styles 
 #   # will look right in any other browser than my own.
 
-- type: js
-  url: /local/js/spotify-card.js?v=1.24.15
-- type: module
-  url: /local/js/buien-rain-card.js?v=0.0.60
+# - type: js
+#   url: /local/js/spotify-card.js?v=1.24.15
+# - type: module
+#   url: /local/js/buien-rain-card.js?v=0.0.60
 - type: js
   url: /local/js/light-slider-card-lajv.js
 - type: js

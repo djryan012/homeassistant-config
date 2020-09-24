@@ -162,7 +162,7 @@ cards:
 #     entities:
 #       - entity: device_tracker.david_zanzito
 #         name: GPS
-#       - entity: input_boolean.david_status
+#       - entity: input_boolean.david_sleeping
 #         name: Sleeping?
 #       - entity: sensor.david_battery_level
 #         name: Battery
@@ -176,7 +176,7 @@ cards:
 #     entities:
 #       - entity: device_tracker.georgina_pixel
 #         name: GPS
-#       - entity: input_boolean.georgina_status
+#       - entity: input_boolean.georgina_sleeping
 #         name: Sleeping?
 #       - entity: sensor.georgina_battery_level
 #         name: Battery
