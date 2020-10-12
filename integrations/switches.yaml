@@ -1,22 +1,22 @@
 ###  INSTEON MQTT PLM CONTROL
-- platform: mqtt
-  name: 'Garage Inside' #Switch1
-  state_topic: 'insteon/48.7a.4e/state'
-  command_topic: 'insteon/48.7a.4e/set'
-  optimistic: true
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-  retain: true
-- platform: mqtt
-  name: 'Garage Side' #Switch2
-  state_topic: 'insteon/48.79.ba/state'
-  command_topic: 'insteon/48.79.ba/set'
-  optimistic: true
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-  retain: true
+# - platform: mqtt
+#   name: 'Garage Inside' #Switch1
+#   state_topic: 'insteon/48.7a.4e/state'
+#   command_topic: 'insteon/48.7a.4e/set'
+#   optimistic: true
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+#   retain: true
+# - platform: mqtt
+#   name: 'Garage Side' #Switch2
+#   state_topic: 'insteon/48.79.ba/state'
+#   command_topic: 'insteon/48.79.ba/set'
+#   optimistic: true
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+#   retain: true
 - platform: mqtt
   name: 'SanDevice Power' #Switch3
   state_topic: 'insteon/54.4b.92/state'
@@ -35,153 +35,153 @@
   #  5       6        5       6
   #    1 off          7       8
   #------------------------------------------------------------------------
-# Master Keypad Switch
-- platform: mqtt
-  name: 'Master Keypad Main'
-  state_topic: 'insteon/46.fb.73/state/1'
-  command_topic: 'insteon/46.fb.73/set/1'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Master Keypad A'
-  state_topic: 'insteon/46.fb.73/state/3'
-  command_topic: 'insteon/46.fb.73/set/3'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Master Keypad B'
-  state_topic: 'insteon/46.fb.73/state/4'
-  command_topic: 'insteon/46.fb.73/set/4'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Master Keypad C'
-  state_topic: 'insteon/46.fb.73/state/5'
-  command_topic: 'insteon/46.fb.73/set/5'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Master Keypad D'
-  state_topic: 'insteon/46.fb.73/state/6'
-  command_topic: 'insteon/46.fb.73/set/6'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
+# # Master Keypad Switch
+# - platform: mqtt
+#   name: 'Master Keypad Main'
+#   state_topic: 'insteon/46.fb.73/state/1'
+#   command_topic: 'insteon/46.fb.73/set/1'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Master Keypad A'
+#   state_topic: 'insteon/46.fb.73/state/3'
+#   command_topic: 'insteon/46.fb.73/set/3'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Master Keypad B'
+#   state_topic: 'insteon/46.fb.73/state/4'
+#   command_topic: 'insteon/46.fb.73/set/4'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Master Keypad C'
+#   state_topic: 'insteon/46.fb.73/state/5'
+#   command_topic: 'insteon/46.fb.73/set/5'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Master Keypad D'
+#   state_topic: 'insteon/46.fb.73/state/6'
+#   command_topic: 'insteon/46.fb.73/set/6'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
 
-# Office Keypad Switch
-- platform: mqtt
-  name: 'Office Keypad Main'
-  state_topic: 'insteon/51.79.ba/state/1'
-  command_topic: 'insteon/51.79.ba/set/1'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Office Keypad A'
-  state_topic: 'insteon/51.79.ba/state/3'
-  command_topic: 'insteon/51.79.ba/set/3'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Office Keypad B'
-  state_topic: 'insteon/51.79.ba/state/4'
-  command_topic: 'insteon/51.79.ba/set/4'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Office Keypad C'
-  state_topic: 'insteon/51.79.ba/state/5'
-  command_topic: 'insteon/51.79.ba/set/5'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Office Keypad D'
-  state_topic: 'insteon/51.79.ba/state/6'
-  command_topic: 'insteon/51.79.ba/set/6'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
+# # Office Keypad Switch
+# - platform: mqtt
+#   name: 'Office Keypad Main'
+#   state_topic: 'insteon/51.79.ba/state/1'
+#   command_topic: 'insteon/51.79.ba/set/1'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Office Keypad A'
+#   state_topic: 'insteon/51.79.ba/state/3'
+#   command_topic: 'insteon/51.79.ba/set/3'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Office Keypad B'
+#   state_topic: 'insteon/51.79.ba/state/4'
+#   command_topic: 'insteon/51.79.ba/set/4'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Office Keypad C'
+#   state_topic: 'insteon/51.79.ba/state/5'
+#   command_topic: 'insteon/51.79.ba/set/5'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Office Keypad D'
+#   state_topic: 'insteon/51.79.ba/state/6'
+#   command_topic: 'insteon/51.79.ba/set/6'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
 
-# Living Room Keypad Switch
-- platform: mqtt
-  name: 'Living Room Keypad Main'
-  state_topic: 'insteon/50.a1.f8/state/1'
-  command_topic: 'insteon/50.a1.f8/set/1'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Living Room Keypad A'
-  state_topic: 'insteon/50.a1.f8/state/3'
-  command_topic: 'insteon/50.a1.f8/set/3'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Living Room Keypad B'
-  state_topic: 'insteon/50.a1.f8/state/4'
-  command_topic: 'insteon/50.a1.f8/set/4'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Living Room Keypad C'
-  state_topic: 'insteon/50.a1.f8/state/5'
-  command_topic: 'insteon/50.a1.f8/set/5'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Living Room Keypad D'
-  state_topic: 'insteon/50.a1.f8/state/6'
-  command_topic: 'insteon/50.a1.f8/set/6'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
+# # Living Room Keypad Switch
+# - platform: mqtt
+#   name: 'Living Room Keypad Main'
+#   state_topic: 'insteon/50.a1.f8/state/1'
+#   command_topic: 'insteon/50.a1.f8/set/1'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Living Room Keypad A'
+#   state_topic: 'insteon/50.a1.f8/state/3'
+#   command_topic: 'insteon/50.a1.f8/set/3'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Living Room Keypad B'
+#   state_topic: 'insteon/50.a1.f8/state/4'
+#   command_topic: 'insteon/50.a1.f8/set/4'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Living Room Keypad C'
+#   state_topic: 'insteon/50.a1.f8/state/5'
+#   command_topic: 'insteon/50.a1.f8/set/5'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Living Room Keypad D'
+#   state_topic: 'insteon/50.a1.f8/state/6'
+#   command_topic: 'insteon/50.a1.f8/set/6'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
 
-# Guest Room Keypad Switch
-- platform: mqtt
-  name: 'Guest Room Keypad Main'
-  state_topic: 'insteon/47.98.c6/state/1'
-  command_topic: 'insteon/47.98.c6/set/1'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Guest Room Keypad A'
-  state_topic: 'insteon/47.98.c6/state/3'
-  command_topic: 'insteon/47.98.c6/set/3'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Guest Room Keypad B'
-  state_topic: 'insteon/47.98.c6/state/4'
-  command_topic: 'insteon/47.98.c6/set/4'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Guest Room Keypad C'
-  state_topic: 'insteon/47.98.c6/state/5'
-  command_topic: 'insteon/47.98.c6/set/5'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
-- platform: mqtt
-  name: 'Guest Room Keypad D'
-  state_topic: 'insteon/47.98.c6/state/6'
-  command_topic: 'insteon/47.98.c6/set/6'
-  payload_on: 'ON'
-  payload_off: 'OFF'
-  qos: 1
+# # Guest Room Keypad Switch
+# - platform: mqtt
+#   name: 'Guest Room Keypad Main'
+#   state_topic: 'insteon/47.98.c6/state/1'
+#   command_topic: 'insteon/47.98.c6/set/1'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Guest Room Keypad A'
+#   state_topic: 'insteon/47.98.c6/state/3'
+#   command_topic: 'insteon/47.98.c6/set/3'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Guest Room Keypad B'
+#   state_topic: 'insteon/47.98.c6/state/4'
+#   command_topic: 'insteon/47.98.c6/set/4'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Guest Room Keypad C'
+#   state_topic: 'insteon/47.98.c6/state/5'
+#   command_topic: 'insteon/47.98.c6/set/5'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
+# - platform: mqtt
+#   name: 'Guest Room Keypad D'
+#   state_topic: 'insteon/47.98.c6/state/6'
+#   command_topic: 'insteon/47.98.c6/set/6'
+#   payload_on: 'ON'
+#   payload_off: 'OFF'
+#   qos: 1
 
 #### SonOff Relays
 - platform: mqtt
@@ -214,10 +214,10 @@
 #   retain: true
 
 #### Shelly Relays
-- platform: mqtt
-  name: 'Shelly1pm MQTT'
-  state_topic: 'shellies/shelly1pm-00139E/relay/0'
-  command_topic: 'shellies/shelly1pm-00139E/relay/0/command'
-  payload_on: 'on'
-  payload_off: 'off'
-  retain: true
+# - platform: mqtt
+#   name: 'Shelly1pm MQTT'
+#   state_topic: 'shellies/shelly1pm-00139E/relay/0'
+#   command_topic: 'shellies/shelly1pm-00139E/relay/0/command'
+#   payload_on: 'on'
+#   payload_off: 'off'
+#   retain: true

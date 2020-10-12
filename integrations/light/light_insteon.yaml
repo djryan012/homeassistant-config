@@ -1,63 +1,63 @@
-- platform: mqtt
-  schema: json
-  name: "Master Ceiling Light" #Fanlinc1
-  state_topic: "insteon/3f.d9.93/state"
-  command_topic: "insteon/3f.d9.93/level"
-  brightness: true
-  qos: 2
+# - platform: mqtt
+#   schema: json
+#   name: "Master Ceiling Light" #Fanlinc1
+#   state_topic: "insteon/3f.d9.93/state"
+#   command_topic: "insteon/3f.d9.93/level"
+#   brightness: true
+#   qos: 2
 
-- platform: mqtt
-  schema: json
-  name: "Office Ceiling Light" #Fanlinc2
-  state_topic: "insteon/47.99.0f/state"
-  command_topic: "insteon/47.99.0f/level"
-  brightness: true
-  qos: 2
+# - platform: mqtt
+#   schema: json
+#   name: "Office Ceiling Light" #Fanlinc2
+#   state_topic: "insteon/47.99.0f/state"
+#   command_topic: "insteon/47.99.0f/level"
+#   brightness: true
+#   qos: 2
 
-- platform: mqtt
-  schema: json
-  name: "Guest Ceiling Light" #Fanlinc3
-  state_topic: "insteon/47.98.c6/state"
-  command_topic: "insteon/47.98.c6/level"
-  brightness: true
-  qos: 2
+# - platform: mqtt
+#   schema: json
+#   name: "Guest Ceiling Light" #Fanlinc3
+#   state_topic: "insteon/47.98.c6/state"
+#   command_topic: "insteon/47.98.c6/level"
+#   brightness: true
+#   qos: 2
 
-- platform: mqtt
-  schema: json
-  name: "Patio Lights" #Dimmer1 (Micro)
-  state_topic: "insteon/4f.b2.53/state"
-  command_topic: "insteon/4f.b2.53/level"
-  brightness: true
-  qos: 2
+# - platform: mqtt
+#   schema: json
+#   name: "Patio Lights" #Dimmer1 (Micro)
+#   state_topic: "insteon/4f.b2.53/state"
+#   command_topic: "insteon/4f.b2.53/level"
+#   brightness: true
+#   qos: 2
 
-- platform: mqtt
-  schema: json
-  name: "Dining Table Light" #Dimmer2 (Micro)
-  state_topic: "insteon/4f.b0.cf/state"
-  command_topic: "insteon/4f.b0.cf/level"
-  brightness: true
-  qos: 2
+# - platform: mqtt
+#   schema: json
+#   name: "Dining Table Light" #Dimmer2 (Micro)
+#   state_topic: "insteon/4f.b0.cf/state"
+#   command_topic: "insteon/4f.b0.cf/level"
+#   brightness: true
+#   qos: 2
 
-- platform: mqtt
-  schema: json
-  name: "Dining Room Switch" #Dimmer3 (Switch)
-  state_topic: "insteon/43.3f.1c/state"
-  command_topic: "insteon/43.3f.1c/level"
-  brightness: true
-  qos: 2
+# - platform: mqtt
+#   schema: json
+#   name: "Dining Room Switch" #Dimmer3 (Switch)
+#   state_topic: "insteon/43.3f.1c/state"
+#   command_topic: "insteon/43.3f.1c/level"
+#   brightness: true
+#   qos: 2
 
-- platform: mqtt
-  schema: json
-  name: "Hallway Down Lights" #Dimmer4 (Micro)
-  state_topic: "insteon/4f.b2.65/state"
-  command_topic: "insteon/4f.b2.65/level"
-  brightness: true
-  qos: 2
+# - platform: mqtt
+#   schema: json
+#   name: "Hallway Down Lights" #Dimmer4 (Micro)
+#   state_topic: "insteon/4f.b2.65/state"
+#   command_topic: "insteon/4f.b2.65/level"
+#   brightness: true
+#   qos: 2
   
-- platform: mqtt
-  schema: json
-  name: "Kitchen Down Lights" #Dimmer5 (Micro)
-  state_topic: "insteon/55.94.84/state"
-  command_topic: "insteon/55.94.84/level"
-  brightness: true
-  qos: 2
+# - platform: mqtt
+#   schema: json
+#   name: "Kitchen Down Lights" #Dimmer5 (Micro)
+#   state_topic: "insteon/55.94.84/state"
+#   command_topic: "insteon/55.94.84/level"
+#   brightness: true
+#   qos: 2

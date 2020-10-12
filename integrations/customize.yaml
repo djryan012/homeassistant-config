@@ -3,6 +3,23 @@ binary_sensor.floorplan:
   config:
     config: /local/custom_ui/floorplan/floorplan.yaml
 
+binary_sensor.master_window_status: # Sensor1 (Master Window)
+  device_class: window
+binary_sensor.guest_window_status: # Sensor2 (Guest Window)
+  device_class: window
+binary_sensor.office_window_status: # Sensor3 (Office Window)
+  device_class: window
+binary_sensor.front_window_status: # Sensor6 (Front Window)
+  device_class: window
+binary_sensor.kitchen_window_status: # Sensor7 (Kitchen Window)
+  device_class: window
+binary_sensor.front_door_status: # Door1 (Front Door)
+  device_class: door
+binary_sensor.slider_door_status: # Sensor4 (Slider Door)
+  device_class: door
+binary_sensor.side_door_status: # Sensor5 (Side Door)
+  device_class: door
+
 camera.blueiris_all_cameras:
   icon: mdi:video-plus
 camera.frontdoor:
@@ -141,13 +158,15 @@ sensor.pow2_power:
 
 switch.sonoff1:
   assumed_state: false
+  name: Theatre Chairs
 switch.sonoff2:
   assumed_state: false
+  name: Window Fan
 switch.shelly1pm_mqtt:
   friendly_name: Backyard Lights
   assumed_state: false
 
-switch.switchlinc_relay_dual_band_48_79_ba:
-  friendly_name: Garage Side Door
-switch.switchlinc_relay_dual_band_48_7a_4e:
-  friendly_name: Garage Inner Door
+# switch.switchlinc_relay_dual_band_48_79_ba:
+#   friendly_name: Garage Side Door
+# switch.switchlinc_relay_dual_band_48_7a_4e:
+#   friendly_name: Garage Inner Door

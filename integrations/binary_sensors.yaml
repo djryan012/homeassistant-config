@@ -35,136 +35,136 @@
 #   payload_on: 'on'
 #   payload_off: 'off'
 
-# Insteon Open / Close Sensors
-# Sensor1 (Master Window)
-- platform: mqtt
-  name: Master Window Status
-  state_topic: 'insteon/47.fa.ec/state'
-  device_class: 'window'
-- platform: mqtt
-  name: Master Window Battery
-  state_topic: 'insteon/47.fa.ec/battery'
-  device_class: 'battery'
+# # Insteon Open / Close Sensors
+# # Sensor1 (Master Window)
+# - platform: mqtt
+#   name: Master Window Status
+#   state_topic: 'insteon/47.fa.ec/state'
+#   device_class: 'window'
+# - platform: mqtt
+#   name: Master Window Battery
+#   state_topic: 'insteon/47.fa.ec/battery'
+#   device_class: 'battery'
 
-# Sensor2 (Guest Window)
-- platform: mqtt
-  name: Guest Window Status
-  state_topic: 'insteon/47.f5.78/state'
-  device_class: 'window'
-- platform: mqtt
-  name: Guest Window Battery
-  state_topic: 'insteon/47.f5.78/battery'
-  device_class: 'battery'
+# # Sensor2 (Guest Window)
+# - platform: mqtt
+#   name: Guest Window Status
+#   state_topic: 'insteon/47.f5.78/state'
+#   device_class: 'window'
+# - platform: mqtt
+#   name: Guest Window Battery
+#   state_topic: 'insteon/47.f5.78/battery'
+#   device_class: 'battery'
 
-# Sensor3 (Office Window)
-- platform: mqtt
-  name: Office Window Status
-  state_topic: 'insteon/47.f9.3b/state'
-  device_class: 'window'
-- platform: mqtt
-  name: Office Window Battery
-  state_topic: 'insteon/47.f9.3b/battery'
-  device_class: 'battery'
+# # Sensor3 (Office Window)
+# - platform: mqtt
+#   name: Office Window Status
+#   state_topic: 'insteon/47.f9.3b/state'
+#   device_class: 'window'
+# - platform: mqtt
+#   name: Office Window Battery
+#   state_topic: 'insteon/47.f9.3b/battery'
+#   device_class: 'battery'
 
-# Sensor4 (Slider Door)
-- platform: mqtt
-  name: Slider Door Status
-  state_topic: 'insteon/47.f2.e9/state'
-  device_class: 'door'
-- platform: mqtt
-  name: Slider Door Battery
-  state_topic: 'insteon/47.f2.e9/battery'
-  device_class: 'battery'
+# # Sensor4 (Slider Door)
+# - platform: mqtt
+#   name: Slider Door Status
+#   state_topic: 'insteon/47.f2.e9/state'
+#   device_class: 'door'
+# - platform: mqtt
+#   name: Slider Door Battery
+#   state_topic: 'insteon/47.f2.e9/battery'
+#   device_class: 'battery'
 
-# Sensor5 (Side Door)
-- platform: mqtt
-  name: Side Door Status
-  state_topic: 'insteon/47.f2.f0/state'
-  device_class: 'door'
-- platform: mqtt
-  name: Side Door Battery
-  state_topic: 'insteon/47.f2.f0/battery'
-  device_class: 'battery'
+# # Sensor5 (Side Door)
+# - platform: mqtt
+#   name: Side Door Status
+#   state_topic: 'insteon/47.f2.f0/state'
+#   device_class: 'door'
+# - platform: mqtt
+#   name: Side Door Battery
+#   state_topic: 'insteon/47.f2.f0/battery'
+#   device_class: 'battery'
 
-# Sensor6 (Front Window)
-- platform: mqtt
-  name: Front Window Status
-  state_topic: 'insteon/47.fa.75/state'
-  device_class: 'window'
-- platform: mqtt
-  name: Front Window Battery
-  state_topic: 'insteon/47.fa.75/battery'
-  device_class: 'battery'
+# # Sensor6 (Front Window)
+# - platform: mqtt
+#   name: Front Window Status
+#   state_topic: 'insteon/47.fa.75/state'
+#   device_class: 'window'
+# - platform: mqtt
+#   name: Front Window Battery
+#   state_topic: 'insteon/47.fa.75/battery'
+#   device_class: 'battery'
 
-# Sensor7 (Kitchen Window)
-- platform: mqtt
-  name: Kitchen Window Status
-  state_topic: 'insteon/47.fc.14/state'
-  device_class: 'window'
-- platform: mqtt
-  name: Kitchen Window Battery
-  state_topic: 'insteon/47.fc.14/battery'
-  device_class: 'battery'
+# # Sensor7 (Kitchen Window)
+# - platform: mqtt
+#   name: Kitchen Window Status
+#   state_topic: 'insteon/47.fc.14/state'
+#   device_class: 'window'
+# - platform: mqtt
+#   name: Kitchen Window Battery
+#   state_topic: 'insteon/47.fc.14/battery'
+#   device_class: 'battery'
 
-# Sensor8 (Pond Filter)
-- platform: mqtt
-  name: Pond Filter Status
-  state_topic: 'insteon/47.fa.00/state'
-  payload_on: 'OFF' # Sensor is reverse orientation
-  payload_off: 'ON'
-  device_class: 'moisture' #'problem'
-- platform: mqtt
-  name: Pond Filter Battery
-  state_topic: 'insteon/47.fa.00/battery'
-  device_class: 'battery'
+# # Sensor8 (Pond Filter)
+# - platform: mqtt
+#   name: Pond Filter Status
+#   state_topic: 'insteon/47.fa.00/state'
+#   payload_on: 'OFF' # Sensor is reverse orientation
+#   payload_off: 'ON'
+#   device_class: 'moisture' #'problem'
+# - platform: mqtt
+#   name: Pond Filter Battery
+#   state_topic: 'insteon/47.fa.00/battery'
+#   device_class: 'battery'
 
-# Door1 (Front Door)
-- platform: mqtt
-  name: Front Door Status
-  state_topic: 'insteon/54.3b.88/state'
-  device_class: 'door'
-- platform: mqtt
-  name: Front Door Battery
-  state_topic: 'insteon/54.3b.88/battery'
-  device_class: 'battery'
+# # Door1 (Front Door)
+# - platform: mqtt
+#   name: Front Door Status
+#   state_topic: 'insteon/54.3b.88/state'
+#   device_class: 'door'
+# - platform: mqtt
+#   name: Front Door Battery
+#   state_topic: 'insteon/54.3b.88/battery'
+#   device_class: 'battery'
 
-# Motion 1 (Garage)
-- platform: mqtt
-  name: Garage Motion Status
-  state_topic: 'insteon/4f.99.d9/state'
-  device_class: 'motion'
-- platform: mqtt
-  name: Garage Motion Battery
-  state_topic: 'insteon/4f.99.d9/battery'
-  device_class: 'battery'
+# # Motion 1 (Garage)
+# - platform: mqtt
+#   name: Garage Motion Status
+#   state_topic: 'insteon/4f.99.d9/state'
+#   device_class: 'motion'
+# - platform: mqtt
+#   name: Garage Motion Battery
+#   state_topic: 'insteon/4f.99.d9/battery'
+#   device_class: 'battery'
 
-# Motion 2 (Kitchen)
-- platform: mqtt
-  name: Kitchen Motion Status
-  state_topic: 'insteon/4f.99.24/state'
-  device_class: 'motion'
-- platform: mqtt
-  name: Kitchen Motion Battery
-  state_topic: 'insteon/4f.99.24/battery'
-  device_class: 'battery'
-- platform: mqtt
-  name: Kitchen Motion Light
-  state_topic: 'insteon/4f.99.24/dawn'
-  device_class: 'light'
+# # Motion 2 (Kitchen)
+# - platform: mqtt
+#   name: Kitchen Motion Status
+#   state_topic: 'insteon/4f.99.24/state'
+#   device_class: 'motion'
+# - platform: mqtt
+#   name: Kitchen Motion Battery
+#   state_topic: 'insteon/4f.99.24/battery'
+#   device_class: 'battery'
+# - platform: mqtt
+#   name: Kitchen Motion Light
+#   state_topic: 'insteon/4f.99.24/dawn'
+#   device_class: 'light'
 
-# Motion 3 (Side Gate)
-- platform: mqtt
-  name: Gate Motion Status
-  state_topic: 'insteon/4f.99.e6/state'
-  device_class: 'motion'
-- platform: mqtt
-  name: Gate Motion Battery
-  state_topic: 'insteon/4f.99.e6/battery'
-  device_class: 'battery'
-- platform: mqtt
-  name: Gate Motion Light
-  state_topic: 'insteon/4f.99.e6/dawn'
-  device_class: 'light'
+# # Motion 3 (Side Gate)
+# - platform: mqtt
+#   name: Gate Motion Status
+#   state_topic: 'insteon/4f.99.e6/state'
+#   device_class: 'motion'
+# - platform: mqtt
+#   name: Gate Motion Battery
+#   state_topic: 'insteon/4f.99.e6/battery'
+#   device_class: 'battery'
+# - platform: mqtt
+#   name: Gate Motion Light
+#   state_topic: 'insteon/4f.99.e6/dawn'
+#   device_class: 'light'
 
 #WallPanel Motion Detection
 - platform: mqtt
@@ -178,9 +178,9 @@
 #### Status of Shelly switch input from PIR ###
 # "PIR Motion Sensor Status"
 #Shelly 1PM
-- platform: mqtt
-  name: 'Shelly1PM Motion'
-  state_topic: 'shellies/shelly1pm-00139E/input/0'
-  payload_on: "1"
-  payload_off: "0"
-  device_class: motion
+# - platform: mqtt
+#   name: 'Shelly1PM Motion'
+#   state_topic: 'shellies/shelly1pm-00139E/input/0'
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: motion
