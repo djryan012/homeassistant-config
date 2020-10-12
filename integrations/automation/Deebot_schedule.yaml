@@ -1,0 +1,47 @@
+- alias: "Deebot Clean Main Area"
+  initial_state: True
+  trigger:
+    platform: time
+    at: '8:55'
+  condition:
+    condition: time
+    weekday:
+      - mon
+  action:
+    service: script.vacuum_clean_main_area
+
+- alias: "Deebot Clean Master Bedroom"
+  initial_state: True
+  trigger:
+    platform: time
+    at: '8:55'
+  condition:
+    condition: time
+    weekday:
+      - tue
+  action:
+    service: script.vacuum_clean_master_bedroom
+
+- alias: "Deebot Clean Guest Area"
+  initial_state: True
+  trigger:
+    platform: time
+    at: '8:55'
+  condition:
+    condition: time
+    weekday:
+      - wed
+  action:
+    service: script.vacuum_clean_guest_area
+
+- alias: "Deebot Clean Office"
+  initial_state: True
+  trigger:
+    platform: time
+    at: '8:55'
+  condition:
+    condition: time
+    weekday:
+      - sat
+  action:
+    service: script.vacuum_clean_office

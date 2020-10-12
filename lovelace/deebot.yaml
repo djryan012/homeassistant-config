@@ -1,0 +1,105 @@
+title: deebot
+icon: mdi:robot-vacuum
+cards:
+  - type: 'custom:xiaomi-vacuum-card'
+    entity: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+    image: /local/deebot.png
+    name: Eva
+    vendor: deebot
+    state:
+      status:
+        key: status
+      mode:
+        icon: mdi:robot-vacuum
+        label: 'Fan speed: '
+    attributes:
+      filter: False
+      sensor: False
+      main_brush:
+        key: component_main_brush
+        # unit: 'minutes'
+      side_brush:
+        key: component_side_brush
+        # unit: 'percent'
+      filter:
+        key: 'component_filter'
+
+    # buttons:
+    #   clean_hallway:
+    #     icon: mdi:road-variant
+    #     label: Clean Hallway
+    #     tap_action:
+    #     action: call-service
+    #     service: vacuum.send_command
+    #     service_data:
+    #       command: spot_area
+    #       entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+    #       params:
+    #         cleanings: 1
+    #         rooms: 0
+    #     type: state-icon
+      # clean_bedroom:
+      #   icon: mdi:bed-empty
+      #   label: Clean Bedroom
+      #   tap_action:
+      #   action: call-service
+      #   service: vacuum.send_command
+      #   service_data:
+      #     command: spot_area
+      #     entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      #     params:
+      #       cleanings: 1
+      #       rooms: 4
+      #   type: state-icon
+      # clean_bathroom_toilet:
+      #   icon: mdi:shower
+      #   label: Clean Bathroom & Toilet
+      #   tap_action:
+      #   action: call-service
+      #   service: vacuum.send_command
+      #   service_data:
+      #     command: spot_area
+      #     entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      #     params:
+      #       cleanings: 1
+      #       rooms: 6
+      #   type: state-icon
+      # clean_lounge:
+      #   icon: mdi:sofa
+      #   label: Clean Living Room
+      #   tap_action:
+      #   action: call-service
+      #   service: vacuum.send_command
+      #   service_data:
+      #     command: spot_area
+      #     entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      #     params:
+      #       cleanings: 1
+      #       rooms: 11
+      #   type: state-icon
+      # clean_dining_room:
+      #   icon: mdi:silverware-variant
+      #   label: Clean Dining Room
+      #   tap_action:
+      #   action: call-service
+      #   service: vacuum.send_command
+      #   service_data:
+      #     command: spot_area
+      #     entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      #     params:
+      #       cleanings: 1
+      #       rooms: 9
+      #   type: state-icon
+      # clean_kitchen:
+      #   icon: mdi:toaster-oven
+      #   label: Clean Kitchen
+      #   tap_action:
+      #   action: call-service
+      #   service: vacuum.send_command
+      #   service_data:
+      #     command: spot_area
+      #     entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      #     params:
+      #       cleanings: 1
+      #       rooms: 10
+      #   type: state-icon

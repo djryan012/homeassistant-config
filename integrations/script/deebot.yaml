@@ -1,12 +1,86 @@
-# vacuum_script_clean_area:
-#   alias: clean area
-#   sequence:
-#   - service: vacuum.send_command
-#     data:
-#       command: spot_area
-#       entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
-#       params:
-#         area: 0,2  # multiple areas index from your ecovacs app
+# AREAS DEFINED BY APP
+# 0 guest bedroom
+# 1 hallway, guest bathroom
+# 2 kitchen, living, dining
+# 3 office
+# 4 master hallway
+# 5,6 master bedroom
+
+vacuum_clean_guest_area:
+  alias: clean area
+  sequence:
+  - service: script.audio_notify
+    data_template:
+      tts_msg: "<prosody rate='x-slow' pitch='x-low'>Eva</prosody> will be cleaning the guest area in 5 minutes"
+      mplayer: "echo_dot_main"
+  - service: notify.mobile_app_georgina_pixel_3a_xl_app
+    data:
+      message: "Eva will be cleaning the guest area in 5 minutes"
+  - delay:
+      minutes: 5
+  - service: vacuum.send_command
+    data:
+      command: spot_area
+      entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      params:
+        area: 0, 1
+
+vacuum_clean_main_area:
+  alias: clean area
+  sequence:
+  - service: script.audio_notify
+    data_template:
+      tts_msg: "<prosody rate='x-slow' pitch='x-low'>Eva</prosody> will be cleaning the main living area in 5 minutes"
+      mplayer: "echo_dot_main"
+  - service: notify.mobile_app_georgina_pixel_3a_xl_app
+    data:
+      message: "Eva will be cleaning the main living area in 5 minutes"
+  - delay:
+      minutes: 5
+  - service: vacuum.send_command
+    data:
+      command: spot_area
+      entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      params:
+        area: '2'
+
+vacuum_clean_office:
+  alias: clean area
+  sequence:
+  - service: script.audio_notify
+    data_template:
+      tts_msg: "<prosody rate='x-slow' pitch='x-low'>Eva</prosody> will be cleaning the office in 5 minutes"
+      mplayer: "echo_dot_main"
+  - service: notify.mobile_app_georgina_pixel_3a_xl_app
+    data:
+      message: "Eva will be cleaning the office in 5 minutes"
+  - delay:
+      minutes: 5
+  - service: vacuum.send_command
+    data:
+      command: spot_area
+      entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      params:
+        area: '3'
+
+vacuum_clean_master_bedroom:
+  alias: clean area
+  sequence:
+  - service: script.audio_notify
+    data_template:
+      tts_msg: "<prosody rate='x-slow' pitch='x-low'>Eva</prosody> will be cleaning the master bedroom in 5 minutes"
+      mplayer: "echo_dot_main"
+  - service: notify.mobile_app_georgina_pixel_3a_xl_app
+    data:
+      message: "Eva will be cleaning the master bedroom in 5 minutes"
+  - delay:
+      minutes: 5
+  - service: vacuum.send_command
+    data:
+      command: spot_area
+      entity_id: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      params:
+        area: 4, 5, 6
 
 # vacuum_script_clean_map:
 #   alias: clean map
