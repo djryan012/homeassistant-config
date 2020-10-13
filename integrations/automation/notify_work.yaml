@@ -14,11 +14,6 @@
         {% if state_attr('calendar.disney_work_schedule', 'description') == None  %} true
         {% else %} false {% endif %}
   action:
-    # - service: mqtt.publish
-    #   data_template:
-    #     topic: zanzito/david/alarm/play
-    #     payload: 'Wake up for work'
-    #     retain: false
     - service: script.lights_on_when_waking_up
     - service: notify.mobile_app_david_pixel_3a_app
       data:
@@ -32,6 +27,7 @@
   trigger:
     - platform: state
       entity_id: sensor.my_event_offset_1
+      from: 'off'
       to: 'on'
   condition:
     - condition: template 
@@ -41,11 +37,14 @@
         {% else %} false {% endif %}
     - condition: template 
       value_template: >
-        {% if state_attr('calendar.disney_work_schedule', 'description') == None  %} true
+        {% if state_attr('calendar.disney_work_schedule', 'description') == ''  %} true
         {% else %} false {% endif %}
   action:
-    # - service: mqtt.publish
-    #   data_template:
-    #     topic: zanzito/david/alarm/play
-    #     payload: 'Time to leave for Work'
-    #     retain: false
+    - service: notify.mobile_app_david_pixel_3a_app
+      data:
+        message: "Time to leave for Work"
+    - service: light.turn_on
+      entity_id: light.dining_floor_lamp
+      data:
+        brightness: 50
+        transition: 2

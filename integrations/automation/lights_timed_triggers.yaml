@@ -1,4 +1,3 @@
-#####  Exterior lights on at sunset  #####
 - alias: "Porch Light ON"
   initial_state: True
   trigger:
@@ -11,7 +10,6 @@
         brightness: 150
         transition: 30
 
-#####  Dim porch light at 10pm  #####
 - alias: 'Dim down porch light'
   initial_state: True
   trigger:

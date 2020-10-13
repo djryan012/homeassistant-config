@@ -26,7 +26,18 @@
   initial_state: True
   trigger:
     - platform: state
-      entity_id: light.david_nightstand,light.georgina_nightstand,light.dining_floor_lamp,light.kitchen_pendant_1,light.kitchen_pendant_2,light.living_room_light_1,light.living_room_light_2,light.office_desk_light,light.porch_light,light.sideyard_light,light.kitchen_wetbar_rgbw
+      entity_id: 
+        - light.david_nightstand
+        - light.georgina_nightstand
+        - light.dining_floor_lamp
+        - light.kitchen_pendant_1
+        - light.kitchen_pendant_2
+        - light.living_room_light_1
+        - light.living_room_light_2
+        - light.office_desk_light
+        - light.porch_light
+        - light.sideyard_light
+        - light.kitchen_wetbar_rgbw
       to: unavailable
       for:
         minutes: 1
@@ -34,3 +45,16 @@
     - service: notify.telbot_david
       data_template:
         message: '{{trigger.from_state.attributes.friendly_name}} is Offline'
+
+- alias: "Unifi Gateway Offline"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: device_tracker.unifi_security_gateway
+      to: unavailable
+      for:
+        minutes: 1
+  action:
+    - service: notify.telbot_david
+      data_template:
+        message: '{{trigger.from_state.attributes.friendly_name}} has gone Offline'

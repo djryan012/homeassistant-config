@@ -39,26 +39,24 @@
   trigger:
     - platform: state
       entity_id: 
+        - person.david
         - group.persons
-        - group.guest
       to: 'not_home'
   condition:
-    - condition: numeric_state
-      entity_id: sensor.time_online
-      above: .10 #Six Minutes
+    condition: and
+    conditions:
+      - condition: numeric_state
+        entity_id: sensor.time_online
+        above: .10 #Six Minutes
+      - condition: template 
+        value_template: >
+          {% if is_state('input_boolean.georgina_sleeping', 'on') %} true
+          {% elif is_state('person.georgina', 'not_home') %} true
+          {% else %} false {% endif %}
   action:
     service: homeassistant.turn_off
     entity_id:
-      - light.kitchen
-      - group.dining_room
-      - group.office
-      - group.bedroom
-      - group.garage
-      - light.living_room_light_1
-#     service: script.wallpanel_clock
-#     service: homeassistant.turn_on
-#     entity_id:
-#       - input_boolean.wallpanel_blackout
+      - light.interior_lights
 
 # Light on when getting home
 - alias: "Light on when getting home"

@@ -4,8 +4,16 @@
     - platform: state
       entity_id: input_boolean.georgina_sleeping
       to: 'off'
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
   action:
-    - service: script.lights_on_when_waking_up
+    - service: script.lights_on_when_georgina_awake
 
 - alias: "Wake up David for Work"
   initial_state: True
@@ -24,15 +32,10 @@
     #     {% if state_attr('calendar.disney_work_schedule', 'description') == ''  %} true
     #     {% else %} false {% endif %}
   action:
-    # - service: mqtt.publish
-    #   data_template:
-    #     topic: zanzito/david/alarm/play
-    #     payload: 'Wake up for work'
-    #     retain: false
     - service: notify.mobile_app_david_pixel_3a_app
       data:
         message: "Wake up for Work"
-    - service: script.lights_on_when_waking_up
+    - service: script.lights_on_when_david_awake
 
 - alias: "Reset David Sleeping"
   initial_state: True

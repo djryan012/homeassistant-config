@@ -4,8 +4,14 @@
     - platform: homeassistant
       event: start
   action:
+    - service: notify.telbot_david
+      data:
+        message: 'Hass.io is back up as of {{now().strftime("%H:%M:%S")}}'
+    - service: script.audio_notify
+      data_template:
+        tts_msg: "Home Assistant has Restarting"
+        mplayer: "echo_dot_main"
     - service: frontend.set_theme
       data:
         name: midnight
-
     - service: script.wallpanel_relaunch
