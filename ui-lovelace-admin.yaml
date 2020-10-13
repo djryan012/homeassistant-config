@@ -7,3 +7,4 @@ views:
   - !include lovelace/test.yaml
   - !include lovelace/blueiris.yaml
   - !include lovelace/automations.yaml
+  - !include lovelace/deebot.yaml

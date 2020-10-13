@@ -81,45 +81,22 @@ cards:
     title: Batteries
     show_header_toggle: false
     entities:
-    # Motion Sensors
+    # Ikea Motion Sensors
       - entity: sensor.tradfri_office_sensor_battery_level
         icon: mdi:battery-50
         name: Tradfri Office 
       - entity: sensor.tradfri_wetbar_sensor_battery_level
         icon: mdi:battery-50
         name: Tradfri Motion
-      - entity: binary_sensor.garage_motion_battery
+    # Insteon Motion Sensors
+      - entity: binary_sensor.kitchen_motion_sensor_battery 
+        name: Kitchen Motion Sensor
         icon: mdi:battery-50
-        name: Garage Motion Sensor
-    # Windows Sensors
-      - entity: binary_sensor.master_window_battery # Sensor1 (Master Window)
-        name: Master Window Sensor
+      - entity: binary_sensor.side_yard_motion_sensor_battery 
+        name: Side yard Motion Sensor
         icon: mdi:battery-50
-      - entity: binary_sensor.guest_window_battery # Sensor2 (Guest Window)
-        name: Guest Window Sensor
-        icon: mdi:battery-50
-      - entity: binary_sensor.office_window_battery # Sensor3 (Office Window)
-        name: Office Window Sensor
-        icon: mdi:battery-50
-      - entity: binary_sensor.front_window_battery # Sensor6 (Front Window)
-        name: Dinning Window Sensor
-        icon: mdi:battery-50
-      - entity: binary_sensor.kitchen_window_battery # Sensor7 (Kitchen Window)
-        name: Kitchen Window Sensor
-        icon: mdi:battery-50
-    # Door Sensors
-      - entity: binary_sensor.front_door_battery       # Door1 (Front Door)
-        name: Front Door Sensor
-        icon: mdi:battery-50
-      - entity: binary_sensor.slider_door_battery # Sensor4 (Slider Door)
-        name: Sliding Door Sensor
-        icon: mdi:battery-50
-      - entity: binary_sensor.side_door_battery # Sensor5 (Side Door)
-        name: Side Door Sensor
-        icon: mdi:battery-50
-    # Misc
-      - entity: binary_sensor.pond_filter_battery # Pond Filter
-        name: Pond Filter Sensor
+      - entity: binary_sensor.garage_motion_sensor_battery 
+        name: Office Sensor
         icon: mdi:battery-50
 
   - type: entities

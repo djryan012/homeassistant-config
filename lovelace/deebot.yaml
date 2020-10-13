@@ -13,7 +13,7 @@ cards:
         icon: mdi:robot-vacuum
         label: 'Fan speed: '
     attributes:
-      filter: False
+      # filter: False
       sensor: False
       main_brush:
         key: component_main_brush

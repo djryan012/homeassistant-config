@@ -43,6 +43,12 @@ cards:
         secondary_info: last-triggered
       - entity: automation.office_fan_off_while_occupied
         secondary_info: last-triggered
+      - entity: automation.living_room_fan
+        secondary_info: last-triggered
+      - entity: automation.master_bedroom_fan
+        secondary_info: last-triggered
+      - entity: automation.office_fan
+        secondary_info: last-triggered
 
   - type: entities
     title: Lights
@@ -105,8 +111,8 @@ cards:
         secondary_info: last-triggered
       - entity: automation.wake_up_david_for_work
         secondary_info: last-triggered
-      - entity: automation.pond_filter_issue
-        secondary_info: last-triggered
+      # - entity: automation.pond_filter_issue
+      #   secondary_info: last-triggered
       - entity: automation.battery_is_low_in_sensor
         secondary_info: last-triggered
       - entity: automation.deconz_lights_unavailable
@@ -158,12 +164,6 @@ cards:
         secondary_info: last-triggered
       - entity: automation.georgina_is_awake
         secondary_info: last-triggered
-      - entity: automation.living_room_fan
-        secondary_info: last-triggered
-      - entity: automation.master_bedroom_fan
-        secondary_info: last-triggered
-      - entity: automation.office_fan
-        secondary_info: last-triggered
       - entity: automation.turn_on_vacation_mode
         secondary_info: last-triggered
       - entity: automation.turn_off_vacation_mode
@@ -188,4 +188,17 @@ cards:
       - entity: automation.turn_off_pet_away_mode
         secondary_info: last-triggered
       - entity: automation.turn_on_pet_away_mode
+        secondary_info: last-triggered
+
+  - type: entities
+    title: Deebot 901
+    show_header_toggle: false
+    entities:        
+      - entity: automation.deebot_clean_guest_area
+        secondary_info: last-triggered
+      - entity: automation.deebot_clean_main_area
+        secondary_info: last-triggered
+      - entity: automation.deebot_clean_master_bedroom
+        secondary_info: last-triggered
+      - entity: automation.deebot_clean_office
         secondary_info: last-triggered

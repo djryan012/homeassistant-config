@@ -71,7 +71,7 @@ cards:
     show_header_toggle: false
     entities:
       - entity: light.garage_lights
-      - entity: switch.sandevice_power
+      - entity: switch.garage_utility_outlet
 
   - type: entities
     title: Outside Lights
@@ -94,9 +94,9 @@ cards:
       - entity: light.hallway_down_lights
         name: Hallway Lights
       - entity: switch.sonoff1
-        name: SonOff 1
+        name: Theatre Chairs
         icon: mdi:toggle-switch
       - entity: switch.sonoff2
-        name: SonOff 2
+        name: Window Fan
         icon: mdi:toggle-switch
         

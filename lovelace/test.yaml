@@ -26,7 +26,6 @@ cards:
       - entity: sensor.solaredge_site_details
       - entity: sensor.solaredge_current_power_template
       - entity: sensor.solaredge_energy_today_template
-
       # - entity: sensor.solaredge_gateways
       # - entity: sensor.solaredge_grid_power
       # - entity: sensor.solaredge_inverters
@@ -35,9 +34,46 @@ cards:
       # - entity: sensor.solaredge_sensors
       # - entity: sensor.solaredge_solar_power
       # - entity: sensor.solaredge_storage_power
-
   - type: entities
-    title: Deebot 901
+    title: BlueIris IOT
     show_header_toggle: false
     entities:
-      - entity: vacuum.cd4e1e01_45db_4867_b9c7_8f88fb056c35
+      # #BLUEIRIS Battery Full Lifetime
+      # - entity: sensor.blueiris_battery_full_lifetime
+      # #BLUEIRIS Battery Level
+      # - entity: sensor.blueiris_battery_level
+      # #BLUEIRIS Battery Remaining
+      # - entity: sensor.blueiris_battery_remaining
+      # #BLUEIRIS Battery Remaining Time
+      # - entity: sensor.blueiris_battery_remaining_time
+      # #BLUEIRIS Battery Status
+      # - entity: binary_sensor.blueiris_battery_status
+      #BLUEIRIS CPU Usage
+      - entity: sensor.blueiris_cpu_usage
+      #BLUEIRIS Current Username
+      - entity: sensor.blueiris_current_username
+      #BLUEIRIS Memory Available
+      - entity: sensor.blueiris_memory_available
+      #BLUEIRIS Memory Total
+      - entity: sensor.blueiris_memory_total
+      #BLUEIRIS Memory Usage
+      - entity: sensor.blueiris_memory_usage
+      #BLUEIRIS Memory Used
+      - entity: sensor.blueiris_memory_used
+      # #BLUEIRIS Network #0 - BPS Received
+      # - entity: sensor.blueiris_network_0_bps_received
+      #   unit: gb
+      # #BLUEIRIS Network #0 - BPS Sent
+      # - entity: sensor.blueiris_network_0_bps_sent
+      #   unit: gb
+      # #BLUEIRIS Network #0 - Bytes Received
+      # - entity: sensor.blueiris_network_0_bytes_received
+      #   unit: gb
+      # #BLUEIRIS Network #0 - Bytes Sent
+      # - entity: sensor.blueiris_network_0_bytes_sent
+      #BLUEIRIS Network #0 - IPv4
+      - entity: sensor.blueiris_network_0_ipv4
+      #BLUEIRIS Network #0 - IPv6
+      - entity: sensor.blueiris_network_0_ipv6
+      #BLUEIRIS Network #0 - entity: speed
+      - entity: sensor.blueiris_network_0_speed

@@ -1,32 +1,756 @@
-title: Floor plan
+# custom_header:
+#   compact_mode: false
+#   editor_warnings: false
+#   exceptions:
+#     - conditions:
+#         user_agent: David
+#       config:
+#         disable_sidebar: false
+#         hide_header: false
+#         kiosk_mode: false
+#     - conditions:
+#         user: tablet
+#       config:
+#         disable_sidebar: true
+#         kiosk_mode: true
+#     - conditions:
+#         device_id: e98effc3-b940ce40
+#       config:
+#         disable_sidebar: true
+#         kiosk_mode: true
+
+title: Pretty Frontend 
 views:
-  - title: Floor plan
+
+    #############################################################################################################################################
+    #                                                                                                                                           #
+    #                                                              Floorplan View                                                               #
+    #                                                                                                                                           #
+    #############################################################################################################################################
+
+  - title: Control Rooms
+    icon: 'mdi:floor-plan'
     panel: true
+    badges: []
     cards:
-        - type: picture-elements
-          image: /local/custom_ui/floorplan/floorplan v2_0.svg
+
+        ###################   config-template-card    #####################
+        #########################   IMPORTANT!    #########################
+
+        # To use the styling templates for individual lights, I have used
+        # Config Template Card. Config template card passes the entities it
+        # uses into the card. Make sure you change these entities below to
+        # your own and include any light entities you use above.
+
+        # To understand why, check: https://github.com/iantrich/config-template-card
+
+      - type: 'custom:config-template-card'
+        entities:
+          - light.living_room
+          - light.office_desk_light
+
+        card:
+          ###################   Picture Elements Card    #####################
+          type: picture-elements
+          image: /local/ui/floorplan/floorplan_night.png
+          style: |
+            ha-card:first-child {
+              background: rgba(42, 46, 48, 1)
+            }
           elements:
-            - type: state-badge
-              entity: sensor.echo_temperature
+
+
+              #########################    DAY BASE FLOORPLAN OVERLAY    #########################
+
+            - action: none
+              entity: sun.sun
+              hold_action:
+                action: none
+              state_image:
+                above_horizon: /local/ui/floorplan/floorplan_day.png
+                below_horizon: /local/transparent.png
               style:
-                top: 58%
-                left: 34%
-                font-size: 8px
-            - type: state-badge
-              entity: sensor.living_room_temperature
+                height: 100%
+                left: 50%
+                mix-blend-mode: lighten
+                # opacity: '${ states[''sensor.sunlight_opacity''].state }'
+                top: 50%
+                width: 100%
+              tap_action:
+                action: none
+              type: image
+
+
+              #########################    WEATHER ANIMATIONS    #########################
+
+            - action: none
+              entity: weather.buienweather
+              hold_action:
+                action: none
+              image: /local/ui/floorplan/weather/rainstorm.gif
+              state_filter:
+                'pouring': opacity(100%)
               style:
-                top: 40%
-                left: 40%
-                font-size: 8px
-            - type: state-badge
-              entity: sensor.bedroom_temperature
+                left: 60%
+                mix-blend-mode: color-dodge
+                top: 50%
+                width: 110%
+                opacity: 0
+              tap_action:
+                action: none
+              type: image
+
+
+              #########################    Inside overlays for weather    #########################
+
+
+            - action: none
+              hold_action:
+                action: none
+              image: /local/ui/floorplan/main_night.png
               style:
-                top: 25%
-                left: 10%
-                font-size: 8px
-            - type: state-badge
-              entity: sensor.office_temperature
+                height: 100%
+                left: 50%
+                top: 50%
+                width: 100%
+              tap_action:
+                action: none
+              type: image
+
+            - action: none
+              entity: sun.sun
+              hold_action:
+                action: none
+              state_image:
+                above_horizon: /local/ui/floorplan/main_day.png
+                below_horizon: /local/transparent.png
               style:
-                top: 80%
-                left: 25%
-                font-size: 8px
+                height: 100%
+                left: 50%
+                mix-blend-mode: lighten
+                opacity: '${ states[''sensor.sunlight_opacity''].state }'
+                top: 50%
+                width: 100%
+              tap_action:
+                action: none
+              type: image
+
+              #########################    INDIVIDUAL LIGHTS - BLENDED IMAGE OVERLAYS    #########################
+
+            - action: none
+              entity: light.office_desk_light
+              hold_action:
+                action: none
+              image: /local/ui/floorplan/lights/table.png
+              style:
+                filter: >-
+                  ${ "hue-rotate(" + (states['light.office_desk_light'].attributes.hs_color
+                  ? states['light.office_desk_light'].attributes.hs_color[0] : 0) + "deg)"}
+                left: 73.73%
+                mix-blend-mode: lighten
+                opacity: "${states['light.office_desk_light'].state === 'on' ? (states['light.office_desk_light'].attributes.brightness / 255) : '0'}"
+                top: 32.65%
+                width: 39.296875%
+              tap_action:
+                action: none
+              type: image
+
+
+  #             #########################    ROOM/GROUP CONTROL TRANSPARENT IMAGES    #########################
+
+  #             #  Used to create tap areas and popups for each room, referring to light groups.
+  #             #  Because the above images overlap each other, I used seperate transparent images
+  #             #. to handle the control of the room, so you always tap the right room.
+  #             #
+  #             #  browser_mod.popup is used for a tap and hold for a custom popup card
+
+            - entity: light.living_room
+              hold_action:
+                action: call-service
+                service: browser_mod.popup
+                service_data:
+                  card:
+                    cards:
+                      - entities:
+                          - entity: light.living_room
+                            secondary_info: last-changed
+                        style:
+                          z-index: 5
+                        type: entities
+                      - cards:
+                          - cards:
+                              - brightness: false
+                                color_picker: false
+                                effects_list: false
+                                entity: light.living_room
+                                full_width_sliders: true
+                                header: false
+                                persist_features: true
+                                show_slider_percent: false
+                                smooth_color_wheel: true
+                                type: 'custom:light-entity-card'
+                                style: |
+                                    ha-card {
+                                      box-shadow: none !important;
+                                    }
+                              - brightness: false
+                                color_temp: false
+                                entity: light.living_room
+                                full_width_sliders: true
+                                header: false
+                                persist_features: true
+                                show_slider_percent: false
+                                smooth_color_wheel: true
+                                type: 'custom:light-entity-card'
+                                style: |
+                                    ha-card {
+                                      box-shadow: none !important;
+                                    }
+                            column_height: 1
+                            layout: vertical
+                            type: 'custom:layout-card'
+                          - entities:
+                              - color_temp: true
+                                entity: light.living_room
+                                header: false
+                                persist_features: true
+                                type: 'custom:light-slider-card'
+                            show_header_toggle: false
+                            style: |
+                                :host{
+                                  height: 100%;
+                                  z-index: 0;
+                                }
+                                ha-card {
+                                  box-shadow: none !important;
+                                }
+                            type: entities
+                        column_num: 2
+                        layout: horizontal
+                        max_width:
+                          - 60%
+                          - 40%
+                        type: 'custom:layout-card'
+                    type: 'custom:vertical-stack-in-card'
+                  deviceID:
+                    - this
+                  style:
+                    '--ha-card-border-radius': 0vw 0vw 0.8vw 0.8vw
+                    border-radius: 0.8vw
+                    opacity: 0.9
+                  title: Living Room
+              image: /local/transparent.png
+              style:
+                height: 48%
+                left: 76.8%
+                top: 32.65%
+                width: 32%
+              tap_action:
+                action: call-service
+                service: homeassistant.toggle
+                service_data:
+                    entity_id: light.living_room
+              type: image
+
+              hold_action:
+                action: call-service
+                service: browser_mod.popup
+                service_data:
+                  card:
+                    cards:
+                      - entities:
+                          - entity: light.roof_lights
+                            secondary_info: last-changed
+                        style:
+                          z-index: 5
+                        type: entities
+                      - cards:
+                          - cards:
+                              - brightness: false
+                                color_picker: false
+                                effects_list: false
+                                entity: light.roof_lights
+                                full_width_sliders: true
+                                header: false
+                                persist_features: true
+                                show_slider_percent: false
+                                smooth_color_wheel: true
+                                type: 'custom:light-entity-card'
+                                style: |
+                                    ha-card {
+                                      box-shadow: none !important;
+                                    }
+                              - brightness: false
+                                color_temp: false
+                                entity: light.roof_lights
+                                full_width_sliders: true
+                                header: false
+                                persist_features: true
+                                show_slider_percent: false
+                                smooth_color_wheel: true
+                                type: 'custom:light-entity-card'
+                                style: |
+                                    ha-card {
+                                      box-shadow: none !important;
+                                    }
+                            column_height: 1
+                            layout: vertical
+                            type: 'custom:layout-card'
+                          - entities:
+                              - color_temp: true
+                                entity: light.roof_lights
+                                header: false
+                                persist_features: true
+                                type: 'custom:light-slider-card'
+                            show_header_toggle: false
+                            style: |
+                                :host{
+                                  height: 100%;
+                                  z-index: 0;
+                                }
+                                ha-card {
+                                  box-shadow: none !important;
+                                }
+                            type: entities
+                        column_num: 2
+                        layout: horizontal
+                        max_width:
+                          - 60%
+                          - 40%
+                        type: 'custom:layout-card'
+                    type: 'custom:vertical-stack-in-card'
+                  deviceID:
+                    - this
+                  style:
+                    '--ha-card-border-radius': 0vw 0vw 0.8vw 0.8vw
+                    border-radius: 0.8vw
+                    opacity: 0.9
+                  title: Roof Lights
+              image: /local/transparent.png
+              style:
+                height: 80%
+                left: 32%
+                top: 49%
+                width: 30%
+              tap_action:
+                action: call-service
+                service: homeassistant.toggle
+                service_data:
+                    entity_id: light.roof_lights
+              type: image
+
+  #             #########################    INDIVIDUAL LIGHT ICONS    #########################
+
+  #             #  These are the white state icons that appear over the floorplan.
+  #             #  They are the same as above, but instead of "areas" to control a group, they only
+  #             #. control individual lights
+  #             #
+  #             #  browser_mod.popup is used for a tap and hold for a custom popup card, custom styling
+  #             #  of the icon to make it appear white, etc.
+
+            - entity: light.office_desk_light
+              hold_action:
+                action: call-service
+                service: browser_mod.popup
+                service_data:
+                  card:
+                    cards:
+                      - entities:
+                          - entity: light.office_desk_light
+                            secondary_info: last-changed
+                        style:
+                          z-index: 5
+                        type: entities
+                      - cards:
+                          - cards:
+                              - brightness: false
+                                color_picker: false
+                                effects_list: false
+                                entity: light.office_desk_light
+                                full_width_sliders: true
+                                header: false
+                                persist_features: true
+                                show_slider_percent: false
+                                smooth_color_wheel: true
+                                type: 'custom:light-entity-card'
+                                style: |
+                                    ha-card {
+                                      box-shadow: none !important;
+                                    }
+                              - brightness: false
+                                color_temp: false
+                                entity: light.office_desk_light
+                                full_width_sliders: true
+                                header: false
+                                persist_features: true
+                                show_slider_percent: false
+                                smooth_color_wheel: true
+                                type: 'custom:light-entity-card'
+                                style: |
+                                    ha-card {
+                                      box-shadow: none !important;
+                                    }
+                            column_height: 1
+                            layout: vertical
+                            type: 'custom:layout-card'
+                          - entities:
+                              - color_temp: true
+                                entity: light.office_desk_light
+                                header: false
+                                persist_features: true
+                                type: 'custom:light-slider-card'
+                            show_header_toggle: false
+                            style: |
+                                :host{
+                                  height: 100%;
+                                  z-index: 0;
+                                }
+                                ha-card {
+                                  box-shadow: none !important;
+                                }
+                            type: entities
+                        column_num: 2
+                        layout: horizontal
+                        max_width:
+                          - 60%
+                          - 40%
+                        type: 'custom:layout-card'
+
+
+                    type: 'custom:vertical-stack-in-card'
+                  deviceID:
+                    - this
+                  style:
+                    '--ha-card-border-radius': 0vw 0vw 0.8vw 0.8vw
+
+                    border-radius: 0.8vw
+                    opacity: 0.9
+                  title: Dining Table
+              icon: 'mdi:ceiling-light'
+              style:
+                '--iron-icon-height': 2vw
+                '--iron-icon-width': 2vw
+                '--paper-item-icon-active-color': '#000000'
+                '--paper-item-icon-color': darkgrey
+                align-items: center
+                background-color: '#FFFFFF'
+                border-radius: 100%
+                box-shadow: '0px 0px 28px 0px rgba(0,0,0,0.39)'
+                display: flex
+                height: 3vw
+                justify-content: center
+                left: 84.3%
+                margin-left: '-1.5vw'
+                margin-top: '-1.5vw'
+                top: 25.7%
+                transform: scale(1.2)
+                width: 3vw
+              tap_action:
+                action: toggle
+              type: state-icon
+    
+
+            #   #################################################################
+            #   #                                                               #
+            #   #                             SIDEBAR                           #
+            #   #                                                               #
+            #   #################################################################
+
+            #   #########################    BG IMAGE    #########################
+            # - action: none
+            #   hold_action:
+            #     action: none
+            #   image: /local/ui/sidebar/sidebarBG2.png
+            #   style:
+            #     height: 100%
+            #     left: 11.73828125%
+            #     top: 50%
+            #     width: 23.4765625%
+            #   tap_action:
+            #     action: none
+            #   type: image
+
+            #   #########################    TIME AND DATE    #########################
+            # - entity: sensor.time
+            #   hold_action:
+            #     action: none
+            #   style:
+            #     color: 'rgba(255, 255, 255, 0.7)'
+            #     font-size: 5.41vw
+            #     font-weight: 200
+            #     left: 2.7%
+            #     letter-spacing: '-0.05vw'
+            #     max-width: 1px
+            #     top: 10%
+            #   tap_action:
+            #     action: none
+            #   type: state-label
+            # - entity: sensor.date_string
+            #   hold_action:
+            #     action: none
+            #   style:
+            #     color: 'rgba(255, 255, 255, 0.3)'
+            #     font-size: 1.3vw
+            #     font-weight: 300
+            #     left: 18.1%
+            #     letter-spacing: '-0.05vw'
+            #     text-align: left
+            #     top: 17%
+            #     width: 30%
+            #   tap_action:
+            #     action: none
+            #   type: state-label
+
+            #   #########################    MENU BUTTONS    #########################
+
+            # - action: none
+            #   image: /local/ui/sidebar/rooms_on.png
+            #   style:
+            #     border-radius: 5vw
+            #     box-shadow: '0px 0.2vw 0.8vw 0px rgba(0,0,0,0.1)'
+            #     left: 11.7%
+            #     top: 26%
+            #     width: 20.5078125%
+            #   tap_action:
+            #     action: navigate
+            #     navigation_path: /lovelace/0
+            #   type: image
+            # - action: none
+            #   image: /local/ui/sidebar/cleanUp_off.png
+            #   style:
+            #     left: 11.7%
+            #     top: 34%
+            #     width: 20.5078125%
+            #   tap_action:
+            #     action: navigate
+            #     navigation_path: /lovelace/1
+            #   type: image
+            # - action: none
+            #   image: /local/ui/sidebar/all_off.png
+            #   style:
+            #     left: 11.7%
+            #     top: 42%
+            #     width: 20.5078125%
+            #   tap_action:
+            #     action: navigate
+            #     navigation_path: /lovelace/2
+            #   type: image
+            # - action: none
+            #   image: /local/ui/sidebar/media_off.png
+            #   style:
+            #     left: 11.7%
+            #     top: 50%
+            #     width: 20.5078125%
+            #   tap_action:
+            #     action: navigate
+            #     navigation_path: /lovelace/3
+            #   type: image
+            # - action: none
+            #   image: /local/ui/sidebar/health_off.png
+            #   style:
+            #     left: 11.7%
+            #     top: 58%
+            #     width: 20.5078125%
+            #   tap_action:
+            #     action: navigate
+            #     navigation_path: /lovelace/5
+            #   type: image
+
+
+            #   #########################    People at home    #########################
+
+            #   #Optional label for people at Home (currently hidden with opacity: 0)
+
+            # - style:
+            #     color: white
+            #     font-size: 1vw
+            #     font-weight: 300
+            #     left: 8.8%
+            #     opacity: 0
+            #     top: 66%
+            #     width: 10%
+            #   text: 'People at home:'
+            #   type: 'custom:text-element'
+
+            # - action: none
+            #   entity: person.david
+            #   state_image:
+            #     home: /local/people/luke.png
+            #     not_home: /local/people/lukeGone.png
+            #   style:
+            #     background-color: 'rgba(255, 255, 255, 0.0)'
+            #     border-radius: 10vw
+            #     height: 4.5vw
+            #     left: 5.8%
+            #     top: 72%
+            #     width: 4.5vw
+            #   tap_action: none
+            #   type: image
+
+            # - action: none
+            #   entity: person.georgina
+            #   state_image:
+            #     home: /local/people/santa.png
+            #     not_home: /local/people/santaGone.png
+            #   style:
+            #     background-color: 'rgba(255, 255, 255, 0.0)'
+            #     border-radius: 10vw
+            #     height: 4.5vw
+            #     left: 10.8%
+            #     top: 72%
+            #     width: 4.5vw
+            #   tap_action: none
+            #   type: image
+
+            # # - action: none
+            # #   image: /local/transparent.png
+            # #   style:
+            # #     background-color: 'rgba(255, 255, 255, 0.0)'
+            # #     border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
+            # #     border-radius: 10vw
+            # #     height: 4.2vw
+            # #     left: 15.9%
+            # #     top: 72.2%
+            # #     width: 4.2vw
+            # #   tap_action: none
+            # #   type: image
+            # # - action: none
+            # #   image: /local/transparent.png
+            # #   style:
+            # #     background-color: 'rgba(255, 255, 255, 0.0)'
+            # #     border: '0.1vw dashed rgba(255, 255, 255, 0.3)'
+            # #     border-radius: 10vw
+            # #     height: 4.2vw
+            # #     left: 21.1%
+            # #     top: 72.2%
+            # #     width: 4.2vw
+            # #   tap_action: none
+            # #   type: image
+
+            #   #########################    Minigraph to show temperature inside and out    #########################
+
+
+
+            # - color_thresholds:
+            #     - color: '#4dd2ff'
+            #       value: 10
+            #     - color: '#ffa31a'
+            #       value: 15
+            #     - color: '#ff1a1a'
+            #       value: 20
+            #   entities:
+            #     - sensor.stairs_detector_temperature
+            #     - sensor.buienradar_ground_temperature
+            #   icon: 'mdi:home-thermometer-outline'
+            #   show:
+            #     icon: true
+            #     legend: false
+            #     name: false
+            #   style: |
+            #     :host {
+            #       left: 11.6%;
+            #       top:  92.9%;
+            #       width: 23.5%;
+            #       overflow: hidden;
+            #       height: 15%;
+            #       background: none  !important;
+            #       box-shadow: none !important;
+            #     }
+            #     .header {
+            #       font-size: 1vw;
+            #       position: absolute !important;
+            #       width: 5% !important;
+            #       padding: 0 !important;
+            #       right: 20% !important;
+            #       top: 15% !important;
+            #     }
+            #     ha-card {
+            #       background: none  !important;
+            #       padding: 0 !important;
+            #     }
+            #     .icon > ha-icon {
+            #       width:1.8vw !important;
+            #       height:1.8vw !important;
+            #     }
+            #     .state__time{
+            #       font-size:0.9vw !important;
+            #       margin-top: 0.2vw;
+            #       font-weight: 300 !important;
+            #       opacity: 0.4 !important;
+            #     }
+            #     .states {
+            #       font-size: 0.5vw !important;
+            #       padding: 1vw 0vw 0vw 0vw  !important;
+            #       margin: auto !important;
+            #       width: 68%;
+            #     }
+            #   tap_action:
+            #     action: navigate
+            #     navigation_path: /lovelace/4
+            #   type: 'custom:mini-graph-card'
+
+            #   #########################    Mini Weather card    #########################
+
+            # - backdrop: false
+            #   entity: weather.buienweather
+            #   name: ' '
+            #   style: |
+            #     :host {
+            #       left: 11.4%;
+            #       top:  85.5%;
+            #       width: 17%;
+            #       height: 7% !important;
+            #       overflow: hidden;
+            #       height: 8.5vw;
+            #       background: none  !important;
+            #       box-shadow: none !important;
+            #       font-size: 1vw !important;
+            #     }
+            #     ha-card {
+            #       background: none  !important;
+            #       box-shadow: none !important;
+            #       flex-flow: row-reverse !important;
+            #       padding: 0 !important;
+            #     }
+            #     .weather__info--add{
+            #       display : none !important;
+            #     }
+            #     .weather__info{
+            #       flex-grow: 1;
+            #       min-height: 0 !important;
+            #       height: 2.4vw;
+            #       margin-left: 0.6vw;
+            #     }
+            #     .weather__icon{
+            #       margin-right:0.5% !important;
+            #       margin-top: -3%;
+            #       width: 2vw !important;
+            #       height: 2vw !important;
+            #       flex: 0 0 2vw !important;
+            #     }
+            #   tap_action:
+            #     action: navigate
+            #     navigation_path: /lovelace/4
+            #   type: 'custom:simple-weather-card'
+
+            #   #########################    Overlay shadow images    #########################
+
+            # - action: none
+            #   image: /local/ui/sidebar/sideShadow.png
+            #   style:
+            #     height: 35%
+            #     left: 18.45%
+            #     pointer-events: none
+            #     top: 83%
+            #     width: 10%
+            #   type: image
+            # - action: none
+            #   image: /local/ui/sidebar/sidebarInnerShadow.png
+            #   style:
+            #     left: 22.83%
+            #     opacity: 0.7
+            #     pointer-events: none
+            #     top: 50%
+            #     width: 1.2109375%
+            #   type: image
+

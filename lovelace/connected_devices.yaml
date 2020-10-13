@@ -36,10 +36,10 @@ cards:
         icon: mdi:amazon-alexa
       - entity: device_tracker.ecobee3
         icon: mdi:thermostat-box
-      - entity: device_tracker.smarthome_laptop
-        icon: mdi:server-network
-      - entity: device_tracker.hassio_pi4
+      - entity: device_tracker.hassio_pi_4
         icon: mdi:home-assistant
+      - entity: device_tracker.deebot_900
+        icon: mdi:robot-vacuum
       # - entity: device_tracker.tradfri
       #   icon: mdi:server-network
       # - entity: device_tracker.hp_newbie
@@ -50,8 +50,6 @@ cards:
     title: Media Players
     show_header_toggle: false
     entities:
-      - entity: device_tracker.chromecast
-        icon: mdi:cast
       - entity: device_tracker.xbox_one
         icon: mdi:xbox
       - entity: device_tracker.roku_express
@@ -75,8 +73,8 @@ cards:
         icon: mdi:electric-switch
       - entity: device_tracker.sonoff_pow_2
         icon: mdi:electric-switch
-      - entity: device_tracker.sonoff_pow_3
-        icon: mdi:electric-switch
+      # - entity: device_tracker.sonoff_pow_3
+      #   icon: mdi:electric-switch
 
   - type: entities
     title: Home Computing
@@ -95,7 +93,7 @@ cards:
     title: Mobile Devices
     show_header_toggle: false
     entities:
-      - entity: device_tracker.david_s_pixel
+      - entity: device_tracker.david_pixel_3a
         name: David Wifi
         icon: mdi:cellphone-android
       - entity: device_tracker.pixel_3a

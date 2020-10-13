@@ -88,20 +88,20 @@ cards:
         name: Porch Light
       - entity: binary_sensor.blueiris_side_yard_motion
         name: Side Yard
-      - entity: binary_sensor.garage_motion_status
+      - entity: binary_sensor.tradfri_garage_motion_sensor
         name: Garage
       - entity: binary_sensor.gate_motion_status
         name: Gate
       - entity: binary_sensor.kitchen_motion_status
         name: Kitchen
-      - entity: binary_sensor.tradfri_office_sensor
-        name: Office
+      - entity: binary_sensor.garage_motion_status
+        name: ?????
       - entity: binary_sensor.tradfri_wetbar_sensor
         name: Wetbar
       - entity: binary_sensor.wallpanel_motion_sensor
         name: Wallpanel
-      - entity: binary_sensor.shelly1pm_motion
-        name: Shelly
+      # - entity: binary_sensor.shelly1pm_motion
+      #   name: Shelly
     columns: 4
 
   - type: entities
@@ -209,7 +209,7 @@ cards:
     title: Falcon Player
     show_header_toggle: false
     entities:
-      - entity: switch.sandevice_power
+      - entity: switch.garage_utility_outlet
       - entity: automation.monthly_holiday_color_scene_on
       - entity: sensor.flag
         name: Flag Day
