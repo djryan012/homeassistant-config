@@ -42,7 +42,7 @@
 monthly_color_scene:
   sequence:
     - service: switch.turn_on
-      entity_id: switch.sandevice_power
+      entity_id: switch.garage_utility_outlet
     - delay:
         seconds: 15
     - service: mqtt.publish
@@ -103,7 +103,7 @@ monthly_color_scene:
 monthly_color_off:
   sequence:
     - service: switch.turn_off
-      entity_id: switch.sandevice_power
+      entity_id: switch.garage_utility_outlet
     - delay:
         seconds: 5
     - service: mqtt.publish

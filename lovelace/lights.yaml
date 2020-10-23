@@ -29,7 +29,7 @@ cards:
     entities:
       - entity: light.david_nightstand
       - entity: light.georgina_nightstand
-      - entity: light.master_ceiling_light #bedroom_light
+      - entity: light.main_bedroom_fanlinc #bedroom_light
         name: Master Fan's Light
       - entity: input_select.master_bedroom_fan #bedroom_fan
         name: Master Fan
@@ -50,7 +50,7 @@ cards:
     entities:
       - entity: light.office_desk_light
         name: Office DeskLight
-      - entity: light.office_ceiling_light #office_light
+      - entity: light.office_fanlinc #office_light
         name: Office Fan's Light
       - entity: input_select.office_fan #office_fan
         name: Office Fan
@@ -60,7 +60,7 @@ cards:
     title: Guest Room
     show_header_toggle: false
     entities:
-      - entity: light.guest_ceiling_light #guest_light
+      - entity: light.guest_room_fanlinc #guest_light
         name: Office Fan's Light
       - entity: input_select.guest_bedroom_fan #guest_fan
         name: Office Fan
@@ -91,7 +91,7 @@ cards:
     title: Miscellaneous
     show_header_toggle: false
     entities:
-      - entity: light.hallway_down_lights
+      - entity: switch.hallway_down_lights
         name: Hallway Lights
       - entity: switch.sonoff1
         name: Theatre Chairs

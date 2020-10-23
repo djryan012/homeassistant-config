@@ -6,8 +6,8 @@
   entities:
     - light.david_nightstand
     - light.georgina_nightstand
-    - light.master_ceiling_light #Master Fanlinc Light
-    # - switch.master_keypad_main
+    - light.main_bedroom_fanlinc #Master Fanlinc Light
+    # - light.main_bedroom_keypad_main
 
 - platform: group
   name: Dining Room
@@ -66,8 +66,8 @@
   name: Office
   entities:
     - light.office_desk_light
-    - light.office_ceiling_light
-    # - switch.office_keypad_main
+    - light.office_fanlinc
+    # - light.office_keypad_main
 
 - platform: group
   name: Night Stands

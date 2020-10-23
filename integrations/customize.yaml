@@ -96,7 +96,7 @@ light.living_room_light_2:
 
 light.bedroom:
   friendly_name: Bedroom Lights
-light.master_ceiling_light:
+light.main_bedroom_fanlinc:
   friendly_name: Bedroom Light
 light.nightstands:
   friendly_name: Night Stands
@@ -117,7 +117,7 @@ light.office:
   friendly_name: Office Lights
 light.office_desk_light:
   friendly_name: Office Desk
-light.office_ceiling_light:
+light.office_fanlinc:
   friendly_name: Office Light
 
 

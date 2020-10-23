@@ -93,239 +93,239 @@ living_room_fan_high:
 master_bedroom_fan_off:
   sequence:
     - service: fan.turn_off
-      entity_id: fan.master_ceiling_fan
+      entity_id: fan.main_bedroom_fanlinc
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.master_keypad_a
+      entity_id: switch.main_bedroom_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.master_keypad_b
+      entity_id: switch.main_bedroom_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.master_keypad_c
+      entity_id: switch.main_bedroom_keypad_button_c
 
 master_bedroom_fan_low:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.master_ceiling_fan
+        entity_id: fan.main_bedroom_fanlinc
         speed: low
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.master_keypad_a
+      entity_id: switch.main_bedroom_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.master_keypad_b
+      entity_id: switch.main_bedroom_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.master_keypad_c
+      entity_id: switch.main_bedroom_keypad_button_c
 
 master_bedroom_fan_medium:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.master_ceiling_fan
+        entity_id: fan.main_bedroom_fanlinc
         speed: medium
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.master_keypad_a
+      entity_id: switch.main_bedroom_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.master_keypad_b
+      entity_id: switch.main_bedroom_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.master_keypad_c
+      entity_id: switch.main_bedroom_keypad_button_c
 
 master_bedroom_fan_high:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.master_ceiling_fan
+        entity_id: fan.main_bedroom_fanlinc
         speed: high
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.master_keypad_a
+      entity_id: switch.main_bedroom_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.master_keypad_b
+      entity_id: switch.main_bedroom_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.master_keypad_c
+      entity_id: switch.main_bedroom_keypad_button_c
 
 ##### OFFICE FAN #####
 office_fan_off:
   sequence:
     - service: fan.turn_off
-      entity_id: fan.office_ceiling_fan
+      entity_id: fan.office_fanlinc
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.office_keypad_a
+      entity_id: switch.office_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.office_keypad_b
+      entity_id: switch.office_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.office_keypad_c
+      entity_id: switch.office_keypad_button_c
 
 office_fan_low:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.office_ceiling_fan
+        entity_id: fan.office_fanlinc
         speed: low
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.office_keypad_a
+      entity_id: switch.office_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.office_keypad_b
+      entity_id: switch.office_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.office_keypad_c
+      entity_id: switch.office_keypad_button_c
 
 office_fan_medium:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.office_ceiling_fan
+        entity_id: fan.office_fanlinc
         speed: medium
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.office_keypad_a
+      entity_id: switch.office_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.office_keypad_b
+      entity_id: switch.office_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.office_keypad_c
+      entity_id: switch.office_keypad_button_c
 
 office_fan_high:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.office_ceiling_fan
+        entity_id: fan.office_fanlinc
         speed: high
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.office_keypad_a
+      entity_id: switch.office_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.office_keypad_b
+      entity_id: switch.office_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.office_keypad_c
+      entity_id: switch.office_keypad_button_c
 
 ##### GUEST_ROOM FAN #####
 guest_room_fan_off:
   sequence:
     - service: fan.turn_off
-      entity_id: fan.guest_ceiling_fan
+      entity_id: fan.guest_room_fanlinc
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_a
+      entity_id: switch.guest_bedroom_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_b
+      entity_id: switch.guest_bedroom_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_c
+      entity_id: switch.guest_bedroom_keypad_button_c
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.guest_room_keypad_d
+      entity_id: switch.guest_bedroom_keypad_button_d
 
 guest_room_fan_low:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.guest_ceiling_fan
+        entity_id: fan.guest_room_fanlinc
         speed: low
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.guest_room_keypad_a
+      entity_id: switch.guest_bedroom_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_b
+      entity_id: switch.guest_bedroom_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_c
+      entity_id: switch.guest_bedroom_keypad_button_c
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_d
+      entity_id: switch.guest_bedroom_keypad_button_d
 
 guest_room_fan_medium:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.guest_ceiling_fan
+        entity_id: fan.guest_room_fanlinc
         speed: medium
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_a
+      entity_id: switch.guest_bedroom_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.guest_room_keypad_b
+      entity_id: switch.guest_bedroom_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_c
+      entity_id: switch.guest_bedroom_keypad_button_c
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_d
+      entity_id: switch.guest_bedroom_keypad_button_d
 
 guest_room_fan_high:
   sequence:
     - service: fan.turn_on
       data_template:
-        entity_id: fan.guest_ceiling_fan
+        entity_id: fan.guest_room_fanlinc
         speed: high
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_a
+      entity_id: switch.guest_bedroom_keypad_button_a
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_b
+      entity_id: switch.guest_bedroom_keypad_button_b
     - delay:
         seconds: 1
     - service: switch.turn_on
-      entity_id: switch.guest_room_keypad_c
+      entity_id: switch.guest_bedroom_keypad_button_c
     - delay:
         seconds: 1
     - service: switch.turn_off
-      entity_id: switch.guest_room_keypad_d
+      entity_id: switch.guest_bedroom_keypad_button_d

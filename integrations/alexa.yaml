@@ -4,8 +4,8 @@ smart_home:
   filter:
     include_entities:
       - fan.living_room_ceiling_fan
-      - fan.master_ceiling_fan
-      - fan.office_ceiling_fan
+      - fan.main_bedroom_fanlinc
+      - fan.office_fanlinc
       - input_boolean.camera_notifications
       - light.david_nightstand
       - light.bedroom
@@ -24,10 +24,10 @@ smart_home:
       - light.living_room
       - light.living_room_light_1
       - light.living_room_light_2
-      - light.master_ceiling_light
+      - light.main_bedroom_fanlinc
       - light.night_stands
       - light.office
-      - light.office_ceiling_light
+      - light.office_fanlinc
       - light.office_desk_light
       - light.patio_lights
       - light.porch_light
@@ -41,10 +41,10 @@ smart_home:
     fan.living_room_ceiling_fan:
       name: Living Room Fan
       display_categories: FAN
-    fan.master_ceiling_fan:
+    fan.main_bedroom_fanlinc:
       name: Bedroom Fan
       display_categories: FAN
-    fan.office_ceiling_fan:
+    fan.office_fanlinc:
       name: Office Fan
       display_categories: FAN
 
@@ -103,7 +103,7 @@ smart_home:
     light.living_room_light_2:
       name: Living Room Light Two
       display_categories: LIGHT
-    light.master_ceiling_light:
+    light.main_bedroom_fanlinc:
       name: Bedroom Ceiling Light
       display_categories: LIGHT
     light.nightstands:
@@ -112,7 +112,7 @@ smart_home:
     light.office:
       name: Office Lights
       display_categories: LIGHT
-    light.office_ceiling_light:
+    light.office_fanlinc:
       name: Office Ceiling Light
       display_categories: LIGHT
     light.office_desk_light:

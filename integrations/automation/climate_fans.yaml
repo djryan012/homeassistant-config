@@ -12,7 +12,7 @@
           entity_id: group.sleep_status
           state: 'on'
         - condition: state
-          entity_id: fan.master_ceiling_fan
+          entity_id: fan.main_bedroom_fanlinc
           state: 'off'
   action:
     - service: script.turn_on
@@ -56,7 +56,7 @@
           entity_id: sensor.office_temperature
           above: 80
         - condition: state
-          entity_id: fan.office_ceiling_fan
+          entity_id: fan.office_fanlinc
           state: 'off'
   action:
     - service: script.turn_on

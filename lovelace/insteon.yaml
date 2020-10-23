@@ -1,5 +1,5 @@
 title: All Insteon
-icon: mdi:alpha-i-box-outline
+icon: mdi:alpha-i-circle-outline
 cards:
   - type: entities
     title: Insteon Misc.
@@ -28,60 +28,58 @@ cards:
     title: Master Bedroom Insteon
     show_header_toggle: false
     entities:
-      - entity: light.master_ceiling_light #bedroom_light
-        type: custom:slider-entity-row
+      - entity: light.main_bedroom_fanlinc #bedroom_light
         break_slider: true
         name: Master Fan's Light
-      - entity: fan.master_ceiling_fan #bedroom_fan
+      - entity: fan.main_bedroom_fanlinc #bedroom_fan
         name: Master Fan
         icon: mdi:fan
       - type: divider
         style:
           height: 1px
           background: '#62717b'
-      - entity: switch.master_keypad_main #light.keypad_switch
+      - entity: light.main_bedroom_keypad_main #light.keypad_switch
         name: Bedroom Keypad Dimmer
         icon: mdi:toggle-switch
-      - entity: switch.master_keypad_a #keypad_a
+      - entity: switch.main_bedroom_keypad_button_a #keypad_a
         name: Bedroom Keypad A
         icon: mdi:toggle-switch
-      - entity: switch.master_keypad_b #keypad_b
+      - entity: switch.main_bedroom_keypad_button_b #keypad_b
         name: Bedroom Keypad B
         icon: mdi:toggle-switch
-      - entity: switch.master_keypad_c #keypad_c
+      - entity: switch.main_bedroom_keypad_button_c #keypad_c
         name: Bedroom Keypad C
         icon: mdi:toggle-switch
-      - entity: switch.master_keypad_d #keypad_d
+      - entity: switch.main_bedroom_keypad_button_d #keypad_d
         name: Bedroom Keypad D
         icon: mdi:toggle-switch
   - type: entities
     title: Office Insteon
     show_header_toggle: false
     entities:
-      - entity: light.office_ceiling_light #office_light
-        type: custom:slider-entity-row
+      - entity: light.office_fanlinc #office_light
         break_slider: true
         name: Office Fan's Light
-      - entity: fan.office_ceiling_fan #office_fan
+      - entity: fan.office_fanlinc #office_fan
         name: Office Fan
         icon: mdi:fan
       - type: divider
         style:
           height: 1px
           background: '#62717b'
-      - entity: switch.office_keypad_main #light.office_keypad_switch
+      - entity: light.office_keypad_main #light.office_keypad_switch
         name: Office Keypad Dimmer
         icon: mdi:toggle-switch
-      - entity: switch.office_keypad_a #keypad_a
+      - entity: switch.office_keypad_button_a #keypad_a
         name: Office Keypad A
         icon: mdi:toggle-switch
-      - entity: switch.office_keypad_b #keypad_b
+      - entity: switch.office_keypad_button_b #keypad_b
         name: Office Keypad B
         icon: mdi:toggle-switch
-      - entity: switch.office_keypad_c #keypad_c
+      - entity: switch.office_keypad_button_c #keypad_c
         name: Office Keypad C
         icon: mdi:toggle-switch
-      - entity: switch.office_keypad_d #keypad_d
+      - entity: switch.office_keypad_button_d #keypad_d
         name: Office Keypad D
         icon: mdi:toggle-switch
   - type: entities
@@ -116,7 +114,7 @@ cards:
     entities:
       - entity: light.dining_table_light #Dining Room_light
         name: Dining Table Light
-        type: custom:slider-entity-row
+
         break_slider: true
       - entity: light.dining_room_switch
         name: Dining Table Switch
@@ -125,29 +123,28 @@ cards:
     title: Guest Room Insteon
     show_header_toggle: false
     entities:
-      - entity: light.guest_ceiling_light #guest_room_light
-        type: custom:slider-entity-row
+      - entity: light.guest_room_fanlinc #guest_room_light
         break_slider: true
         name: Guest Ceiling Light
-      - entity: fan.guest_ceiling_fan #guest_room_fan
+      - entity: fan.guest_room_fanlinc #guest_room_fan
         name: Guest Ceiling Fan
         icon: mdi:fan
       - type: divider
         style:
           height: 1px
           background: '#62717b'
-      - entity: switch.guest_room_keypad_main #light.guest_room_keypad_switch
+      - entity: switch.guest_bedroom_keypad_main #light.guest_room_keypad_switch
         name: Guest Room Keypad Dimmer
         icon: mdi:toggle-switch
-      - entity: switch.guest_room_keypad_a #keypad_a
+      - entity: switch.guest_bedroom_keypad_button_a #keypad_a
         name: Guest Room Keypad A
         icon: mdi:toggle-switch
-      - entity: switch.guest_room_keypad_b #keypad_b
+      - entity: switch.guest_bedroom_keypad_button_b #keypad_b
         name: Guest Room Keypad B
         icon: mdi:toggle-switch
-      - entity: switch.guest_room_keypad_c #keypad_c
+      - entity: switch.guest_bedroom_keypad_button_c #keypad_c
         name: Guest Room Keypad C
         icon: mdi:toggle-switch
-      - entity: switch.guest_room_keypad_d #keypad_d
+      - entity: switch.guest_bedroom_keypad_button_d #keypad_d
         name: Guest Room Keypad D
         icon: mdi:toggle-switch

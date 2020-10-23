@@ -9,7 +9,7 @@
       entity_id: binary_sensor.tradfri_garage_motion_sensor
       to: 'off'
       for:
-        minutes: 10
+        minutes: 0
   action:
     - service_template: '{% if trigger.to_state.state == "on" %}light.turn_on{% elif trigger.to_state.state == "off" %}light.turn_off{% endif %}'
       entity_id: light.garage_lights
@@ -68,36 +68,36 @@
 #     - service: homeassistant.turn_off
 #       entity_id: switch.shelly1pm_mqtt
 
-#####  Turn Patio light on with motion  #####
-- alias: "Patio Light on by camera sensor"
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.blueiris_back_yard_motion
-      from: 'off'
-      to: 'on'
-  condition:
-      condition: and  # 'when dark' condition: either after sunset or before sunrise
-      conditions:
-        - condition: sun
-          after: sunset
-        - condition: sun
-          before: sunrise
-        - condition: state
-          entity_id: light.patio_lights
-          state: 'off'
-          # optional: trigger only if state was this for last X time.
-          for:
-             seconds: 15
-        - condition: state
-          entity_id: light.patio_lights
-          state: 'on'
-  action:
-    - service: homeassistant.turn_on
-      entity_id: light.patio_lights
-      data:
-        brightness: 150
-        transition: 0
+# #####  Turn Patio light on with motion  #####
+# - alias: "Patio Light on by camera sensor"
+#   initial_state: True
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.blueiris_back_yard_motion
+#       from: 'off'
+#       to: 'on'
+#   condition:
+#       condition: and  # 'when dark' condition: either after sunset or before sunrise
+#       conditions:
+#         - condition: sun
+#           after: sunset
+#         - condition: sun
+#           before: sunrise
+#         - condition: state
+#           entity_id: light.patio_lights
+#           state: 'off'
+#           # optional: trigger only if state was this for last X time.
+#           for:
+#              seconds: 15
+#         - condition: state
+#           entity_id: light.patio_lights
+#           state: 'on'
+#   action:
+#     - service: homeassistant.turn_on
+#       entity_id: light.patio_lights
+#       data:
+#         brightness: 150
+#         transition: 0
 
 # Lights out no motion detected
 - alias: "Dinning Light out"
@@ -132,9 +132,9 @@
       entity_id: binary_sensor.tradfri_wetbar_sensor
       to: 'off'
   condition:
-    - platform: state
+    - condition: state
       entity_id: binary_sensor.tradfri_wetbar_sensor
-      to: 'off'
+      state: 'off'
       for:
         minutes: 4
   action:

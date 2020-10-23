@@ -1,62 +1,62 @@
-# - alias: "Desk Light On"
-#   initial_state: True
-#   trigger:
-#     - platform: state
-#       entity_id: switch.office_keypad_d
-#       from: 'off'
-#       to: 'on'
-#   condition:
-#     - condition: state
-#       entity_id: light.office_desk_light
-#       state: 'off'
-#   action:
-#     - service: light.turn_on
-#       entity_id: light.office_desk_light
-#       data:
-#         brightness: 150
-#         transition: 2
+- alias: "Desk Light On"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.office_keypad_button_d
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.office_desk_light
+      state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.office_desk_light
+      data:
+        brightness: 150
+        transition: 2
 
-# - alias: "Desk Light Off"
-#   initial_state: True
-#   trigger:
-#     - platform: state
-#       entity_id: switch.office_keypad_d
-#       from: 'on'
-#       to: 'off'
-#   condition:
-#     - condition: state
-#       entity_id: light.office_desk_light
-#       state: 'on'
-#   action:
-#     - service: light.turn_off
-#       entity_id: light.office_desk_light
+- alias: "Desk Light Off"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.office_keypad_button_d
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.office_desk_light
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.office_desk_light
 
-# - alias: "Office Keypad D On"
-#   initial_state: True
-#   trigger:
-#     - platform: state
-#       entity_id: light.office_desk_light
-#       from: 'off'
-#       to: 'on'
-#   condition:
-#     - condition: state
-#       entity_id: switch.office_keypad_d
-#       state: 'off'
-#   action:
-#     - service: homeassistant.turn_on
-#       entity_id: switch.office_keypad_d
+- alias: "Office Keypad D On"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: light.office_desk_light
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.office_keypad_button_d
+      state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.office_keypad_button_d
 
-# - alias: "Office Keypad D Off"
-#   initial_state: True
-#   trigger:
-#     - platform: state
-#       entity_id: light.office_desk_light
-#       from: 'on'
-#       to: 'off'
-#   condition:
-#     - condition: state
-#       entity_id: switch.office_keypad_d
-#       state: 'on'
-#   action:
-#     - service: homeassistant.turn_off
-#       entity_id: switch.office_keypad_d
+- alias: "Office Keypad D Off"
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: light.office_desk_light
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.office_keypad_button_d
+      state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.office_keypad_button_d
