@@ -1,47 +1,63 @@
 # Scripts for Turning lights on and off
 
-lights_on_when_waking_up:
+lights_on_when_david_awake:
   sequence:
     - condition: state
       entity_id: sun.sun
       state: 'below_horizon'
     - condition: time
       after: '00:00:00'
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       data:
         entity_id: light.kitchen_pendants, light.living_room_light_1
         brightness: 25
         transition: 3
 
+lights_on_when_georgina_awake:
+  sequence:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: time
+      after: '00:00:00'
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_pendants
+        brightness: 25
+        transition: 3
+    - service: light.turn_on
+      data:
+        entity_id:  light.office_fanlinc
+        brightness: 130 
+        transition: 3
+
 georgina_going_to_sleep:
   sequence:
-  - alias: ''
-    data:
-      entity_id: light.georgina_nightstand, light.master_ceiling_light
-    service: light.turn_off
-  - condition: state
-    entity_id: light.david_nightstand
-    state: 'on'
-  - data:
-      brightness: '25'
+    - service: light.turn_off
+      data:
+        entity_id: light.georgina_nightstand, light.main_bedroom_fanlinc
+    - condition: state
       entity_id: light.david_nightstand
-      transition: '6'
-    service: light.turn_on
+      state: 'on'
+    - service: light.turn_on
+      data:
+        entity_id: light.david_nightstand
+        brightness: 25
+        transition: 6
 
 david_going_to_sleep:
   sequence:
-  - alias: ''
-    data:
-      entity_id: light.david_nightstand, light.master_ceiling_light
-    service: light.turn_off
-  - condition: state
-    entity_id: light.georgina_nightstand
-    state: 'on'
-  - data:
-      brightness: '25'
+    - service: light.turn_off
+      data:
+        entity_id: light.david_nightstand, light.main_bedroom_fanlinc
+    - condition: state
       entity_id: light.georgina_nightstand
-      transition: '6'
-    service: light.turn_on
+      state: 'on'
+    - service: light.turn_on
+      data:
+        entity_id: light.georgina_nightstand
+        brightness: 25
+        transition: 6
 
 interior_off:
   sequence:
@@ -51,8 +67,8 @@ interior_off:
         - light.garage
         - light.david_nightstand
         - light.georgina_nightstand
-        - light.master_ceiling_light #MasterCeiling Light
-        - light.office_ceiling_light
+        - light.main_bedroom_fanlinc #MasterCeiling Light
+        - light.office_fanlinc
     - condition: state
       entity_id: group.known_guest
       state: 'not_home'
@@ -61,73 +77,73 @@ interior_off:
 switch_turn_off_all:
   sequence:
     - service: switch.turn_off
-      entity_id: switch.master_keypad_main
+      entity_id: light.main_bedroom_keypad_main
     - service: switch.turn_off
-      entity_id: switch.master_keypad_d
+      entity_id: switch.main_bedroom_keypad_button_d
     - service: switch.turn_off
       entity_id: group.interior_switches
     - service: switch.turn_off
-      entity_id: switch.office_keypad_main
+      entity_id: light.office_keypad_main
     - service: switch.turn_off
-      entity_id: switch.office_keypad_d
+      entity_id: switch.office_keypad_button_d
 
 side_light_on:
   sequence:
-  - condition: or  # 'when dark' condition: either after sunset or before sunrise
-    conditions:
-      - condition: sun
-        after: sunset
-      - condition: sun
-        before: sunrise
-  - service: light.turn_on
-    data:
-      entity_id: light.sideyard_light
-      brightness: 220
+    - condition: or  # 'when dark' condition: either after sunset or before sunrise
+      conditions:
+        - condition: sun
+          after: sunset
+        - condition: sun
+          before: sunrise
+    - service: light.turn_on
+      data:
+        entity_id: light.sideyard_light
+        brightness: 220
 
 side_light_off:
   sequence:
-  - service: light.turn_off
-    data:
-      entity_id: light.sideyard_light
-      transition: 6
+    - service: light.turn_off
+      data:
+        entity_id: light.sideyard_light
+        transition: 6
 
 wetbar_on:
   sequence:
-  - condition: state
-    entity_id: light.kitchen_wetbar_rgbw
-    state: 'off'
-  - service: light.turn_on
-    data:
+    - condition: state
       entity_id: light.kitchen_wetbar_rgbw
-      brightness: 180
-      color_temp: 370
-      transition: 2
+      state: 'off'
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_wetbar_rgbw
+        brightness: 180
+        color_temp: 370
+        transition: 2
 
 wetbar_off:
   sequence:
-  - condition: template
-    # value_template: "{{ (state_attr('light.kitchen_wetbar_rgbw', 'color_temp')|int) == 370 }}" DISABLED UNTIL COLOR TEMP FIXED
-    value_template: "{{ (state_attr('light.kitchen_wetbar_rgbw', 'brightness')|int) == 180 }}"
-  - service: light.turn_off
-    data:
-      entity_id: light.kitchen_wetbar_rgbw
-      transition: 3
+    - condition: template
+      # value_template: "{{ (state_attr('light.kitchen_wetbar_rgbw', 'color_temp')|int) == 370 }}" DISABLED UNTIL COLOR TEMP FIXED
+      value_template: "{{ (state_attr('light.kitchen_wetbar_rgbw', 'brightness')|int) == 180 }}"
+    - service: light.turn_off
+      data:
+        entity_id: light.kitchen_wetbar_rgbw
+        transition: 6
 
 restore_wetbar:
   sequence:
-  - service: light.turn_on
-    data:
-      entity_id: light.kitchen_wetbar_rgbw
-      brightness: 180
-      color_temp: 370
-      transition: 2
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_wetbar_rgbw
+        brightness: 180
+        color_temp: 370
+        transition: 3
 
 feed_dog_reminder:
   sequence:
-  - service: light.turn_on
-    data:
-      entity_id: light.kitchen_wetbar_rgbw
-      brightness: 255
-      # rgb_color: [255,0,0]
-      xy_color: [0.701, 0.299]
-      transition: 6
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_wetbar_rgbw
+        brightness: 255
+        # rgb_color: [255,0,0]
+        xy_color: [0.701, 0.299]
+        transition: 6
