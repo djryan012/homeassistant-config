@@ -25,7 +25,7 @@ api:
 config:
 discovery:
 frontend:
-  javascript_version: latest
+  # javascript_version: latest
   themes: !include www/themes.yaml
 
 lovelace: !include lovelace.yaml
@@ -43,7 +43,7 @@ updater:
 alexa: !include integrations/alexa.yaml
 automation: !include_dir_merge_list integrations/automation/
 binary_sensor: !include integrations/binary_sensors.yaml
-fan: !include integrations/fan.yaml
+# fan: !include integrations/fan.yaml
 group: !include_dir_merge_named integrations/group
 history: !include integrations/history.yaml
 input_boolean: !include integrations/input_boolean.yaml
@@ -71,8 +71,8 @@ alexa_media:
         - "Echo Dot Bedroom"
         - "Echo Input"
 
-browser_mod:
-  prefix: "browser_"
+# browser_mod:
+#   prefix: "browser_"
 
 ecobee:
   api_key: !secret ecobee_api_key
@@ -91,6 +91,13 @@ google:
 # hacs: #https://custom-components.github.io/hacs/installation/configuration/
 #   token: !secret hacs
 
+# insteon:
+#   host: !secret insteon_host
+#   ip_port: !secret insteon_port
+#   username: !secret insteon_username
+#   password: !secret insteon_password
+#   hub_version: 2
+
 mqtt:
   broker: !secret Mosq_broker
   port: !secret Mosq_port
@@ -98,8 +105,8 @@ mqtt:
   password: !secret Mosq_password
   client_id: home-assistant
   keepalive: 60
-  # discovery: true
-  # discovery_prefix: hassio/falcon/player/FPP/ha
+  discovery: true
+  discovery_prefix: homeassistant
 
 notify:
   - platform: alexa_media
@@ -115,14 +122,19 @@ notify:
   #   chat_id: !secret telegram_chatID_Mark
 
 panel_custom:
-  - name: floorplan
-    sidebar_title: Wall Panel
+  # - name: floorplan
+  #   sidebar_title: Wall Panel
+  #   sidebar_icon: mdi:floor-plan
+  #   url_path: floorplan
+  #   config:
+  #     hide_app_toolbar:
+  #     config: /local/custom_ui/floorplan/floorplan.yaml
+  - name: floor-panel-v2
+    sidebar_title: Floor Panel v2
     sidebar_icon: mdi:floor-plan
-    url_path: floorplan
-    config:
-      hide_app_toolbar:
-      config: /local/custom_ui/floorplan/floorplan.yaml
-
+    module_url: /local/js/custom-floor-panel.js
+    config: !include ui-floorplan_casa.yaml
+    
 # samsungtv:
 #   - host: !secret samsungtv_host
 
