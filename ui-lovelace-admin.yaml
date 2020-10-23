@@ -4,6 +4,7 @@ views:
   - !include lovelace/ha_companion.yaml
   - !include lovelace/connected_devices.yaml
   - !include lovelace/insteon.yaml
+  - !include lovelace/shelly.yaml
   - !include lovelace/test.yaml
   - !include lovelace/blueiris.yaml
   - !include lovelace/automations.yaml
