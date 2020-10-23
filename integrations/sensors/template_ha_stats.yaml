@@ -3,7 +3,7 @@
   sensors:
     sensor_count:
       friendly_name: 'Number of Sensors'
-      entity_id: []
+      # entity_id: []
       value_template: >
         {%- set domains = ['sensor'] -%}
         {%- for domain in domains -%}
@@ -15,7 +15,7 @@
         {%- endfor -%}
     automation_count:
       friendly_name: 'Number of Automations'
-      entity_id: []
+      # entity_id: []
       value_template: >
         {%- set domains = ['automation'] -%}
         {%- for domain in domains -%}
@@ -27,7 +27,7 @@
         {%- endfor -%}
     script_count:
       friendly_name: 'Number of Scripts'
-      entity_id: []
+      # entity_id: []
       value_template: >
         {%- set domains = ['script'] -%}
         {%- for domain in domains -%}
@@ -39,7 +39,7 @@
         {%- endfor -%}
     switch_count:
       friendly_name: 'Number of Switches'
-      entity_id: []
+      # entity_id: []
       value_template: >
         {%- set domains = ['switch'] -%}
         {%- for domain in domains -%}
@@ -51,7 +51,7 @@
         {%- endfor -%}
     binary_sensor_count:
       friendly_name: 'Number of Binary Sensors'
-      entity_id: []
+      # entity_id: []
       value_template: >
         {%- set domains = ['binary_sensor'] -%}
         {%- for domain in domains -%}
@@ -63,7 +63,7 @@
         {%- endfor -%}
     lights_count:
       friendly_name: 'Number of Lights'
-      entity_id: []
+      # entity_id: []
       value_template: >
         {%- set domains = ['light'] -%}
         {%- for domain in domains -%}
@@ -75,7 +75,7 @@
         {%- endfor -%}
     tracker_count:
       friendly_name: 'Number of Devices'
-      entity_id: []
+      # entity_id: []
       value_template: >
         {%- set domains = ['device_tracker'] -%}
         {%- for domain in domains -%}

@@ -2,9 +2,9 @@
   sensors:
     ## Calculates daylight brightness out of 100%
     sunlight_pct:
-      entity_id:
-        - sun.sun
-        - sensor.dark_sky_cloud_coverage
+      # entity_id:
+      #   - sun.sun
+      #   - sensor.dark_sky_cloud_coverage
       value_template: >-
         {%- set elevation = state_attr('sun.sun','elevation') | float %}
         {%- set cloud_coverage = states('sensor.dark_sky_cloud_coverage') | float %}
@@ -25,8 +25,8 @@
 
     ## Daylight brightness converted to opacity for CSS
     sunlight_opacity:
-      entity_id:
-        - sensor.sunlight_pct
+      # entity_id:
+      #   - sensor.sunlight_pct
       value_template: >-
         {%- set sunpct = states('sensor.sunlight_pct') | float %}
         {%- set opacity = sunpct / 100 | float %}
@@ -34,7 +34,7 @@
 
     ## Converts time and date into sentence for UI
     day:
-      entity_id: sensor.date
+      # entity_id: sensor.date
       value_template: >
         {% set days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
         {{ days[now().weekday()] }}

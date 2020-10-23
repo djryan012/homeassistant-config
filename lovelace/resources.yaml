@@ -16,10 +16,10 @@
 
 # lukevink chose to not use HACS as some libraries are custom (for styling) and I prefer manual control.
 
-  ###### CUSTOM CARDS / COMPONENTS #####
-
-- type: module   ### Updated via HACS
-  url: /hacsfiles/custom-header/custom-header.js
+###### CUSTOM CARDS / COMPONENTS #####
+### Updated via HACS
+# - type: module   ##  maykar/custom-header - Repository is archived.
+#   url: /hacsfiles/custom-header/custom-header.js
 - type: module
   url: /hacsfiles/config-template-card/config-template-card.js
 - type: module

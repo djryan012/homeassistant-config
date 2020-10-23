@@ -2,8 +2,8 @@
 #                       YR                         #
 ####################################################
 
-# https://www.home-assistant.io/components/sensor.yr/
-- platform: yr
+# # https://www.home-assistant.io/components/sensor.yr/
+# - platform: yr
 
 
 - platform: darksky

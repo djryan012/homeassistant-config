@@ -39,7 +39,7 @@ include:
     - sensor.wallpanel_charging
     - sensor.wallpanel_light_level
     - sensor.wallpanel_screenbrightness
-    - sensor.yr_symbol
+    # - sensor.yr_symbol
 exclude:
   entities:
     - switch.unifi_poe_00_00_00_00_00_01

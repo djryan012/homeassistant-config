@@ -139,10 +139,10 @@ cards:
         icon: mdi:fan
       - entity: sensor.ecobee_operationmode
         name: HVAC Mode
-        icon: mdi:settings
+        icon: mdi:cog
       - entity: sensor.ecobee_operatingstate
         name: HVAC State
-        icon: mdi:settings
+        icon: mdi:cog
       - entity: sensor.ecobee_setpoint
         name: Setpoint
         icon: mdi:temperature-fahrenheit
@@ -192,19 +192,7 @@ cards:
       - entity: sensor.pow2_voltage
         name: POW2 Volts
         icon: mdi:power-socket-us
-      - type: divider
-        style:
-          height: 2px
-          background: '#62717b'
-      - entity: switch.shelly1pm_mqtt
-        name: Backyard Motion Lights
-        icon: mdi:toggle-switch
-      - entity: sensor.shelly1pm_power
-        name: Shelly1pm Watts
-        icon: mdi:power-plug
-      - entity: binary_sensor.shelly1pm_motion
-        name: Shelly1pm Motion
-      #   icon: mdi:power-socket-us
+
   - type: entities
     title: Falcon Player
     show_header_toggle: false

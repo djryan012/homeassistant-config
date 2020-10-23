@@ -30,16 +30,16 @@
   sensors:
     issues:
       value_template: "{{ state_attr('sensor.github', 'open_issues') }}"
-      entity_id: sensor.github
+      # entity_id: sensor.github
 
     subscribers:
       value_template: "{{ state_attr('sensor.github', 'subscribers_count') }}"
-      entity_id: sensor.github
+      # entity_id: sensor.github
 
     forks:
       value_template: "{{ state_attr('sensor.github', 'forks') }}"
-      entity_id: sensor.github
+      # entity_id: sensor.github
 
     stars:
       value_template: "{{ state_attr('sensor.github', 'stargazers_count') }}"
-      entity_id: sensor.github
+      # entity_id: sensor.github
