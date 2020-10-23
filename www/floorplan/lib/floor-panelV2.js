@@ -1,31 +1,19 @@
-/*
- Floorplan for Home Assistant
- Version: 1.0.7.57
- By Petar Kozul
- https://github.com/pkozul/ha-floorplan
-*/
-
-'use strict';
-
 (function () {
-  if (typeof window.Floorplan === 'function') {
-    return;
-  }
+  if (typeof window.Floorplan === 'function') return;
 
   class Floorplan {
     constructor() {
-      this.version = '1.0.7.57';
-      this.doc = {};
+      this.version = '1.1.14';
+      this.root = {};
       this.hass = {};
       this.openMoreInfo = () => { };
       this.setIsLoading = () => { };
-      this.config = {};
-      this.timeDifference = undefined;
+      this.config = undefined;
+      this.timeDifferenceMs = 0; // assume client and server perfectly in sync
       this.pageInfos = [];
       this.entityInfos = [];
       this.elementInfos = [];
       this.cssRules = [];
-      this.entityTransitions = {};
       this.lastMotionConfig = {};
       this.logLevels = [];
       this.handleEntitiesDebounced = {};
@@ -34,12 +22,11 @@
       //this.setIsLoading(true);
     }
 
-    hassChanged(newHass, oldHass) {
+    //hassChanged(newHass, oldHass) {
+    hassChanged(newHass) {
       this.hass = newHass;
 
-      if (!this.config) {
-        return;
-      }
+      if (!this.config) return;
 
       this.handleEntitiesDebounced(); // use debounced wrapper
     }
@@ -49,7 +36,7 @@
     /***************************************************************************************************************************/
 
     init(options) {
-      this.doc = options.doc;
+      this.root = options.root;
       this.hass = options.hass;
       this.openMoreInfo = options.openMoreInfo;
       this.setIsLoading = options.setIsLoading;
@@ -64,15 +51,15 @@
 
       return this.loadConfig(options.config)
         .then(config => {
-          this.config = config;
-
-          this.getLogLevels();
+          this.getLogLevels(config);
           this.logInfo('VERSION', `Floorplan v${this.version}`);
 
-          if (!this.validateConfig(this.config)) {
+          if (!this.validateConfig(config)) {
             this.setIsLoading(false);
             return Promise.resolve();
           }
+
+          this.config = Object.assign({}, config);
 
           return this.loadLibraries()
             .then(() => {
@@ -98,7 +85,7 @@
     }
 
     initSinglePage() {
-      let imageUrl = this.getBestImage(this.config);
+      const imageUrl = this.getBestImage(this.config);
       return this.loadFloorplanSvg(imageUrl)
         .then((svg) => {
           this.config.svg = svg;
@@ -116,41 +103,46 @@
         });
     }
 
-    getLogLevels() {
-      if (!this.config.log_level) {
-        return;
-      }
+    getLogLevels(config) {
+      if (!config.log_level) return;
 
-      let allLogLevels = {
+      const allLogLevels = {
         error: ['error'],
         warning: ['error', 'warning'],
         info: ['error', 'warning', 'info'],
         debug: ['error', 'warning', 'info', 'debug'],
       };
 
-      this.logLevels = allLogLevels[this.config.log_level.toLowerCase()];
+      const logLevels = allLogLevels[config.log_level.toLowerCase()];
+
+      this.logLevels = logLevels ? logLevels : [];
     }
 
     /***************************************************************************************************************************/
     /* Loading resources
     /***************************************************************************************************************************/
 
-    loadConfig(configUrl) {
-      return this.fetchTextResource(configUrl, false)
-        .then(config => {
-          return Promise.resolve(YAML.parse(config));
-        });
+    loadConfig(config) {
+      if (typeof config === 'string') {
+        return this.fetchTextResource(config, false)
+          .then(config => {
+            return Promise.resolve(YAML.parse(config));
+          });
+      }
+      else {
+        return Promise.resolve(config);
+      }
     }
 
     loadLibraries() {
-      let promises = [];
+      const promises = [];
 
       if (this.isOptionEnabled(this.config.pan_zoom)) {
-        promises.push(this.loadScript('/local/custom_ui/floorplan/lib/svg-pan-zoom.min.js'));
+        promises.push(this.loadScript('/local/floorplan/lib/svg-pan-zoom.min.js'));
       }
 
       if (this.isOptionEnabled(this.config.fully_kiosk)) {
-        promises.push(this.loadScript('/local/custom_ui/floorplan/lib/fully-kiosk.js'));
+        promises.push(this.loadScript('/local/floorplan/lib/fully-kiosk.js'));
       }
 
       return promises.length ? Promise.all(promises) : Promise.resolve();
@@ -158,7 +150,7 @@
 
     loadScript(scriptUrl) {
       return new Promise((resolve, reject) => {
-        let script = document.createElement('script');
+        const script = document.createElement('script');
         script.src = this.cacheBuster(scriptUrl);
         script.onload = () => {
           return resolve();
@@ -167,49 +159,54 @@
           reject(new URIError(`${err.target.src}`));
         };
 
-        this.doc.appendChild(script);
+        this.root.appendChild(script);
       });
     }
 
     loadPages() {
-      let configPromises = [Promise.resolve()]
+      const configPromises = [Promise.resolve()]
         .concat(this.config.pages.map(pageConfigUrl => {
           return this.loadPageConfig(pageConfigUrl, this.config.pages.indexOf(pageConfigUrl));
         }));
 
       return Promise.all(configPromises)
         .then(() => {
-          let pageInfos = Object.keys(this.pageInfos).map(key => this.pageInfos[key]);
+          const pageInfos = Object.keys(this.pageInfos).map(key => this.pageInfos[key]);
           pageInfos.sort((a, b) => a.index - b.index); // sort ascending
 
-          let masterPageInfo = pageInfos.find(pageInfo => pageInfo.config.master_page);
+          const masterPageInfo = pageInfos.find(pageInfo => pageInfo.config.master_page);
           if (masterPageInfo) {
             masterPageInfo.isMaster = true;
           }
 
-          let defaultPageInfo = pageInfos.find(pageInfo => !pageInfo.config.master_page);
+          const defaultPageInfo = pageInfos.find(pageInfo => !pageInfo.config.master_page);
           if (defaultPageInfo) {
             defaultPageInfo.isDefault = true;
           }
 
-          let svgPromises = [Promise.resolve()]
-            .concat(pageInfos.map(pageInfo => this.loadPageFloorplanSvg(pageInfo, masterPageInfo)));
+          return this.loadPageFloorplanSvg(masterPageInfo, masterPageInfo) // load master page first
+            .then(() => {
+              const nonMasterPages = pageInfos.filter(pageInfo => pageInfo !== masterPageInfo);
 
-          return Promise.all(svgPromises);
+              const svgPromises = [Promise.resolve()]
+                .concat(nonMasterPages.map(pageInfo => this.loadPageFloorplanSvg(pageInfo, masterPageInfo)));
+
+              return Promise.all(svgPromises);
+            });
         });
     }
 
     loadPageConfig(pageConfigUrl, index) {
       return this.loadConfig(pageConfigUrl)
         .then((pageConfig) => {
-          let pageInfo = this.createPageInfo(pageConfig);
+          const pageInfo = this.createPageInfo(pageConfig);
           pageInfo.index = index;
           return Promise.resolve(pageInfo);
         });
     }
 
     loadPageFloorplanSvg(pageInfo, masterPageInfo) {
-      let imageUrl = this.getBestImage(pageInfo.config);
+      const imageUrl = this.getBestImage(pageInfo.config);
       return this.loadFloorplanSvg(imageUrl, pageInfo, masterPageInfo)
         .then((svg) => {
           svg.id = pageInfo.config.page_id; // give the SVG an ID so it can be styled (i.e. background color)
@@ -243,11 +240,11 @@
     }
 
     createPageInfo(pageConfig) {
-      let pageInfo = { config: pageConfig };
+      const pageInfo = { config: pageConfig };
 
       // Merge the page's rules with the main config's rules
-      if (pageInfo.config.rules && this.config.rules) {
-        pageInfo.config.rules = pageInfo.config.rules.concat(this.config.rules);
+      if (pageInfo.config.groups && this.config.groups) {
+        pageInfo.config.groups = pageInfo.config.groups.concat(this.config.rules);
       }
 
       this.pageInfos[pageInfo.config.page_id] = pageInfo;
@@ -262,12 +259,12 @@
 
       return this.fetchTextResource(stylesheetUrl, false)
         .then(stylesheet => {
-          let link = document.createElement('style');
+          const link = document.createElement('style');
           link.type = 'text/css';
           link.innerHTML = stylesheet;
-          this.doc.appendChild(link);
+          this.root.appendChild(link);
 
-          let cssRules = this.getArray(link.sheet.cssRules);
+          const cssRules = this.getArray(link.sheet.cssRules);
           this.cssRules = this.cssRules.concat(cssRules);
 
           return Promise.resolve();
@@ -292,18 +289,18 @@
           $(svg).attr('xmlns:xlink', 'http://www.w3.org/1999/xlink');
 
           if (pageInfo && masterPageInfo) {
-            let masterPageId = masterPageInfo.config.page_id;
-            let contentElementId = masterPageInfo.config.master_page.content_element;
+            const masterPageId = masterPageInfo.config.page_id;
+            const contentElementId = masterPageInfo.config.master_page.content_element;
 
             if (pageInfo.config.page_id === masterPageId) {
-              $(this.doc).find('#floorplan').append(svg);
+              $(this.root).find('#floorplan').append(svg);
             }
             else {
-              let $masterPageElement = $(this.doc).find('#' + masterPageId);
-              let $contentElement = $(this.doc).find('#' + contentElementId);
+              const $masterPageElement = $(this.root).find('#' + masterPageId);
+              const $contentElement = $(this.root).find('#' + contentElementId);
 
-              let height = Number.parseFloat($(svg).attr('height'));
-              let width = Number.parseFloat($(svg).attr('width'));
+              const height = Number.parseFloat($(svg).attr('height'));
+              const width = Number.parseFloat($(svg).attr('width'));
               if (!$(svg).attr('viewBox')) {
                 $(svg).attr('viewBox', `0 0 ${width} ${height}`);
               }
@@ -319,8 +316,12 @@
             }
           }
           else {
-            $(this.doc).find('#floorplan').append(svg);
+            $(this.root).find('#floorplan').append(svg);
           }
+
+          // Test
+          //$("#floorplan").append(svg);
+
 
           // Enable pan / zoom if enabled in config
           if (this.isOptionEnabled(this.config.pan_zoom)) {
@@ -364,7 +365,7 @@
             svgElementInfo.svgElement = this.replaceElement(svgElementInfo.svgElement, svgElement);
           }
 
-          let existingHref = svgElement.getAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href');
+          const existingHref = svgElement.getAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href');
           if (existingHref !== imageData) {
             svgElement.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', imageUrl);
           }
@@ -381,8 +382,8 @@
           let svgElement = $(result).siblings('svg')[0];
           svgElement = svgElement ? svgElement : $(result);
 
-          let height = Number.parseFloat($(svgElement).attr('height'));
-          let width = Number.parseFloat($(svgElement).attr('width'));
+          const height = Number.parseFloat($(svgElement).attr('height'));
+          const width = Number.parseFloat($(svgElement).attr('width'));
           if (!$(svgElement).attr('viewBox')) {
             $(svgElement).attr('viewBox', `0 0 ${width} ${height}`);
           }
@@ -408,7 +409,7 @@
     }
 
     replaceElement(prevousSvgElement, svgElement) {
-      let $parent = $(prevousSvgElement).parent();
+      const $parent = $(prevousSvgElement).parent();
 
       $(prevousSvgElement).find('*')
         .off('click');
@@ -428,12 +429,15 @@
 
     initTimeDifference() {
       this.hass.connection.socket.addEventListener('message', event => {
-        let data = JSON.parse(event.data);
+        const data = JSON.parse(event.data);
 
         // Store the time difference between the local web browser and the Home Assistant server
         if (data.event && data.event.time_fired) {
-          let lastEventFiredTime = moment(data.event.time_fired).toDate();
-          this.timeDifference = moment().diff(moment(lastEventFiredTime), 'milliseconds');
+          const lastEventFiredTime = new Date(data.event.time_fired);
+          const currentDateTime = new Date();
+          this.timeDifferenceMs = currentDateTime.getTime() - lastEventFiredTime.getTime();
+
+          this.logDebug('SYSTEM', `Client is ${(this.timeDifferenceMs >= 0) ? 'ahead of' : 'behind'} server by ${Math.abs(this.timeDifferenceMs)} miliseconds`);
         }
       });
     }
@@ -448,7 +452,7 @@
     initPageDisplay() {
       if (this.config.pages) {
         Object.keys(this.pageInfos).map(key => {
-          let pageInfo = this.pageInfos[key];
+          const pageInfo = this.pageInfos[key];
 
           $(pageInfo.svg).css('opacity', 1);
           $(pageInfo.svg).css('display', pageInfo.isMaster || pageInfo.isDefault ? 'initial' : 'none'); // Show the first page
@@ -470,7 +474,7 @@
 
       if (this.config.pages) {
         for (let key of Object.keys(this.pageInfos)) {
-          let pageInfo = this.pageInfos[key];
+          const pageInfo = this.pageInfos[key];
 
           if (pageInfo.config.variables) {
             for (let variable of pageInfo.config.variables) {
@@ -517,16 +521,16 @@
     initStartupActions() {
       let actions = [];
 
-      let startup = this.config.startup;
+      const startup = this.config.startup;
       if (startup && startup.action) {
         actions = actions.concat(Array.isArray(startup.action) ? startup.action : [startup.action]);
       }
 
       if (this.config.pages) {
         for (let key of Object.keys(this.pageInfos)) {
-          let pageInfo = this.pageInfos[key];
+          const pageInfo = this.pageInfos[key];
 
-          let startup = pageInfo.config.startup;
+          const startup = pageInfo.config.startup;
           if (startup && startup.action) {
             actions = actions.concat(Array.isArray(startup.action) ? startup.action : [startup.action]);
           }
@@ -535,7 +539,7 @@
 
       for (let action of actions) {
         if (action.service || action.service_template) {
-          let actionService = this.getActionService(action, undefined, undefined);
+          const actionService = this.getActionService(action, undefined, undefined);
 
           switch (this.getDomain(actionService)) {
             case 'floorplan':
@@ -555,11 +559,11 @@
     /***************************************************************************************************************************/
 
     initFloorplan(svg, config) {
-      if (!config.rules) {
+      if (!config.groups) {
         return Promise.resolve();;
       }
 
-      let svgElements = $(svg).find('*').toArray();
+      const svgElements = $(svg).find('*').toArray();
 
       this.initLastMotion(config, svg, svgElements);
       this.initRules(config, svg, svgElements);
@@ -572,7 +576,7 @@
       if (config.last_motion && config.last_motion.entity && config.last_motion.class) {
         this.lastMotionConfig = config.last_motion;
 
-        let entityInfo = { entityId: config.last_motion.entity, ruleInfos: [], lastState: undefined };
+        const entityInfo = { entityId: config.last_motion.entity, ruleInfos: [], lastState: undefined };
         this.entityInfos[config.last_motion.entity] = entityInfo;
       }
     }
@@ -580,13 +584,14 @@
     initRules(config, svg, svgElements) {
       // Apply default options to rules that don't override the options explictly
       if (config.defaults) {
-        for (let rule of config.rules) {
+        for (let rule of config.groups) {
           rule.hover_over = (rule.hover_over === undefined) ? config.defaults.hover_over : rule.hover_over;
           rule.more_info = (rule.more_info === undefined) ? config.defaults.more_info : rule.more_info;
+          rule.propagate = (rule.propagate === undefined) ? config.defaults.propagate : rule.propagate;
         }
       }
 
-      for (let rule of config.rules) {
+      for (let rule of config.groups) {
         if (rule.entity || rule.entities) {
           this.initEntityRule(rule, svg, svgElements);
         }
@@ -597,10 +602,10 @@
     }
 
     initEntityRule(rule, svg, svgElements) {
-      let entities = this.initGetEntityRuleEntities(rule);
+      const entities = this.initGetEntityRuleEntities(rule);
       for (let entity of entities) {
-        let entityId = entity.entityId;
-        let elementId = entity.elementId;
+        const entityId = entity.entityId;
+        const elementId = entity.elementId;
 
         let entityInfo = this.entityInfos[entityId];
         if (!entityInfo) {
@@ -608,30 +613,33 @@
           this.entityInfos[entityId] = entityInfo;
         }
 
-        let ruleInfo = { rule: rule, svgElementInfos: {}, };
+        const ruleInfo = { rule: rule, svgElementInfos: {}, };
         entityInfo.ruleInfos.push(ruleInfo);
 
-        let svgElement = svgElements.find(svgElement => svgElement.id === elementId);
+        const svgElement = svgElements.find(svgElement => svgElement.id === elementId);
         if (!svgElement) {
           this.logWarning('CONFIG', `Cannot find element '${elementId}' in SVG file`);
           continue;
         }
 
-        let svgElementInfo = this.addSvgElementToRule(svg, svgElement, ruleInfo);
+        const svgElementInfo = this.addSvgElementToRule(svg, svgElement, ruleInfo);
 
-        let $svgElement = $(svgElementInfo.svgElement);
+        const $svgElement = $(svgElementInfo.svgElement);
         if ($svgElement.length) {
           svgElementInfo.svgElement = $svgElement[0];
 
           // Create a title element (to support hover over text)
           $svgElement.append(document.createElementNS('http://www.w3.org/2000/svg', 'title'));
 
-          $svgElement.off('click').on('click', this.onEntityClick.bind({ instance: this, svgElementInfo: svgElementInfo, entityId: entityId, rule: ruleInfo.rule }));
-          $svgElement.css('cursor', 'pointer');
+          if (ruleInfo.rule.action || (ruleInfo.rule.more_info !== false)) {
+            $svgElement.off('click').on('click', this.onEntityClick.bind({ instance: this, svgElementInfo: svgElementInfo, entityId: entityId, rule: ruleInfo.rule }));
+            $svgElement.css('cursor', 'pointer');
+          }
           $svgElement.addClass('ha-entity');
 
+          /*
           if ($svgElement.is('text') && ($svgElement[0].id === elementId)) {
-            let backgroundSvgElement = svgElements.find(svgElement => svgElement.id === ($svgElement[0].id + '.background'));
+            const backgroundSvgElement = svgElements.find(svgElement => svgElement.id === ($svgElement[0].id + '.background'));
             if (!backgroundSvgElement) {
               this.addBackgroundRectToText(svgElementInfo);
             }
@@ -640,17 +648,18 @@
               $(backgroundSvgElement).css('fill-opacity', 0);
             }
           }
+          */
         }
       }
     }
 
     initGetEntityRuleEntities(rule) {
-      let targetEntities = [];
+      const targetEntities = [];
 
       // Split out HA entity groups into separate entities
       if (rule.groups) {
         for (let entityId of rule.groups) {
-          let group = this.hass.states[entityId];
+          const group = this.hass.states[entityId];
           if (group) {
             for (let entityId of group.attributes.entity_id) {
               targetEntities.push({ entityId: entityId, elementId: entityId });
@@ -669,13 +678,13 @@
 
       // HA entities treated as is
       if (rule.entities) {
-        let entityIds = rule.entities.filter(x => (typeof x === 'string'));
+        const entityIds = rule.entities.filter(x => (typeof x === 'string'));
         for (let entityId of entityIds) {
-          let entity = this.hass.states[entityId];
-          let isFloorplanVariable = (entityId.split('.')[0] === 'floorplan');
+          const entity = this.hass.states[entityId];
+          const isFloorplanVariable = (entityId.split('.')[0] === 'floorplan');
 
           if (entity || isFloorplanVariable) {
-            let elementId = rule.element ? rule.element : entityId;
+            const elementId = rule.element ? rule.element : entityId;
             targetEntities.push({ entityId: entityId, elementId: elementId });
           }
           else {
@@ -683,10 +692,10 @@
           }
         }
 
-        let entityObjects = rule.entities.filter(x => (typeof x !== 'string'));
+        const entityObjects = rule.entities.filter(x => (typeof x !== 'string'));
         for (let entityObject of entityObjects) {
-          let entity = this.hass.states[entityObject.entity];
-          let isFloorplanVariable = (entityObject.entity.split('.')[0] === 'floorplan');
+          const entity = this.hass.states[entityObject.entity];
+          const isFloorplanVariable = (entityObject.entity.split('.')[0] === 'floorplan');
 
           if (entity || isFloorplanVariable) {
             targetEntities.push({ entityId: entityObject.entity, elementId: entityObject.element });
@@ -706,7 +715,7 @@
       }
 
       for (let elementId of rule.elements) {
-        let svgElement = svgElements.find(svgElement => svgElement.id === elementId);
+        const svgElement = svgElements.find(svgElement => svgElement.id === elementId);
         if (svgElement) {
           let elementInfo = this.elementInfos[elementId];
           if (!elementInfo) {
@@ -714,18 +723,19 @@
             this.elementInfos[elementId] = elementInfo;
           }
 
-          let ruleInfo = { rule: rule, svgElementInfos: {}, };
+          const ruleInfo = { rule: rule, svgElementInfos: {}, };
           elementInfo.ruleInfos.push(ruleInfo);
 
-          let svgElementInfo = this.addSvgElementToRule(svg, svgElement, ruleInfo);
+          const svgElementInfo = this.addSvgElementToRule(svg, svgElement, ruleInfo);
 
-          let $svgElement = $(svgElementInfo.svgElement);
+          const $svgElement = $(svgElementInfo.svgElement);
 
           $svgElement.off('click').on('click', this.onElementClick.bind({ instance: this, svgElementInfo: svgElementInfo, elementId: elementId, rule: rule }));
           $svgElement.css('cursor', 'pointer');
 
+          /*
           if ($svgElement.is('text') && ($svgElement[0].id === elementId)) {
-            let backgroundSvgElement = svgElements.find(svgElement => svgElement.id === ($svgElement[0].id + '.background'));
+            const backgroundSvgElement = svgElements.find(svgElement => svgElement.id === ($svgElement[0].id + '.background'));
             if (!backgroundSvgElement) {
               this.addBackgroundRectToText(svgElementInfo);
             }
@@ -734,14 +744,15 @@
               $(backgroundSvgElement).css('fill-opacity', 0);
             }
           }
+          */
 
-          let actions = Array.isArray(rule.action) ? rule.action : [rule.action];
+          const actions = Array.isArray(rule.action) ? rule.action : [rule.action];
           for (let action of actions) {
             if (action) {
               switch (action.service) {
                 case 'toggle':
                   for (let otherElementId of action.data.elements) {
-                    let otherSvgElement = svgElements.find(svgElement => svgElement.id === otherElementId);
+                    const otherSvgElement = svgElements.find(svgElement => svgElement.id === otherElementId);
                     $(otherSvgElement).addClass(action.data.default_class);
                   }
                   break;
@@ -759,11 +770,11 @@
     }
 
     addBackgroundRectToText(svgElementInfo) {
-      let svgElement = svgElementInfo.svgElement;
+      const svgElement = svgElementInfo.svgElement;
 
-      let bbox = svgElement.getBBox();
+      const bbox = svgElement.getBBox();
 
-      let rect = $(document.createElementNS('http://www.w3.org/2000/svg', 'rect'))
+      const rect = $(document.createElementNS('http://www.w3.org/2000/svg', 'rect'))
         .attr('id', svgElement.id + '.background')
         .attr('height', bbox.height + 1)
         .attr('width', bbox.width + 2)
@@ -775,7 +786,7 @@
     }
 
     addSvgElementToRule(svg, svgElement, ruleInfo) {
-      let svgElementInfo = {
+      const svgElementInfo = {
         entityId: svgElement.id,
         svg: svg,
         svgElement: svgElement,
@@ -788,7 +799,7 @@
       };
       ruleInfo.svgElementInfos[svgElement.id] = svgElementInfo;
 
-      this.addNestedSvgElementsToRule(svgElement, ruleInfo);
+      //      this.addNestedSvgElementsToRule(svgElement, ruleInfo);
 
       return svgElementInfo;
     }
@@ -826,39 +837,48 @@
                 */
     }
 
-    addClass(entityId, svgElement, className) {
-      if ($(svgElement).hasClass('ha-leave-me-alone')) {
-        return;
-      }
+    addClasses(entityId, svgElement, classes, propagate) {
+      if (!classes || !classes.length) return;
 
-      if (!$(svgElement).hasClass(className)) {
-        this.logDebug('CLASS', `${entityId} (adding class: ${className})`);
-        $(svgElement).addClass(className);
+      for (let className of classes) {
+        if ($(svgElement).hasClass('ha-leave-me-alone')) return;
 
-        if ($(svgElement).is('text')) {
-          $(svgElement).parent().find(`[id="${entityId}.background"]`).each((i, rectElement) => {
-            if (!$(rectElement).hasClass(className + '-background')) {
-              $(rectElement).addClass(className + '-background');
+        if (!$(svgElement).hasClass(className)) {
+          this.logDebug('CLASS', `${entityId} (adding class: ${className})`);
+          $(svgElement).addClass(className);
+
+          if ($(svgElement).is('text')) {
+            /*
+            $(svgElement).parent().find(`[id="${entityId}.background"]`).each((i, rectElement) => {
+              if (!$(rectElement).hasClass(className + '-background')) {
+                $(rectElement).addClass(className + '-background');
+              }
+            });
+            */
+          }
+        }
+
+        if (propagate || (propagate === undefined)) {
+          $(svgElement).find('*').each((i, svgNestedElement) => {
+            if (!$(svgNestedElement).hasClass('ha-leave-me-alone')) {
+              if (!$(svgNestedElement).hasClass(className)) {
+                $(svgNestedElement).addClass(className);
+              }
             }
           });
         }
       }
-
-      $(svgElement).find('*').each((i, svgNestedElement) => {
-        if (!$(svgNestedElement).hasClass('ha-leave-me-alone')) {
-          if (!$(svgNestedElement).hasClass(className)) {
-            $(svgNestedElement).addClass(className);
-          }
-        }
-      });
     }
 
-    removeClasses(entityId, svgElement, classes) {
+    removeClasses(entityId, svgElement, classes, propagate) {
+      if (!classes || !classes.length) return;
+
       for (let className of classes) {
         if ($(svgElement).hasClass(className)) {
           this.logDebug('CLASS', `${entityId} (removing class: ${className})`);
           $(svgElement).removeClass(className);
 
+          /*
           if ($(svgElement).is('text')) {
             $(svgElement).parent().find(`[id="${entityId}.background"]`).each((i, rectElement) => {
               if ($(rectElement).hasClass(className + '-background')) {
@@ -866,20 +886,23 @@
               }
             });
           }
+          */
 
-          $(svgElement).find('*').each((i, svgNestedElement) => {
-            if ($(svgNestedElement).hasClass(className)) {
-              $(svgNestedElement).removeClass(className);
-            }
-          });
+          if (propagate || (propagate === undefined)) {
+            $(svgElement).find('*').each((i, svgNestedElement) => {
+              if ($(svgNestedElement).hasClass(className)) {
+                $(svgNestedElement).removeClass(className);
+              }
+            });
+          }
         }
       }
     }
 
     setEntityStyle(svgElementInfo, svgElement, entityInfo, ruleInfo) {
-      let stateConfig = ruleInfo.rule.states.find(stateConfig => (stateConfig.state === entityInfo.lastState.state));
+      const stateConfig = ruleInfo.rule.states.find(stateConfig => (stateConfig.state === entityInfo.lastState.state));
       if (stateConfig) {
-        let stroke = this.getStroke(stateConfig);
+        const stroke = this.getStroke(stateConfig);
         if (stroke) {
           svgElement.style.stroke = stroke;
         }
@@ -892,7 +915,7 @@
           }
         }
 
-        let fill = this.getFill(stateConfig);
+        const fill = this.getFill(stateConfig);
         if (fill) {
           svgElement.style.fill = fill;
         }
@@ -918,7 +941,7 @@
       changedEntityIds = changedEntityIds.concat(Object.keys(this.variables)); // always assume variables need updating
 
       if (changedEntityIds && changedEntityIds.length) {
-        let promises = changedEntityIds.map(entityId => this.handleEntity(entityId, isInitialLoad));
+        const promises = changedEntityIds.map(entityId => this.handleEntity(entityId, isInitialLoad));
         return Promise.all(promises)
           .then(() => {
             return Promise.resolve(changedEntityIds);
@@ -930,9 +953,9 @@
     }
 
     getChangedEntities(isInitialLoad) {
-      let changedEntityIds = [];
+      const changedEntityIds = [];
 
-      let entityIds = Object.keys(this.hass.states);
+      const entityIds = Object.keys(this.hass.states);
 
       let lastMotionEntityInfo, oldLastMotionState, newLastMotionState;
 
@@ -945,9 +968,9 @@
       }
 
       for (let entityId of entityIds) {
-        let entityInfo = this.entityInfos[entityId];
+        const entityInfo = this.entityInfos[entityId];
         if (entityInfo) {
-          let entityState = this.hass.states[entityId];
+          const entityState = this.hass.states[entityId];
 
           if (isInitialLoad) {
             this.logDebug('STATE', `${entityId}: ${entityState.state} (initial load)`);
@@ -956,18 +979,18 @@
             }
           }
           else if (entityInfo.lastState) {
-            let oldState = entityInfo.lastState.state;
-            let newState = entityState.state;
+            const oldState = entityInfo.lastState.state;
+            const newState = entityState.state;
 
             if (entityState.last_changed !== entityInfo.lastState.last_changed) {
-              this.logDebug('STATE', `${entityId}: ${newState} (last changed ${moment(entityInfo.lastState.last_changed).format("DD-MMM-YYYY HH:mm:ss")})`);
+              this.logDebug('STATE', `${entityId}: ${newState} (last changed ${this.formatDate(entityInfo.lastState.last_changed)})`);
               if (changedEntityIds.indexOf(entityId) < 0) {
                 changedEntityIds.push(entityId);
               }
             }
             else {
               if (!this.equal(entityInfo.lastState.attributes, entityState.attributes)) {
-                this.logDebug('STATE', `${entityId}: attributes (last updated ${moment(entityInfo.lastState.last_changed).format("DD-MMM-YYYY HH:mm:ss")})`);
+                this.logDebug('STATE', `${entityId}: attributes (last updated ${this.formatDate(entityInfo.lastState.last_changed)})`);
                 if (changedEntityIds.indexOf(entityId) < 0) {
                   changedEntityIds.push(entityId);
                 }
@@ -976,7 +999,7 @@
 
             if (this.lastMotionConfig) {
               if ((newLastMotionState !== oldLastMotionState) && (entityId.indexOf('binary_sensor') >= 0)) {
-                let friendlyName = entityState.attributes.friendly_name;
+                const friendlyName = entityState.attributes.friendly_name;
 
                 if (friendlyName === newLastMotionState) {
                   this.logDebug('LAST_MOTION', `${entityId} (new)`);
@@ -1000,8 +1023,10 @@
     }
 
     handleEntity(entityId, isInitialLoad) {
-      let entityState = this.hass.states[entityId];
-      let entityInfo = this.entityInfos[entityId];
+      const entityState = this.hass.states[entityId];
+      const entityInfo = this.entityInfos[entityId];
+
+      if (!entityInfo) return Promise.resolve();
 
       entityInfo.lastState = Object.assign({}, entityState);
 
@@ -1016,14 +1041,14 @@
     }
 
     handleEntityUpdateDom(entityInfo) {
-      let promises = [];
+      const promises = [];
 
-      let entityId = entityInfo.entityId;
-      let entityState = this.hass.states[entityId];
+      const entityId = entityInfo.entityId;
+      const entityState = this.hass.states[entityId];
 
       for (let ruleInfo of entityInfo.ruleInfos) {
         for (let svgElementId in ruleInfo.svgElementInfos) {
-          let svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
+          const svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
 
           if ($(svgElementInfo.svgElement).is('text')) {
             this.handleEntityUpdateText(entityId, ruleInfo, svgElementInfo);
@@ -1038,11 +1063,11 @@
     }
 
     handleElements(isInitialLoad) {
-      let promises = [];
+      const promises = [];
 
       Object.keys(this.elementInfos).map(key => {
-        let elementInfo = this.elementInfos[key];
-        let promise = this.handleElementUpdateDom(elementInfo)
+        const elementInfo = this.elementInfos[key];
+        const promise = this.handleElementUpdateDom(elementInfo)
           .then(() => {
             return this.handleElementUpdateCss(elementInfo, isInitialLoad);
           });
@@ -1054,11 +1079,11 @@
     }
 
     handleElementUpdateDom(elementInfo) {
-      let promises = [];
+      const promises = [];
 
       for (let ruleInfo of elementInfo.ruleInfos) {
         for (let svgElementId in ruleInfo.svgElementInfos) {
-          let svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
+          const svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
 
           if ($(svgElementInfo.svgElement).is('text')) {
             this.handleEntityUpdateText(svgElementId, ruleInfo, svgElementInfo);
@@ -1073,30 +1098,31 @@
     }
 
     handleEntityUpdateText(entityId, ruleInfo, svgElementInfo) {
-      let svgElement = svgElementInfo.svgElement;
-      let state = this.hass.states[entityId] ? this.hass.states[entityId].state : undefined;
+      const svgElement = svgElementInfo.svgElement;
+      const state = this.hass.states[entityId] ? this.hass.states[entityId].state : undefined;
 
-      let text = ruleInfo.rule.text_template ? this.evaluate(ruleInfo.rule.text_template, entityId, svgElement) : state;
+      const text = ruleInfo.rule.text_template ? this.evaluate(ruleInfo.rule.text_template, entityId, svgElement) : state;
 
-      let tspan = $(svgElement).find('tspan');
+      const tspan = $(svgElement).find('tspan');
       if (tspan.length) {
         $(tspan).text(text);
       }
       else {
-        let title = $(svgElement).find('title');
+        const title = $(svgElement).find('title');
         $(svgElement).text(text);
         if (title.length) {
           $(svgElement).append(title);
         }
       }
 
+      /*
       if (!svgElementInfo.alreadyHadBackground) {
-        let rect = $(svgElement).parent().find(`[id="${entityId}.background"]`);
+        const rect = $(svgElement).parent().find(`[id="${entityId}.background"]`);
         if (rect.length) {
           if ($(svgElement).css('display') != 'none') {
-            let parentSvg = $(svgElement).parents('svg').eq(0);
+            const parentSvg = $(svgElement).parents('svg').eq(0);
             if ($(parentSvg).css('display') !== 'none') {
-              let bbox = svgElement.getBBox();
+              const bbox = svgElement.getBBox();
               $(rect)
                 .attr('x', bbox.x - 1)
                 .attr('y', bbox.y - 0.5)
@@ -1108,12 +1134,13 @@
           }
         }
       }
+      */
     }
 
     handleEntityUpdateImage(entityId, ruleInfo, svgElementInfo) {
-      let svgElement = svgElementInfo.svgElement;
+      const svgElement = svgElementInfo.svgElement;
 
-      let imageUrl = ruleInfo.rule.image ? ruleInfo.rule.image : this.evaluate(ruleInfo.rule.image_template, entityId, svgElement);
+      const imageUrl = ruleInfo.rule.image ? ruleInfo.rule.image : this.evaluate(ruleInfo.rule.image_template, entityId, svgElement);
 
       if (imageUrl && (ruleInfo.imageUrl !== imageUrl)) {
         ruleInfo.imageUrl = imageUrl;
@@ -1123,7 +1150,7 @@
         }
 
         if (ruleInfo.rule.image_refresh_interval) {
-          let refreshInterval = parseInt(ruleInfo.rule.image_refresh_interval);
+          const refreshInterval = parseInt(ruleInfo.rule.image_refresh_interval);
 
           ruleInfo.imageLoader = setInterval((imageUrl, svgElement) => {
             this.loadImage(imageUrl, svgElementInfo, entityId, ruleInfo.rule)
@@ -1144,13 +1171,13 @@
     }
 
     handleEntitySetHoverOver(entityInfo) {
-      let entityId = entityInfo.entityId;
-      let entityState = this.hass.states[entityId];
+      const entityId = entityInfo.entityId;
+      const entityState = this.hass.states[entityId];
 
       for (let ruleInfo of entityInfo.ruleInfos) {
         if (ruleInfo.rule.hover_over !== false) {
           for (let svgElementId in ruleInfo.svgElementInfos) {
-            let svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
+            const svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
 
             this.handlEntitySetHoverOverText(svgElementInfo.svgElement, entityState);
           }
@@ -1159,16 +1186,14 @@
     }
 
     handlEntitySetHoverOverText(element, entityState) {
-      let dateFormat = this.config.date_format ? this.config.date_format : 'DD-MMM-YYYY';
+      const dateFormat = this.config.date_format ? this.config.date_format : 'DD-MMM-YYYY';
 
       $(element).find('title').each((i, titleElement) => {
-        let lastChangedElapsed = moment().to(moment(entityState.last_changed));
-        let lastChangedDate = moment(entityState.last_changed).format(dateFormat);
-        let lastChangedTime = moment(entityState.last_changed).format('HH:mm:ss');
+        const lastChangedElapsed = (new Date()).getTime() - new Date(entityState.last_changed);
+        const lastChangedDate = this.formatDate(entityState.last_changed);
 
-        let lastUpdatedElapsed = moment().to(moment(entityState.last_updated));
-        let lastUpdatedDate = moment(entityState.last_updated).format(dateFormat);
-        let lastUpdatedTime = moment(entityState.last_updated).format('HH:mm:ss');
+        const lastUpdatedElapsed = (new Date()).getTime() - new Date(entityState.last_updated);
+        const lastUpdatedDate = this.formatDate(entityState.last_updated);
 
         let titleText = `${entityState.attributes.friendly_name}\n`;
         titleText += `State: ${entityState.state}\n\n`;
@@ -1178,21 +1203,19 @@
         });
         titleText += '\n';
 
-        titleText += `Last changed: ${lastChangedDate} ${lastChangedTime}\n`;
-        titleText += `Last updated: ${lastUpdatedDate} ${lastUpdatedTime}`;
+        titleText += `Last changed: ${lastChangedDate}\n`;
+        titleText += `Last updated: ${lastUpdatedDate}`;
 
         $(titleElement).html(titleText);
       });
     }
 
     handleElementUpdateCss(elementInfo, isInitialLoad) {
-      if (!this.cssRules || !this.cssRules.length) {
-        return;
-      }
+      if (!this.cssRules || !this.cssRules.length) return;
 
       for (let ruleInfo of elementInfo.ruleInfos) {
         for (let svgElementId in ruleInfo.svgElementInfos) {
-          let svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
+          const svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
 
           this.handleUpdateElementCss(svgElementInfo, ruleInfo);
         }
@@ -1200,126 +1223,53 @@
     }
 
     handleEntityUpdateCss(entityInfo, isInitialLoad) {
-      if (!this.cssRules || !this.cssRules.length) {
-        return;
-      }
+      if (!this.cssRules || !this.cssRules.length) return;
 
       for (let ruleInfo of entityInfo.ruleInfos) {
         for (let svgElementId in ruleInfo.svgElementInfos) {
-          let svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
+          const svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
 
           if (svgElementInfo.svgElement) { // images may not have been updated yet
-            let wasTransitionApplied = this.handleEntityUpdateTransitionCss(entityInfo, ruleInfo, svgElementInfo, isInitialLoad);
-            this.handleUpdateCss(entityInfo, svgElementInfo, ruleInfo, wasTransitionApplied);
+            this.handleUpdateCss(entityInfo, svgElementInfo, ruleInfo);
           }
         }
       }
     }
 
-    handleEntityUpdateTransitionCss(entityInfo, ruleInfo, svgElementInfo, isInitialLoad) {
-      let entityId = entityInfo.entityId;
-      let entityState = this.hass.states[entityId];
-      let svgElement = svgElementInfo.svgElement;
-
-      let wasTransitionApplied = false;
-
-      if (ruleInfo.rule.states && ruleInfo.rule.state_transitions) {
-        let transitionConfig = ruleInfo.rule.state_transitions.find(transitionConfig => (transitionConfig.to_state === entityState.state));
-        if (transitionConfig && transitionConfig.from_state && transitionConfig.to_state && transitionConfig.duration) {
-          let elapsed = Math.max(moment().diff(moment(entityState.last_changed), 'milliseconds'), 0);
-          let remaining = (transitionConfig.duration * 1000) - elapsed;
-
-          let fromStateConfig = ruleInfo.rule.states.find(stateConfig => (stateConfig.state === transitionConfig.from_state));
-          let toStateConfig = ruleInfo.rule.states.find(stateConfig => (stateConfig.state === transitionConfig.to_state));
-
-          let fromColor = this.getFill(fromStateConfig);
-          let toColor = this.getFill(toStateConfig);
-
-          if (fromColor && toColor) {
-            if (remaining > 0) {
-              let transition = this.entityTransitions[entityId];
-              if (!transition) {
-                this.logDebug('TRANSITION', `${entityId} (created)`);
-                transition = {
-                  entityId: entityId,
-                  svgElementInfo: svgElementInfo,
-                  ruleInfo: ruleInfo,
-                  duration: transitionConfig.duration,
-                  fromStateConfig: fromStateConfig,
-                  toStateConfig: toStateConfig,
-                  fromColor: fromColor,
-                  toColor: toColor,
-                  startMoment: undefined,
-                  endMoment: undefined,
-                  isActive: false,
-                };
-                this.entityTransitions[entityId] = transition;
-              }
-
-              // Assume the transition starts (or started) when the origin state change occurred
-              transition.startMoment = this.serverToLocalMoment(moment(entityState.last_changed));
-              transition.endMoment = transition.startMoment.clone();
-              transition.endMoment.add(transition.duration, 'seconds');
-
-              // If the transition is not currently running, kick it off
-              if (!transition.isActive) {
-                // If this state change just occurred, the transition starts as of now
-                if (!isInitialLoad) {
-                  let nowMoment = moment();
-                  transition.startMoment = nowMoment.clone();
-                  transition.endMoment = transition.startMoment.clone();
-                  transition.endMoment.add(transition.duration, 'seconds');
-                }
-
-                this.logDebug('TRANSITION', `${transition.entityId}: (start)`);
-                transition.isActive = true;
-                this.handleEntityTransition(transition);
-              }
-              else {
-                // If the transition is currently running, it will be extended with latest start / end times
-                this.logDebug('TRANSITION', `${transition.entityId} (continue)`);
-              }
-            }
-            else {
-              this.setEntityStyle(svgElementInfo, svgElement, entityInfo, ruleInfo);
-            }
-          }
-          else {
-            this.setEntityStyle(svgElementInfo, svgElement, entityInfo, ruleInfo);
-          }
-          wasTransitionApplied = true;
-        }
-      }
-
-      return wasTransitionApplied;
+    getStateConfigClasses(stateConfig) { // support class: or classes:
+      if (!stateConfig) return [];
+      if (Array.isArray(stateConfig.class)) return stateConfig.class;
+      if (typeof stateConfig.class === "string") return stateConfig.class.split(" ").map(x => x.trim());
+      if (Array.isArray(stateConfig.classes)) return stateConfig.classes;
+      if (typeof stateConfig.classes === "string") return stateConfig.classes.split(" ").map(x => x.trim());
+      return [];
     }
 
-    handleUpdateCss(entityInfo, svgElementInfo, ruleInfo, wasTransitionApplied) {
-      let entityId = entityInfo.entityId;
-      let svgElement = svgElementInfo.svgElement;
+    handleUpdateCss(entityInfo, svgElementInfo, ruleInfo) {
+      const entityId = entityInfo.entityId;
+      const svgElement = svgElementInfo.svgElement;
 
-      let targetClass = undefined;
-      let obsoleteClasses = [];
+      let targetClasses = [];
+      const obsoleteClasses = [];
 
       if (ruleInfo.rule.class_template) {
-        targetClass = this.evaluate(ruleInfo.rule.class_template, entityId, svgElement);
+        targetClasses = this.evaluate(ruleInfo.rule.class_template, entityId, svgElement).split(" ");
       }
 
       // Get the config for the current state
       if (ruleInfo.rule.states) {
-        let entityState = this.hass.states[entityId];
+        const entityState = this.hass.states[entityId];
 
-        let stateConfig = ruleInfo.rule.states.find(stateConfig => (stateConfig.state === entityState.state));
-        if (stateConfig && stateConfig.class && !wasTransitionApplied) {
-          targetClass = stateConfig.class;
-        }
+        const stateConfig = ruleInfo.rule.states.find(stateConfig => (stateConfig.state === entityState.state));
+        targetClasses = this.getStateConfigClasses(stateConfig);
 
         // Remove any other previously-added state classes
         for (let otherStateConfig of ruleInfo.rule.states) {
           if (!stateConfig || (otherStateConfig.state !== stateConfig.state)) {
-            if (otherStateConfig.class && (otherStateConfig.class !== targetClass) && (otherStateConfig.class !== 'ha-entity') && $(svgElement).hasClass(otherStateConfig.class)) {
-              if (svgElementInfo.originalClasses.indexOf(otherStateConfig.class) < 0) {
-                obsoleteClasses.push(otherStateConfig.class);
+            const otherStateClasses = this.getStateConfigClasses(otherStateConfig);
+            for (let otherStateClass of otherStateClasses) {
+              if (otherStateClass && (targetClasses.indexOf(otherStateClass) < 0) && (otherStateClass !== 'ha-entity') && $(svgElement).hasClass(otherStateClass) && (svgElementInfo.originalClasses.indexOf(otherStateClass) < 0)) {
+                obsoleteClasses.push(otherStateClass);
               }
             }
           }
@@ -1327,116 +1277,68 @@
       }
       else {
         if (svgElement.classList) {
-          for (let otherClassName of this.getArray(svgElement.classList)) {
-            if ((otherClassName !== targetClass) && (otherClassName !== 'ha-entity')) {
-              if (svgElementInfo.originalClasses.indexOf(otherClassName) < 0) {
-                obsoleteClasses.push(otherClassName);
-              }
+          for (let otherClass of this.getArray(svgElement.classList)) {
+            if ((targetClasses.indexOf(otherClass) < 0) && (otherClass !== 'ha-entity') && $(svgElement).hasClass(otherClass) && (svgElementInfo.originalClasses.indexOf(otherClass) < 0)) {
+              obsoleteClasses.push(otherClass);
             }
           }
         }
       }
 
       // Remove any obsolete classes from the entity
-      if (obsoleteClasses.length) {
-        //this.logDebug(`${entityId}: Removing obsolete classes: ${obsoleteClasses.join(', ')}`);
-        this.removeClasses(entityId, svgElement, obsoleteClasses);
-      }
+      //this.logDebug(`${entityId}: Removing obsolete classes: ${obsoleteClasses.join(', ')}`);
+      this.removeClasses(entityId, svgElement, obsoleteClasses, ruleInfo.rule.propagate);
 
-      // Add the target class to the entity
-      if (targetClass && !$(svgElement).hasClass(targetClass)) {
-        let hasTransitionConfig = ruleInfo.rule.states && ruleInfo.rule.state_transitions;
-        if (hasTransitionConfig && !wasTransitionApplied) {
-          let transition = this.entityTransitions[entityId];
-          if (transition && transition.isActive) {
-            this.logDebug('TRANSITION', `${transition.entityId} (cancel)`);
-            transition.isActive = false;
-          }
-        }
-
-        this.addClass(entityId, svgElement, targetClass);
-      }
+      // Add the target classes to the entity
+      this.addClasses(entityId, svgElement, targetClasses, ruleInfo.rule.propagate);
     }
 
     handleUpdateElementCss(svgElementInfo, ruleInfo) {
-      let entityId = svgElementInfo.entityId;
-      let svgElement = svgElementInfo.svgElement;
+      const entityId = svgElementInfo.entityId;
+      const svgElement = svgElementInfo.svgElement;
 
-      let targetClass = undefined;
+      let targetClasses = undefined;
       if (ruleInfo.rule.class_template) {
-        targetClass = this.evaluate(ruleInfo.rule.class_template, entityId, svgElement);
+        targetClasses = this.evaluate(ruleInfo.rule.class_template, entityId, svgElement).split(" ");
       }
 
-      let obsoleteClasses = [];
-      for (let otherClassName of this.getArray(svgElement.classList)) {
-        if ((otherClassName !== targetClass) && (otherClassName !== 'ha-entity')) {
-          if (svgElementInfo.originalClasses.indexOf(otherClassName) < 0) {
-            obsoleteClasses.push(otherClassName);
-          }
+      const obsoleteClasses = [];
+      for (let otherClass of this.getArray(svgElement.classList)) {
+        if ((targetClasses.indexOf(otherClass) < 0) && (otherClass !== 'ha-entity') && $(svgElement).hasClass(otherClass) && (svgElementInfo.originalClasses.indexOf(otherClass) < 0)) {
+          obsoleteClasses.push(otherClass);
         }
       }
 
       // Remove any obsolete classes from the entity
-      if (obsoleteClasses.length) {
-        this.removeClasses(entityId, svgElement, obsoleteClasses);
-      }
+      this.removeClasses(entityId, svgElement, obsoleteClasses, ruleInfo.rule.propagate);
 
       // Add the target class to the entity
-      if (targetClass && !$(svgElement).hasClass(targetClass)) {
-        this.addClass(entityId, svgElement, targetClass);
-      }
-    }
-
-    handleEntityTransition(transition) {
-      if (!transition.isActive) {
-        return;
-      }
-
-      let nowMoment = moment();
-
-      let isExpired = (nowMoment >= transition.endMoment);
-
-      let ratio = isExpired ? 1 : (nowMoment - transition.startMoment) / (transition.endMoment - transition.startMoment);
-      let color = this.getTransitionColor(transition.fromColor, transition.toColor, ratio);
-      //this.logDebug('TRANSITION', `${transition.entityId} (ratio: ${ratio}, element: ${transition.svgElementInfo.svgElement.id}, fill: ${color})`);
-      transition.svgElementInfo.svgElement.style.fill = color;
-
-      if (isExpired) {
-        transition.isActive = false;
-        this.logDebug('TRANSITION', `${transition.entityId} (end)`);
-        return;
-      }
-
-      setTimeout(() => {
-        this.handleEntityTransition(transition);
-      }, 100);
+      this.addClasses(entityId, svgElement, targetClasses, ruleInfo.rule.propagate);
     }
 
     handleEntityUpdateLastMotionCss(entityInfo) {
-      if (!this.lastMotionConfig || !this.cssRules || !this.cssRules.length) {
-        return;
-      }
+      if (!this.lastMotionConfig || !this.cssRules || !this.cssRules.length) return;
 
-      let entityId = entityInfo.entityId;
-      let entityState = this.hass.states[entityId];
+      const entityId = entityInfo.entityId;
+      const entityState = this.hass.states[entityId];
+
+      if (!entityState) return;
 
       for (let ruleInfo of entityInfo.ruleInfos) {
         for (let svgElementId in ruleInfo.svgElementInfos) {
-          let svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
-          let svgElement = svgElementInfo.svgElement;
+          const svgElementInfo = ruleInfo.svgElementInfos[svgElementId];
+          const svgElement = svgElementInfo.svgElement;
+
+          const stateConfigClasses = this.getStateConfigClasses(this.lastMotionConfig);
 
           if (this.hass.states[this.lastMotionConfig.entity] &&
             (entityState.attributes.friendly_name === this.hass.states[this.lastMotionConfig.entity].state)) {
-            if (!$(svgElement).hasClass(this.lastMotionConfig.class)) {
-              //this.logDebug(`${entityId}: Adding last motion class '${this.lastMotionConfig.class}'`);
-              $(svgElement).addClass(this.lastMotionConfig.class);
-            }
+            //this.logDebug(`${entityId}: Adding last motion class '${this.lastMotionConfig.class}'`);
+            this.addClasses(entityId, svgElement, stateConfigClasses, ruleInfo.propagate);
           }
           else {
-            if ($(svgElement).hasClass(this.lastMotionConfig.class)) {
-              //this.logDebug(`${entityId}: Removing last motion class '${this.lastMotionConfig.class}'`);
-              $(svgElement).removeClass(this.lastMotionConfig.class);
-            }
+            //this.logDebug(`${entityId}: Removing last motion class '${this.lastMotionConfig.class}'`);
+            this.removeClasses(entityId, svgElement, stateConfigClasses, ruleInfo.propagate);
           }
         }
       }
@@ -1457,33 +1359,33 @@
     validateConfig(config) {
       let isValid = true;
 
-      if (!config.pages && !config.rules) {
+      if (!config.pages && !config.groups) {
         this.setIsLoading(false);
-        this.logWarning('CONFIG', `Cannot find 'pages' nor 'rules' in floorplan configuration`);
+        //this.logError('CONFIG', `Cannot find 'pages' nor 'rules' in floorplan configuration`);
         isValid = false;
       }
       else {
         if (config.pages) {
           if (!config.pages.length) {
-            this.logWarning('CONFIG', `The 'pages' section must contain one or more pages in floorplan configuration`);
+            this.logError('CONFIG', `The 'pages' section must contain one or more pages in floorplan configuration`);
             isValid = false;
           }
         }
         else {
-          if (!config.rules) {
-            this.logWarning('CONFIG', `Cannot find 'rules' in floorplan configuration`);
+          if (!config.groups) {
+            this.logError('CONFIG', `Cannot find 'rules' in floorplan configuration`);
             isValid = false;
           }
 
-          let invalidRules = config.rules.filter(x => x.entities && x.elements);
+          let invalidRules = config.groups.filter(x => x.entities && x.elements);
           if (invalidRules.length) {
-            this.logWarning('CONFIG', `A rule cannot contain both 'entities' and 'elements' in floorplan configuration`);
+            this.logError('CONFIG', `A rule cannot contain both 'entities' and 'elements' in floorplan configuration`);
             isValid = false;
           }
 
-          invalidRules = config.rules.filter(x => !(x.entity || x.entities) && !(x.element || x.elements));
+          invalidRules = config.groups.filter(x => !(x.entity || x.entities) && !(x.element || x.elements));
           if (invalidRules.length) {
-            this.logWarning('CONFIG', `A rule must contain either 'entities' or 'elements' in floorplan configuration`);
+            this.logError('CONFIG', `A rule must contain either 'entities' or 'elements' in floorplan configuration`);
             isValid = false;
           }
         }
@@ -1492,30 +1394,35 @@
       return isValid;
     }
 
-    localToServerMoment(localMoment) {
-      let serverMoment = localMoment.clone();
-      if (this.timeDifference >= 0)
-        serverMoment.subtract(this.timeDifference, 'milliseconds');
-      else
-        serverMoment.add(Math.abs(this.timeDifference), 'milliseconds');
-      return serverMoment;
+    localToServerDate(localDate) {
+      const serverDateMs = localDate.getTime() - this.timeDifferenceMs;
+      return new Date(serverDateMs);
     }
 
-    serverToLocalMoment(serverMoment) {
-      let localMoment = serverMoment.clone();
-      if (this.timeDifference >= 0)
-        localMoment.add(Math.abs(this.timeDifference), 'milliseconds');
-      else
-        localMoment.subtract(this.timeDifference, 'milliseconds');
-      return localMoment;
+    serverToLocalDate(serverDate) {
+      const localDateMs = serverDate.getTime() + this.timeDifferenceMs;
+      return new Date(localDateMs);
+    }
+
+    formatDate(date) {
+      if (!date) return '';
+
+      return (typeof date === 'string') ?
+        new Date(date).toLocaleString() : date.toLocaleString();
     }
 
     evaluate(code, entityId, svgElement) {
-      let entityState = this.hass.states[entityId];
-      let functionBody = (code.indexOf('${') >= 0) ? `\`${code}\`;` : code;
-      functionBody = (functionBody.indexOf('return') >= 0) ? functionBody : `return ${functionBody};`;
-      let func = new Function('entity', 'entities', 'hass', 'config', 'element', functionBody);
-      return func(entityState, this.hass.states, this.hass, this.config, svgElement);
+      try {
+        const entityState = this.hass.states[entityId];
+        let functionBody = (code.indexOf('${') >= 0) ? `\`${code}\`;` : code;
+        functionBody = (functionBody.indexOf('return') >= 0) ? functionBody : `return ${functionBody};`;
+        const func = new Function('entity', 'entities', 'hass', 'config', 'element', functionBody);
+        return func(entityState, this.hass.states, this.hass, this.config, svgElement);
+      }
+      catch (err) {
+        //  this.logError('ERROR', entityId);
+        //  this.logError('ERROR', err);
+      }
     }
 
     /***************************************************************************************************************************/
@@ -1533,7 +1440,11 @@
     }
 
     onActionClick(svgElementInfo, entityId, elementId, rule) {
-      if (!rule || !rule.action) {
+      let entityInfo = this.entityInfos[entityId];
+      const actionRuleInfo = entityInfo && entityInfo.ruleInfos.find(ruleInfo => ruleInfo.rule.action);
+      const actionRule = rule.action ? rule : (actionRuleInfo ? actionRuleInfo.rule : undefined);
+
+      if (!rule || !actionRule) {
         if (entityId && (rule.more_info !== false)) {
           this.openMoreInfo(entityId);
         }
@@ -1542,12 +1453,12 @@
 
       let calledServiceCount = 0;
 
-      let svgElement = svgElementInfo.svgElement;
+      const svgElement = svgElementInfo.svgElement;
 
-      let actions = Array.isArray(rule.action) ? rule.action : [rule.action];
+      const actions = Array.isArray(actionRule.action) ? actionRule.action : [actionRule.action];
       for (let action of actions) {
         if (action.service || action.service_template) {
-          let actionService = this.getActionService(action, entityId, svgElement);
+          const actionService = this.getActionService(action, entityId, svgElement);
 
           switch (this.getDomain(actionService)) {
             case 'floorplan':
@@ -1564,25 +1475,25 @@
       }
 
       if (!calledServiceCount) {
-        if (entityId && (rule.more_info !== false)) {
+        if (entityId && (actionRule.more_info !== false)) {
           this.openMoreInfo(entityId);
         }
       }
     }
 
     callFloorplanService(action, entityId, svgElementInfo) {
-      let svgElement = svgElementInfo ? svgElementInfo.svgElement : undefined;
+      const svgElement = svgElementInfo ? svgElementInfo.svgElement : undefined;
 
-      let actionService = this.getActionService(action, entityId, svgElement);
-      let actionData = this.getActionData(action, entityId, svgElement);
+      const actionService = this.getActionService(action, entityId, svgElement);
+      const actionData = this.getActionData(action, entityId, svgElement);
 
       switch (this.getService(actionService)) {
         case 'class_toggle':
           if (actionData) {
-            let classes = actionData.classes;
+            const classes = actionData.classes;
 
             for (let otherElementId of actionData.elements) {
-              let otherSvgElement = $(svgElementInfo.svg).find(`[id="${otherElementId}"]`);
+              const otherSvgElement = $(svgElementInfo.svg).find(`[id="${otherElementId}"]`);
 
               if ($(otherSvgElement).hasClass(classes[0])) {
                 $(otherSvgElement).removeClass(classes[0]);
@@ -1600,12 +1511,12 @@
           break;
 
         case 'page_navigate':
-          let page_id = actionData.page_id;
-          let targetPageInfo = page_id && this.pageInfos[page_id];
+          const page_id = actionData.page_id;
+          const targetPageInfo = page_id && this.pageInfos[page_id];
 
           if (targetPageInfo) {
             Object.keys(this.pageInfos).map(key => {
-              let pageInfo = this.pageInfos[key];
+              const pageInfo = this.pageInfos[key];
 
               if (!pageInfo.isMaster) {
                 if ($(pageInfo.svg).css('display') !== 'none') {
@@ -1620,16 +1531,16 @@
 
         case 'variable_set':
           if (actionData.variable) {
-            let attributes = [];
+            const attributes = [];
 
             if (actionData.attributes) {
               for (let attribute of actionData.attributes) {
-                let attributeValue = this.getActionValue(attribute, entityId, svgElement);
+                const attributeValue = this.getActionValue(attribute, entityId, svgElement);
                 attributes.push({ name: attribute.attribute, value: attributeValue });
               }
             }
 
-            let value = this.getActionValue(actionData, entityId, svgElement);
+            const value = this.getActionValue(actionData, entityId, svgElement);
             this.setVariable(actionData.variable, value, attributes);
           }
           break;
@@ -1660,7 +1571,10 @@
       }
 
       for (let otherVariableName of Object.keys(this.variables)) {
-        this.hass.states[otherVariableName].last_changed = new Date(); // mark all variables as changed
+        const otherVariable = this.hass.states[otherVariableName];
+        if (otherVariable) {
+          otherVariable.last_changed = new Date(); // mark all variables as changed
+        }
       }
 
       // Simulate an event change to all entities
@@ -1674,16 +1588,14 @@
     /***************************************************************************************************************************/
 
     callHomeAssistantService(action, entityId, svgElementInfo) {
-      let svgElement = svgElementInfo ? svgElementInfo.svgElement : undefined;
+      const svgElement = svgElementInfo ? svgElementInfo.svgElement : undefined;
 
-      let actionService = this.getActionService(action, entityId, svgElement);
-      let actionData = this.getActionData(action, entityId, svgElement);
+      const actionService = this.getActionService(action, entityId, svgElement);
+      const actionData = this.getActionData(action, entityId, svgElement);
 
-      /*
       if (!actionData.entity_id && entityId) {
         actionData.entity_id = entityId;
       }
-      */
 
       this.hass.callService(this.getDomain(actionService), this.getService(actionService), actionData);
     }
@@ -1691,7 +1603,7 @@
     getActionData(action, entityId, svgElement) {
       let data = action.data ? action.data : {};
       if (action.data_template) {
-        let result = this.evaluate(action.data_template, entityId, svgElement);
+        const result = this.evaluate(action.data_template, entityId, svgElement);
         data = (typeof result === 'string') ? JSON.parse(result) : result;
       }
       return data;
@@ -1721,17 +1633,17 @@
       this.setIsLoading(false);
 
       if (msg.toLowerCase().indexOf("script error") >= 0) {
-        this.logError('Script error: See browser console for detail');
+        this.logError('SCRIPT', 'Script error: See browser console for detail');
       }
       else {
-        let message = [
+        const message = [
           msg,
           'URL: ' + url,
           'Line: ' + lineNo + ', column: ' + columnNo,
           'Error: ' + JSON.stringify(error)
         ].join('<br>');
 
-        this.logError(message);
+        this.logError('ERROR', message);
       }
 
       return false;
@@ -1749,8 +1661,8 @@
       this.log('error', message);
     }
 
-    logError(message) {
-      this.log('error', message);
+    logError(area, message) {
+      this.log('error', `${area} ${message}`);
     }
 
     logWarning(area, message) {
@@ -1766,36 +1678,37 @@
     }
 
     log(level, message) {
-      let text = `${moment().format("DD-MM-YYYY HH:mm:ss")} ${level.toUpperCase()} ${message}`;
+      const text = `${this.formatDate(new Date())} ${level.toUpperCase()} ${message}`;
 
-      switch (level) {
-        case 'error':
-          console.error(text);
-          break;
+      if (this.config && this.config.debug && (this.config.debug !== false)) {
+        switch (level) {
+          case 'error':
+            console.error(text);
+            break;
 
-        case 'warning':
-          console.warn(text);
-          break;
+          case 'warning':
+            console.warn(text);
+            break;
 
-        case 'error':
-          console.info(text);
-          break;
+          case 'error':
+            console.info(text);
+            break;
 
-        default:
-          console.log(text);
-          break;
+          default:
+            console.log(text);
+            break;
+        }
       }
 
-      if (!this.config) {
-        // Always log messages before the config has been loaded
-      }
-      else if (!this.logLevels || !this.logLevels.length || (this.logLevels.indexOf(level) < 0)) {
-        return;
-      }
+      const isTargetLogLevel = this.logLevels && this.logLevels.length && (this.logLevels.indexOf(level) >= 0);
 
-      let log = $(this.doc).find('#log');
-      $(log).find('ul').prepend(`<li class="${level}">${text}</li>`)
-      $(log).css('display', 'block');
+      if ((!this.config && (level === 'error')) || isTargetLogLevel) {
+        // Always log error messages that occur before the config has been loaded
+        //const log = $(this.root).find('#log');
+        //$(log).find('ul').prepend(`<li class="${level}">${text}</li>`)
+        //$(log).css('display', 'block');
+        console.log(text);
+      }
     }
 
     /***************************************************************************************************************************/
@@ -1805,16 +1718,21 @@
     getStroke(stateConfig) {
       let stroke = undefined;
 
+      const stateConfigClasses = this.getStateConfigClasses(stateConfig);
+
       for (let cssRule of this.cssRules) {
-        if (cssRule.selectorText && cssRule.selectorText.indexOf(`.${stateConfig.class}`) >= 0) {
-          if (cssRule.style && cssRule.style.stroke) {
-            if (cssRule.style.stroke[0] === '#') {
-              stroke = cssRule.style.stroke;
+        for (let stateConfigClass of stateConfigClasses) {
+          if (cssRule.selectorText && cssRule.selectorText.indexOf(`.${stateConfigClass}`) >= 0) {
+            if (cssRule.style && cssRule.style.stroke) {
+              if (cssRule.style.stroke[0] === '#') {
+                stroke = cssRule.style.stroke;
+              }
+              else {
+                const rgb = cssRule.style.stroke.substring(4).slice(0, -1).split(',').map(x => parseInt(x));
+                stroke = `#${rgb[0].toString(16)[0]}${rgb[1].toString(16)[0]}${rgb[2].toString(16)[0]}`;
+              }
             }
-            else {
-              let rgb = cssRule.style.stroke.substring(4).slice(0, -1).split(',').map(x => parseInt(x));
-              stroke = `#${rgb[0].toString(16)[0]}${rgb[1].toString(16)[0]}${rgb[2].toString(16)[0]}`;
-            }
+            break;
           }
         }
       }
@@ -1825,26 +1743,27 @@
     getFill(stateConfig) {
       let fill = undefined;
 
+      const stateConfigClasses = this.getStateConfigClasses(stateConfig);
+
       for (let cssRule of this.cssRules) {
-        if (cssRule.selectorText && cssRule.selectorText.indexOf(`.${stateConfig.class}`) >= 0) {
-          if (cssRule.style && cssRule.style.fill) {
-            if (cssRule.style.fill[0] === '#') {
-              fill = cssRule.style.fill;
+        for (let stateConfigClass of stateConfigClasses) {
+          if (cssRule.selectorText && cssRule.selectorText.indexOf(`.${stateConfigClass}`) >= 0) {
+            if (cssRule.style && cssRule.style.fill) {
+              if (cssRule.style.fill[0] === '#') {
+                fill = cssRule.style.fill;
+              }
+              else {
+                const rgb = cssRule.style.fill.substring(4).slice(0, -1).split(',').map(x => parseInt(x));
+                fill = `#${rgb[0].toString(16)}${rgb[1].toString(16)}${rgb[2].toString(16)}`;
+              }
             }
-            else {
-              let rgb = cssRule.style.fill.substring(4).slice(0, -1).split(',').map(x => parseInt(x));
-              fill = `#${rgb[0].toString(16)}${rgb[1].toString(16)}${rgb[2].toString(16)}`;
-            }
+
+            break;
           }
         }
       }
 
       return fill;
-    }
-
-    getTransitionColor(fromColor, toColor, value) {
-      return (value <= 0) ? fromColor :
-        ((value >= 1) ? toColor : this.rgbToHex(this.mix(this.hexToRgb(toColor), this.hexToRgb(fromColor), value)));
     }
 
     /***************************************************************************************************************************/
@@ -1856,7 +1775,7 @@
       useCache = false;
 
       return new Promise((resolve, reject) => {
-        let request = new Request(resourceUrl, {
+        const request = new Request(resourceUrl, {
           cache: (useCache === true) ? 'reload' : 'no-cache',
         });
 
@@ -1881,7 +1800,7 @@
       useCache = false;
 
       return new Promise((resolve, reject) => {
-        let request = new Request(resourceUrl, {
+        const request = new Request(resourceUrl, {
           cache: (useCache === true) ? 'reload' : 'no-cache',
           headers: new Headers({ 'Content-Type': 'text/plain; charset=x-user-defined' }),
         });
@@ -1912,7 +1831,7 @@
 
     arrayBufferToBase64(buffer) {
       let binary = '';
-      let bytes = [].slice.call(new Uint8Array(buffer));
+      const bytes = [].slice.call(new Uint8Array(buffer));
 
       bytes.forEach((b) => binary += String.fromCharCode(b));
 
@@ -1926,55 +1845,22 @@
       return base64;
     }
 
-    base64Encodebase64Encode(str) {
-      let CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-      let out = "", i = 0, len = str.length, c1, c2, c3;
-      while (i < len) {
-        c1 = str.charCodeAt(i++) & 0xff;
-        if (i === len) {
-          out += CHARS.charAt(c1 >> 2);
-          out += CHARS.charAt((c1 & 0x3) << 4);
-          out += "==";
-          break;
-        }
-        c2 = str.charCodeAt(i++);
-        if (i === len) {
-          out += CHARS.charAt(c1 >> 2);
-          out += CHARS.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
-          out += CHARS.charAt((c2 & 0xF) << 2);
-          out += "=";
-          break;
-        }
-        c3 = str.charCodeAt(i++);
-        out += CHARS.charAt(c1 >> 2);
-        out += CHARS.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
-        out += CHARS.charAt(((c2 & 0xF) << 2) | ((c3 & 0xC0) >> 6));
-        out += CHARS.charAt(c3 & 0x3F);
-      }
-
-      // IOS / Safari will not render base64 images unless length is divisible by 4
-      while ((out.length % 4) > 0) {
-        out += '=';
-      }
-
-      return out;
-    }
-
     cacheBuster(url) {
-      return `${url}${(url.indexOf('?') >= 0) ? '&' : '?'}_=${new Date().getTime()}`;
+      return url;
+      //return `${url}${(url.indexOf('?') >= 0) ? '&' : '?'}_=${new Date().getTime()}`;
     }
 
     debounce(func, wait, immediate) {
       let timeout;
       return function () {
-        let context = this, args = arguments;
+        const context = this, args = arguments;
 
-        let later = function () {
+        const later = function () {
           timeout = null;
           if (!immediate) func.apply(context, args);
         };
 
-        let callNow = immediate && !timeout;
+        const callNow = immediate && !timeout;
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
 
@@ -1999,15 +1885,15 @@
       if (arrA != arrB) return false;
 
       if (a && b && typeof a === 'object' && typeof b === 'object') {
-        let keys = Object.keys(a);
+        const keys = Object.keys(a);
         if (keys.length !== Object.keys(b).length) return false;
 
-        let dateA = a instanceof Date
+        const dateA = a instanceof Date
           , dateB = b instanceof Date;
         if (dateA && dateB) return a.getTime() == b.getTime();
         if (dateA != dateB) return false;
 
-        let regexpA = a instanceof RegExp
+        const regexpA = a instanceof RegExp
           , regexpB = b instanceof RegExp;
         if (regexpA && regexpB) return a.toString() == b.toString();
         if (regexpA != regexpB) return false;
@@ -2022,76 +1908,6 @@
       }
 
       return false;
-    }
-
-    /***************************************************************************************************************************/
-    /* Color functions
-    /***************************************************************************************************************************/
-
-    rgbToHex(rgb) {
-      return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
-    }
-
-    hexToRgb(hex) {
-      // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
-      let shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-      hex = hex.replace(shorthandRegex, (m, r, g, b) => {
-        return r + r + g + g + b + b;
-      });
-
-      let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-      return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
-      } : null;
-    }
-
-    mix(color1, color2, weight) {
-      let p = weight;
-      let w = p * 2 - 1;
-      let w1 = ((w / 1) + 1) / 2;
-      let w2 = 1 - w1;
-      let rgb = [
-        Math.round(color1.r * w1 + color2.r * w2),
-        Math.round(color1.g * w1 + color2.g * w2),
-        Math.round(color1.b * w1 + color2.b * w2)
-      ];
-      return rgb;
-    }
-
-    wrap(svgTextElement, width, content) {
-      let $text = $(svgTextElement);
-
-      let words = content.split(/\s+/).reverse();
-      let line = [];
-      let lineNumber = 0;
-      let lineHeight = 1.1; // ems
-      let x = $text.attr("x");
-      let y = $text.attr("y");
-      //let dy = 0; //parseFloat($text.attr("dy")),
-
-      let $tspan = $text.append("tspan")
-        .attr("x", x)
-        .attr("y", y)
-        .attr("dy", dy + "em")
-        .text(null);
-
-      let word;
-      while (word = words.pop()) {
-        line.push(word);
-        $tspan.text(line.join(" "));
-        if ($tspan.node().getComputedTextLength() > width) {
-          line.pop();
-          $tspan.text(line.join(" "));
-          line = [word];
-          $tspan = $text.append("tspan")
-            .attr("x", x)
-            .attr("y", y)
-            .attr("dy", ++lineNumber * lineHeight + dy + "em")
-            .text(word);
-        }
-      }
     }
   }
 

@@ -1,13 +1,25 @@
-SVG shapes */
+/* Hide header */
+app-header, app-toolbar {
+  display: none !important;
+}
+ha-app-layout #layout #contentContainer {
+  padding-top: 0px !important;
+}
 
+/* Hover over */
+.entity:hover {
+  stroke: #03A9F4 !important;
+  stroke-width: 1px !important;
+  stroke-opacity: 1 !important;
+}
+
+/* SVG shapes */
 svg, svg * {
   vector-effect: non-scaling-stroke !important;
   pointer-events: all !important;
 }
-/*
 
 /* CSS  */
-
 .static-text
 {
   fill: #FFFFA6 !important;
@@ -133,7 +145,7 @@ transform-box: fill-box;
 fill: #686868 !important;
 }
 
-.blackout-on{
+/* .blackout-on{
 width: 100%;
 opacity: 1.0 !important;
 fill: black !important;
@@ -150,4 +162,4 @@ opacity: 0.7 !important;
 .dimmer-off{
 width: 0%;
 opacity:0 !important;
-}
+} */

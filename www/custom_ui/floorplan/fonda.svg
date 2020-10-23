@@ -17,7 +17,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="alarm.svg">
+   sodipodi:docname="fonda.svg">
   <defs
      id="defs2">
     <linearGradient
@@ -759,16 +759,16 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="0.93547038"
-     inkscape:cx="318.30492"
+     inkscape:cx="144.59552"
      inkscape:cy="601.69002"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
-     inkscape:window-x="1042"
-     inkscape:window-y="501"
+     inkscape:window-x="1072"
+     inkscape:window-y="612"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -816,7 +816,8 @@
      id="layer2"
      inkscape:label="Floorplan"
      style="display:inline;opacity:1"
-     transform="translate(0,40.000016)">
+     transform="translate(0,40.000016)"
+     sodipodi:insensitive="true">
     <g
        style="display:inline;opacity:1;stroke-width:0.72749466"
        transform="matrix(1.4316496,0,0,1.4316496,-758.10896,-64.951734)"
@@ -1088,7 +1089,7 @@
        cy="757.17316"
        cx="1622.6149"
        style="display:inline;fill:#231f26;stroke-width:1.875"
-       id="light.garage"
+       id="group.garage"
        transform="matrix(1.0415174,0,0,1.0415174,-352.6039,-43.018639)"
        r="0" />
     <circle
@@ -1175,14 +1176,14 @@
        style="opacity:1;fill:#5b5b5b;fill-opacity:1;stroke-width:3.20210409"
        inkscape:connector-curvature="0"
        d="m 451.50589,954.20602 a 3.199703,3.2045056 0 0 0 -3.19964,3.20443 3.199703,3.2045056 0 0 0 3.19964,3.20452 3.199703,3.2045056 0 0 0 3.19965,-3.20452 3.199703,3.2045056 0 0 0 -3.19965,-3.20443 m 1.59988,-28.84058 c 14.39877,0 14.7507,11.44003 7.19938,15.22148 -3.16767,1.57004 -4.57559,4.93485 -5.18352,7.91504 1.53582,0.64081 2.87969,1.63435 3.9036,2.91607 11.83904,-6.40903 24.57388,-3.87752 24.57388,7.59462 0,14.42034 -11.42305,14.74069 -15.19866,7.14606 -1.59987,-3.17249 -4.99157,-4.58235 -7.96729,-5.19123 -0.6396,1.53817 -1.63185,2.85206 -2.91167,3.94142 6.36742,11.82478 3.83966,24.54656 -7.61537,24.54656 -14.39877,0 -14.68675,-11.47215 -7.13533,-15.25337 3.1357,-1.57026 4.54352,-4.90299 5.18343,-7.85105 -1.5678,-0.64085 -2.94365,-1.66641 -3.96756,-2.94817 -11.80695,6.34495 -24.47785,3.84543 -24.47785,-7.59473 0,-14.42027 11.39087,-14.77266 15.16658,-7.17808 1.59987,3.17254 4.9596,4.55038 7.93532,5.15931 0.60866,-1.53819 1.63185,-2.88407 2.94364,-3.90947 -6.36742,-11.82463 -3.83955,-24.51446 7.55142,-24.51446 z"
-       id="fan.office_ceiling_fan"
-       inkscape:label="#fan.office_ceiling_fan" />
+       id="fan.office_fanlinc"
+       inkscape:label="#fan.office_fanlinc" />
     <circle
        r="9.764226"
        cy="957.41046"
        cx="451.55399"
        style="display:inline;fill:#231f26;stroke-width:1.9528451"
-       id="light.office_ceiling_light"
+       id="light.office_fanlinc"
        inkscape:label="#light" />
     <circle
        transform="matrix(1.0415174,0,0,1.0415174,-352.6039,-43.018639)"
@@ -1195,14 +1196,14 @@
        style="display:inline;opacity:1;fill:#5b5b5b;fill-opacity:1;stroke-width:3.20210409"
        inkscape:connector-curvature="0"
        d="m 164.62117,162.49679 a 3.2045056,3.199703 74.99994 0 0 -2.26125,3.92338 3.2045056,3.199703 74.99994 0 0 3.92001,2.2672 3.2045056,3.199703 74.99994 0 0 2.26123,-3.92346 3.2045056,3.199703 74.99994 0 0 -3.91999,-2.26712 m -5.91913,-28.27193 c 13.90815,-3.72668 17.20898,7.23246 10.89368,12.83947 -2.65338,2.33641 -3.14245,5.95096 -2.95833,8.98695 1.64934,0.22147 3.20457,0.83334 4.52532,1.80638 9.77686,-9.25482 22.73297,-10.10559 25.70218,0.97565 3.73226,13.92898 -7.21865,17.19492 -12.83124,10.83627 -2.36646,-2.65033 -6.00749,-3.13431 -9.0394,-2.95226 -0.2197,1.6513 -0.83808,3.17723 -1.79235,4.56072 9.21094,9.77385 10.06195,22.71638 -1.00276,25.68116 -13.90815,3.72667 -17.15552,-7.28004 -10.84006,-12.88687 2.62244,-2.32833 3.11971,-5.91187 2.9748,-8.92511 -1.68024,-0.21323 -3.27463,-0.84775 -4.59541,-1.82083 -9.76244,9.18462 -22.64852,10.04974 -25.60945,-1.00061 -3.73224,-13.92891 7.17929,-17.21747 12.79197,-10.85889 2.36647,2.65036 5.96833,3.11169 9.00026,2.9297 0.18981,-1.64331 0.82979,-3.20815 1.83149,-4.53813 -9.21089,-9.77371 -10.05353,-22.6854 0.9493,-25.6336 z"
-       id="fan.master_ceiling_fan"
+       id="fan.main_bedroom_fanlinc"
        inkscape:label="#fan" />
     <circle
        r="9.764226"
        cy="165.59076"
        cx="165.4959"
        style="display:inline;fill:#231f26;stroke-width:1.9528451"
-       id="light.master_ceiling_light" />
+       id="light.main_bedroom_fanlinc" />
     <circle
        transform="matrix(1.0415174,0,0,1.0415174,-352.6039,-43.018639)"
        r="9.375"
@@ -1619,7 +1620,7 @@
     <text
        y="146.81775"
        x="1564.3855"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:43.99999999px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:end;writing-mode:lr;text-anchor:end;display:inline;fill:#808080;stroke-width:1.83589387;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:44px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:end;writing-mode:lr-tb;text-anchor:end;display:inline;fill:#808080;stroke-width:1.83589387"
        id="sensor.floorplan_date">Friday, June 30</text>
     <g
        inkscape:label="#climate"
@@ -2038,7 +2039,8 @@
      id="layer4"
      inkscape:label="HA Logo"
      transform="translate(0,40.000016)"
-     style="display:inline;opacity:1">
+     style="display:inline;opacity:1"
+     sodipodi:insensitive="true">
     <g
        style="display:inline"
        id="g10777"
