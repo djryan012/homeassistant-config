@@ -1,9 +1,0 @@
-#### Shelly Relays
-- platform: mqtt
-  name: 'Shelly1pm Power'
-  state_topic: 'shellies/shelly1pm-00139E/relay/0/power'
-  unit_of_measurement: 'Watts'
-# - platform: mqtt
-#   name: 'Shelly1pm Total Energy Used'
-#   state_topic: 'shellies/shelly1pm-00139E/relay/0/energy'
-#   unit_of_measurement: 'kWh'

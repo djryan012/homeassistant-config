@@ -1,0 +1,19 @@
+title: All Shelly Devices
+icon: mdi:alpha-s-circle-outline
+cards:
+  - type: entities
+    title: Shelly Switch
+    show_header_toggle: false
+    entities:
+      - entity: switch.hallway_down_lights
+        name: Hallway Down Lights
+      - entity: sensor.shelly1pm_power
+        name: shelly1pm-00139E Power    
+      - entity: sensor.shelly1pm_00139e_energy
+        name: shelly1pm-00139E Energy
+      - entity: binary_sensor.shelly1pm_00139e_overheating
+        name: shelly1pm-00139E Overheating
+      - entity: binary_sensor.shelly1pm_00139e_overpowering
+        name: shelly1pm-00139E Overpowering
+      - entity: sensor.shelly1pm_00139e_power
+        name: shelly1pm-00139E Power
