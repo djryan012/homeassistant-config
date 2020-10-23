@@ -84,7 +84,7 @@ cards:
         name: Side Door Sconce
       - entity: switch.shelly1pm_mqtt
         name: Backyard Lights
-      - entity: light.whole_house_rgb
+      - entity: light.all_exterior_c9s
         name: Outside RGB Lights
 
   - type: entities

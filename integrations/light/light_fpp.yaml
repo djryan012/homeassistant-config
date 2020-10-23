@@ -2,13 +2,15 @@
 # hassio/falcon/player/FPP/light/${MODELNAME}/cmd
 # hassio/falcon/player/FPP/light/${MODELNAME}/state
 
-# - platform: mqtt
-#   schema: json
-#   name: All Exterior C9s
-#   state_topic: "hassio/falcon/player/FPP/light/All C9s/state"
-#   command_topic: "hassio/falcon/player/FPP/light/All C9s/cmd"
-#   brightness: true
-#   rgb: true
+- platform: mqtt
+  schema: json
+  name: All Exterior C9s
+  state_topic: "hassio/falcon/player/FPP/ha/light/All Exterior C9s/state"
+  command_topic: "hassio/falcon/player/FPP/ha/light/All Exterior C9s/cmd"
+  brightness: true
+  rgb: true
+  effect: false
+  qos: 0
 
 # - platform: mqtt
 #   schema: json
