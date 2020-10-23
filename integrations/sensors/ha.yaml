@@ -19,10 +19,12 @@
 
 - platform: time_date
   display_options:
-    - 'date'
     - 'time'
+    - 'date'
     - 'date_time'
+    - 'date_time_iso'
 
 - platform: uptime #Needed for Automations triggers so they dont trigger when system restarts.
   name: Time Online
   unit_of_measurement: hours
+ 

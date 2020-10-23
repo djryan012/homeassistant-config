@@ -7,6 +7,7 @@
   host: !secret unifi_host
   username: !secret unifi_username
   password: !secret unifi_password
+  site_id: !secret unifi_site
   monitored_conditions:
     - www #The status of the WWW sub-system Attribute data includes speedtest results
     - lan #The status of the LAN sub-system Attribute data includes the IP of the USG

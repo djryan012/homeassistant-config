@@ -1,21 +1,13 @@
 - platform: template
-  scan_interval: 30000
   sensors:
     floorplan_date:
       friendly_name: 'Date'
-      entity_id: sun.sun
-      value_template: >-
-        {{now().strftime("%A, %B %d")}}
+      value_template: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m') }}"
+      icon_template: mdi:calendar-clock
        
 - platform: template
   sensors:
     floorplan_time:
       friendly_name: 'Time'
-      entity_id: sensor.time
-      value_template: >-
-        {{ as_timestamp(now()) | timestamp_custom("%-I:%M %p")}}
-    clock_time:
-      friendly_name: 'Clock Time'
-      entity_id: sensor.time
-      value_template: >-
-        {{ as_timestamp(now()) | timestamp_custom("%-I:%M %p")}}
+      value_template: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%-I:%M %p') }}"
+      icon_template: mdi:calendar-clock

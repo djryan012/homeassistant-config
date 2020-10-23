@@ -53,3 +53,5 @@ google_calendars.yaml
 home-assistant*
 *.disabled
 *.log
+insteon_devices.json
+H9D5R6~J
